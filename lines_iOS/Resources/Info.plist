@@ -6,5 +6,7 @@
 	<string>사진 앨범 접근 권한을 요청합니다</string>
 	<key>NSCameraUsageDescription</key>
 	<string>카메라 사용자에게 접근 권한을 요청합니다.</string>
+    <key>KAKAO_APP_RESTFUL_KEY</key>
+    <string>a173c52af842104cd1b4f230570bcd9b</string>
 </dict>
 </plist>

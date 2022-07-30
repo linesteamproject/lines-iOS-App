@@ -55,5 +55,19 @@ extension MainViewController {
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         }, for: .touchUpInside)
+        
+        let btn2 = UIButton()
+        self.view.addSubViews(btn2)
+        NSLayoutConstraint.activate([
+            btn2.rightAnchor.constraint(equalTo: btn.rightAnchor),
+            btn2.bottomAnchor.constraint(equalTo: btn.topAnchor, constant: 20),
+        ])
+        
+        btn2.setTitle("책 검색", for: .normal)
+        btn2.setTitleColor(.systemBlue, for: .normal)
+        btn2.addAction(UIAction { [weak self] _ in
+            let vc = SearchBookViewController()
+            self?.present(vc, animated: true)
+        }, for: .touchUpInside)
     }
 }

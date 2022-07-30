@@ -8,6 +8,17 @@
 import Foundation
 import UIKit
 
+extension UIViewController {
+    static var id: String {
+        return self.description().components(separatedBy: ".").last ?? ""
+    }
+}
+extension UIView {
+    static var id: String {
+        return self.description().components(separatedBy: ".").last ?? ""
+    }
+}
+
 extension UILabel {
     func setTitle(_ str: String? = "", font: UIFont? = nil,
                   txtColor: UIColor? = nil, backColor: UIColor? = nil) {
