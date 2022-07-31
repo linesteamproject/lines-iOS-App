@@ -2,11 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>사진 앨범 접근 권한을 요청합니다</string>
-	<key>NSCameraUsageDescription</key>
-	<string>카메라 사용자에게 접근 권한을 요청합니다.</string>
-    <key>KAKAO_APP_RESTFUL_KEY</key>
-    <string>a173c52af842104cd1b4f230570bcd9b</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
+	<key>KAKAO_APP_RESTFUL_KEY</key>
+	<string>a173c52af842104cd1b4f230570bcd9b</string>
 </dict>
 </plist>
