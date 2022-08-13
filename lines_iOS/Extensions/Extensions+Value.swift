@@ -12,3 +12,9 @@ extension CGFloat {
         return CGFloat(arc4random()) / CGFloat(UInt32.max)
     }
 }
+
+extension Array {
+    subscript (safe index: Int) -> Element? {
+        return indices ~= index ? self[index] : nil
+    }
+}

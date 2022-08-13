@@ -11,7 +11,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = Colors.white.value
+//        self.view.backgroundColor = Colors.white.value
+//        let v = UIView()
+//        self.view.addSubViews(v)
+//        NSLayoutConstraint.activate([
+//            v.topAnchor.constraint(equalTo: self.view.topAnchor),
+//            v.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+//            v.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+//            v.heightAnchor.constraint(equalToConstant: 35)
+//        ])
+//        v.backgroundColor = .red
     }
 }
 

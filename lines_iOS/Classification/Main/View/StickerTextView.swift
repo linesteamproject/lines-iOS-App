@@ -8,6 +8,8 @@
 import UIKit
 
 class StickerTextView: UIView {
+    internal weak var backView: UIView!
+    internal weak var stickerView: UIView!
     private weak var label: UILabel!
     internal var str: String? {
         didSet { label.setTitle(str) }
@@ -30,9 +32,10 @@ class StickerTextView: UIView {
             back.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
         back.backgroundColor = Colors.black.value.withAlphaComponent(0.7)
+        self.backView = back
+        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(close))
         back.addGestureRecognizer(gesture)
-        
         
         let stickerView = UIView()
         back.addSubViews(stickerView)
@@ -42,7 +45,10 @@ class StickerTextView: UIView {
             stickerView.widthAnchor.constraint(equalToConstant: size.width),
             stickerView.heightAnchor.constraint(equalToConstant: size.height),
         ])
-        stickerView.backgroundColor = UIColor.random()
+        self.stickerView = stickerView
+        
+        let stickerBack = UIColor.random()
+        stickerView.backgroundColor = stickerBack
         
         let label = UILabel()
         stickerView.addSubViews(label)
@@ -54,11 +60,12 @@ class StickerTextView: UIView {
             label.rightAnchor.constraint(equalTo: stickerView.rightAnchor, constant: -20),
             label.bottomAnchor.constraint(equalTo: stickerView.bottomAnchor, constant: -40),
         ])
-        label.setTitle(font: .italicSystemFont(ofSize: 13),
-                       txtColor: UIColor.random())
+//        label.setTitle(font: .italicSystemFont(ofSize: 13),
+//                       txtColor: stickerBack.getContrast())
         label.numberOfLines = 0
         self.label = label
     }
+    
     @objc
     private func close() {
         self.removeFromSuperview()

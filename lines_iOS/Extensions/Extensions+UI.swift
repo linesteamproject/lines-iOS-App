@@ -21,7 +21,7 @@ extension UIView {
 
 extension UILabel {
     func setTitle(_ str: String? = "", font: UIFont? = nil,
-                  txtColor: UIColor? = nil, backColor: UIColor? = nil) {
+                  txtColor: Colors? = nil, backColor: Colors? = nil) {
         if let str = str {
             self.text = str
         }
@@ -29,10 +29,10 @@ extension UILabel {
             self.font = font
         }
         if let txtColor = txtColor {
-            self.textColor = txtColor
+            self.textColor = txtColor.value
         }
         if let backColor = backColor {
-            self.backgroundColor = backColor
+            self.backgroundColor = backColor.value
         }
     }
 }
@@ -54,19 +54,58 @@ extension UIColor {
             alpha: 1.0
         )
     }
-   convenience init(red: Int, green: Int, blue: Int) {
-       assert(red >= 0 && red <= 255, "Invalid red component")
-       assert(green >= 0 && green <= 255, "Invalid green component")
-       assert(blue >= 0 && blue <= 255, "Invalid blue component")
-
-       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-   }
-
-   convenience init(rgb: Int) {
-       self.init(
-           red: (rgb >> 16) & 0xFF,
-           green: (rgb >> 8) & 0xFF,
-           blue: rgb & 0xFF
-       )
-   }
+    
+    func getContrast() -> UIColor {
+        let red = self.cgColor.components?[0] ?? 0
+        let green = self.cgColor.components?[1] ?? 0
+        let blue = self.cgColor.components?[2] ?? 0
+        
+        let redReversal = 1-red
+        let greenReversal = 1-green
+        let blueReversal = 1-blue
+        
+        let conversion = 0.2126 * pow(red/255, 2.2)
+        + 0.7152 * pow(green/255, 2.2)
+        + 0.0722 * pow(blue/255, 2.2)
+        
+        let conversionReversal = 0.2126 * pow(redReversal/255, 2.2)
+        + 0.7152 * pow(greenReversal/255, 2.2)
+        + 0.0722 * pow(blueReversal/255, 2.2)
+        
+        if(conversion > conversionReversal){
+            return UIColor(rgb: Int((conversion+0.05)/(conversionReversal+0.05)*255))
+        } else{
+            return UIColor(rgb: Int((conversionReversal+0.05)/(conversion+0.05)*255))
+        }
+    }
+    
+    func getHexStr() -> String {
+        let components = self.cgColor.components
+        let r: CGFloat = components?[safe: 0] ?? 1
+        let g: CGFloat = components?[safe: 1] ?? 1
+        let b: CGFloat = components?[safe: 2] ?? 1
+        
+        let hexString = String.init(format: "#%02lX%02lX%02lX",
+                                    lroundf(Float(r * 255)),
+                                    lroundf(Float(g * 255)),
+                                    lroundf(Float(b * 255)))
+        print(hexString)
+        return hexString
+    }
+    
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
 }
