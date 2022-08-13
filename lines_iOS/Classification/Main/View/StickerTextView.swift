@@ -24,7 +24,7 @@ class StickerTextView: UIView {
     }
     private func setUI(_ size: CGSize) {
         let back = UIView()
-        self.addSubViews(back)
+        self.addSubviews(back)
         NSLayoutConstraint.activate([
             back.topAnchor.constraint(equalTo: self.topAnchor),
             back.leftAnchor.constraint(equalTo: self.leftAnchor),
@@ -38,7 +38,7 @@ class StickerTextView: UIView {
         back.addGestureRecognizer(gesture)
         
         let stickerView = UIView()
-        back.addSubViews(stickerView)
+        back.addSubviews(stickerView)
         NSLayoutConstraint.activate([
             stickerView.centerXAnchor.constraint(equalTo: back.centerXAnchor),
             stickerView.centerYAnchor.constraint(equalTo: back.centerYAnchor),
@@ -51,7 +51,7 @@ class StickerTextView: UIView {
         stickerView.backgroundColor = stickerBack
         
         let label = UILabel()
-        stickerView.addSubViews(label)
+        stickerView.addSubviews(label)
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: stickerView.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: stickerView.centerYAnchor),

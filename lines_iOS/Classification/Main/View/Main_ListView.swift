@@ -30,7 +30,7 @@ class Main_ListView: UIView {
     required init?(coder: NSCoder) { fatalError() }
     private func setTitle(_ count: Int) {
         let label = UILabel()
-        self.addSubViews(label)
+        self.addSubviews(label)
         NSLayoutConstraint.activate([
             label.topAnchor
                 .constraint(equalTo: self.topAnchor),
@@ -48,7 +48,7 @@ class Main_ListView: UIView {
     }
     private func setListView(_ datas: [UIImage?]?) {
         let back = UIView()
-        self.addSubViews(back)
+        self.addSubviews(back)
         NSLayoutConstraint.activate([
             back.topAnchor.constraint(equalTo: nextTopAnchor,
                                       constant: 12),
@@ -65,7 +65,7 @@ class Main_ListView: UIView {
             let cellHeight = self.cellWidth * data.size.height / data.size.width
             print("munyong > \(cellWidth), \(cellHeight)")
             let cellView = ImageListCellView(data)
-            back.addSubViews(cellView)
+            back.addSubviews(cellView)
             if idx % 2 == 0 { //왼쪽
                 NSLayoutConstraint.activate([
                     cellView.topAnchor.constraint(equalTo: obj.lTopAnc,

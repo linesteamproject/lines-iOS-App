@@ -10,7 +10,7 @@ import UIKit
 class Main_TopView: TopView {
     override func setUI() {
         let logoImgView = UIImageView(image: UIImage(named: "Logo"))
-        self.addSubViews(logoImgView)
+        self.addSubviews(logoImgView)
         NSLayoutConstraint.activate([
             logoImgView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             logoImgView.centerYAnchor.constraint(equalTo: self.centerYAnchor),

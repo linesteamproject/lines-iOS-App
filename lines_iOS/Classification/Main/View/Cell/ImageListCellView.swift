@@ -17,7 +17,7 @@ class ImageListCellView: UIView {
     }
     private func setUI(_ data: UIImage?) {
         let imageView = UIImageView()
-        self.addSubViews(imageView)
+        self.addSubviews(imageView)
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: self.topAnchor),
             imageView.leftAnchor.constraint(equalTo: self.leftAnchor),

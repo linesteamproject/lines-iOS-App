@@ -24,7 +24,7 @@ class SearchedListView: UIView {
         self.backgroundColor = .clear
         
         let tableView = UITableView()
-        self.addSubViews(tableView)
+        self.addSubviews(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.topAnchor),
             tableView.leftAnchor.constraint(equalTo: self.leftAnchor),
@@ -73,7 +73,7 @@ class BasicTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         
         let label = UILabel()
-        self.contentView.addSubViews(label)
+        self.contentView.addSubviews(label)
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),

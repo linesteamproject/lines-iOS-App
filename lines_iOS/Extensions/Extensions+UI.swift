@@ -36,8 +36,26 @@ extension UILabel {
         }
     }
 }
+
+extension UIButton {
+    func setTitle(_ str: String? = "", font: UIFont? = nil,
+                  txtColor: Colors? = nil, backColor: Colors? = nil) {
+        if let str = str {
+            self.setTitle(str, for: .normal)
+        }
+        if let font = font {
+            self.titleLabel?.font = font
+        }
+        if let txtColor = txtColor {
+            self.setTitleColor(txtColor.value, for: .normal)
+        }
+        if let backColor = backColor {
+            self.backgroundColor = backColor.value
+        }
+    }
+}
 extension UIView {
-    func addSubViews(_ views: UIView... ) {
+    func addSubviews(_ views: UIView... ) {
         views.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)

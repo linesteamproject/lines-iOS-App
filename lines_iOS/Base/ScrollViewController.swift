@@ -21,7 +21,7 @@ class ScrollViewController: UIViewController {
     
     internal func setTopView() {
         let topView = TopView()
-        self.view.addSubViews(topView)
+        self.view.addSubviews(topView)
         NSLayoutConstraint.activate([
             topView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 35),
             topView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
@@ -33,7 +33,7 @@ class ScrollViewController: UIViewController {
     
     private func setScrollView() {
         let scrollView = UIScrollView()
-        self.view.addSubViews(scrollView)
+        self.view.addSubviews(scrollView)
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: topView.bottomAnchor),
             scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
@@ -44,7 +44,7 @@ class ScrollViewController: UIViewController {
         scrollView.showsVerticalScrollIndicator = false
         
         let scrollContentView = UIView()
-        scrollView.addSubViews(scrollContentView)
+        scrollView.addSubviews(scrollContentView)
         NSLayoutConstraint.activate([
             scrollContentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             scrollContentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),

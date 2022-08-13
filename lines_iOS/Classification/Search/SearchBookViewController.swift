@@ -29,7 +29,7 @@ class SearchBookViewController: ViewController {
     
     private func setSearchedTypeView() {
         let searchedTypeView = SearchedTypeView()
-        self.view.addSubViews(searchedTypeView)
+        self.view.addSubviews(searchedTypeView)
         NSLayoutConstraint.activate([
             searchedTypeView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             searchedTypeView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
@@ -71,7 +71,7 @@ class SearchBookViewController: ViewController {
     
     private func setSearchedListView() {
         let searchedListView = SearchedListView()
-        self.view.addSubViews(searchedListView)
+        self.view.addSubviews(searchedListView)
         NSLayoutConstraint.activate([
             searchedListView.topAnchor.constraint(equalTo: self.searchedTypeView.bottomAnchor,
                                                   constant: 20),

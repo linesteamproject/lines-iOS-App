@@ -18,7 +18,7 @@ class Main_HeaderView: UIView {
     }
     private func setUI() {
         let imgView = UIImageView(image: UIImage(named: "HeaderImage"))
-        self.addSubViews(imgView)
+        self.addSubviews(imgView)
         NSLayoutConstraint.activate([
             imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 39.06),
             imgView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -43.5),

@@ -24,6 +24,8 @@
 		BA6A83BC28A744420040512E /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA6A83B428A72AE80040512E /* AppleSDGothicNeoL.ttf */; };
 		BA6A83BD28A744420040512E /* AppleSDGothicNeoM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA6A83B628A72AE80040512E /* AppleSDGothicNeoM.ttf */; };
 		BA6A83BE28A744420040512E /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA6A83B528A72AE80040512E /* AppleSDGothicNeoEB.ttf */; };
+		BA6A83C028A7A9ED0040512E /* Main_OverlappedButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83BF28A7A9ED0040512E /* Main_OverlappedButtonsView.swift */; };
+		BA6A83C228A7B0A40040512E /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83C128A7B0A40040512E /* TestData.swift */; };
 		BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFD2894C1DA0078EA83 /* Colors.swift */; };
 		BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFF2894C1E00078EA83 /* Fonts.swift */; };
 		BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */; };
@@ -71,6 +73,8 @@
 		BA6A83B528A72AE80040512E /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
 		BA6A83B628A72AE80040512E /* AppleSDGothicNeoM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoM.ttf; sourceTree = "<group>"; };
 		BA6A83B828A730670040512E /* ImageListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCellView.swift; sourceTree = "<group>"; };
+		BA6A83BF28A7A9ED0040512E /* Main_OverlappedButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_OverlappedButtonsView.swift; sourceTree = "<group>"; };
+		BA6A83C128A7B0A40040512E /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		BAA07BFD2894C1DA0078EA83 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BAA07BFF2894C1E00078EA83 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UI.swift"; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 				BAE5C9C12894B08C00659F74 /* Assets.xcassets */,
 				BAA07BFD2894C1DA0078EA83 /* Colors.swift */,
 				BAA07BFF2894C1E00078EA83 /* Fonts.swift */,
+				BA6A83C128A7B0A40040512E /* TestData.swift */,
 				BA6A83B128A72AD90040512E /* FontResource */,
 			);
 			path = Resources;
@@ -270,6 +275,7 @@
 				BA6A8380289F6E0D0040512E /* Main_HeaderView.swift */,
 				BA6A83AD28A721530040512E /* Main_MenuButton.swift */,
 				BA6A83AF28A728A80040512E /* Main_ListView.swift */,
+				BA6A83BF28A7A9ED0040512E /* Main_OverlappedButtonsView.swift */,
 				BAA07C182894F51C0078EA83 /* StickerTextView.swift */,
 			);
 			path = View;
@@ -527,6 +533,7 @@
 				BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */,
 				BAA07C3428952D360078EA83 /* SearchedTypeView.swift in Sources */,
 				BA6A8372289CEDB50040512E /* LoginViewController.swift in Sources */,
+				BA6A83C028A7A9ED0040512E /* Main_OverlappedButtonsView.swift in Sources */,
 				BAA07C2728950EC00078EA83 /* SearchBookStatus.swift in Sources */,
 				BAA07C142894E3780078EA83 /* ReadTextController.swift in Sources */,
 				BAA07C1E289509940078EA83 /* NWMonitor.swift in Sources */,
@@ -535,6 +542,7 @@
 				BAA07C1B2894F79F0078EA83 /* Extensions+Value.swift in Sources */,
 				BA6A8375289CEDEA0040512E /* LoginController.swift in Sources */,
 				BA6A8381289F6E0D0040512E /* Main_HeaderView.swift in Sources */,
+				BA6A83C228A7B0A40040512E /* TestData.swift in Sources */,
 				BAA07C20289509AF0078EA83 /* EventMonitor.swift in Sources */,
 				BA6A8378289CEEAD0040512E /* StartViewController.swift in Sources */,
 				BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */,

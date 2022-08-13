@@ -12,6 +12,7 @@ enum Colors {
     case white
     case black
     case gold
+    case beige
     var value: UIColor {
         switch self {
         case .white:
@@ -20,6 +21,8 @@ enum Colors {
             return UIColor(rgb: 0x000000)
         case .gold:
             return UIColor(rgb: 0xDABA8A)
+        case .beige:
+            return UIColor(rgb: 0xFFE5AC)
         }
     }
 }

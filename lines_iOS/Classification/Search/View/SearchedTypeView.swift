@@ -44,7 +44,7 @@ class SearchedTypeView: UIView {
     
     private func setStackView() {
         let stackView = UIStackView()
-        self.addSubViews(stackView)
+        self.addSubviews(stackView)
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,
                                            constant: 20),
@@ -79,7 +79,7 @@ class SearchedTypeView: UIView {
     
     private func setTextFieldView() {
         let textField = UITextField()
-        self.addSubViews(textField)
+        self.addSubviews(textField)
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: stackView.bottomAnchor),
             textField.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
@@ -90,7 +90,7 @@ class SearchedTypeView: UIView {
         self.textField = textField
         
         let line = UIView()
-        self.addSubViews(line)
+        self.addSubviews(line)
         NSLayoutConstraint.activate([
             line.topAnchor.constraint(equalTo: textField.bottomAnchor),
             line.leftAnchor.constraint(equalTo: stackView.leftAnchor),
@@ -100,7 +100,7 @@ class SearchedTypeView: UIView {
         line.backgroundColor = .gray.withAlphaComponent(0.7)
         
         let btn = UIButton()
-        self.addSubViews(btn)
+        self.addSubviews(btn)
         NSLayoutConstraint.activate([
             btn.topAnchor.constraint(equalTo: textField.topAnchor),
             btn.leftAnchor.constraint(equalTo: textField.rightAnchor, constant: 8),

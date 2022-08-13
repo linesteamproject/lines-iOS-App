@@ -10,6 +10,10 @@ import UIKit
 
 class MainViewController: ScrollViewController {
     private weak var headerView: Main_HeaderView!
+    private weak var back: UIView!
+    private weak var overlappedButtonsView: Main_OverlappedButtonsView!
+    private weak var overlappedButtonsViewHeightConstraint: NSLayoutConstraint!
+    private weak var floatingButton: UIButton!
     override var topViewHeight: CGFloat {
         get { return 56 }
         set { }
@@ -25,11 +29,12 @@ class MainViewController: ScrollViewController {
     private func setUI() {
         setHeaderView()
         setContentView()
+        setOverlappedButtonsView()
     }
     
     override func setTopView() {
         let topView = Main_TopView()
-        self.view.addSubViews(topView)
+        self.view.addSubviews(topView)
         NSLayoutConstraint.activate([
             topView.topAnchor
                     .constraint(equalTo: self.view.topAnchor,
@@ -45,7 +50,7 @@ class MainViewController: ScrollViewController {
         self.topView = topView
         
         let mainMenuButton = Main_MenuButton()
-        self.view.addSubViews(mainMenuButton)
+        self.view.addSubviews(mainMenuButton)
         NSLayoutConstraint.activate([
             mainMenuButton.widthAnchor
                 .constraint(equalToConstant: 47),
@@ -64,7 +69,7 @@ class MainViewController: ScrollViewController {
     
     private func setHeaderView() {
         let headerView = Main_HeaderView()
-        self.contentView.addSubViews(headerView)
+        self.contentView.addSubviews(headerView)
         NSLayoutConstraint.activate([
             headerView.topAnchor
                 .constraint(equalTo: contentView.topAnchor),
@@ -83,9 +88,8 @@ class MainViewController: ScrollViewController {
         
         let viewWidth = UIScreen.main.bounds.width - 40
         let mainListView = Main_ListView(width: viewWidth,
-                                               datas: (1 ... 6).compactMap {
-            return UIImage(named: String(format: "Card%d", $0))})
-        self.contentView.addSubViews(mainListView)
+                                         datas: TestData.getTestMainDatas())
+        self.contentView.addSubviews(mainListView)
         NSLayoutConstraint.activate([
             mainListView.topAnchor
                 .constraint(equalTo: self.headerView.bottomAnchor),
@@ -98,8 +102,44 @@ class MainViewController: ScrollViewController {
             mainListView.bottomAnchor
                 .constraint(equalTo: contentView.bottomAnchor),
             mainListView.heightAnchor
-                .constraint(lessThanOrEqualToConstant: 1000)
+                .constraint(greaterThanOrEqualToConstant: 10)
         ])
+    }
+    private func setBackgroundView() {
+        let back = UIView()
+        self.view.addSubviews(back)
+        NSLayoutConstraint.activate([
+            back.topAnchor.constraint(equalTo: self.view.topAnchor),
+            back.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            back.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            back.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+        ])
+        back.isHidden = true
+        self.back = back
+        setGestureRecognizer()
+    }
+    
+    private func setOverlappedButtonsView() {
+        if back == nil { setBackgroundView() }
+        
+        let overlappedButtonsView = Main_OverlappedButtonsView()
+        back.addSubviews(overlappedButtonsView)
+        
+        let heightConstraint = overlappedButtonsView.heightAnchor.constraint(equalToConstant: 0)
+        NSLayoutConstraint.activate([
+            overlappedButtonsView.centerXAnchor
+                                .constraint(equalTo: self.floatingButton
+                                                            .centerXAnchor),
+            overlappedButtonsView.bottomAnchor
+                                .constraint(equalTo: self.floatingButton
+                                                            .topAnchor,
+                                            constant: -20),
+            heightConstraint,
+        ])
+        
+        overlappedButtonsView.isHidden = true
+        self.overlappedButtonsView = overlappedButtonsView
+        self.overlappedButtonsViewHeightConstraint = heightConstraint
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -110,26 +150,54 @@ class MainViewController: ScrollViewController {
     }
 }
 
-extension MainViewController {
+extension MainViewController: UIGestureRecognizerDelegate {
+    private func setGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hiddenButtonsView))
+        tap.delegate = self
+        back?.addGestureRecognizer(tap)
+    }
     private func setFloatingButton() {
         let btn = UIButton()
-        self.view.addSubViews(btn)
+        self.view.addSubviews(btn)
         NSLayoutConstraint.activate([
             btn.rightAnchor.constraint(equalTo: self.view
-                                                .rightAnchor, constant: -30),
+                .rightAnchor, constant: -30),
             btn.bottomAnchor
                 .constraint(equalTo: self.view
-                                    .safeAreaLayoutGuide
-                                    .bottomAnchor, constant: -30),
+                    .safeAreaLayoutGuide
+                    .bottomAnchor, constant: -30),
             btn.widthAnchor.constraint(equalToConstant: 68),
             btn.heightAnchor.constraint(equalToConstant: 68),
         ])
         btn.setImage(UIImage(named: "FloatingButton"),
                      for: .normal)
-        btn.addAction(UIAction { _ in
-            let vc = CameraViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+        btn.addAction(UIAction { [weak self] _ in
+            self?.showButtonDetails()
+            //            let vc = CameraViewController()
+            //            vc.modalPresentationStyle = .fullScreen
+            //            self.present(vc, animated: true)
         }, for: .touchUpInside)
+        
+        self.floatingButton = btn
+    }
+    private func showButtonDetails() {
+        if let back = back { back.isHidden = false }
+        self.overlappedButtonsView.isHidden = false
+        overlappedButtonsView.updateUI(isHidden: false)
+        overlappedButtonsViewHeightConstraint.isActive = false
+        overlappedButtonsViewHeightConstraint = overlappedButtonsView.heightAnchor.constraint(equalToConstant: 221)
+        overlappedButtonsViewHeightConstraint.isActive = true
+        
+        self.view.layoutIfNeeded()
+    }
+    @objc
+    private func hiddenButtonsView() {
+        overlappedButtonsView.updateUI(isHidden: true) { [weak self] in
+            self?.overlappedButtonsViewHeightConstraint.isActive = false
+            self?.overlappedButtonsViewHeightConstraint = self?.overlappedButtonsView.heightAnchor.constraint(equalToConstant: 0)
+            self?.overlappedButtonsViewHeightConstraint.isActive = true
+            self?.overlappedButtonsView.isHidden = true
+            self?.back.isHidden = true
+        }
     }
 }
