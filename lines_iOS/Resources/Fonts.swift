@@ -11,6 +11,7 @@ enum FontType {
     case light
     case medium
     case bold
+    case regular
 }
 class Fonts {
     class func get(size: CGFloat, type: FontType) -> UIFont {
@@ -20,6 +21,9 @@ class Fonts {
         case .medium:
             return UIFont(name: "AppleSDGothicNeoM", size: size) ?? .systemFont(ofSize: size,
                                                                                 weight: .medium)
+        case.regular:
+            return UIFont(name: "AppleSDGothicNeoM", size: size) ?? .systemFont(ofSize: size,
+                                                                                weight: .regular)
         case .bold:
             return UIFont(name: "AppleSDGothicNeoB", size: size) ?? .boldSystemFont(ofSize: size)
         }

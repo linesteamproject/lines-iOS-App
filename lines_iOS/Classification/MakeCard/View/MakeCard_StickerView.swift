@@ -1,0 +1,78 @@
+//
+//  MakeCard_StickerView.swift
+//  lines_iOS
+//
+//  Created by mun on 2022/08/21.
+//
+
+import UIKit
+
+class MakeCard_StickerView: UIView {
+    internal weak var stickerFrame: UIImageView!
+    internal weak var contentsLabel: UILabel!
+    internal weak var illustImageView: UIImageView!
+    internal var frameColor: Colors? {
+        didSet { self.backgroundColor = frameColor?.value ?? Colors.clear.value }
+    }
+    internal var imgBackName: String = ""
+    internal var imgName: String = ""
+    internal var imgIllustName: String = ""
+    
+    init(_ text: String?) {
+        super.init(frame: .zero)
+        setStickerFrame()
+        setText(text)
+        setConstraints()
+    }
+    required init?(coder: NSCoder) { fatalError() }
+    private func setStickerFrame() {
+        let logo = UIImageView(image: UIImage(named: "LinesSmallLogo"))
+        self.addSubviews(logo)
+        NSLayoutConstraint.activate([
+            logo.topAnchor.constraint(equalTo: self.topAnchor, constant: 8.31),
+            logo.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            logo.widthAnchor.constraint(equalToConstant: 31),
+            logo.heightAnchor.constraint(equalToConstant: 18)
+        ])
+        logo.contentMode = .scaleAspectFit
+        
+        let back = UIImageView(image: UIImage(named: imgBackName))
+        let imgView = UIImageView(image: UIImage(named: imgName))
+        self.addSubviews(back, imgView)
+        NSLayoutConstraint.activate([
+            back.topAnchor.constraint(equalTo: self.topAnchor,
+                                      constant: 47.92),
+            back.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            back.widthAnchor.constraint(equalToConstant: 324.24),
+            back.heightAnchor.constraint(equalToConstant: 274.72),
+            
+            imgView.topAnchor.constraint(equalTo: self.topAnchor,
+                                         constant: 35.14),
+            imgView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            imgView.widthAnchor.constraint(equalToConstant: 305.07),
+            imgView.heightAnchor.constraint(equalToConstant: 293.89),
+        ])
+        back.contentMode = .scaleAspectFit
+        imgView.contentMode = .scaleAspectFit
+        self.stickerFrame = imgView
+        
+        let illustImgView = UIImageView(image: UIImage(named: self.imgIllustName))
+        imgView.addSubviews(illustImgView)
+        self.illustImageView = illustImgView
+    }
+    
+    private func setText(_ text: String?) {
+        let label = UILabel()
+        stickerFrame.addSubviews(label)
+        label.numberOfLines = 0
+        label.setTitle(text,
+                       font: Fonts.get(size: 16,
+                                       type: .regular),
+                       txtColor: .black)
+        label.textAlignment = .center
+        
+        label.adjustsFontForContentSizeCategory = true
+        self.contentsLabel = label
+    }
+    internal func setConstraints() { }
+}

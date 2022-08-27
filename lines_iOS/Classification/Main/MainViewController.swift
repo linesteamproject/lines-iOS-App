@@ -18,15 +18,8 @@ class MainViewController: ScrollViewController {
         get { return 56 }
         set { }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func setAdditionalUI() {
         setFloatingButton()
-        setUI()
-    }
-    
-    private func setUI() {
         setHeaderView()
         setContentView()
         setOverlappedButtonsView()
@@ -119,29 +112,6 @@ class MainViewController: ScrollViewController {
         setGestureRecognizer()
     }
     
-    private func setOverlappedButtonsView() {
-        if back == nil { setBackgroundView() }
-        
-        let overlappedButtonsView = Main_OverlappedButtonsView()
-        back.addSubviews(overlappedButtonsView)
-        
-        let heightConstraint = overlappedButtonsView.heightAnchor.constraint(equalToConstant: 0)
-        NSLayoutConstraint.activate([
-            overlappedButtonsView.centerXAnchor
-                                .constraint(equalTo: self.floatingButton
-                                                            .centerXAnchor),
-            overlappedButtonsView.bottomAnchor
-                                .constraint(equalTo: self.floatingButton
-                                                            .topAnchor,
-                                            constant: -20),
-            heightConstraint,
-        ])
-        
-        overlappedButtonsView.isHidden = true
-        self.overlappedButtonsView = overlappedButtonsView
-        self.overlappedButtonsViewHeightConstraint = heightConstraint
-    }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let crntVal = (scrollView.contentOffset.y - Double(39)) / Double(100)
         let alphaVal = crntVal < 0 ? 0 : (crntVal > 1 ? 1 : crntVal)
@@ -154,8 +124,10 @@ extension MainViewController: UIGestureRecognizerDelegate {
     private func setGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(hiddenButtonsView))
         tap.delegate = self
-        back?.addGestureRecognizer(tap)
+        self.view.addGestureRecognizer(tap)
     }
+}
+extension MainViewController {
     private func setFloatingButton() {
         let btn = UIButton()
         self.view.addSubviews(btn)
@@ -173,16 +145,37 @@ extension MainViewController: UIGestureRecognizerDelegate {
                      for: .normal)
         btn.addAction(UIAction { [weak self] _ in
             self?.showButtonDetails()
-            //            let vc = CameraViewController()
-            //            vc.modalPresentationStyle = .fullScreen
-            //            self.present(vc, animated: true)
         }, for: .touchUpInside)
         
         self.floatingButton = btn
     }
+    
+    private func setOverlappedButtonsView() {
+        if back == nil { setBackgroundView() }
+        
+        let overlappedButtonsView = Main_OverlappedButtonsView(self)
+        back.addSubviews(overlappedButtonsView)
+        
+        let heightConstraint = overlappedButtonsView.heightAnchor.constraint(equalToConstant: 0)
+        NSLayoutConstraint.activate([
+            overlappedButtonsView.rightAnchor
+                                .constraint(equalTo: self.floatingButton
+                                                            .rightAnchor),
+            overlappedButtonsView.bottomAnchor
+                                .constraint(equalTo: self.floatingButton
+                                                            .topAnchor,
+                                            constant: -20),
+            heightConstraint,
+        ])
+        overlappedButtonsView.isHidden = true
+        self.overlappedButtonsView = overlappedButtonsView
+        self.overlappedButtonsViewHeightConstraint = heightConstraint
+    }
+    
     private func showButtonDetails() {
         if let back = back { back.isHidden = false }
         self.overlappedButtonsView.isHidden = false
+        self.view.bringSubviewToFront(overlappedButtonsView)
         overlappedButtonsView.updateUI(isHidden: false)
         overlappedButtonsViewHeightConstraint.isActive = false
         overlappedButtonsViewHeightConstraint = overlappedButtonsView.heightAnchor.constraint(equalToConstant: 221)
@@ -198,6 +191,36 @@ extension MainViewController: UIGestureRecognizerDelegate {
             self?.overlappedButtonsViewHeightConstraint.isActive = true
             self?.overlappedButtonsView.isHidden = true
             self?.back.isHidden = true
+        }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(touches.debugDescription)
+        print(event.debugDescription)
+    }
+}
+
+extension MainViewController: ButtonDelegate {
+    func touched(_ obj: Any?) {
+        guard let type = obj as? Main_OverlappedButtonsType
+        else { return }
+        
+        switch type {
+        case .top:
+            let vc = CameraViewController()
+            vc.type = .camera
+            vc.modalPresentationStyle = .fullScreen
+            DispatchQueue.main.async { [weak self] in
+                self?.present(vc, animated: true)
+            }
+        case .mid:
+            let vc = CameraViewController()
+            vc.type = .photoLibrary
+            vc.modalPresentationStyle = .fullScreen
+            DispatchQueue.main.async { [weak self] in
+                self?.present(vc, animated: true)
+            }
+        case .bottom:
+            break
         }
     }
 }

@@ -8,49 +8,32 @@
 import Foundation
 import UIKit
 import Mantis
+import AVFoundation
 
 class CameraViewController: ViewController {
+    internal var type: UIImagePickerController.SourceType!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.showAlert()
-        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
+            self.showImagePickerController()
+        })
     }
     
-    private func showAlert() {
-        let alertVC = UIAlertController(title: "", message: "텍스트 인식을 위한 이미지를 업로드 할 방법을 선택해주세요.", preferredStyle: .actionSheet)
-        let camBtn = UIAlertAction(title: "카메라", style: .default) { [weak self] _ in
-            self?.showImagePickerController(type: .camera)
-        }
-        let library = UIAlertAction(title: "앨범", style: .default) { [weak self] _ in
-            self?.showImagePickerController(type: .photoLibrary)
-        }
-        let cancel = UIAlertAction(title: "취소", style: .default) { _ in
-            alertVC.dismiss(animated: true)
-        }
-        alertVC.addAction(camBtn)
-        alertVC.addAction(library)
-        alertVC.addAction(cancel)
-        
-        DispatchQueue.main.async {
-            self.present(alertVC, animated: true)
-        }
-    }
-    
-    private func showImagePickerController(type: UIImagePickerController.SourceType) {
-        let pVC = UIImagePickerController()
-        pVC.sourceType = type
+    private func showImagePickerController() {
+        let pVC: UIImagePickerController
         if type == .camera {
+            pVC = ExternUIImagePickerController()
+            pVC.sourceType = type
             pVC.allowsEditing = false
             pVC.cameraDevice = .rear
             pVC.cameraCaptureMode = .photo
+        } else {
+            pVC = UIImagePickerController()
+            pVC.sourceType = type
         }
         pVC.delegate = self
         
-        DispatchQueue.main.async {
-            self.present(pVC, animated: false, completion: nil)
-        }
+        self.present(pVC, animated: false, completion: nil)
     }
     
     private func showCroppedController() {
@@ -64,17 +47,17 @@ class CameraViewController: ViewController {
             self.present(cropViewController, animated: false)
         }
     }
+    
     private func recognizeTextOnImage() {
         guard let image = ReadTextController.shared.capturedImage
         else { fatalError() }
         TextRecognizeController.doStartToOCR(image,
                                              ocrDone: {
             ReadTextController.shared.readText = $0
-            
+            let vc = MakeCardViewController()
+            vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async {
-                self.dismiss(animated: true) {
-                    ReadTextController.shared.setInitStep()
-                }
+                self.present(vc, animated: true)
             }
         })
     }
@@ -108,23 +91,18 @@ extension CameraViewController: CropViewControllerDelegate {
         }
     }
     
-    func cropViewControllerDidFailToCrop(_ cropViewController: CropViewController, original: UIImage) {
-        
-    }
+    func cropViewControllerDidFailToCrop(_ cropViewController: CropViewController,
+                                         original: UIImage) { }
     
-    func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage) {
+    func cropViewControllerDidCancel(_ cropViewController: CropViewController,
+                                     original: UIImage) {
         ReadTextController.shared.capturedImage = nil
-        ReadTextController.shared.setPrevStep()
+        
         DispatchQueue.main.async {
             cropViewController.dismiss(animated: false)
         }
     }
     
-    func cropViewControllerDidBeginResize(_ cropViewController: CropViewController) {
-        
-    }
-    
-    func cropViewControllerDidEndResize(_ cropViewController: CropViewController, original: UIImage, cropInfo: CropInfo) {
-        
-    }
+    func cropViewControllerDidBeginResize(_ cropViewController: CropViewController) { }
+    func cropViewControllerDidEndResize(_ cropViewController: CropViewController, original: UIImage, cropInfo: CropInfo) { }
 }

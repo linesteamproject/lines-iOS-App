@@ -35,6 +35,37 @@ extension UILabel {
             self.backgroundColor = backColor.value
         }
     }
+    
+    func setTitleHasLineSpace(_ title: String? = nil,
+                              lineSpaceVal: CGFloat = 5,
+                              font: UIFont? = nil,
+                              color: Colors? = nil,
+                              backColor: Colors? = nil,
+                              textAlignment: NSTextAlignment? = nil) {
+        if let font = font {
+            self.font = font
+        }
+        if let color = color {
+            self.textColor = color.value
+        }
+        if let backColor = backColor {
+            self.backgroundColor = backColor.value
+        }
+        
+        let attributedString = NSMutableAttributedString(string: title ?? "")
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpaceVal
+        if textAlignment == nil {
+            paragraphStyle.alignment = NSTextAlignment.left
+        } else {
+            paragraphStyle.alignment = textAlignment ?? .left
+        }
+        
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                      value:paragraphStyle,
+                                      range:NSMakeRange(0, attributedString.length))
+        self.attributedText = attributedString
+    }
 }
 
 extension UIButton {

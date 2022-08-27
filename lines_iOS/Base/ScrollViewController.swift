@@ -8,15 +8,17 @@
 import Foundation
 import UIKit
 
-class ScrollViewController: UIViewController {
+class ScrollViewController: ViewController {
     internal weak var topView: TopView!
     internal var topViewHeight: CGFloat = 56
     internal weak var scrollView: UIScrollView!
     internal weak var contentView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setTopView()
         setScrollView()
+        setAdditionalUI()
     }
     
     internal func setTopView() {
@@ -53,10 +55,13 @@ class ScrollViewController: UIViewController {
             scrollContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
 
+        scrollContentView.backgroundColor = Colors.black.value
         scrollView.delegate = self
         self.scrollView = scrollView
         self.contentView = scrollContentView
     }
+    
+    internal func setAdditionalUI() { }
 }
 
 extension ScrollViewController: UIScrollViewDelegate { }

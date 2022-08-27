@@ -7,6 +7,15 @@
 
 import UIKit
 
+enum Main_OverlappedButtonsType {
+    case top
+    case mid
+    case bottom
+}
+
+protocol ButtonDelegate: AnyObject {
+    func touched(_ obj: Any?)
+}
 class Main_OverlappedButtonsView: UIView {
     private weak var backView: UIView!
     private weak var topBtn: UIButton!
@@ -15,17 +24,16 @@ class Main_OverlappedButtonsView: UIView {
     private weak var topBtnBottomAnchor: NSLayoutConstraint!
     private weak var midBtnBottomAnchor: NSLayoutConstraint!
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    internal var delegate: ButtonDelegate
+    init(_ delegate: ButtonDelegate) {
+        self.delegate = delegate
+        
+        super.init(frame: .zero)
         setBack()
         setSubButtons()
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setBack()
-        setSubButtons()
-    }
+    required init?(coder: NSCoder) { fatalError() }
     
     internal func updateUI(isHidden: Bool, updateDone: (() -> Void)? = nil) {
         midBtnBottomAnchor.isActive = false
@@ -52,7 +60,6 @@ extension Main_OverlappedButtonsView {
     private func setBack() {
         let view = UIView()
         self.addSubviews(view)
-        view.backgroundColor = .brown
         
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: self.topAnchor),
@@ -74,15 +81,15 @@ extension Main_OverlappedButtonsView {
         
         NSLayoutConstraint.activate([
             topBtnBottomAnchor,
-            topBtn.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
+            topBtn.rightAnchor.constraint(equalTo: backView.rightAnchor),
             topBtn.widthAnchor.constraint(equalToConstant: 208),
             
             midBtnBottomAnchor,
-            midBtn.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
+            midBtn.rightAnchor.constraint(equalTo: backView.rightAnchor),
             midBtn.widthAnchor.constraint(equalToConstant: 208),
-            
+            bottomBtn.leftAnchor.constraint(equalTo: backView.leftAnchor),
+            bottomBtn.rightAnchor.constraint(equalTo: backView.rightAnchor),
             bottomBtn.bottomAnchor.constraint(equalTo: backView.bottomAnchor),
-            bottomBtn.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
             
             bottomBtn.widthAnchor.constraint(equalToConstant: 221),
         ])
@@ -95,7 +102,15 @@ extension Main_OverlappedButtonsView {
         topBtn.setTitle("사진 촬영으로 문장 기록")
         midBtn.setTitle("사진 앨범에서 문장 기록")
         bottomBtn.setTitle("텍스트 입력으로 문장 기록")
-        
+        topBtn.addAction(UIAction {[ weak self] _ in
+            self?.delegate.touched(Main_OverlappedButtonsType.top)
+        }, for: .touchUpInside)
+        midBtn.addAction(UIAction {[ weak self] _ in
+            self?.delegate.touched(Main_OverlappedButtonsType.mid)
+        }, for: .touchUpInside)
+        bottomBtn.addAction(UIAction {[ weak self] _ in
+            self?.delegate.touched(Main_OverlappedButtonsType.bottom)
+        }, for: .touchUpInside)
         self.topBtn = topBtn
         self.midBtn = midBtn
         self.bottomBtn = bottomBtn
