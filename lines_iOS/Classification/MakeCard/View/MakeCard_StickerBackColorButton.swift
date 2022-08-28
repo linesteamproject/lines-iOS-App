@@ -1,5 +1,5 @@
 //
-//  StickerBackColorButton.swift
+//  MakeCard_StickerBackColorButton.swift
 //  lines_iOS
 //
 //  Created by mun on 2022/08/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StickerBackColorButton: UIButton {
+class MakeCard_StickerBackColorButton: UIButton {
     override var isSelected: Bool {
         didSet {
             if self.isSelected {
@@ -18,7 +18,7 @@ class StickerBackColorButton: UIButton {
             }
         }
     }
-    var type: StickerBackType! {
+    var type: MakeCard_StickerBackType! {
         didSet { self.backgroundColor = type.color }
     }
     override func draw(_ rect: CGRect) {

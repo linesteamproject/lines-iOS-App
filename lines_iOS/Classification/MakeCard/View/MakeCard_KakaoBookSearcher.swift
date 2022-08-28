@@ -1,5 +1,5 @@
 //
-//  KakaoBookSearcher.swift
+//  MakeCard_KakaoBookSearcher.swift
 //  lines_iOS
 //
 //  Created by mun on 2022/07/30.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-class KakaoBookSearcher {
-    static var type: ButtonType = .bookName
+class MakeCard_KakaoBookSearcher {
+    static var type: MakeCard_SearchButtonType = .bookName
     class func byName(_ bookName: String) -> [String: String] {
         return ["query":bookName,
                 "target":"title"]

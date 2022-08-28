@@ -158,3 +158,20 @@ extension UIColor {
         )
     }
 }
+
+extension UIImageView {
+    func load(urlStr: String?) {
+        guard let urlStr = urlStr, let url = URL(string: urlStr)
+        else { return }
+        
+        DispatchQueue.global().async {
+            guard let data = try? Data(contentsOf: url),
+            let image = UIImage(data: data)
+            else { return }
+            
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }
+    }
+}

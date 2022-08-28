@@ -42,9 +42,14 @@
 		BA6A83E328B1D3440040512E /* MakeCard_StickerThreeToFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83E228B1D3440040512E /* MakeCard_StickerThreeToFourView.swift */; };
 		BA6A83E528B1D36E0040512E /* MakeCard_StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83E428B1D36E0040512E /* MakeCard_StickerView.swift */; };
 		BA6A83E728B2039C0040512E /* MakeCard_SelectProportionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83E628B2039C0040512E /* MakeCard_SelectProportionButtonView.swift */; };
-		BA6A83EA28B50EFD0040512E /* StickerBackType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83E928B50EFD0040512E /* StickerBackType.swift */; };
-		BA6A83EC28B50F0F0040512E /* StickerBackColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83EB28B50F0F0040512E /* StickerBackColorButton.swift */; };
+		BA6A83EA28B50EFD0040512E /* MakeCard_StickerBackType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83E928B50EFD0040512E /* MakeCard_StickerBackType.swift */; };
+		BA6A83EC28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83EB28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift */; };
 		BA6A83EE28B50F300040512E /* MakeCard_StickerBackColorSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83ED28B50F300040512E /* MakeCard_StickerBackColorSetView.swift */; };
+		BA6A83F328BAD9B40040512E /* MakeCard_StickerViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F228BAD9B40040512E /* MakeCard_StickerViewType.swift */; };
+		BA6A83F528BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F428BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift */; };
+		BA6A83F728BADA880040512E /* MakeCard_SearchButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F628BADA880040512E /* MakeCard_SearchButtonType.swift */; };
+		BA6A83F928BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F828BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift */; };
+		BA6A83FB28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83FA28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift */; };
 		BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFD2894C1DA0078EA83 /* Colors.swift */; };
 		BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFF2894C1E00078EA83 /* Fonts.swift */; };
 		BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */; };
@@ -61,11 +66,11 @@
 		BAA07C2528950B930078EA83 /* ResponsableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C2428950B930078EA83 /* ResponsableResult.swift */; };
 		BAA07C2728950EC00078EA83 /* SearchBookStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C2628950EC00078EA83 /* SearchBookStatus.swift */; };
 		BAA07C29289512DC0078EA83 /* RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C28289512DC0078EA83 /* RequestInterceptor.swift */; };
-		BAA07C2C289517F50078EA83 /* KakaoBookSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C2B289517F50078EA83 /* KakaoBookSearcher.swift */; };
-		BAA07C2E289527660078EA83 /* SearchBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C2D289527660078EA83 /* SearchBookViewController.swift */; };
-		BAA07C32289528A10078EA83 /* SearchedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C31289528A10078EA83 /* SearchedListView.swift */; };
-		BAA07C3428952D360078EA83 /* SearchedTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C3328952D360078EA83 /* SearchedTypeView.swift */; };
-		BAA07C362895394C0078EA83 /* BarcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C352895394C0078EA83 /* BarcodeViewController.swift */; };
+		BAA07C2C289517F50078EA83 /* MakeCard_KakaoBookSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C2B289517F50078EA83 /* MakeCard_KakaoBookSearcher.swift */; };
+		BAA07C2E289527660078EA83 /* MakeCard_SearchBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C2D289527660078EA83 /* MakeCard_SearchBookViewController.swift */; };
+		BAA07C32289528A10078EA83 /* MakeCard_SearchedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C31289528A10078EA83 /* MakeCard_SearchedListView.swift */; };
+		BAA07C3428952D360078EA83 /* MakeCard_SearchedTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C3328952D360078EA83 /* MakeCard_SearchedTypeView.swift */; };
+		BAA07C362895394C0078EA83 /* MakeCard_BarcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C352895394C0078EA83 /* MakeCard_BarcodeViewController.swift */; };
 		BAE5C9B92894B08A00659F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C9B82894B08A00659F74 /* AppDelegate.swift */; };
 		BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C9BC2894B08A00659F74 /* ViewController.swift */; };
 		BAE5C9C22894B08C00659F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE5C9C12894B08C00659F74 /* Assets.xcassets */; };
@@ -110,9 +115,14 @@
 		BA6A83E228B1D3440040512E /* MakeCard_StickerThreeToFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerThreeToFourView.swift; sourceTree = "<group>"; };
 		BA6A83E428B1D36E0040512E /* MakeCard_StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerView.swift; sourceTree = "<group>"; };
 		BA6A83E628B2039C0040512E /* MakeCard_SelectProportionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_SelectProportionButtonView.swift; sourceTree = "<group>"; };
-		BA6A83E928B50EFD0040512E /* StickerBackType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerBackType.swift; sourceTree = "<group>"; };
-		BA6A83EB28B50F0F0040512E /* StickerBackColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerBackColorButton.swift; sourceTree = "<group>"; };
+		BA6A83E928B50EFD0040512E /* MakeCard_StickerBackType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerBackType.swift; sourceTree = "<group>"; };
+		BA6A83EB28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerBackColorButton.swift; sourceTree = "<group>"; };
 		BA6A83ED28B50F300040512E /* MakeCard_StickerBackColorSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerBackColorSetView.swift; sourceTree = "<group>"; };
+		BA6A83F228BAD9B40040512E /* MakeCard_StickerViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerViewType.swift; sourceTree = "<group>"; };
+		BA6A83F428BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_SearchedTypeViewButton.swift; sourceTree = "<group>"; };
+		BA6A83F628BADA880040512E /* MakeCard_SearchButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_SearchButtonType.swift; sourceTree = "<group>"; };
+		BA6A83F828BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_BarcodeReaderView.swift; sourceTree = "<group>"; };
+		BA6A83FA28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_BarcodeSearchButton.swift; sourceTree = "<group>"; };
 		BAA07BFD2894C1DA0078EA83 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BAA07BFF2894C1E00078EA83 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UI.swift"; sourceTree = "<group>"; };
@@ -129,11 +139,11 @@
 		BAA07C2428950B930078EA83 /* ResponsableResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsableResult.swift; sourceTree = "<group>"; };
 		BAA07C2628950EC00078EA83 /* SearchBookStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookStatus.swift; sourceTree = "<group>"; };
 		BAA07C28289512DC0078EA83 /* RequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInterceptor.swift; sourceTree = "<group>"; };
-		BAA07C2B289517F50078EA83 /* KakaoBookSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBookSearcher.swift; sourceTree = "<group>"; };
-		BAA07C2D289527660078EA83 /* SearchBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewController.swift; sourceTree = "<group>"; };
-		BAA07C31289528A10078EA83 /* SearchedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedListView.swift; sourceTree = "<group>"; };
-		BAA07C3328952D360078EA83 /* SearchedTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedTypeView.swift; sourceTree = "<group>"; };
-		BAA07C352895394C0078EA83 /* BarcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeViewController.swift; sourceTree = "<group>"; };
+		BAA07C2B289517F50078EA83 /* MakeCard_KakaoBookSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_KakaoBookSearcher.swift; sourceTree = "<group>"; };
+		BAA07C2D289527660078EA83 /* MakeCard_SearchBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_SearchBookViewController.swift; sourceTree = "<group>"; };
+		BAA07C31289528A10078EA83 /* MakeCard_SearchedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_SearchedListView.swift; sourceTree = "<group>"; };
+		BAA07C3328952D360078EA83 /* MakeCard_SearchedTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_SearchedTypeView.swift; sourceTree = "<group>"; };
+		BAA07C352895394C0078EA83 /* MakeCard_BarcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_BarcodeViewController.swift; sourceTree = "<group>"; };
 		BAE5C9B52894B08A00659F74 /* lines_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lines_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE5C9B82894B08A00659F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAE5C9BC2894B08A00659F74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -267,8 +277,8 @@
 				BA6A83CB28A7C5F10040512E /* View */,
 				BA6A83C928A7C2D00040512E /* MakeCardViewController.swift */,
 				BA6A83DA28A8759C0040512E /* MakeCard_DetailViewController.swift */,
-				BAA07C2D289527660078EA83 /* SearchBookViewController.swift */,
-				BAA07C352895394C0078EA83 /* BarcodeViewController.swift */,
+				BAA07C2D289527660078EA83 /* MakeCard_SearchBookViewController.swift */,
+				BAA07C352895394C0078EA83 /* MakeCard_BarcodeViewController.swift */,
 			);
 			path = MakeCard;
 			sourceTree = "<group>";
@@ -286,11 +296,13 @@
 				BA6A83E228B1D3440040512E /* MakeCard_StickerThreeToFourView.swift */,
 				BA6A83DE28B1D3000040512E /* MakeCard_StickerSetView.swift */,
 				BA6A83ED28B50F300040512E /* MakeCard_StickerBackColorSetView.swift */,
-				BA6A83EB28B50F0F0040512E /* StickerBackColorButton.swift */,
+				BA6A83EB28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift */,
 				BA6A83E628B2039C0040512E /* MakeCard_SelectProportionButtonView.swift */,
-				BAA07C3328952D360078EA83 /* SearchedTypeView.swift */,
-				BAA07C31289528A10078EA83 /* SearchedListView.swift */,
-				BAA07C2B289517F50078EA83 /* KakaoBookSearcher.swift */,
+				BAA07C3328952D360078EA83 /* MakeCard_SearchedTypeView.swift */,
+				BAA07C31289528A10078EA83 /* MakeCard_SearchedListView.swift */,
+				BAA07C2B289517F50078EA83 /* MakeCard_KakaoBookSearcher.swift */,
+				BA6A83F828BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift */,
+				BA6A83FA28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,7 +310,10 @@
 		BA6A83E828B50EE80040512E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BA6A83E928B50EFD0040512E /* StickerBackType.swift */,
+				BA6A83E928B50EFD0040512E /* MakeCard_StickerBackType.swift */,
+				BA6A83F228BAD9B40040512E /* MakeCard_StickerViewType.swift */,
+				BA6A83F428BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift */,
+				BA6A83F628BADA880040512E /* MakeCard_SearchButtonType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -590,30 +605,33 @@
 			files = (
 				BA6A83B928A730670040512E /* ImageListCellView.swift in Sources */,
 				BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */,
+				BA6A83FB28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift in Sources */,
+				BA6A83F328BAD9B40040512E /* MakeCard_StickerViewType.swift in Sources */,
 				BA6A83E728B2039C0040512E /* MakeCard_SelectProportionButtonView.swift in Sources */,
 				BAA07C29289512DC0078EA83 /* RequestInterceptor.swift in Sources */,
 				BAA07C192894F51C0078EA83 /* StickerTextView.swift in Sources */,
 				BA6A83AA28A71DC90040512E /* TopView.swift in Sources */,
 				BA6A83D728A7E56B0040512E /* ImageAlertView.swift in Sources */,
 				BA6A83E328B1D3440040512E /* MakeCard_StickerThreeToFourView.swift in Sources */,
-				BA6A83EA28B50EFD0040512E /* StickerBackType.swift in Sources */,
+				BA6A83EA28B50EFD0040512E /* MakeCard_StickerBackType.swift in Sources */,
 				BA6A83CF28A7D32A0040512E /* MakeCard_NoticeView.swift in Sources */,
+				BA6A83F928BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift in Sources */,
 				BAA07C052894C2060078EA83 /* Extensions+Func.swift in Sources */,
 				BA6A83AE28A721530040512E /* Main_MenuButton.swift in Sources */,
 				BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */,
 				BA6A83E528B1D36E0040512E /* MakeCard_StickerView.swift in Sources */,
-				BAA07C32289528A10078EA83 /* SearchedListView.swift in Sources */,
+				BAA07C32289528A10078EA83 /* MakeCard_SearchedListView.swift in Sources */,
 				BA6A83B028A728A80040512E /* Main_ListView.swift in Sources */,
 				BA6A8385289F7D3B0040512E /* ScrollViewController.swift in Sources */,
-				BAA07C2E289527660078EA83 /* SearchBookViewController.swift in Sources */,
+				BAA07C2E289527660078EA83 /* MakeCard_SearchBookViewController.swift in Sources */,
 				BA6A83CA28A7C2D00040512E /* MakeCardViewController.swift in Sources */,
 				BA6A83D328A7DECA0040512E /* MarkCard_BottomView.swift in Sources */,
-				BAA07C2C289517F50078EA83 /* KakaoBookSearcher.swift in Sources */,
+				BAA07C2C289517F50078EA83 /* MakeCard_KakaoBookSearcher.swift in Sources */,
 				BAA07C22289509EC0078EA83 /* AFHandler.swift in Sources */,
-				BA6A83EC28B50F0F0040512E /* StickerBackColorButton.swift in Sources */,
+				BA6A83EC28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift in Sources */,
 				BAA07C162894EC9C0078EA83 /* TextRecognizeController.swift in Sources */,
 				BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */,
-				BAA07C3428952D360078EA83 /* SearchedTypeView.swift in Sources */,
+				BAA07C3428952D360078EA83 /* MakeCard_SearchedTypeView.swift in Sources */,
 				BA6A8372289CEDB50040512E /* LoginViewController.swift in Sources */,
 				BA6A83D128A7D8480040512E /* MakeCard_ContentView.swift in Sources */,
 				BA6A83C028A7A9ED0040512E /* Main_OverlappedButtonsView.swift in Sources */,
@@ -636,12 +654,14 @@
 				BA6A8378289CEEAD0040512E /* StartViewController.swift in Sources */,
 				BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */,
 				BA6A83DB28A8759C0040512E /* MakeCard_DetailViewController.swift in Sources */,
-				BAA07C362895394C0078EA83 /* BarcodeViewController.swift in Sources */,
+				BAA07C362895394C0078EA83 /* MakeCard_BarcodeViewController.swift in Sources */,
 				BA6A837F289DED060040512E /* ShareController.swift in Sources */,
 				BA6A83DD28B1C78B0040512E /* TwoButtonAlertView.swift in Sources */,
 				BA6A83CD28A7C5FA0040512E /* MakeCard_TopView.swift in Sources */,
 				BAA07C102894D3430078EA83 /* MainViewController.swift in Sources */,
 				BAA07C2528950B930078EA83 /* ResponsableResult.swift in Sources */,
+				BA6A83F728BADA880040512E /* MakeCard_SearchButtonType.swift in Sources */,
+				BA6A83F528BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift in Sources */,
 				BA6A83AC28A71E2A0040512E /* Main_TopView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,26 +7,6 @@
 
 import UIKit
 
-enum StickerViewType {
-    case one2one
-    case three2Four
-    var title: String {
-        switch self {
-        case .one2one:
-            return "정방형"
-        case .three2Four:
-            return "세로형"
-        }
-    }
-    var imgName: String {
-        switch self {
-        case .one2one:
-            return "One2One"
-        case .three2Four:
-            return "Three2Four"
-        }
-    }
-}
 class MakeCard_DetailViewController: ScrollViewController {
     override var topViewHeight: CGFloat {
         get { return 56 }
@@ -89,7 +69,7 @@ class MakeCard_DetailViewController: ScrollViewController {
         self.stickerBackView = back
     }
     
-    private func setStickerView(_ type: StickerViewType) {
+    private func setStickerView(_ type: MakeCard_StickerViewType) {
         self.stickerView?.removeFromSuperview()
         
         switch type {
@@ -170,8 +150,11 @@ class MakeCard_DetailViewController: ScrollViewController {
                 self?.present(vc, animated: true)
             }
         }
+        
         bottomView.rightBtnClosure = { [weak self] in
-            
+            let vc = MakeCard_SearchBookViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self?.present(vc, animated: true)
         }
     }
 }

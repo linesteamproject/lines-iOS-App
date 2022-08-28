@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     private weak var indicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Colors.black.value
         
         setLoadingView()
     }

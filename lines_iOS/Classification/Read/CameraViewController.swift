@@ -57,7 +57,7 @@ class CameraViewController: ViewController {
             let vc = MakeCardViewController()
             vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async {
-                self.present(vc, animated: true)
+                self.present(vc, animated: false)
             }
         })
     }
