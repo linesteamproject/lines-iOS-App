@@ -43,8 +43,20 @@ class ShareController: NSObject {
     }
     
     func downloadImage(_ stickerView: MakeCard_StickerView?, done: ((Bool) -> Void)?) {
+        guard let image = ShareController.shared.makeImage(stickerView)
+        else { done?(false); return }
+        
+        PHPhotoLibrary.requestAuthorization { status in
+            guard status == .authorized else { done?(false); return }
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAsset(from: image)
+            }, completionHandler: { _,_ in done?(true) })
+        }
+    }
+    
+    func makeImage(_ stickerView: MakeCard_StickerView?) -> UIImage? {
         guard let stickerView = stickerView else {
-            done?(false); return
+            return nil
         }
 
         let renderer = UIGraphicsImageRenderer(size: stickerView.bounds.size)
@@ -52,11 +64,6 @@ class ShareController: NSObject {
             stickerView.drawHierarchy(in: stickerView.bounds,
                                                      afterScreenUpdates: true)
         }
-        PHPhotoLibrary.requestAuthorization { status in
-            guard status == .authorized else { done?(false); return }
-            PHPhotoLibrary.shared().performChanges({
-                PHAssetChangeRequest.creationRequestForAsset(from: renderImage)
-            }, completionHandler: { _,_ in done?(true) })
-        }
+        return renderImage
     }
 }

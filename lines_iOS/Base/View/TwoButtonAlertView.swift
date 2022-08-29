@@ -9,7 +9,15 @@ import UIKit
 
 class TwoButtonAlertView: AlertView {
     private var nextTopAnchor: NSLayoutYAxisAnchor!
+    private weak var titleLabel: UILabel!
+    private weak var subTitleLabel: UILabel!
     internal var closure: (() -> Void)?
+    internal var title: String? {
+        didSet { titleLabel.setTitle(title) }
+    }
+    internal var subTitle: String? {
+        didSet { subTitleLabel.setTitle(subTitle) }
+    }
     override func addtionalUI() {
         contentsView.heightAnchor
                     .constraint(lessThanOrEqualToConstant: 186).isActive = true
@@ -26,8 +34,9 @@ class TwoButtonAlertView: AlertView {
             title.topAnchor.constraint(equalTo: contentsView.topAnchor, constant: 15),
             title.heightAnchor.constraint(equalToConstant: 56)
         ])
-        title.setTitle("문장 기록 나가기", font: Fonts.get(size: 22, type: .regular),
+        title.setTitle(font: Fonts.get(size: 22, type: .regular),
                        txtColor: .black)
+        self.titleLabel = title
         self.nextTopAnchor = title.bottomAnchor
         
         let button = UIButton()
@@ -67,13 +76,11 @@ class TwoButtonAlertView: AlertView {
             label.rightAnchor.constraint(equalTo: contentsView.rightAnchor, constant: -51),
             label.heightAnchor.constraint(lessThanOrEqualToConstant: 42),
         ])
-        let str = "문장 기록 페이지에서 나가시겠습니까?\n진행중이던 내용이 모두 버려집니다."
         label.numberOfLines = 0
-        label.setTitleHasLineSpace(str,
-                                   lineSpaceVal: 10,
+        label.setTitleHasLineSpace(lineSpaceVal: 10,
                                    font: Fonts.get(size: 14, type: .regular),
                                    color: .black, textAlignment: .center)
-        
+        self.subTitleLabel = label
         self.nextTopAnchor = label.bottomAnchor
     }
     

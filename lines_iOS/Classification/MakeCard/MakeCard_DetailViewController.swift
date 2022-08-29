@@ -43,6 +43,8 @@ class MakeCard_DetailViewController: ScrollViewController {
                 tbAlertView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
                 tbAlertView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
             ])
+            tbAlertView.title = "문장 기록 나가기"
+            tbAlertView.subTitle = "문장 기록 페이지에서 나가시겠습니까?\n진행중이던 내용이 모두 버려집니다."
             tbAlertView.closure = {
                 ReadTextController.shared.initialize()
                 dismissViewControllerUntil(vcID: MainViewController.id)
