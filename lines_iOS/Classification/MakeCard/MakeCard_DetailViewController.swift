@@ -44,6 +44,7 @@ class MakeCard_DetailViewController: ScrollViewController {
                 tbAlertView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
             ])
             tbAlertView.closure = {
+                ReadTextController.shared.initialize()
                 dismissViewControllerUntil(vcID: MainViewController.id)
             }
         }
@@ -78,6 +79,7 @@ class MakeCard_DetailViewController: ScrollViewController {
         case .three2Four:
             setThree2Four()
         }
+        ReadTextController.shared.sizeType = type
         
         func setOne2One() {
             let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.readText)
@@ -128,7 +130,9 @@ class MakeCard_DetailViewController: ScrollViewController {
             self?.setStickerView(.three2Four)
         }
         stickerSetView.colorBtnClosure = { [weak self] type in
-            self?.stickerView.backgroundColor = type?.color
+            guard let type = type else { return }
+            self?.stickerView.backgroundColor = type.color
+            ReadTextController.shared.colorType = type
         }
     }
     

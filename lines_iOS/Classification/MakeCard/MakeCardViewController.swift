@@ -43,7 +43,8 @@ class MakeCardViewController: ScrollViewController {
             tbAlertView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             tbAlertView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
-        tbAlertView.closure = { 
+        tbAlertView.closure = {
+            ReadTextController.shared.initialize()
             dismissViewControllerUntil(vcID: MainViewController.id)
         }
     }

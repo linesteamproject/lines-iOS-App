@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		40F5BA46BDC623769AD32EC9 /* Pods_lines_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1553B13AD637E8346E0EA5 /* Pods_lines_iOS.framework */; };
+		BA44ECA528BCF65A0040C26C /* MakeCard_ShareButtonsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA44ECA428BCF65A0040C26C /* MakeCard_ShareButtonsType.swift */; };
 		BA6A8372289CEDB50040512E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A8371289CEDB50040512E /* LoginViewController.swift */; };
 		BA6A8375289CEDEA0040512E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A8374289CEDEA0040512E /* LoginController.swift */; };
 		BA6A8378289CEEAD0040512E /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A8377289CEEAD0040512E /* StartViewController.swift */; };
@@ -50,6 +51,9 @@
 		BA6A83F728BADA880040512E /* MakeCard_SearchButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F628BADA880040512E /* MakeCard_SearchButtonType.swift */; };
 		BA6A83F928BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F828BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift */; };
 		BA6A83FB28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83FA28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift */; };
+		BA6A83FD28BCEFC50040512E /* MakeCard_CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83FC28BCEFC50040512E /* MakeCard_CompleteViewController.swift */; };
+		BA6A83FF28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83FE28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift */; };
+		BA6A840128BCF06F0040512E /* MakeCard_ShareButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */; };
 		BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFD2894C1DA0078EA83 /* Colors.swift */; };
 		BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFF2894C1E00078EA83 /* Fonts.swift */; };
 		BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */; };
@@ -81,6 +85,7 @@
 		6C1553B13AD637E8346E0EA5 /* Pods_lines_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lines_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EBF471927421B13CAF5923 /* Pods-lines_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lines_iOS.debug.xcconfig"; path = "Target Support Files/Pods-lines_iOS/Pods-lines_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		95F41FDAA66CDF70A7DB6CE3 /* Pods-lines_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lines_iOS.release.xcconfig"; path = "Target Support Files/Pods-lines_iOS/Pods-lines_iOS.release.xcconfig"; sourceTree = "<group>"; };
+		BA44ECA428BCF65A0040C26C /* MakeCard_ShareButtonsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_ShareButtonsType.swift; sourceTree = "<group>"; };
 		BA6A8371289CEDB50040512E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BA6A8374289CEDEA0040512E /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BA6A8377289CEEAD0040512E /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +128,9 @@
 		BA6A83F628BADA880040512E /* MakeCard_SearchButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_SearchButtonType.swift; sourceTree = "<group>"; };
 		BA6A83F828BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_BarcodeReaderView.swift; sourceTree = "<group>"; };
 		BA6A83FA28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_BarcodeSearchButton.swift; sourceTree = "<group>"; };
+		BA6A83FC28BCEFC50040512E /* MakeCard_CompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCard_CompleteViewController.swift; sourceTree = "<group>"; };
+		BA6A83FE28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCard_GoToHomeButtonView.swift; sourceTree = "<group>"; };
+		BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_ShareButtonsView.swift; sourceTree = "<group>"; };
 		BAA07BFD2894C1DA0078EA83 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BAA07BFF2894C1E00078EA83 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UI.swift"; sourceTree = "<group>"; };
@@ -164,6 +172,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA44ECA628BCFC490040C26C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BA6A837E289DED060040512E /* ShareController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		BA6A8370289CEDA60040512E /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,7 +223,6 @@
 		BA6A837D289DECF30040512E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BA6A837E289DED060040512E /* ShareController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,10 +290,12 @@
 			children = (
 				BA6A83E828B50EE80040512E /* Model */,
 				BA6A83CB28A7C5F10040512E /* View */,
+				BA44ECA628BCFC490040C26C /* Controller */,
 				BA6A83C928A7C2D00040512E /* MakeCardViewController.swift */,
 				BA6A83DA28A8759C0040512E /* MakeCard_DetailViewController.swift */,
 				BAA07C2D289527660078EA83 /* MakeCard_SearchBookViewController.swift */,
 				BAA07C352895394C0078EA83 /* MakeCard_BarcodeViewController.swift */,
+				BA6A83FC28BCEFC50040512E /* MakeCard_CompleteViewController.swift */,
 			);
 			path = MakeCard;
 			sourceTree = "<group>";
@@ -303,6 +320,8 @@
 				BAA07C2B289517F50078EA83 /* MakeCard_KakaoBookSearcher.swift */,
 				BA6A83F828BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift */,
 				BA6A83FA28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift */,
+				BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */,
+				BA6A83FE28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,6 +333,7 @@
 				BA6A83F228BAD9B40040512E /* MakeCard_StickerViewType.swift */,
 				BA6A83F428BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift */,
 				BA6A83F628BADA880040512E /* MakeCard_SearchButtonType.swift */,
+				BA44ECA428BCF65A0040C26C /* MakeCard_ShareButtonsType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -616,6 +636,7 @@
 				BA6A83EA28B50EFD0040512E /* MakeCard_StickerBackType.swift in Sources */,
 				BA6A83CF28A7D32A0040512E /* MakeCard_NoticeView.swift in Sources */,
 				BA6A83F928BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift in Sources */,
+				BA6A83FD28BCEFC50040512E /* MakeCard_CompleteViewController.swift in Sources */,
 				BAA07C052894C2060078EA83 /* Extensions+Func.swift in Sources */,
 				BA6A83AE28A721530040512E /* Main_MenuButton.swift in Sources */,
 				BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */,
@@ -623,6 +644,7 @@
 				BAA07C32289528A10078EA83 /* MakeCard_SearchedListView.swift in Sources */,
 				BA6A83B028A728A80040512E /* Main_ListView.swift in Sources */,
 				BA6A8385289F7D3B0040512E /* ScrollViewController.swift in Sources */,
+				BA44ECA528BCF65A0040C26C /* MakeCard_ShareButtonsType.swift in Sources */,
 				BAA07C2E289527660078EA83 /* MakeCard_SearchBookViewController.swift in Sources */,
 				BA6A83CA28A7C2D00040512E /* MakeCardViewController.swift in Sources */,
 				BA6A83D328A7DECA0040512E /* MarkCard_BottomView.swift in Sources */,
@@ -646,7 +668,9 @@
 				BAE5C9B92894B08A00659F74 /* AppDelegate.swift in Sources */,
 				BAA07C1B2894F79F0078EA83 /* Extensions+Value.swift in Sources */,
 				BA6A8375289CEDEA0040512E /* LoginController.swift in Sources */,
+				BA6A840128BCF06F0040512E /* MakeCard_ShareButtonsView.swift in Sources */,
 				BA6A8381289F6E0D0040512E /* Main_HeaderView.swift in Sources */,
+				BA6A83FF28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift in Sources */,
 				BA6A83E128B1D3330040512E /* MakeCard_StickerOneToOneView.swift in Sources */,
 				BA6A83C228A7B0A40040512E /* TestData.swift in Sources */,
 				BA6A83C428A7C2120040512E /* ExternUIImagePickerController.swift in Sources */,

@@ -45,6 +45,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
                 tbAlertView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
             ])
             tbAlertView.closure = {
+                ReadTextController.shared.initialize()
                 dismissViewControllerUntil(vcID: MainViewController.id)
             }
         }
@@ -138,11 +139,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         
         AFHandler.searchBook(by: dic) {
             guard let documents = $0?.documents else { return }
-            self.searchedListView.list = documents.compactMap {
-                let imgURL = $0.thumbnail
-                let data = ($0.title ?? "제목 없음") + "/" + ($0.authors?.first ?? "작자 미상")
-                return (imgURL, data)
-            }
+            self.searchedListView.list = documents
         }
     }
     
@@ -157,6 +154,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
             searchedListView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             searchedListView.heightAnchor.constraint(greaterThanOrEqualToConstant: 400),
         ])
+        searchedListView.delegate = self
         self.searchedListView = searchedListView
         topNextAnchor = searchedListView.bottomAnchor
     }
@@ -181,9 +179,16 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         }
         
         bottomView.rightBtnClosure = { [weak self] in
-            let vc = MakeCard_SearchBookViewController()
+            guard ReadTextController.shared.bookInfo != nil else { return }
+            let vc = MakeCard_CompleteViewController()
             vc.modalPresentationStyle = .fullScreen
             self?.present(vc, animated: true)
         }
+    }
+}
+
+extension MakeCard_SearchBookViewController: ButtonDelegate {
+    func touched(_ obj: Any?) {
+        ReadTextController.shared.bookInfo = obj as? BookDocu
     }
 }

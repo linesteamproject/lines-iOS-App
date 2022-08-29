@@ -10,7 +10,8 @@ import UIKit
 
 class MakeCard_SearchedListView: UIView {
     private weak var tableView: UITableView!
-    internal var list: [(imgStr: String?, data: String)] = [] {
+    internal weak var delegate: ButtonDelegate?
+    internal var list: [BookDocu] = [] {
         didSet { tableView.reloadData() }
     }
     override init(frame: CGRect) {
@@ -34,6 +35,7 @@ class MakeCard_SearchedListView: UIView {
         tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.register(MakeCard_BasicTableViewCell.self,
                            forCellReuseIdentifier: MakeCard_BasicTableViewCell.id)
         self.tableView = tableView
@@ -50,20 +52,29 @@ extension MakeCard_SearchedListView: UITableViewDelegate,
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MakeCard_BasicTableViewCell.id,
                                                        for: indexPath) as? MakeCard_BasicTableViewCell
         else { return UITableViewCell() }
-        cell.imgUrlStr = list[indexPath.item].imgStr
-        cell.data = list[indexPath.item].data
+        
+        cell.bookDocu = list[indexPath.item]
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.touched(list[indexPath.item])
     }
 }
 
 class MakeCard_BasicTableViewCell: UITableViewCell {
     private weak var imgView: UIImageView!
     private weak var label: UILabel!
-    internal var imgUrlStr: String! {
-        didSet { imgView.load(urlStr: imgUrlStr) }
-    }
-    internal var data: String? {
-        didSet { label.setTitle(data) }
+    internal var bookDocu: BookDocu? {
+        didSet {
+            guard let bookDocu = bookDocu else {
+                return
+            }
+
+            if let urlStr = bookDocu.thumbnail {
+                imgView.load(urlStr: urlStr)
+            }
+            label.setTitle(bookDocu.authorsStr)
+        }
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -85,7 +96,7 @@ class MakeCard_BasicTableViewCell: UITableViewCell {
             imgView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,
                                          constant: 20),
             imgView.widthAnchor.constraint(equalToConstant: 44),
-            imgView.heightAnchor.constraint(equalToConstant: 59),
+            imgView.heightAnchor.constraint(greaterThanOrEqualToConstant: 59),
             imgView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
                                            constant: -12),
             
@@ -95,9 +106,8 @@ class MakeCard_BasicTableViewCell: UITableViewCell {
             label.rightAnchor.constraint(equalTo: self.contentView.rightAnchor,
                                          constant: -20),
             label.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            label.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            label.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
         ])
+        label.numberOfLines = 0
         label.setTitle(font: Fonts.get(size: 16,
                                        type: .regular),
                        txtColor: .white)

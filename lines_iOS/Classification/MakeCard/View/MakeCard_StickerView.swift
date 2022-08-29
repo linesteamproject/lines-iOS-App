@@ -11,13 +11,16 @@ class MakeCard_StickerView: UIView {
     internal weak var stickerFrame: UIImageView!
     internal weak var contentsLabel: UILabel!
     internal weak var illustImageView: UIImageView!
+    internal weak var bookInfoLabel: UILabel!
     internal var frameColor: Colors? {
         didSet { self.backgroundColor = frameColor?.value ?? Colors.clear.value }
     }
     internal var imgBackName: String = ""
     internal var imgName: String = ""
     internal var imgIllustName: String = ""
-    
+    internal var bookInfoStr: String? {
+        didSet { bookInfoLabel.setTitle(bookInfoStr) }
+    }
     init(_ text: String?) {
         super.init(frame: .zero)
         setStickerFrame()
@@ -59,6 +62,18 @@ class MakeCard_StickerView: UIView {
         let illustImgView = UIImageView(image: UIImage(named: self.imgIllustName))
         imgView.addSubviews(illustImgView)
         self.illustImageView = illustImgView
+        
+        let bookInfo = UILabel()
+        imgView.addSubviews(bookInfo)
+        NSLayoutConstraint.activate([
+            bookInfo.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            bookInfo.widthAnchor.constraint(equalToConstant: 110),
+            bookInfo.heightAnchor.constraint(greaterThanOrEqualToConstant: 13),
+            bookInfo.bottomAnchor.constraint(equalTo: imgView.bottomAnchor, constant: -31),
+        ])
+        bookInfo.setTitle(font: Fonts.get(size: 11, type: .light),
+                          txtColor: .gray222222)
+        self.bookInfoLabel = bookInfo
     }
     
     private func setText(_ text: String?) {

@@ -7,14 +7,15 @@
 
 import Foundation
 import UIKit
+import Photos
 
 class ShareController: NSObject {
     static let shared = ShareController()
     
-    func shareOnInstagram(_ stickerTxtView: StickerTextView) {
-        let renderer = UIGraphicsImageRenderer(size: stickerTxtView.stickerView.bounds.size)
+    func shareOnInstagram(_ stickerView: MakeCard_StickerView) {
+        let renderer = UIGraphicsImageRenderer(size: stickerView.bounds.size)
         let renderImage = renderer.image { _ in
-            stickerTxtView.stickerView.drawHierarchy(in: stickerTxtView.stickerView.bounds,
+            stickerView.drawHierarchy(in: stickerView.bounds,
                                                      afterScreenUpdates: true)
         }
         
@@ -23,10 +24,10 @@ class ShareController: NSObject {
             return
         }
         
-        guard let imageData = renderImage.pngData(),
-              let backHexStr = stickerTxtView.backView.backgroundColor?.getHexStr()
+        guard let imageData = renderImage.pngData()
         else { return }
         
+        let backHexStr = ReadTextController.shared.colorType.color.getHexStr()
         let pasteboardItems : [String:Any] = [
            "com.instagram.sharedSticker.stickerImage": imageData,
            "com.instagram.sharedSticker.backgroundTopColor" : backHexStr,
@@ -39,6 +40,23 @@ class ShareController: NSObject {
                         
         UIPasteboard.general.setItems([pasteboardItems], options: pasteboardOptions)
         UIApplication.shared.open(storyShareURL, options: [:], completionHandler: nil)
+    }
+    
+    func downloadImage(_ stickerView: MakeCard_StickerView?, done: ((Bool) -> Void)?) {
+        guard let stickerView = stickerView else {
+            done?(false); return
+        }
 
+        let renderer = UIGraphicsImageRenderer(size: stickerView.bounds.size)
+        let renderImage = renderer.image { _ in
+            stickerView.drawHierarchy(in: stickerView.bounds,
+                                                     afterScreenUpdates: true)
+        }
+        PHPhotoLibrary.requestAuthorization { status in
+            guard status == .authorized else { done?(false); return }
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAsset(from: renderImage)
+            }, completionHandler: { _,_ in done?(true) })
+        }
     }
 }

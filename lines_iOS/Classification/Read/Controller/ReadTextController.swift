@@ -12,6 +12,9 @@ class ReadTextController: NSObject {
     static let shared = ReadTextController()
     internal var capturedImage: UIImage?
     internal var readText: String?
+    internal var sizeType: MakeCard_StickerViewType = .one2one
+    internal var colorType: MakeCard_StickerBackType = .grey
+    internal var bookInfo: BookDocu?
     func initialize() {
         capturedImage = nil
         readText = nil
