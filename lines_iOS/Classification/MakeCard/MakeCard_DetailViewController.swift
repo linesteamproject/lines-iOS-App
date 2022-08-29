@@ -95,6 +95,7 @@ class MakeCard_DetailViewController: ScrollViewController {
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
+            stickerView.backgroundColor = ReadTextController.shared.colorType.color
             self.stickerView = stickerView
         }
         
@@ -110,6 +111,7 @@ class MakeCard_DetailViewController: ScrollViewController {
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
+            stickerView.backgroundColor = ReadTextController.shared.colorType.color
             self.stickerView = stickerView
         }
     }
