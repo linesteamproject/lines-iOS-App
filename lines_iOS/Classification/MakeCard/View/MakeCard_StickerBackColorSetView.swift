@@ -8,7 +8,7 @@
 import UIKit
 
 class MakeCard_StickerBackColorSetView: UIView {
-    internal var colorBtnClosure: ((MakeCard_StickerBackType?) -> Void)?
+    internal var colorBtnClosure: ((MakeCard_StickerBackColorType?) -> Void)?
     private var btns = [MakeCard_StickerBackColorButton]()
     deinit { btns.removeAll() }
     
@@ -35,7 +35,7 @@ class MakeCard_StickerBackColorSetView: UIView {
                        txtColor: .white)
         var nxtLeftAnchor = label.rightAnchor
         var nxtConst: CGFloat = 35
-        MakeCard_StickerBackType.allCases.forEach { type in
+        MakeCard_StickerBackColorType.allCases.forEach { type in
             let btn = MakeCard_StickerBackColorButton()
             self.addSubviews(btn)
             NSLayoutConstraint.activate([

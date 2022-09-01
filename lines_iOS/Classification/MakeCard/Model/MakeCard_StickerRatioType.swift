@@ -5,9 +5,9 @@
 //  Created by mun on 2022/08/28.
 //
 
-enum MakeCard_StickerViewType {
-    case one2one
-    case three2Four
+enum MakeCard_StickerRatioType: Int {
+    case one2one = 0
+    case three2Four = 1
     var title: String {
         switch self {
         case .one2one:

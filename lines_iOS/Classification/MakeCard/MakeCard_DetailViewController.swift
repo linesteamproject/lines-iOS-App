@@ -72,7 +72,7 @@ class MakeCard_DetailViewController: ScrollViewController {
         self.stickerBackView = back
     }
     
-    private func setStickerView(_ type: MakeCard_StickerViewType) {
+    private func setStickerView(_ type: MakeCard_StickerRatioType) {
         self.stickerView?.removeFromSuperview()
         
         switch type {

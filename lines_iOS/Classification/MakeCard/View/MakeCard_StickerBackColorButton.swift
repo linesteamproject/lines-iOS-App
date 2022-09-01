@@ -18,7 +18,7 @@ class MakeCard_StickerBackColorButton: UIButton {
             }
         }
     }
-    var type: MakeCard_StickerBackType! {
+    var type: MakeCard_StickerBackColorType! {
         didSet { self.backgroundColor = type.color }
     }
     override func draw(_ rect: CGRect) {

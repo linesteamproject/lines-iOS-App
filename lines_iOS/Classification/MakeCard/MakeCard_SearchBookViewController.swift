@@ -182,9 +182,12 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         
         bottomView.rightBtnClosure = { [weak self] in
             guard ReadTextController.shared.bookInfo != nil else { return }
+            
             let vc = MakeCard_CompleteViewController()
             vc.modalPresentationStyle = .fullScreen
-            self?.present(vc, animated: true)
+            DispatchQueue.main.async {
+                self?.present(vc, animated: true)
+            }
         }
     }
 }

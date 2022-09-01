@@ -9,7 +9,7 @@ import UIKit
 
 class MakeCard_StickerSetView: UIView {
     private weak var nextTopAnchor: NSLayoutYAxisAnchor!
-    internal var colorBtnClosure: ((MakeCard_StickerBackType?) -> Void)?
+    internal var colorBtnClosure: ((MakeCard_StickerBackColorType?) -> Void)?
     internal var leftBtnClosure: (() -> Void)?
     internal var rightBtnClosure: (() -> Void)?
     

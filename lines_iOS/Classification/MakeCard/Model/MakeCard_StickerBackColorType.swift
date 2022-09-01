@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum MakeCard_StickerBackType: Int, CaseIterable {
+enum MakeCard_StickerBackColorType: Int, CaseIterable {
     case grey = 0x3d3d3d
     case pink = 0xe19da5
     case yellow = 0xa99114

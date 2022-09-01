@@ -43,10 +43,10 @@
 		BA6A83E328B1D3440040512E /* MakeCard_StickerThreeToFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83E228B1D3440040512E /* MakeCard_StickerThreeToFourView.swift */; };
 		BA6A83E528B1D36E0040512E /* MakeCard_StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83E428B1D36E0040512E /* MakeCard_StickerView.swift */; };
 		BA6A83E728B2039C0040512E /* MakeCard_SelectProportionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83E628B2039C0040512E /* MakeCard_SelectProportionButtonView.swift */; };
-		BA6A83EA28B50EFD0040512E /* MakeCard_StickerBackType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83E928B50EFD0040512E /* MakeCard_StickerBackType.swift */; };
+		BA6A83EA28B50EFD0040512E /* MakeCard_StickerBackColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83E928B50EFD0040512E /* MakeCard_StickerBackColorType.swift */; };
 		BA6A83EC28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83EB28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift */; };
 		BA6A83EE28B50F300040512E /* MakeCard_StickerBackColorSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83ED28B50F300040512E /* MakeCard_StickerBackColorSetView.swift */; };
-		BA6A83F328BAD9B40040512E /* MakeCard_StickerViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F228BAD9B40040512E /* MakeCard_StickerViewType.swift */; };
+		BA6A83F328BAD9B40040512E /* MakeCard_StickerRatioType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F228BAD9B40040512E /* MakeCard_StickerRatioType.swift */; };
 		BA6A83F528BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F428BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift */; };
 		BA6A83F728BADA880040512E /* MakeCard_SearchButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F628BADA880040512E /* MakeCard_SearchButtonType.swift */; };
 		BA6A83F928BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83F828BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift */; };
@@ -79,6 +79,9 @@
 		BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C9BC2894B08A00659F74 /* ViewController.swift */; };
 		BAE5C9C22894B08C00659F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE5C9C12894B08C00659F74 /* Assets.xcassets */; };
 		BAE5C9C52894B08C00659F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE5C9C32894B08C00659F74 /* LaunchScreen.storyboard */; };
+		BAFF71D928C0B84A00AA5E78 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71D828C0B84A00AA5E78 /* RealmController.swift */; };
+		BAFF71DC28C0B88600AA5E78 /* CardModel_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71DB28C0B88600AA5E78 /* CardModel_Realm.swift */; };
+		BAFF71DF28C0CDCE00AA5E78 /* Main_ListSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71DE28C0CDCE00AA5E78 /* Main_ListSubView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,10 +123,10 @@
 		BA6A83E228B1D3440040512E /* MakeCard_StickerThreeToFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerThreeToFourView.swift; sourceTree = "<group>"; };
 		BA6A83E428B1D36E0040512E /* MakeCard_StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerView.swift; sourceTree = "<group>"; };
 		BA6A83E628B2039C0040512E /* MakeCard_SelectProportionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_SelectProportionButtonView.swift; sourceTree = "<group>"; };
-		BA6A83E928B50EFD0040512E /* MakeCard_StickerBackType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerBackType.swift; sourceTree = "<group>"; };
+		BA6A83E928B50EFD0040512E /* MakeCard_StickerBackColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerBackColorType.swift; sourceTree = "<group>"; };
 		BA6A83EB28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerBackColorButton.swift; sourceTree = "<group>"; };
 		BA6A83ED28B50F300040512E /* MakeCard_StickerBackColorSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerBackColorSetView.swift; sourceTree = "<group>"; };
-		BA6A83F228BAD9B40040512E /* MakeCard_StickerViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerViewType.swift; sourceTree = "<group>"; };
+		BA6A83F228BAD9B40040512E /* MakeCard_StickerRatioType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerRatioType.swift; sourceTree = "<group>"; };
 		BA6A83F428BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_SearchedTypeViewButton.swift; sourceTree = "<group>"; };
 		BA6A83F628BADA880040512E /* MakeCard_SearchButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_SearchButtonType.swift; sourceTree = "<group>"; };
 		BA6A83F828BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_BarcodeReaderView.swift; sourceTree = "<group>"; };
@@ -158,6 +161,9 @@
 		BAE5C9C12894B08C00659F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAE5C9C42894B08C00659F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAE5C9C62894B08C00659F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAFF71D828C0B84A00AA5E78 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
+		BAFF71DB28C0B88600AA5E78 /* CardModel_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel_Realm.swift; sourceTree = "<group>"; };
+		BAFF71DE28C0CDCE00AA5E78 /* Main_ListSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_ListSubView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,8 +335,8 @@
 		BA6A83E828B50EE80040512E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BA6A83E928B50EFD0040512E /* MakeCard_StickerBackType.swift */,
-				BA6A83F228BAD9B40040512E /* MakeCard_StickerViewType.swift */,
+				BA6A83E928B50EFD0040512E /* MakeCard_StickerBackColorType.swift */,
+				BA6A83F228BAD9B40040512E /* MakeCard_StickerRatioType.swift */,
 				BA6A83F428BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift */,
 				BA6A83F628BADA880040512E /* MakeCard_SearchButtonType.swift */,
 				BA44ECA428BCF65A0040C26C /* MakeCard_ShareButtonsType.swift */,
@@ -388,6 +394,7 @@
 		BAA07C0E2894CF0D0078EA83 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				BAFF71D728C0B83B00AA5E78 /* Realm */,
 				BA6A83A828A71DBF0040512E /* View */,
 				BAE5C9C32894B08C00659F74 /* LaunchScreen.storyboard */,
 				BAE5C9B82894B08A00659F74 /* AppDelegate.swift */,
@@ -405,6 +412,7 @@
 				BA6A8380289F6E0D0040512E /* Main_HeaderView.swift */,
 				BA6A83AD28A721530040512E /* Main_MenuButton.swift */,
 				BA6A83AF28A728A80040512E /* Main_ListView.swift */,
+				BAFF71DD28C0CDB100AA5E78 /* Main_ListViewSubs */,
 				BA6A83BF28A7A9ED0040512E /* Main_OverlappedButtonsView.swift */,
 				BAA07C182894F51C0078EA83 /* StickerTextView.swift */,
 			);
@@ -467,6 +475,31 @@
 				BAA07C062894C2120078EA83 /* Classification */,
 			);
 			path = lines_iOS;
+			sourceTree = "<group>";
+		};
+		BAFF71D728C0B83B00AA5E78 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				BAFF71DA28C0B86D00AA5E78 /* Model */,
+				BAFF71D828C0B84A00AA5E78 /* RealmController.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		BAFF71DA28C0B86D00AA5E78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BAFF71DB28C0B88600AA5E78 /* CardModel_Realm.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BAFF71DD28C0CDB100AA5E78 /* Main_ListViewSubs */ = {
+			isa = PBXGroup;
+			children = (
+				BAFF71DE28C0CDCE00AA5E78 /* Main_ListSubView.swift */,
+			);
+			path = Main_ListViewSubs;
 			sourceTree = "<group>";
 		};
 		BB9F99D65F9C4795120EE8D9 /* Pods */ = {
@@ -626,14 +659,14 @@
 				BA6A83B928A730670040512E /* ImageListCellView.swift in Sources */,
 				BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */,
 				BA6A83FB28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift in Sources */,
-				BA6A83F328BAD9B40040512E /* MakeCard_StickerViewType.swift in Sources */,
+				BA6A83F328BAD9B40040512E /* MakeCard_StickerRatioType.swift in Sources */,
 				BA6A83E728B2039C0040512E /* MakeCard_SelectProportionButtonView.swift in Sources */,
 				BAA07C29289512DC0078EA83 /* RequestInterceptor.swift in Sources */,
 				BAA07C192894F51C0078EA83 /* StickerTextView.swift in Sources */,
 				BA6A83AA28A71DC90040512E /* TopView.swift in Sources */,
 				BA6A83D728A7E56B0040512E /* ImageAlertView.swift in Sources */,
 				BA6A83E328B1D3440040512E /* MakeCard_StickerThreeToFourView.swift in Sources */,
-				BA6A83EA28B50EFD0040512E /* MakeCard_StickerBackType.swift in Sources */,
+				BA6A83EA28B50EFD0040512E /* MakeCard_StickerBackColorType.swift in Sources */,
 				BA6A83CF28A7D32A0040512E /* MakeCard_NoticeView.swift in Sources */,
 				BA6A83F928BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift in Sources */,
 				BA6A83FD28BCEFC50040512E /* MakeCard_CompleteViewController.swift in Sources */,
@@ -646,6 +679,7 @@
 				BA6A8385289F7D3B0040512E /* ScrollViewController.swift in Sources */,
 				BA44ECA528BCF65A0040C26C /* MakeCard_ShareButtonsType.swift in Sources */,
 				BAA07C2E289527660078EA83 /* MakeCard_SearchBookViewController.swift in Sources */,
+				BAFF71DC28C0B88600AA5E78 /* CardModel_Realm.swift in Sources */,
 				BA6A83CA28A7C2D00040512E /* MakeCardViewController.swift in Sources */,
 				BA6A83D328A7DECA0040512E /* MarkCard_BottomView.swift in Sources */,
 				BAA07C2C289517F50078EA83 /* MakeCard_KakaoBookSearcher.swift in Sources */,
@@ -676,8 +710,10 @@
 				BA6A83C428A7C2120040512E /* ExternUIImagePickerController.swift in Sources */,
 				BAA07C20289509AF0078EA83 /* EventMonitor.swift in Sources */,
 				BA6A8378289CEEAD0040512E /* StartViewController.swift in Sources */,
+				BAFF71DF28C0CDCE00AA5E78 /* Main_ListSubView.swift in Sources */,
 				BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */,
 				BA6A83DB28A8759C0040512E /* MakeCard_DetailViewController.swift in Sources */,
+				BAFF71D928C0B84A00AA5E78 /* RealmController.swift in Sources */,
 				BAA07C362895394C0078EA83 /* MakeCard_BarcodeViewController.swift in Sources */,
 				BA6A837F289DED060040512E /* ShareController.swift in Sources */,
 				BA6A83DD28B1C78B0040512E /* TwoButtonAlertView.swift in Sources */,
@@ -825,13 +861,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = lines;
-				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용자에게 접근 권한을 요청합니다.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "OCR 기능을 통해 문장 스캔을 위해\\n카메라 접근 권한 사용";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진 앨범 접근 권한을 요청합니다";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "OCR 기능을 통해 문장 스캔을 위해 \\n앨범 접근 권한 사용";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -840,7 +877,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.2;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lines.lines-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -856,13 +893,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = lines;
-				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용자에게 접근 권한을 요청합니다.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "OCR 기능을 통해 문장 스캔을 위해\\n카메라 접근 권한 사용";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진 앨범 접근 권한을 요청합니다";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "OCR 기능을 통해 문장 스캔을 위해 \\n앨범 접근 권한 사용";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -871,7 +909,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.2;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lines.lines-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

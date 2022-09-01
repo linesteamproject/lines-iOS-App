@@ -1,13 +1,13 @@
 //
-//  MakeCard_StickerView.swift
+//  Main_ListSubView.swift
 //  lines_iOS
 //
-//  Created by mun on 2022/08/21.
+//  Created by mun on 2022/09/01.
 //
 
 import UIKit
 
-class MakeCard_StickerView: UIView {
+class Main_ListSubView: UIView {
     internal weak var stickerFrame: UIImageView!
     internal weak var contentsLabel: UILabel!
     internal weak var illustImageView: UIImageView!
@@ -21,15 +21,15 @@ class MakeCard_StickerView: UIView {
     internal var bookInfoStr: String? {
         didSet { bookInfoLabel.setTitle(bookInfoStr) }
     }
-    init(_ text: String?) {
+    init(_ text: String?, width: CGFloat, height: CGFloat) {
         super.init(frame: .zero)
         
-        setStickerFrame()
+        setStickerFrame(width, height)
         setText(text)
         setConstraints()
     }
     required init?(coder: NSCoder) { fatalError() }
-    private func setStickerFrame() {
+    private func setStickerFrame(_ width: CGFloat, _ height: CGFloat) {
         let logo = UIImageView(image: UIImage(named: "LinesSmallLogo"))
         self.addSubviews(logo)
         NSLayoutConstraint.activate([
@@ -92,3 +92,4 @@ class MakeCard_StickerView: UIView {
     }
     internal func setConstraints() { }
 }
+

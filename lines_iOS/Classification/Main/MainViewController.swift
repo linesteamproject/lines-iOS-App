@@ -8,12 +8,15 @@
 import Foundation
 import UIKit
 
+let realm = RealmController.shared
 class MainViewController: ScrollViewController {
     private weak var headerView: Main_HeaderView!
     private weak var back: UIView!
     private weak var overlappedButtonsView: Main_OverlappedButtonsView!
     private weak var overlappedButtonsViewHeightConstraint: NSLayoutConstraint!
     private weak var floatingButton: UIButton!
+    private weak var mainListView: Main_ListView!
+    
     override var topViewHeight: CGFloat {
         get { return 56 }
         set { }
@@ -25,6 +28,14 @@ class MainViewController: ScrollViewController {
         setOverlappedButtonsView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        RealmController.shared.queue.async {
+            RealmController.shared.getBookCards {
+                self.mainListView?.datas = $0
+            }
+        }
+    }
     override func setTopView() {
         let topView = Main_TopView()
         self.view.addSubviews(topView)
@@ -80,8 +91,7 @@ class MainViewController: ScrollViewController {
         scrollView.bounces = false
         
         let viewWidth = UIScreen.main.bounds.width - 40
-        let mainListView = Main_ListView(width: viewWidth,
-                                         datas: TestData.getTestMainDatas())
+        let mainListView = Main_ListView(width: viewWidth)
         self.contentView.addSubviews(mainListView)
         NSLayoutConstraint.activate([
             mainListView.topAnchor
@@ -97,7 +107,9 @@ class MainViewController: ScrollViewController {
             mainListView.heightAnchor
                 .constraint(greaterThanOrEqualToConstant: 10)
         ])
+        self.mainListView = mainListView
     }
+    
     private func setBackgroundView() {
         let back = UIView()
         self.view.addSubviews(back)

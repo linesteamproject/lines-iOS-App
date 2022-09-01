@@ -12,7 +12,7 @@ class MakeCard_SelectProportionButtonView: UIButton {
     private weak var label: UILabel!
     private weak var subLabel: UILabel!
     
-    internal var type: MakeCard_StickerViewType? {
+    internal var type: MakeCard_StickerRatioType? {
         didSet { setConstraints() }
     }
     internal override var isSelected: Bool {

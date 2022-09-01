@@ -19,16 +19,25 @@ struct MainListViewObj {
 class Main_ListView: UIView {
     private let cellWidth: CGFloat
     private weak var nextTopAnchor: NSLayoutYAxisAnchor!
+    private weak var label: UILabel!
+    private weak var back: UIView!
+    
     private var obj = MainListViewObj()
-    init(width: CGFloat, datas: [UIImage?]?) {
+    internal var datas: [CardModel?]? {
+        didSet {
+            label.setTitle(String(format: "기록한 문장 %d개", datas?.count ?? 0))
+            setCards()
+        }
+    }
+    init(width: CGFloat) {
         self.cellWidth = (width - 15) / 2
         super.init(frame: .zero)
         
-        setTitle(datas?.count ?? 0)
-        setListView(datas)
+        setTitle()
+        setListView()
     }
     required init?(coder: NSCoder) { fatalError() }
-    private func setTitle(_ count: Int) {
+    private func setTitle() {
         let label = UILabel()
         self.addSubviews(label)
         NSLayoutConstraint.activate([
@@ -41,12 +50,13 @@ class Main_ListView: UIView {
             label.heightAnchor
                 .constraint(equalToConstant: 22)
         ])
-        label.setTitle(String(format: "기록한 문장 %d개", count),
+        label.setTitle(String(format: "기록한 문장 0개"),
                        font: Fonts.get(size: 16, type: .bold),
                        txtColor: .gold)
+        self.label = label
         self.nextTopAnchor = label.bottomAnchor
     }
-    private func setListView(_ datas: [UIImage?]?) {
+    private func setListView() {
         let back = UIView()
         self.addSubviews(back)
         NSLayoutConstraint.activate([
@@ -59,10 +69,19 @@ class Main_ListView: UIView {
         
         obj.lTopAnc = back.topAnchor
         obj.rTopAnc = back.topAnchor
+        self.back = back
+    }
+    
+    private func setCards() {
         datas?.enumerated().forEach { idx, data in
             guard let data = data else { return }
+            let cellHeight: CGFloat
+            if data.ratioType == .one2one {
+                cellHeight = self.cellWidth
+            } else {
+                cellHeight = self.cellWidth / 3 * 4
+            }
             
-            let cellHeight = self.cellWidth * data.size.height / data.size.width
             print("munyong > \(cellWidth), \(cellHeight)")
             let cellView = ImageListCellView(data)
             back.addSubviews(cellView)

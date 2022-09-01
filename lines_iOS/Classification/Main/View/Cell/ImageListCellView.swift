@@ -8,14 +8,16 @@
 import UIKit
 
 class ImageListCellView: UIView {
-    init(_ data: UIImage?) {
+    init(_ data: CardModel) {
         super.init(frame: .zero)
         setUI(data)
     }
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
-    private func setUI(_ data: UIImage?) {
+    
+    private func setUI(_ data: CardModel) {
         let imageView = UIImageView()
         self.addSubviews(imageView)
         NSLayoutConstraint.activate([
@@ -24,6 +26,8 @@ class ImageListCellView: UIView {
             imageView.rightAnchor.constraint(equalTo: self.rightAnchor),
             imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
-        imageView.image = data
+        if let data = data.imageData {
+            imageView.image = UIImage(data: data)
+        }
     }
 }
