@@ -13,7 +13,7 @@ class LoginButton: UIButton {
         didSet {
             self.loginTitleLabel.setTitle(type?.title)
             if type == .skip {
-                self.loginTitleLabel.setTitle(txtColor: .beige)
+                self.loginTitleLabel.setTitle(type?.title, txtColor: .beige)
             }
             self.backgroundColor = (type?.color ?? .clear).value
         }

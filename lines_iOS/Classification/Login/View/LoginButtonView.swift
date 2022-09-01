@@ -35,7 +35,7 @@ class LoginButtonView: UIView {
                 self?.btnClosure?(type)
             }, for: .touchUpInside)
             
-            guard type != .apple else {
+            guard type != .skip else {
                 loginBtn.bottomAnchor
                         .constraint(equalTo: self.bottomAnchor).isActive = true
                 return

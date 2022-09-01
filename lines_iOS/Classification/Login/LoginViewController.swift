@@ -8,7 +8,6 @@
 import UIKit
 
 class LoginViewController: ViewController {
-    private let loginController = LoginController()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,15 +18,19 @@ class LoginViewController: ViewController {
         let loginButtonView = LoginButtonView()
         self.view.addSubviews(loginButtonView)
         NSLayoutConstraint.activate([
-            loginButtonView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            loginButtonView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            loginButtonView.leftAnchor.constraint(equalTo: self.view.leftAnchor,
+                                                  constant: 20),
+            loginButtonView.rightAnchor.constraint(equalTo: self.view.rightAnchor,
+                                                   constant: -20),
             loginButtonView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             loginButtonView.heightAnchor.constraint(equalToConstant: 260)
         ])
         loginButtonView.btnClosure = { [weak self] type in
             switch type {
             case .kakao:
-                KakaoLoginController.loginByKakao()
+                KakaoLoginController.login {
+                    print($0)
+                }
                 return
             case .naver:
                 return

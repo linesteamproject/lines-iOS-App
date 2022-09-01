@@ -15,10 +15,11 @@ let log = SwiftyBeaver.self
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: MainViewController())
+        window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
         
         KakaoSDK.initSDK(appKey: "794c3c6e502b330cf0a9303a414d0da9")
         return true
