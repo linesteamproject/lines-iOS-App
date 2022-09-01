@@ -18,6 +18,9 @@ enum Colors {
     case clear
     case highlight
     case ferra
+    case kakao
+    case naver
+    case apple
     var value: UIColor {
         switch self {
         case .white:
@@ -38,6 +41,12 @@ enum Colors {
             return UIColor(rgb: 0xD69609)
         case .ferra:
             return UIColor(rgb: 0x795454)
+        case .kakao:
+            return UIColor(rgb: 0xF5DF5A)
+        case .naver:
+            return UIColor(rgb: 0x5EC43C)
+        case .apple:
+            return UIColor(rgb: 0xFFFFFF)
         }
     }
 }

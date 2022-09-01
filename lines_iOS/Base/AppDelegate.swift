@@ -7,6 +7,9 @@
 
 import UIKit
 import SwiftyBeaver
+import KakaoSDKAuth
+import KakaoSDKUser
+import KakaoSDKCommon
 
 let log = SwiftyBeaver.self
 @main
@@ -17,8 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = UINavigationController(rootViewController: MainViewController())
         
+        KakaoSDK.initSDK(appKey: "794c3c6e502b330cf0a9303a414d0da9")
         return true
 
+    }
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+            return AuthController.handleOpenUrl(url: url)
+        }
+        
+        return false
     }
 
 }

@@ -4,12 +4,25 @@
 <dict>
 	<key>CFBundleIconName</key>
 	<string>AppIcon</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao794c3c6e502b330cf0a9303a414d0da9</string>
+			</array>
+		</dict>
+	</array>
 	<key>KAKAO_APP_RESTFUL_KEY</key>
 	<string>a173c52af842104cd1b4f230570bcd9b</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram-stories</string>
 		<string>instagram</string>
+		<string>kakaokompassauth</string>
+		<string>kakaolink</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
