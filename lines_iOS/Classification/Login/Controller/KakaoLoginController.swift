@@ -10,27 +10,26 @@ import KakaoSDKAuth
 import KakaoSDKUser
 
 class KakaoLoginController: NSObject {
-    class func login(_ done: ((String?) -> Void)?) {
+    class func login(_ done: ((Bool) -> Void)?) {
         guard (UserApi.isKakaoTalkLoginAvailable()) else {
             UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
                 guard let _ = error else {
-                    done?(oauthToken?.accessToken); return
+                    let accessToken = oauthToken?.accessToken
+                    done?(true)
+                    return
                 }
-                done?(nil); return
+                done?(false)
             }
             return
         }
         
         UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-            if let error = error {
-                print(error)
+            guard let _ = error else {
+                let accessToken = oauthToken?.accessToken
+                done?(true)
+                return
             }
-            else {
-                print("loginWithKakaoTalk() success.")
-
-                //do something
-                _ = oauthToken
-            }
+            done?(false)
         }
     }
 }

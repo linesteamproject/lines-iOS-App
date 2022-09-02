@@ -79,6 +79,8 @@
 		BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C9BC2894B08A00659F74 /* ViewController.swift */; };
 		BAE5C9C22894B08C00659F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE5C9C12894B08C00659F74 /* Assets.xcassets */; };
 		BAE5C9C52894B08C00659F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE5C9C32894B08C00659F74 /* LaunchScreen.storyboard */; };
+		BAEDCE9328C2B30F00102C47 /* OneButtonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEDCE9228C2B30F00102C47 /* OneButtonAlertView.swift */; };
+		BAEDCE9528C2B58D00102C47 /* PopUpAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEDCE9428C2B58D00102C47 /* PopUpAlertView.swift */; };
 		BAFF71D928C0B84A00AA5E78 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71D828C0B84A00AA5E78 /* RealmController.swift */; };
 		BAFF71DC28C0B88600AA5E78 /* CardModel_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71DB28C0B88600AA5E78 /* CardModel_Realm.swift */; };
 		BAFF71DF28C0CDCE00AA5E78 /* Main_ListSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71DE28C0CDCE00AA5E78 /* Main_ListSubView.swift */; };
@@ -164,6 +166,9 @@
 		BAE5C9C12894B08C00659F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAE5C9C42894B08C00659F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAE5C9C62894B08C00659F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAEDCE9128C2B26900102C47 /* lines_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lines_iOS.entitlements; sourceTree = "<group>"; };
+		BAEDCE9228C2B30F00102C47 /* OneButtonAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneButtonAlertView.swift; sourceTree = "<group>"; };
+		BAEDCE9428C2B58D00102C47 /* PopUpAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpAlertView.swift; sourceTree = "<group>"; };
 		BAFF71D828C0B84A00AA5E78 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		BAFF71DB28C0B88600AA5E78 /* CardModel_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel_Realm.swift; sourceTree = "<group>"; };
 		BAFF71DE28C0CDCE00AA5E78 /* Main_ListSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_ListSubView.swift; sourceTree = "<group>"; };
@@ -247,7 +252,9 @@
 				BA6A83A928A71DC90040512E /* TopView.swift */,
 				BA6A83D428A7E5270040512E /* AlertView.swift */,
 				BA6A83D628A7E56B0040512E /* ImageAlertView.swift */,
+				BAEDCE9228C2B30F00102C47 /* OneButtonAlertView.swift */,
 				BA6A83DC28B1C78B0040512E /* TwoButtonAlertView.swift */,
+				BAEDCE9428C2B58D00102C47 /* PopUpAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -477,6 +484,7 @@
 		BAE5C9B72894B08A00659F74 /* lines_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				BAEDCE9128C2B26900102C47 /* lines_iOS.entitlements */,
 				BAA07C0E2894CF0D0078EA83 /* Base */,
 				BAA07BFC2894BFC90078EA83 /* Resources */,
 				BAA07C012894C1EC0078EA83 /* Extensions */,
@@ -687,6 +695,7 @@
 				BA6A83F328BAD9B40040512E /* MakeCard_StickerRatioType.swift in Sources */,
 				BA6A83E728B2039C0040512E /* MakeCard_SelectProportionButtonView.swift in Sources */,
 				BAA07C29289512DC0078EA83 /* RequestInterceptor.swift in Sources */,
+				BAEDCE9528C2B58D00102C47 /* PopUpAlertView.swift in Sources */,
 				BAA07C192894F51C0078EA83 /* StickerTextView.swift in Sources */,
 				BA6A83AA28A71DC90040512E /* TopView.swift in Sources */,
 				BA6A83D728A7E56B0040512E /* ImageAlertView.swift in Sources */,
@@ -749,6 +758,7 @@
 				BAFF71E728C0F3BE00AA5E78 /* LoginButton.swift in Sources */,
 				BAA07C2528950B930078EA83 /* ResponsableResult.swift in Sources */,
 				BA6A83F728BADA880040512E /* MakeCard_SearchButtonType.swift in Sources */,
+				BAEDCE9328C2B30F00102C47 /* OneButtonAlertView.swift in Sources */,
 				BA6A83F528BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift in Sources */,
 				BA6A83AC28A71E2A0040512E /* Main_TopView.swift in Sources */,
 			);
@@ -888,6 +898,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
@@ -920,6 +931,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
