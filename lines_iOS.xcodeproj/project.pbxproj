@@ -54,6 +54,8 @@
 		BA6A83FD28BCEFC50040512E /* MakeCard_CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83FC28BCEFC50040512E /* MakeCard_CompleteViewController.swift */; };
 		BA6A83FF28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83FE28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift */; };
 		BA6A840128BCF06F0040512E /* MakeCard_ShareButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */; };
+		BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */; };
+		BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */; };
 		BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFD2894C1DA0078EA83 /* Colors.swift */; };
 		BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFF2894C1E00078EA83 /* Fonts.swift */; };
 		BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */; };
@@ -139,6 +141,8 @@
 		BA6A83FC28BCEFC50040512E /* MakeCard_CompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCard_CompleteViewController.swift; sourceTree = "<group>"; };
 		BA6A83FE28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCard_GoToHomeButtonView.swift; sourceTree = "<group>"; };
 		BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_ShareButtonsView.swift; sourceTree = "<group>"; };
+		BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginController.swift; sourceTree = "<group>"; };
+		BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
 		BAA07BFD2894C1DA0078EA83 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BAA07BFF2894C1E00078EA83 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UI.swift"; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				BA6A8374289CEDEA0040512E /* KakaoLoginController.swift */,
+				BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 			children = (
 				BAA07C2428950B930078EA83 /* ResponsableResult.swift */,
 				BAA07C2628950EC00078EA83 /* SearchBookStatus.swift */,
+				BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */,
 				BAA07C28289512DC0078EA83 /* RequestInterceptor.swift */,
 			);
 			path = Model;
@@ -691,6 +697,7 @@
 			files = (
 				BA6A83B928A730670040512E /* ImageListCellView.swift in Sources */,
 				BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */,
+				BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */,
 				BA6A83FB28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift in Sources */,
 				BA6A83F328BAD9B40040512E /* MakeCard_StickerRatioType.swift in Sources */,
 				BA6A83E728B2039C0040512E /* MakeCard_SelectProportionButtonView.swift in Sources */,
@@ -720,6 +727,7 @@
 				BA6A83D328A7DECA0040512E /* MarkCard_BottomView.swift in Sources */,
 				BAA07C2C289517F50078EA83 /* MakeCard_KakaoBookSearcher.swift in Sources */,
 				BAA07C22289509EC0078EA83 /* AFHandler.swift in Sources */,
+				BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */,
 				BA6A83EC28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift in Sources */,
 				BAA07C162894EC9C0078EA83 /* TextRecognizeController.swift in Sources */,
 				BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */,

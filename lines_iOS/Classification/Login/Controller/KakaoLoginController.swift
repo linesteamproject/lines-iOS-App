@@ -10,26 +10,47 @@ import KakaoSDKAuth
 import KakaoSDKUser
 
 class KakaoLoginController: NSObject {
-    class func login(_ done: ((Bool) -> Void)?) {
+    static let shared = KakaoLoginController()
+    func login(_ done: ((KakaoUser?) -> Void)?) {
         guard (UserApi.isKakaoTalkLoginAvailable()) else {
-            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-                guard let _ = error else {
-                    let accessToken = oauthToken?.accessToken
-                    done?(true)
-                    return
+            UserApi.shared.loginWithKakaoAccount { [weak self] (oauthToken, error) in
+                guard nil == error else {
+                    done?(nil); return
                 }
-                done?(false)
+                let accessToken = oauthToken?.accessToken
+                self?.sendUserInfoAfterKakaoLogin { done?($0) }
             }
             return
         }
         
-        UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-            guard let _ = error else {
-                let accessToken = oauthToken?.accessToken
-                done?(true)
-                return
+        UserApi.shared.loginWithKakaoTalk { [weak self] (oauthToken, error) in
+            guard nil == error else {
+                done?(nil); return
             }
-            done?(false)
+            let accessToken = oauthToken?.accessToken
+            self?.sendUserInfoAfterKakaoLogin { done?($0) }
         }
     }
+    
+    private func sendUserInfoAfterKakaoLogin(done: ((KakaoUser?) -> Void)?) {
+        UserApi.shared.me() {(user, error) in
+            guard error == nil, let userIdInt64Val = user?.id else {
+                done?(nil)
+                return
+            }
+            
+            let userIdentifer = String(userIdInt64Val)
+            let email = user?.kakaoAccount?.email ?? UUID().uuidString + "@lines.com"
+            let nick = user?.kakaoAccount?.profile?.nickname ?? "User"
+            done?(KakaoUser(userId: userIdentifer,
+                            email: email,
+                            nick: nick))
+        }
+    }
+}
+
+struct KakaoUser {
+    let userId: String
+    let email: String
+    let nick: String
 }

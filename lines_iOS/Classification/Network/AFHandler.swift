@@ -29,4 +29,19 @@ class AFHandler {
                 done?($0.value)
         }
     }
+    
+    class func loginNaver(tokenType: String, accessToken: String, done:((NaverLoginStatus?) -> Void)?) {
+        let urlStr = "https://openapi.naver.com/v1/nid/me"
+        let url = URL(string: urlStr)!
+        
+        let authorization = "\(tokenType) \(accessToken)"
+        
+        session.request(url, method: .get,
+                        parameters: nil,
+                        encoding: JSONEncoding.default,
+                        headers: ["Authorization": authorization])
+        .responseDecodable(of: NaverLoginStatus.self) {
+            done?($0.value)
+        }
+    }
 }

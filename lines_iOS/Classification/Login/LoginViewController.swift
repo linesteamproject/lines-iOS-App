@@ -29,11 +29,41 @@ class LoginViewController: ViewController {
         loginButtonView.btnClosure = { [weak self] type in
             switch type {
             case .kakao:
-                KakaoLoginController.login { [weak self] in
-                    guard $0 else { return }
-                    self?.goToMainVC()
+                KakaoLoginController.shared.login { [weak self] in
+                    guard let kakaoUser = $0 else {
+                        self?.showOneButtonAlertView(title: "로그인 실패", height: 70, btnTitle: "확인",
+                                                     btnColor: .beige)
+                        return
+                    }
+                    
+                    let subTitle = "user identifier: " + (kakaoUser.userId) + "\n"
+                    + "email: " + (kakaoUser.email) + "\n"
+                    + "nickName: " + (kakaoUser.nick) + "\n"
+                    self?.showOneButtonAlertView(title: "로그인 성공", subTitle: subTitle,
+                                                 height: 240,
+                                                 btnTitle: "확인", btnColor: .beige, done: {
+                        self?.goToMainVC()
+                    })
                 }
             case .naver:
+                NaverLoginController.shared.login()
+                NaverLoginController.shared.naverLoginClosure = { [weak self] res in
+                    guard let res = res else {
+                        self?.showOneButtonAlertView(title: "로그인 실패", height: 70, btnTitle: "확인",
+                                                     btnColor: .beige)
+                        return
+                    }
+                    
+                    let subTitle = "user identifier: " + (res.id ?? "") + "\n"
+                    + "email: " + (res.email ?? "") + "\n"
+                    + "nickName: " + (res.nickname ?? "") + "\n"
+                    + "name: " + (res.name ?? "") + "\n"
+                    self?.showOneButtonAlertView(title: "로그인 성공", subTitle: subTitle,
+                                                 height: 240,
+                                                 btnTitle: "확인", btnColor: .beige, done: {
+                        self?.goToMainVC()
+                    })
+                }
                 return
             case .apple:
                 let appleIDProvider = ASAuthorizationAppleIDProvider()

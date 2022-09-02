@@ -10,6 +10,7 @@ import SwiftyBeaver
 import KakaoSDKAuth
 import KakaoSDKUser
 import KakaoSDKCommon
+import NaverThirdPartyLogin
 
 let log = SwiftyBeaver.self
 @main
@@ -22,18 +23,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
         
         KakaoSDK.initSDK(appKey: "794c3c6e502b330cf0a9303a414d0da9")
+        activeNaverLogin()
         return true
 
     }
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("munyong > url: \(url.absoluteString)")
+        guard url.absoluteString.contains("kakao") else {
+            NaverThirdPartyLoginConnection
+                    .getSharedInstance()?
+                    .receiveAccessToken(url)
+            return false
+        }
+        
         if (AuthApi.isKakaoTalkLoginUrl(url)) {
             return AuthController.handleOpenUrl(url: url)
         }
         
+        
         return false
     }
-
+    func activeNaverLogin() {
+        let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+        
+        // 네이버 앱으로 인증하는 방식 활성화
+        instance?.isNaverAppOauthEnable = true
+        
+        // SafariViewController에서 인증하는 방식 활성화
+        instance?.isInAppOauthEnable = true
+        
+        // 인증 화면을 아이폰의 세로모드에서만 적용
+        instance?.isOnlyPortraitSupportedInIphone()
+        
+        instance?.serviceUrlScheme = "naverloginonlines" // 앱을 등록할 때 입력한 URL Scheme
+        instance?.consumerKey = "31Z8n157vSc5G7GMvGU0" // 상수 - client id
+        instance?.consumerSecret = "0dxTUpz13L" // pw
+        instance?.appName = "lines" // app name
+    }
 }
 
