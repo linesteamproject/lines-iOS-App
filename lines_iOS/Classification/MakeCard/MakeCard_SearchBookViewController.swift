@@ -154,7 +154,8 @@ class MakeCard_SearchBookViewController: ScrollViewController {
                                                     constant: -34 + -34 + -90),
             searchedListView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             searchedListView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            searchedListView.heightAnchor.constraint(greaterThanOrEqualToConstant: 400),
+            searchedListView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
+                                                    constant: -34 + -34 + -90)
         ])
         searchedListView.delegate = self
         self.searchedListView = searchedListView

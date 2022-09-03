@@ -96,7 +96,7 @@ class MakeCard_BasicTableViewCell: UITableViewCell {
             imgView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,
                                          constant: 20),
             imgView.widthAnchor.constraint(equalToConstant: 44),
-            imgView.heightAnchor.constraint(greaterThanOrEqualToConstant: 59),
+            imgView.heightAnchor.constraint(equalToConstant: 59),
             imgView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
                                            constant: -12),
             
