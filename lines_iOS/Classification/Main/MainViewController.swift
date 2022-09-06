@@ -30,12 +30,17 @@ class MainViewController: ScrollViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.mainListView.datas?.removeAll()
+        
         RealmController.shared.queue.async {
-            RealmController.shared.getBookCards {
-                self.mainListView?.datas = $0
+            RealmController.shared.getBookCards { cards in
+                DispatchQueue.main.async {
+                    self.mainListView?.datas = cards
+                }
             }
         }
     }
+    
     override func setTopView() {
         let topView = Main_TopView()
         self.view.addSubviews(topView)
