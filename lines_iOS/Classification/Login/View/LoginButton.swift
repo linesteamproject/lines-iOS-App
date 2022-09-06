@@ -11,11 +11,12 @@ class LoginButton: UIButton {
     private weak var loginTitleLabel: UILabel!
     internal var type: LoginButtonType? {
         didSet {
-            self.loginTitleLabel.setTitle(type?.title)
-            if type == .skip {
-                self.loginTitleLabel.setTitle(type?.title, txtColor: .beige)
-            }
-            self.backgroundColor = (type?.color ?? .clear).value
+            self.setImage(type?.img, for: .normal)
+//            self.loginTitleLabel.setTitle(type?.title)
+//            if type == .skip {
+//                self.loginTitleLabel.setTitle(type?.title, txtColor: .beige)
+//            }
+//            self.backgroundColor = (type?.color ?? .clear).value
         }
     }
     
@@ -28,7 +29,7 @@ class LoginButton: UIButton {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         self.layer.masksToBounds = true
-        self.layer.cornerRadius = 25
+//        self.layer.cornerRadius = 25
     }
     private func setUI() {
         let loginTitleLabel = UILabel()

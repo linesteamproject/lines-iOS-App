@@ -45,9 +45,9 @@ enum Colors {
         case .ferra:
             return UIColor(rgb: 0x795454)
         case .kakao:
-            return UIColor(rgb: 0xF5DF5A)
+            return UIColor(rgb: 0xFEE500)
         case .naver:
-            return UIColor(rgb: 0x5EC43C)
+            return UIColor(rgb: 0x03C75A)
         case .apple:
             return UIColor(rgb: 0xFFFFFF)
         }

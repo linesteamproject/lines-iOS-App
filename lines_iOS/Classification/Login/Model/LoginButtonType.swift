@@ -11,6 +11,30 @@ enum LoginButtonType: CaseIterable {
     case naver
     case apple
     case skip
+    var img: UIImage? {
+        switch self {
+        case .kakao:
+            return UIImage(named: "KakaoLoginButton")
+        case .naver:
+            return UIImage(named: "NaverLoginButton")
+        case .apple:
+            return UIImage(named: "AppleLoginButton")
+        case .skip:
+            return UIImage(named: "SkipLoginButton")
+        }
+    }
+    var txtColor: UIColor {
+        switch self {
+        case .kakao:
+            return Colors.black.value
+        case .naver:
+            return Colors.white.value
+        case .apple:
+            return Colors.black.value
+        case .skip:
+            return Colors.beige.value
+        }
+    }
     var color: Colors {
         switch self {
         case .kakao:
