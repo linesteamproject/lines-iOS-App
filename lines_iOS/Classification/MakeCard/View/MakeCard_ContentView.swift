@@ -8,7 +8,7 @@
 import UIKit
 
 class MakeCard_ContentView: UIView, UITextViewDelegate {
-    private weak var txtView: UITextView!
+    internal weak var txtView: UITextView!
     
     init(_ text: String?) {
         super.init(frame: .zero)

@@ -8,6 +8,7 @@
 import UIKit
 
 class MakeCardViewController: ScrollViewController {
+    private weak var cardContentView: MakeCard_ContentView!
     override var topViewHeight: CGFloat {
         get { return 56 }
         set { }
@@ -93,6 +94,7 @@ class MakeCardViewController: ScrollViewController {
             cardContentView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             cardContentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 274),
         ])
+        self.cardContentView = cardContentView
         self.nextTopAnchor = cardContentView.bottomAnchor
     }
     
@@ -132,6 +134,7 @@ class MakeCardViewController: ScrollViewController {
             }
         }
         bottomView.rightBtnClosure = { [weak self] in
+            ReadTextController.shared.readText = self?.cardContentView.txtView.text ?? ""
             let vc = MakeCard_DetailViewController()
             vc.modalPresentationStyle = .fullScreen
             self?.present(vc, animated: false)
