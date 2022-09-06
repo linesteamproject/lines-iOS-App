@@ -10,32 +10,21 @@ import UIKit
 
 class MakeCard_StickerThreeToFourView: MakeCard_StickerView {
     override var imgBackName: String {
-        get { return "StickerThree2FourBack" }
-        set { }
-    }
-    override var imgName: String {
-        get { return "StickerThree2Four" }
-        set { }
-    }
-    override var imgIllustName: String {
-        get { return "IllustThree2Four"}
+        get { return "Three2Four" + self.color.name }
         set { }
     }
     
     override func setConstraints() {
         NSLayoutConstraint.activate([
-            contentsLabel.topAnchor.constraint(equalTo: stickerFrame.topAnchor,
+            backImageView.widthAnchor.constraint(equalToConstant: 345 / 4 * 3),
+            contentsLabel.topAnchor.constraint(equalTo: backImageView.topAnchor,
                                        constant: 51),
-            contentsLabel.leftAnchor.constraint(equalTo: stickerFrame.leftAnchor,
+            contentsLabel.leftAnchor.constraint(equalTo: backImageView.leftAnchor,
                                         constant: 45),
-            contentsLabel.rightAnchor.constraint(equalTo: stickerFrame.rightAnchor,
+            contentsLabel.rightAnchor.constraint(equalTo: backImageView.rightAnchor,
                                          constant: -45),
-            contentsLabel.bottomAnchor.constraint(equalTo: stickerFrame.bottomAnchor,
+            contentsLabel.bottomAnchor.constraint(equalTo: backImageView.bottomAnchor,
                                           constant: -51),
-            illustImageView.rightAnchor.constraint(equalTo: stickerFrame.rightAnchor,
-                                                   constant: -40.15),
-            illustImageView.bottomAnchor.constraint(equalTo: stickerFrame.bottomAnchor,
-                                                    constant: -20.84)
         ])
     }
 }

@@ -47,7 +47,7 @@ class MakeCard_StickerBackColorSetView: UIView {
             ])
             
             btn.type = type
-            btn.isSelected = btn.type == .grey
+            btn.isSelected = btn.type == .black
             btn.addAction( UIAction { [weak self] _ in
                 self?.btns.forEach { $0.isSelected = false }
                 if let idx = self?.btns.firstIndex(where: { $0.type == type }) {

@@ -9,33 +9,21 @@ import UIKit
 
 class MakeCard_StickerOneToOneView: MakeCard_StickerView {
     override var imgBackName: String {
-        get { return "StickerOne2OneBack" }
-        set { }
-    }
-    override var imgName: String {
-        get { return "StickerOne2One" }
-        set { }
-    }
-    override var imgIllustName: String {
-        get { return "IllustOne2One"}
+        get { return "One2One" + self.color.name }
         set { }
     }
     
     override func setConstraints() {
         NSLayoutConstraint.activate([
-            contentsLabel.topAnchor.constraint(equalTo: stickerFrame.topAnchor,
+            backImageView.widthAnchor.constraint(equalToConstant: 345),
+            contentsLabel.topAnchor.constraint(equalTo: backImageView.topAnchor,
                                        constant: 51),
-            contentsLabel.leftAnchor.constraint(equalTo: stickerFrame.leftAnchor,
+            contentsLabel.leftAnchor.constraint(equalTo: backImageView.leftAnchor,
                                         constant: 41),
-            contentsLabel.rightAnchor.constraint(equalTo: stickerFrame.rightAnchor,
+            contentsLabel.rightAnchor.constraint(equalTo: backImageView.rightAnchor,
                                          constant: -41),
-            contentsLabel.bottomAnchor.constraint(equalTo: stickerFrame.bottomAnchor,
+            contentsLabel.bottomAnchor.constraint(equalTo: backImageView.bottomAnchor,
                                           constant: -81),
-            
-            illustImageView.rightAnchor.constraint(equalTo: stickerFrame.rightAnchor,
-                                                   constant: -10.86),
-            illustImageView.bottomAnchor.constraint(equalTo: stickerFrame.bottomAnchor,
-                                                    constant: -22.04)
         ])
     }
 }

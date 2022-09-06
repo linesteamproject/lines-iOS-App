@@ -13,7 +13,7 @@ class ReadTextController: NSObject {
     internal var capturedImage: UIImage?
     internal var readText: String?
     internal var sizeType: MakeCard_StickerRatioType = .one2one
-    internal var colorType: MakeCard_StickerBackColorType = .grey
+    internal var colorType: MakeCard_StickerBackColorType = .black
     internal var bookInfo: BookDocu?
     internal var sticker: UIImage? {
         didSet { RealmController.shared.write(self.getRealmModel()) }
@@ -26,8 +26,7 @@ class ReadTextController: NSObject {
         return  CardModel_Realm(bookName: self.bookInfo?.title,
                                 authorName: self.bookInfo?.authorsStr,
                                 lineValue: self.readText,
-                                backColorRawValue: self.colorType.rawValue,
-                                ratioTypeRawValue: self.sizeType.rawValue,
-                                imageData: self.sticker?.pngData())
+                                backImageName: sizeType.imgName + colorType.name,
+                                ratioTypeRawValue: self.sizeType.rawValue)
     }
 }

@@ -37,7 +37,7 @@ func dismissViewControllerUntil(vcID: String?) {
           getId(top.description) != vcID
     else { return }
 
-    top.dismiss(animated: true) {
+    top.dismiss(animated: false) {
         DispatchQueue.main.async {
             dismissViewControllerUntil(vcID: vcID)
         }

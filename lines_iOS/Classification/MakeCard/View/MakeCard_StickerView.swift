@@ -8,18 +8,19 @@
 import UIKit
 
 class MakeCard_StickerView: UIView {
-    internal weak var stickerFrame: UIImageView!
+    internal weak var backImageView: UIImageView!
     internal weak var contentsLabel: UILabel!
-    internal weak var illustImageView: UIImageView!
     internal weak var bookInfoLabel: UILabel!
-    internal var frameColor: Colors? {
-        didSet { self.backgroundColor = frameColor?.value ?? Colors.clear.value }
-    }
+    
     internal var imgBackName: String = ""
-    internal var imgName: String = ""
-    internal var imgIllustName: String = ""
     internal var bookInfoStr: String? {
         didSet { bookInfoLabel.setTitle(bookInfoStr) }
+    }
+    internal var color: MakeCard_StickerBackColorType! {
+        didSet {
+            backImageView.image = UIImage(named: imgBackName)
+            self.backgroundColor = color.color
+        }
     }
     init(_ text: String?) {
         super.init(frame: .zero)
@@ -28,49 +29,27 @@ class MakeCard_StickerView: UIView {
         setText(text)
         setConstraints()
     }
+    
     required init?(coder: NSCoder) { fatalError() }
     private func setStickerFrame() {
-        let logo = UIImageView(image: UIImage(named: "LinesSmallLogo"))
-        self.addSubviews(logo)
+        let back = UIImageView()
+        self.addSubviews(back)
         NSLayoutConstraint.activate([
-            logo.topAnchor.constraint(equalTo: self.topAnchor, constant: 8.31),
-            logo.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            logo.widthAnchor.constraint(equalToConstant: 31),
-            logo.heightAnchor.constraint(equalToConstant: 18)
-        ])
-        logo.contentMode = .scaleAspectFit
-        
-        let back = UIImageView(image: UIImage(named: imgBackName))
-        let imgView = UIImageView(image: UIImage(named: imgName))
-        self.addSubviews(back, imgView)
-        NSLayoutConstraint.activate([
-            back.topAnchor.constraint(equalTo: self.topAnchor,
-                                      constant: 47.92),
+            back.topAnchor.constraint(equalTo: self.topAnchor),
+            back.heightAnchor.constraint(equalToConstant: 345),
             back.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            back.widthAnchor.constraint(equalToConstant: 324.24),
-            back.heightAnchor.constraint(equalToConstant: 274.72),
-            
-            imgView.topAnchor.constraint(equalTo: self.topAnchor,
-                                         constant: 35.14),
-            imgView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imgView.widthAnchor.constraint(equalToConstant: 305.07),
-            imgView.heightAnchor.constraint(equalToConstant: 293.89),
+            back.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
         back.contentMode = .scaleAspectFit
-        imgView.contentMode = .scaleAspectFit
-        self.stickerFrame = imgView
-        
-        let illustImgView = UIImageView(image: UIImage(named: self.imgIllustName))
-        imgView.addSubviews(illustImgView)
-        self.illustImageView = illustImgView
-        
+        self.backImageView = back
+
         let bookInfo = UILabel()
-        imgView.addSubviews(bookInfo)
+        back.addSubviews(bookInfo)
         NSLayoutConstraint.activate([
             bookInfo.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             bookInfo.widthAnchor.constraint(equalToConstant: 110),
             bookInfo.heightAnchor.constraint(greaterThanOrEqualToConstant: 13),
-            bookInfo.bottomAnchor.constraint(equalTo: imgView.bottomAnchor, constant: -31),
+            bookInfo.bottomAnchor.constraint(equalTo: back.bottomAnchor, constant: -54.31),
         ])
         bookInfo.setTitle(font: Fonts.get(size: 11, type: .light),
                           txtColor: .gray222222)
@@ -79,7 +58,7 @@ class MakeCard_StickerView: UIView {
     
     private func setText(_ text: String?) {
         let label = UILabel()
-        stickerFrame.addSubviews(label)
+        backImageView.addSubviews(label)
         label.numberOfLines = 0
         label.setTitle(text,
                        font: Fonts.get(size: 16,

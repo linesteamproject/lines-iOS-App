@@ -90,12 +90,12 @@ class MakeCard_DetailViewController: ScrollViewController {
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
                                                 constant: 15),
                 stickerView.centerXAnchor.constraint(equalTo: stickerBackView.centerXAnchor),
-                stickerView.widthAnchor.constraint(equalToConstant: 354),
-                stickerView.heightAnchor.constraint(equalToConstant: 354),
+                stickerView.widthAnchor.constraint(equalToConstant: 345),
+                stickerView.heightAnchor.constraint(equalToConstant: 345),
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
-            stickerView.backgroundColor = ReadTextController.shared.colorType.color
+            stickerView.color = .black
             self.stickerView = stickerView
         }
         
@@ -106,12 +106,12 @@ class MakeCard_DetailViewController: ScrollViewController {
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
                                                 constant: 15),
                 stickerView.centerXAnchor.constraint(equalTo: stickerBackView.centerXAnchor),
-                stickerView.widthAnchor.constraint(equalToConstant: 354 / 4 * 3),
-                stickerView.heightAnchor.constraint(equalToConstant: 354),
+                stickerView.widthAnchor.constraint(equalToConstant: 345 / 4 * 3),
+                stickerView.heightAnchor.constraint(equalToConstant: 345),
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
-            stickerView.backgroundColor = ReadTextController.shared.colorType.color
+            stickerView.color = .black
             self.stickerView = stickerView
         }
     }
@@ -135,7 +135,7 @@ class MakeCard_DetailViewController: ScrollViewController {
         }
         stickerSetView.colorBtnClosure = { [weak self] type in
             guard let type = type else { return }
-            self?.stickerView.backgroundColor = type.color
+            self?.stickerView.color = type
             ReadTextController.shared.colorType = type
         }
     }

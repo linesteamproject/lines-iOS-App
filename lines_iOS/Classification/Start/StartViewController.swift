@@ -9,67 +9,15 @@ import Foundation
 import UIKit
 
 class StartViewController: ViewController {
-    private var crntPage: Int = 0
-    private weak var thirdImageView: UIImageView!
-    private weak var startButton: UIButton!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.view.backgroundColor = Colors.black.value
-        setScrollView()
-    }
-    
-    private func setScrollView() {
-        let viewWidth = UIScreen.main.bounds.width
-        let scrollView = UIScrollView()
-        self.view.addSubviews(scrollView)
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            scrollView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height)
-        ])
-        scrollView.isPagingEnabled = true
-        scrollView.delegate = self
-        
-        let scrollContentsView = UIView()
-        scrollView.addSubviews(scrollContentsView)
-        NSLayoutConstraint.activate([
-            scrollContentsView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            scrollContentsView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-            scrollContentsView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
-            scrollContentsView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            scrollContentsView.widthAnchor.constraint(equalToConstant: viewWidth * 3)
-        ])
-        
-        (1 ... 3).forEach {
-            let imgView = UIImageView(image: UIImage(named: String(format: "OnBoarding%d", $0)))
-            scrollContentsView.addSubviews(imgView)
-            NSLayoutConstraint.activate([
-                imgView.topAnchor.constraint(equalTo: scrollContentsView.topAnchor),
-                imgView.leftAnchor.constraint(equalTo: scrollContentsView.leftAnchor,
-                                             constant: viewWidth * CGFloat($0 - 1)),
-                imgView.widthAnchor.constraint(equalToConstant: viewWidth),
-                imgView.bottomAnchor.constraint(equalTo: scrollContentsView.bottomAnchor),
-            ])
-            imgView.isUserInteractionEnabled = true
-            guard $0 == 3 else { return }
-            
-            imgView.rightAnchor.constraint(equalTo: scrollContentsView.rightAnchor).isActive = true
-            self.thirdImageView = imgView
-        }
-    }
-    
-    private func setStartButton() {
-        guard startButton == nil else { return }
-        
+    private weak var thirdImageBackView: UIView!
+    private weak var indicator: UIPageControl!
+    private lazy var startButton: UIButton = {
         let btn = UIButton()
-        self.thirdImageView.addSubviews(btn)
+        self.view.addSubviews(btn)
         NSLayoutConstraint.activate([
-            btn.bottomAnchor.constraint(equalTo: self.thirdImageView.bottomAnchor, constant: -171),
-            btn.leftAnchor.constraint(equalTo: self.thirdImageView.leftAnchor, constant: 20),
-            btn.rightAnchor.constraint(equalTo: self.thirdImageView.rightAnchor, constant: -20),
+            btn.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20 + -37),
+            btn.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
+            btn.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
             btn.heightAnchor.constraint(equalToConstant: 50)
         ])
         btn.setTitle("시작하기",
@@ -83,21 +31,111 @@ class StartViewController: ViewController {
             self?.present(loginVC, animated: true)
         }, for: .touchUpInside)
         btn.alpha = 0
-        self.startButton = btn
+        return btn
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = Colors.black.value
+        setScrollView()
+    }
+    
+    private func setScrollView() {
+        let backgroundView = UIImageView(image: UIImage(named: "OnboardingBackground"))
+        self.view.addSubviews(backgroundView)
+        NSLayoutConstraint.activate([
+            backgroundView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            backgroundView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            backgroundView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
+        
+        
+        let viewWidth = UIScreen.main.bounds.width
+        let scrollView = UIScrollView()
+        self.view.addSubviews(scrollView)
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            scrollView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height)
+        ])
+        scrollView.backgroundColor = .clear
+        scrollView.isPagingEnabled = true
+        scrollView.delegate = self
+        
+        let scrollContentsView = UIView()
+        scrollView.addSubviews(scrollContentsView)
+        NSLayoutConstraint.activate([
+            scrollContentsView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            scrollContentsView.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor),
+            scrollContentsView.rightAnchor.constraint(equalTo: scrollView.contentLayoutGuide.rightAnchor),
+            scrollContentsView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            scrollContentsView.widthAnchor.constraint(equalToConstant: viewWidth * 3)
+        ])
+        scrollContentsView.backgroundColor = .clear
+        
+        (1 ... 3).forEach {
+            let imgBackView = UIView()
+            scrollContentsView.addSubviews(imgBackView)
+            NSLayoutConstraint.activate([
+                imgBackView.topAnchor.constraint(equalTo: scrollContentsView.topAnchor),
+                imgBackView.leftAnchor.constraint(equalTo: scrollContentsView.leftAnchor,
+                                             constant: viewWidth * CGFloat($0 - 1)),
+                imgBackView.widthAnchor.constraint(equalToConstant: viewWidth),
+                imgBackView.bottomAnchor.constraint(equalTo: scrollContentsView.bottomAnchor),
+            ])
+            imgBackView.backgroundColor = .clear
+            imgBackView.isUserInteractionEnabled = true
+            
+            let contentsImgView = UIImageView(image: UIImage(named: String(format: "OnBoarding%d", $0)))
+            imgBackView.addSubviews(contentsImgView)
+            NSLayoutConstraint.activate([
+                contentsImgView.leftAnchor.constraint(equalTo: imgBackView.leftAnchor,
+                                                      constant: 74),
+                contentsImgView.rightAnchor.constraint(equalTo: imgBackView.rightAnchor,
+                                                       constant: -74),
+                contentsImgView.topAnchor.constraint(equalTo: imgBackView.topAnchor,
+                                                    constant: 193 + 37),
+            ])
+            contentsImgView.contentMode = .scaleAspectFit
+            contentsImgView.isUserInteractionEnabled = true
+            guard $0 == 3 else { return }
+            
+            imgBackView.rightAnchor.constraint(equalTo: scrollContentsView.rightAnchor).isActive = true
+            self.thirdImageBackView = imgBackView
+        }
+        
+        let indicator = UIPageControl()
+        self.view.addSubviews(indicator)
+        NSLayoutConstraint.activate([
+            indicator.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                              constant: -110),
+            indicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        ])
+        indicator.numberOfPages = 3
+        indicator.currentPage = 0
+        indicator.currentPageIndicatorTintColor = Colors.beige.value
+        indicator.pageIndicatorTintColor = Colors.white.value.withAlphaComponent(0.3)
+        self.indicator = indicator
     }
 }
 
 extension StartViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let value = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
-        self.crntPage = value
-        if crntPage == 2 {
+        indicator.currentPage = value
+        if indicator.currentPage == 2 {
             DispatchQueue.main.async {
-                self.setStartButton()
+                self.thirdImageBackView.bringSubviewToFront(self.startButton)
                 UIView.animate(withDuration: 1.0) {
                     self.startButton.alpha = 1.0
                 }
             }
+        } else {
+            self.startButton.alpha = 0.0
         }
     }
 }
