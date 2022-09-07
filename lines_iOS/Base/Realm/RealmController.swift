@@ -25,7 +25,7 @@ class RealmController {
             let models = Array(self.realm.objects(CardModel_Realm.self).compactMap {
                 return $0.getCardModel()
             })
-            done?(models)
+            done?(models.reversed())
         }
     }
 }

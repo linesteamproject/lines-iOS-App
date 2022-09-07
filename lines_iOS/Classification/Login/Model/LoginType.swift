@@ -6,7 +6,7 @@
 //
 import UIKit
 
-enum LoginButtonType: CaseIterable {
+enum LoginType: CaseIterable {
     case kakao
     case naver
     case apple

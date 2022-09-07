@@ -9,7 +9,7 @@ import UIKit
 
 class LoginButton: UIButton {
     private weak var loginTitleLabel: UILabel!
-    internal var type: LoginButtonType? {
+    internal var type: LoginType? {
         didSet {
             self.setImage(type?.img, for: .normal)
 //            self.loginTitleLabel.setTitle(type?.title)

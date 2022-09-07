@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class LoginButtonView: UIView {
-    internal var btnClosure: ((LoginButtonType) -> Void)?
+    internal var btnClosure: ((LoginType) -> Void)?
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -20,7 +20,7 @@ class LoginButtonView: UIView {
     private func setUI() {
         var nxTopAnchhor: NSLayoutYAxisAnchor = self.topAnchor
         var nxTopConstant: CGFloat = 0
-        LoginButtonType.allCases.forEach { type in
+        LoginType.allCases.forEach { type in
             let loginBtn = LoginButton()
             self.addSubviews(loginBtn)
             NSLayoutConstraint.activate([

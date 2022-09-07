@@ -56,6 +56,8 @@
 		BA6A840128BCF06F0040512E /* MakeCard_ShareButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */; };
 		BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */; };
 		BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */; };
+		BA9DA30928C8B733004CBBFB /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30828C8B733004CBBFB /* UserInfo.swift */; };
+		BA9DA30B28C8BC7C004CBBFB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30A28C8BC7C004CBBFB /* UserData.swift */; };
 		BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFD2894C1DA0078EA83 /* Colors.swift */; };
 		BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFF2894C1E00078EA83 /* Fonts.swift */; };
 		BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */; };
@@ -87,7 +89,7 @@
 		BAFF71DC28C0B88600AA5E78 /* CardModel_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71DB28C0B88600AA5E78 /* CardModel_Realm.swift */; };
 		BAFF71DF28C0CDCE00AA5E78 /* Main_ListSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71DE28C0CDCE00AA5E78 /* Main_ListSubView.swift */; };
 		BAFF71E228C0F27000AA5E78 /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71E128C0F27000AA5E78 /* LoginButtonView.swift */; };
-		BAFF71E528C0F3AA00AA5E78 /* LoginButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71E428C0F3AA00AA5E78 /* LoginButtonType.swift */; };
+		BAFF71E528C0F3AA00AA5E78 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71E428C0F3AA00AA5E78 /* LoginType.swift */; };
 		BAFF71E728C0F3BE00AA5E78 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71E628C0F3BE00AA5E78 /* LoginButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +145,8 @@
 		BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_ShareButtonsView.swift; sourceTree = "<group>"; };
 		BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginController.swift; sourceTree = "<group>"; };
 		BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
+		BA9DA30828C8B733004CBBFB /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		BA9DA30A28C8BC7C004CBBFB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BAA07BFD2894C1DA0078EA83 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BAA07BFF2894C1E00078EA83 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UI.swift"; sourceTree = "<group>"; };
@@ -177,7 +181,7 @@
 		BAFF71DB28C0B88600AA5E78 /* CardModel_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel_Realm.swift; sourceTree = "<group>"; };
 		BAFF71DE28C0CDCE00AA5E78 /* Main_ListSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_ListSubView.swift; sourceTree = "<group>"; };
 		BAFF71E128C0F27000AA5E78 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
-		BAFF71E428C0F3AA00AA5E78 /* LoginButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonType.swift; sourceTree = "<group>"; };
+		BAFF71E428C0F3AA00AA5E78 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
 		BAFF71E628C0F3BE00AA5E78 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -364,6 +368,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BA9DA30728C8B728004CBBFB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BA9DA30828C8B733004CBBFB /* UserInfo.swift */,
+				BA9DA30A28C8BC7C004CBBFB /* UserData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BAA07BFC2894BFC90078EA83 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +427,7 @@
 		BAA07C0E2894CF0D0078EA83 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				BA9DA30728C8B728004CBBFB /* Model */,
 				BAFF71D728C0B83B00AA5E78 /* Realm */,
 				BA6A83A828A71DBF0040512E /* View */,
 				BAE5C9C32894B08C00659F74 /* LaunchScreen.storyboard */,
@@ -536,7 +550,7 @@
 		BAFF71E328C0F3A100AA5E78 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BAFF71E428C0F3AA00AA5E78 /* LoginButtonType.swift */,
+				BAFF71E428C0F3AA00AA5E78 /* LoginType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -708,7 +722,7 @@
 				BA6A83D728A7E56B0040512E /* ImageAlertView.swift in Sources */,
 				BA6A83E328B1D3440040512E /* MakeCard_StickerThreeToFourView.swift in Sources */,
 				BA6A83EA28B50EFD0040512E /* MakeCard_StickerBackColorType.swift in Sources */,
-				BAFF71E528C0F3AA00AA5E78 /* LoginButtonType.swift in Sources */,
+				BAFF71E528C0F3AA00AA5E78 /* LoginType.swift in Sources */,
 				BA6A83CF28A7D32A0040512E /* MakeCard_NoticeView.swift in Sources */,
 				BA6A83F928BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift in Sources */,
 				BA6A83FD28BCEFC50040512E /* MakeCard_CompleteViewController.swift in Sources */,
@@ -717,12 +731,14 @@
 				BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */,
 				BA6A83E528B1D36E0040512E /* MakeCard_StickerView.swift in Sources */,
 				BAA07C32289528A10078EA83 /* MakeCard_SearchedListView.swift in Sources */,
+				BA9DA30B28C8BC7C004CBBFB /* UserData.swift in Sources */,
 				BA6A83B028A728A80040512E /* Main_ListView.swift in Sources */,
 				BA6A8385289F7D3B0040512E /* ScrollViewController.swift in Sources */,
 				BA44ECA528BCF65A0040C26C /* MakeCard_ShareButtonsType.swift in Sources */,
 				BAA07C2E289527660078EA83 /* MakeCard_SearchBookViewController.swift in Sources */,
 				BAFF71DC28C0B88600AA5E78 /* CardModel_Realm.swift in Sources */,
 				BAFF71E228C0F27000AA5E78 /* LoginButtonView.swift in Sources */,
+				BA9DA30928C8B733004CBBFB /* UserInfo.swift in Sources */,
 				BA6A83CA28A7C2D00040512E /* MakeCardViewController.swift in Sources */,
 				BA6A83D328A7DECA0040512E /* MarkCard_BottomView.swift in Sources */,
 				BAA07C2C289517F50078EA83 /* MakeCard_KakaoBookSearcher.swift in Sources */,
@@ -908,7 +924,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;
@@ -941,7 +957,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;

@@ -17,15 +17,13 @@ class Fonts {
     class func get(size: CGFloat, type: FontType) -> UIFont {
         switch type {
         case .light:
-            return UIFont(name: "AppleSDGothicNeoL", size: size) ?? .systemFont(ofSize: size)
+            return UIFont(name: "AppleSDGothicNeoL", size: size)!
         case .medium:
-            return UIFont(name: "AppleSDGothicNeoM", size: size) ?? .systemFont(ofSize: size,
-                                                                                weight: .medium)
+            return UIFont(name: "AppleSDGothicNeoM", size: size)!
         case.regular:
-            return UIFont(name: "AppleSDGothicNeoM", size: size) ?? .systemFont(ofSize: size,
-                                                                                weight: .regular)
+            return UIFont(name: "AppleSDGothicNeoM", size: size)!
         case .bold:
-            return UIFont(name: "AppleSDGothicNeoB", size: size) ?? .boldSystemFont(ofSize: size)
+            return UIFont(name: "AppleSDGothicNeoB", size: size)!
         }
     }
 }

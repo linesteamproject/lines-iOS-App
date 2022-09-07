@@ -50,5 +50,6 @@ class MakeCard_NoticeView: UIView {
         label.setTitle("인식한 문장을 확인해 주세요.\n줄바꿈, 오타 등을 직접 수정해 주세요.",
                        font: Fonts.get(size: 16, type: .regular),
                        txtColor: .white)
+        label.sizeToFit()
     }
 }

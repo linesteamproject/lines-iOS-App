@@ -26,6 +26,8 @@ class StartViewController: ViewController {
                      backColor: .beige)
         btn.layer.cornerRadius = 10
         btn.addAction(UIAction {[ weak self ] _ in
+            FirstLaunchChecker.isOnBoardingShown = true
+            
             let loginVC = LoginViewController()
             loginVC.modalPresentationStyle = .fullScreen
             self?.present(loginVC, animated: true)
@@ -36,6 +38,30 @@ class StartViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 로그인을 했는가?
+        var isLogin = false
+        guard !isLogin else {
+            let vc = MainViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+            return
+        }
+        
+        // 데이터가 있는가?
+        guard !FirstLaunchChecker.isDataSaved else {
+            let vc = MainViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+            return
+        }
+        
+        // 온보딩을 봤는가?
+        guard !FirstLaunchChecker.isOnBoardingShown else {
+            let vc = LoginViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+            return
+        }
         
         self.view.backgroundColor = Colors.black.value
         setScrollView()

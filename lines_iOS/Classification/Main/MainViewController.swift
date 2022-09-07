@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-let realm = RealmController.shared
 class MainViewController: ScrollViewController {
     private weak var headerView: Main_HeaderView!
     private weak var back: UIView!
@@ -36,6 +35,7 @@ class MainViewController: ScrollViewController {
             RealmController.shared.getBookCards { cards in
                 DispatchQueue.main.async {
                     self.mainListView?.datas = cards
+                    FirstLaunchChecker.isDataSaved = cards.count > 0 
                 }
             }
         }
@@ -237,6 +237,11 @@ extension MainViewController: ButtonDelegate {
                 self?.present(vc, animated: true)
             }
         case .bottom:
+            let vc = MakeCardViewController()
+            vc.modalPresentationStyle = .fullScreen
+            DispatchQueue.main.async {
+                self.present(vc, animated: false)
+            }
             break
         }
     }

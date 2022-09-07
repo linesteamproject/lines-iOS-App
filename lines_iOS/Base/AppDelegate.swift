@@ -24,9 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         KakaoSDK.initSDK(appKey: "794c3c6e502b330cf0a9303a414d0da9")
         activeNaverLogin()
+        
+        let realm = RealmController.shared
         return true
 
     }
+    
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -45,15 +48,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return false
     }
+    
     func activeNaverLogin() {
         let instance = NaverThirdPartyLoginConnection.getSharedInstance()
         
         // 네이버 앱으로 인증하는 방식 활성화
         instance?.isNaverAppOauthEnable = true
-        
         // SafariViewController에서 인증하는 방식 활성화
         instance?.isInAppOauthEnable = true
-        
         // 인증 화면을 아이폰의 세로모드에서만 적용
         instance?.isOnlyPortraitSupportedInIphone()
         

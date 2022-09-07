@@ -83,6 +83,8 @@ class LoginViewController: ViewController {
     }
     
     private func goToMainVC() {
+        // 로그인
+        
         let vc = MainViewController()
         vc.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async { [weak self] in
