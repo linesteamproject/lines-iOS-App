@@ -58,6 +58,9 @@
 		BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */; };
 		BA9DA30928C8B733004CBBFB /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30828C8B733004CBBFB /* UserInfo.swift */; };
 		BA9DA30B28C8BC7C004CBBFB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30A28C8BC7C004CBBFB /* UserData.swift */; };
+		BA9DA30D28CAF7EE004CBBFB /* UserAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30C28CAF7EE004CBBFB /* UserAgreementViewController.swift */; };
+		BA9DA30F28CAF88A004CBBFB /* UserAgreement_TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30E28CAF88A004CBBFB /* UserAgreement_TopView.swift */; };
+		BA9DA31128CAFCB3004CBBFB /* UserAgreement_CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA31028CAFCB3004CBBFB /* UserAgreement_CellView.swift */; };
 		BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFD2894C1DA0078EA83 /* Colors.swift */; };
 		BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFF2894C1E00078EA83 /* Fonts.swift */; };
 		BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */; };
@@ -147,6 +150,9 @@
 		BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
 		BA9DA30828C8B733004CBBFB /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		BA9DA30A28C8BC7C004CBBFB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		BA9DA30C28CAF7EE004CBBFB /* UserAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementViewController.swift; sourceTree = "<group>"; };
+		BA9DA30E28CAF88A004CBBFB /* UserAgreement_TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreement_TopView.swift; sourceTree = "<group>"; };
+		BA9DA31028CAFCB3004CBBFB /* UserAgreement_CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreement_CellView.swift; sourceTree = "<group>"; };
 		BAA07BFD2894C1DA0078EA83 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BAA07BFF2894C1E00078EA83 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UI.swift"; sourceTree = "<group>"; };
@@ -212,6 +218,7 @@
 				BAFF71E028C0F26600AA5E78 /* View */,
 				BA6A8373289CEDE10040512E /* Controller */,
 				BA6A8371289CEDB50040512E /* LoginViewController.swift */,
+				BA9DA30C28CAF7EE004CBBFB /* UserAgreementViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -543,6 +550,8 @@
 			children = (
 				BAFF71E628C0F3BE00AA5E78 /* LoginButton.swift */,
 				BAFF71E128C0F27000AA5E78 /* LoginButtonView.swift */,
+				BA9DA30E28CAF88A004CBBFB /* UserAgreement_TopView.swift */,
+				BA9DA31028CAFCB3004CBBFB /* UserAgreement_CellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -709,6 +718,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA9DA31128CAFCB3004CBBFB /* UserAgreement_CellView.swift in Sources */,
 				BA6A83B928A730670040512E /* ImageListCellView.swift in Sources */,
 				BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */,
 				BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */,
@@ -756,6 +766,7 @@
 				BAA07C142894E3780078EA83 /* ReadTextController.swift in Sources */,
 				BA6A83DF28B1D3000040512E /* MakeCard_StickerSetView.swift in Sources */,
 				BAA07C1E289509940078EA83 /* NWMonitor.swift in Sources */,
+				BA9DA30D28CAF7EE004CBBFB /* UserAgreementViewController.swift in Sources */,
 				BAA07C0B2894CED80078EA83 /* CameraViewController.swift in Sources */,
 				BA6A83EE28B50F300040512E /* MakeCard_StickerBackColorSetView.swift in Sources */,
 				BA6A83D928A863AE0040512E /* MainCard_ContentNoticeView.swift in Sources */,
@@ -779,6 +790,7 @@
 				BA6A83DD28B1C78B0040512E /* TwoButtonAlertView.swift in Sources */,
 				BA6A83CD28A7C5FA0040512E /* MakeCard_TopView.swift in Sources */,
 				BAA07C102894D3430078EA83 /* MainViewController.swift in Sources */,
+				BA9DA30F28CAF88A004CBBFB /* UserAgreement_TopView.swift in Sources */,
 				BAFF71E728C0F3BE00AA5E78 /* LoginButton.swift in Sources */,
 				BAA07C2528950B930078EA83 /* ResponsableResult.swift in Sources */,
 				BA6A83F728BADA880040512E /* MakeCard_SearchButtonType.swift in Sources */,

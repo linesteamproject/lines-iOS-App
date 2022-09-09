@@ -42,7 +42,7 @@ class LoginViewController: ViewController {
                     self?.showOneButtonAlertView(title: "로그인 성공", subTitle: subTitle,
                                                  height: 240,
                                                  btnTitle: "확인", btnColor: .beige, done: {
-                        self?.goToMainVC()
+                        self?.goToAgreementVC()
                     })
                 }
             case .naver:
@@ -61,7 +61,7 @@ class LoginViewController: ViewController {
                     self?.showOneButtonAlertView(title: "로그인 성공", subTitle: subTitle,
                                                  height: 240,
                                                  btnTitle: "확인", btnColor: .beige, done: {
-                        self?.goToMainVC()
+                        self?.goToAgreementVC()
                     })
                 }
                 return
@@ -76,16 +76,16 @@ class LoginViewController: ViewController {
                 authorizationController.performRequests()
                 return
             case .skip:
-                self?.goToMainVC()
+                self?.goToAgreementVC()
                 return
             }
         }
     }
     
-    private func goToMainVC() {
+    private func goToAgreementVC() {
         // 로그인
         
-        let vc = MainViewController()
+        let vc = UserAgreementViewController()
         vc.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async { [weak self] in
             self?.present(vc, animated: true)
@@ -117,7 +117,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             self.showOneButtonAlertView(title: "로그인 성공", subTitle: userInfoStr,
                                         height: 250, btnTitle: "확인", btnColor: .beige,
                                done: {
-                self.goToMainVC()
+                self.goToAgreementVC()
             })
         default:
             break

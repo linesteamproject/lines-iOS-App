@@ -25,7 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KakaoSDK.initSDK(appKey: "794c3c6e502b330cf0a9303a414d0da9")
         activeNaverLogin()
         
-        let realm = RealmController.shared
+        let _ = RealmController.shared
+        
+        for fontFamily in UIFont.familyNames {
+            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
+                print(fontName)
+            }
+        }
         return true
 
     }
