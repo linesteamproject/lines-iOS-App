@@ -8,10 +8,8 @@
 import UIKit
 
 enum UserAgreementType: Int, CaseIterable {
-    case service = 0
-    case privacyInfo
-    case age
-    case marketing
+    case privacyInfo = 0
+    case service = 1
     
     var title: String {
         switch self {
@@ -19,18 +17,12 @@ enum UserAgreementType: Int, CaseIterable {
             return "서비스 이용약관 동의"
         case .privacyInfo:
             return "개인정보 수집 및 이용 동의"
-        case .age:
-            return "만 14세 이상 확인"
-        case .marketing:
-            return "마케팅 이메일 수신 동의(선택)"
         }
     }
     var subTitle: String {
         switch self {
-        case .service, .privacyInfo, .age:
+        case .service, .privacyInfo:
             return "(필수)"
-        case .marketing:
-            return ""
         }
     }
     var rightContent: String? {
@@ -40,23 +32,35 @@ enum UserAgreementType: Int, CaseIterable {
         default: return nil
         }
     }
+    var urlStr: String {
+        switch self {
+        case .privacyInfo:
+            return "https://fuzzy-moat-e98.notion.site/ffee06c6f31c49dd91e7c85981e60cc3"
+        case .service:
+            return "https://fuzzy-moat-e98.notion.site/370091f86242460fbfc103b574e6407c"
+        }
+    }
 }
-class UserAgreementViewController: ScrollViewController {
-    private weak var cellTitleView: UserAgreement_CellView!
+class UserAgreementViewController: ViewController {
     private var cellSubViews = [UserAgreement_CellView]()
-    private var checkedArr = [false, false, false, false] {
+    private var checkedArr = [false, false] {
         didSet {
             let isEnabled = checkedArr[UserAgreementType.service.rawValue]
                             && checkedArr[UserAgreementType.privacyInfo.rawValue]
-                            && checkedArr[UserAgreementType.age.rawValue]
-                
-            cellTitleView.isSelected = !checkedArr.contains(false)
             bottomButton.isEnabled = isEnabled
             bottomButton.backgroundColor = isEnabled ? Colors.beige.value : Colors.beigeInactive.value
         }
     }
     private weak var bottomButton: OkButton!
-    override func setTopView() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setTopView()
+        setListView()
+        setBottomView()
+    }
+    
+    private func setTopView() {
         let topView = UserAgreement_TopView()
         let line = UIView()
         self.view.addSubviews(topView, line)
@@ -64,7 +68,7 @@ class UserAgreementViewController: ScrollViewController {
             topView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 35),
             topView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             topView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            topView.heightAnchor.constraint(equalToConstant: topViewHeight),
+            topView.heightAnchor.constraint(equalToConstant: 56),
             
             line.bottomAnchor.constraint(equalTo: topView.bottomAnchor),
             line.leftAnchor.constraint(equalTo: topView.leftAnchor),
@@ -75,58 +79,11 @@ class UserAgreementViewController: ScrollViewController {
         topView.rightButtonClosure = { [weak self] in
             self?.dismiss(animated: true)
         }
-        self.topView = topView
-    }
-    
-    override func setAdditionalUI() {
-        setListView()
-        setBottomView()
     }
     
     private func setListView() {
-        let back = UIView()
-        self.contentView.addSubviews(back)
-        NSLayoutConstraint.activate([
-            back.topAnchor.constraint(equalTo: self.contentView.topAnchor,
-                                     constant: 20),
-            back.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,
-                                      constant: 20),
-            back.rightAnchor.constraint(equalTo: self.contentView.rightAnchor,
-                                       constant: -20),
-            back.heightAnchor.constraint(greaterThanOrEqualToConstant: 301),
-            back.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
-                                        constant: -263)
-        ])
-        
-        let cellTitleView = UserAgreement_CellView(title: "전체동의",
-                                                   rightClosure: nil,
-                                                   checkClosure: { [weak self] isChecked in
-            self?.cellSubViews.enumerated().forEach { idx, view in
-                view.isSelected = isChecked
-                self?.checkedArr[idx] = isChecked
-            }
-        })
-        back.addSubviews(cellTitleView)
-        NSLayoutConstraint.activate([
-            cellTitleView.topAnchor.constraint(equalTo: back.topAnchor),
-            cellTitleView.leftAnchor.constraint(equalTo: back.leftAnchor),
-            cellTitleView.rightAnchor.constraint(equalTo: back.rightAnchor),
-            cellTitleView.heightAnchor.constraint(equalToConstant: 60),
-        ])
-        cellTitleView.isSelected = false
-        self.cellTitleView = cellTitleView
-        
-        let line = UIView()
-        back.addSubviews(line)
-        NSLayoutConstraint.activate([
-            line.topAnchor.constraint(equalTo: cellTitleView.bottomAnchor),
-            line.leftAnchor.constraint(equalTo: back.leftAnchor),
-            line.rightAnchor.constraint(equalTo: back.rightAnchor),
-            line.heightAnchor.constraint(equalToConstant: 1)
-        ])
-        line.backgroundColor = Colors.white.value.withAlphaComponent(0.2)
-        
-        var nxtTopAnchor: NSLayoutYAxisAnchor = line.bottomAnchor
+        var nxtTopAnchor: NSLayoutYAxisAnchor = self.view.topAnchor
+        var topConst: CGFloat = 20 + 56 + 37
         UserAgreementType.allCases.forEach { type in
             let cellView: UserAgreement_CellView
             switch type {
@@ -148,36 +105,25 @@ class UserAgreementViewController: ScrollViewController {
                                                   checkClosure: { [weak self] isChecked in
                     self?.checkedArr[UserAgreementType.privacyInfo.rawValue] = isChecked
                 })
-            case .age:
-                cellView = UserAgreement_CellView(title: type.title,
-                                                  subTitle: type.subTitle,
-                                                  rightClosure: nil,
-                                                  checkClosure: { [weak self] isChecked in
-                    self?.checkedArr[UserAgreementType.age.rawValue] = isChecked
-                })
-            case .marketing:
-                cellView = UserAgreement_CellView(title: type.title,
-                                                  subTitle: type.subTitle,
-                                                  rightClosure: nil,
-                                                  checkClosure: { [weak self] isChecked in
-                    self?.checkedArr[UserAgreementType.marketing.rawValue] = isChecked
-                })
             }
-            back.addSubviews(cellView)
+            self.view.addSubviews(cellView)
             NSLayoutConstraint.activate([
-                cellView.topAnchor.constraint(equalTo: nxtTopAnchor),
-                cellView.leftAnchor.constraint(equalTo: back.leftAnchor),
-                cellView.rightAnchor.constraint(equalTo: back.rightAnchor),
+                cellView.topAnchor.constraint(equalTo: nxtTopAnchor, constant: topConst),
+                cellView.leftAnchor.constraint(equalTo: self.view.leftAnchor,
+                                              constant: 20),
+                cellView.rightAnchor.constraint(equalTo: self.view.rightAnchor,
+                                               constant: -20),
                 cellView.heightAnchor.constraint(equalToConstant: 60)
             ])
             cellSubViews.append(cellView)
             nxtTopAnchor = cellView.bottomAnchor
+            topConst = 0
         }
     }
     
     private func goToWebVC(_ type: UserAgreementType) {
-        let webVc = UIViewController()
-//            webVc = type
+        let webVc = UserAgreementWebViewController()
+        webVc.urlStr = type.urlStr
         DispatchQueue.main.async {
             self.present(webVc, animated: true)
         }

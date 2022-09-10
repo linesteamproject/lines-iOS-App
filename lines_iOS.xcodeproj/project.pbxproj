@@ -61,6 +61,7 @@
 		BA9DA30D28CAF7EE004CBBFB /* UserAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30C28CAF7EE004CBBFB /* UserAgreementViewController.swift */; };
 		BA9DA30F28CAF88A004CBBFB /* UserAgreement_TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30E28CAF88A004CBBFB /* UserAgreement_TopView.swift */; };
 		BA9DA31128CAFCB3004CBBFB /* UserAgreement_CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA31028CAFCB3004CBBFB /* UserAgreement_CellView.swift */; };
+		BA9DA31328CC1AC5004CBBFB /* UserAgreementWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA31228CC1AC5004CBBFB /* UserAgreementWebViewController.swift */; };
 		BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFD2894C1DA0078EA83 /* Colors.swift */; };
 		BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFF2894C1E00078EA83 /* Fonts.swift */; };
 		BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */; };
@@ -153,6 +154,7 @@
 		BA9DA30C28CAF7EE004CBBFB /* UserAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementViewController.swift; sourceTree = "<group>"; };
 		BA9DA30E28CAF88A004CBBFB /* UserAgreement_TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreement_TopView.swift; sourceTree = "<group>"; };
 		BA9DA31028CAFCB3004CBBFB /* UserAgreement_CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreement_CellView.swift; sourceTree = "<group>"; };
+		BA9DA31228CC1AC5004CBBFB /* UserAgreementWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementWebViewController.swift; sourceTree = "<group>"; };
 		BAA07BFD2894C1DA0078EA83 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BAA07BFF2894C1E00078EA83 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UI.swift"; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				BA6A8373289CEDE10040512E /* Controller */,
 				BA6A8371289CEDB50040512E /* LoginViewController.swift */,
 				BA9DA30C28CAF7EE004CBBFB /* UserAgreementViewController.swift */,
+				BA9DA31228CC1AC5004CBBFB /* UserAgreementWebViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				BA6A83F928BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift in Sources */,
 				BA6A83FD28BCEFC50040512E /* MakeCard_CompleteViewController.swift in Sources */,
 				BAA07C052894C2060078EA83 /* Extensions+Func.swift in Sources */,
+				BA9DA31328CC1AC5004CBBFB /* UserAgreementWebViewController.swift in Sources */,
 				BA6A83AE28A721530040512E /* Main_MenuButton.swift in Sources */,
 				BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */,
 				BA6A83E528B1D36E0040512E /* MakeCard_StickerView.swift in Sources */,
