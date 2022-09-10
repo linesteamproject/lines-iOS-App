@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
-
+import MessageUI
 class MainViewController: ScrollViewController {
     private weak var headerView: Main_HeaderView!
+    private weak var menuView: Main_MenuView!
     private weak var back: UIView!
     private weak var overlappedButtonsView: Main_OverlappedButtonsView!
     private weak var overlappedButtonsViewHeightConstraint: NSLayoutConstraint!
@@ -25,6 +26,7 @@ class MainViewController: ScrollViewController {
         setHeaderView()
         setContentView()
         setOverlappedButtonsView()
+        setMenuView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +74,7 @@ class MainViewController: ScrollViewController {
                 .constraint(equalTo: topView.centerYAnchor)
         ])
         mainMenuButton.closure = { [weak self] in
-            print("show menu")
+            self?.showMenuView()
         }
     }
     
@@ -134,6 +136,112 @@ class MainViewController: ScrollViewController {
         let alphaVal = crntVal < 0 ? 0 : (crntVal > 1 ? 1 : crntVal)
 
         self.topView.alpha = alphaVal
+    }
+    
+    private func setMenuView() {
+        let menuView = Main_MenuView()
+        self.view.addSubviews(menuView)
+        
+        let widthConst = UIScreen.main.bounds.width
+        NSLayoutConstraint.activate([
+            menuView.topAnchor.constraint(equalTo: self.topView.topAnchor),
+            menuView.widthAnchor.constraint(equalToConstant: widthConst),
+            menuView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            menuView.rightAnchor.constraint(equalTo: self.view.rightAnchor,
+                                            constant: -widthConst)
+        ])
+        menuView.cellBtnClosure = { [weak self] type in
+            switch type {
+            case .userAgreement:
+                let webVc = UserAgreementWebViewController()
+                webVc.urlStr = UserAgreementType.service.urlStr
+                DispatchQueue.main.async {
+                    self?.present(webVc, animated: true)
+                }
+            case .feedback:
+                self?.sendEmail()
+                break
+            case .logout:
+                break
+            }
+        }
+        menuView.closeClosure = { [weak self] in
+            self?.hiddenMenuView()
+        }
+        self.view.bringSubviewToFront(menuView)
+        self.menuView = menuView
+    }
+    
+    private func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let composeViewController = MFMailComposeViewController()
+            composeViewController.mailComposeDelegate = self
+            
+            let bodyString = """
+                                 이곳에 내용을 작성해주세요.
+                                 
+                                 
+                                 -------------------
+                                 
+                                 Device OS : \(UIDevice.current.systemVersion)
+                                 
+                                 -------------------
+                                 """
+            
+            composeViewController.setToRecipients(["gjansdyd@gmail.com"])
+            composeViewController.setSubject("<Lines> 문의 및 의견")
+            composeViewController.setMessageBody(bodyString, isHTML: false)
+            
+            self.present(composeViewController, animated: true, completion: nil)
+        } else {
+            print("메일 보내기 실패")
+            let sendMailErrorAlert = UIAlertController(title: "메일 전송 실패", message: "메일을 보내려면 'Mail' 앱이 필요합니다. App Store에서 해당 앱을 복원하거나 이메일 설정을 확인하고 다시 시도해주세요.", preferredStyle: .alert)
+            let goAppStoreAction = UIAlertAction(title: "App Store로 이동하기", style: .default) { _ in
+                // 앱스토어로 이동하기(Mail)
+                if let url = URL(string: "https://apps.apple.com/kr/app/mail/id1108187098"), UIApplication.shared.canOpenURL(url) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
+            let cancleAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+            
+            sendMailErrorAlert.addAction(goAppStoreAction)
+            sendMailErrorAlert.addAction(cancleAction)
+            self.present(sendMailErrorAlert, animated: true, completion: nil)
+        }
+    }
+    
+    private func showMenuView() {
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.2,
+                       options: .curveEaseInOut,
+                       animations: {
+            self.menuView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
+        }, completion: { _ in
+            self.menuView.backgroundColor = Colors.white.value.withAlphaComponent(0.1)
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    private func hiddenMenuView() {
+        self.menuView.backgroundColor = .clear
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.2,
+                       options: .curveEaseInOut,
+                       animations: {
+            self.menuView.transform = CGAffineTransform.identity
+        }, completion: { _ in
+            self.view.layoutIfNeeded()
+        })
+    }
+}
+
+extension MainViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

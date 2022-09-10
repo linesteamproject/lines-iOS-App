@@ -62,6 +62,8 @@
 		BA9DA30F28CAF88A004CBBFB /* UserAgreement_TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30E28CAF88A004CBBFB /* UserAgreement_TopView.swift */; };
 		BA9DA31128CAFCB3004CBBFB /* UserAgreement_CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA31028CAFCB3004CBBFB /* UserAgreement_CellView.swift */; };
 		BA9DA31328CC1AC5004CBBFB /* UserAgreementWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA31228CC1AC5004CBBFB /* UserAgreementWebViewController.swift */; };
+		BA9DA31528CC3682004CBBFB /* Main_MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA31428CC3682004CBBFB /* Main_MenuView.swift */; };
+		BA9DA31728CC46BD004CBBFB /* Main_SendMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA31628CC46BD004CBBFB /* Main_SendMailController.swift */; };
 		BAA07BFE2894C1DA0078EA83 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFD2894C1DA0078EA83 /* Colors.swift */; };
 		BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07BFF2894C1E00078EA83 /* Fonts.swift */; };
 		BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */; };
@@ -155,6 +157,8 @@
 		BA9DA30E28CAF88A004CBBFB /* UserAgreement_TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreement_TopView.swift; sourceTree = "<group>"; };
 		BA9DA31028CAFCB3004CBBFB /* UserAgreement_CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreement_CellView.swift; sourceTree = "<group>"; };
 		BA9DA31228CC1AC5004CBBFB /* UserAgreementWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementWebViewController.swift; sourceTree = "<group>"; };
+		BA9DA31428CC3682004CBBFB /* Main_MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_MenuView.swift; sourceTree = "<group>"; };
+		BA9DA31628CC46BD004CBBFB /* Main_SendMailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_SendMailController.swift; sourceTree = "<group>"; };
 		BAA07BFD2894C1DA0078EA83 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BAA07BFF2894C1E00078EA83 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BAA07C022894C1FA0078EA83 /* Extensions+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UI.swift"; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 		BA6A837D289DECF30040512E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BA9DA31628CC46BD004CBBFB /* Main_SendMailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				BA6A8380289F6E0D0040512E /* Main_HeaderView.swift */,
 				BA6A83AD28A721530040512E /* Main_MenuButton.swift */,
 				BA6A83AF28A728A80040512E /* Main_ListView.swift */,
+				BA9DA31428CC3682004CBBFB /* Main_MenuView.swift */,
 				BAFF71DD28C0CDB100AA5E78 /* Main_ListViewSubs */,
 				BA6A83BF28A7A9ED0040512E /* Main_OverlappedButtonsView.swift */,
 				BAA07C182894F51C0078EA83 /* StickerTextView.swift */,
@@ -721,8 +727,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA9DA31528CC3682004CBBFB /* Main_MenuView.swift in Sources */,
 				BA9DA31128CAFCB3004CBBFB /* UserAgreement_CellView.swift in Sources */,
 				BA6A83B928A730670040512E /* ImageListCellView.swift in Sources */,
+				BA9DA31728CC46BD004CBBFB /* Main_SendMailController.swift in Sources */,
 				BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */,
 				BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */,
 				BA6A83FB28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift in Sources */,
