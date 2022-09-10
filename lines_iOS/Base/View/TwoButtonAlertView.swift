@@ -20,7 +20,7 @@ class TwoButtonAlertView: AlertView {
     }
     override func addtionalUI() {
         contentsView.heightAnchor
-                    .constraint(lessThanOrEqualToConstant: 186).isActive = true
+                    .constraint(greaterThanOrEqualToConstant: 186).isActive = true
         setTitleView()
         setSubTitleView()
         setButtons()
@@ -53,7 +53,7 @@ class TwoButtonAlertView: AlertView {
                         for: .normal)
         button.addAction(UIAction { [weak self] _ in
             self?.removeFromSuperview()
-            self?.closure?()
+//            self?.closure?()
         }, for: .touchUpInside)
     }
     
@@ -72,14 +72,15 @@ class TwoButtonAlertView: AlertView {
         self.addSubviews(label)
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: line.topAnchor, constant: 20),
-            label.leftAnchor.constraint(equalTo: contentsView.leftAnchor, constant: 51),
-            label.rightAnchor.constraint(equalTo: contentsView.rightAnchor, constant: -51),
-            label.heightAnchor.constraint(lessThanOrEqualToConstant: 42),
+            label.leftAnchor.constraint(equalTo: contentsView.leftAnchor, constant: 20),
+            label.rightAnchor.constraint(equalTo: contentsView.rightAnchor, constant: -20),
+            label.heightAnchor.constraint(greaterThanOrEqualToConstant: 42),
         ])
         label.numberOfLines = 0
         label.setTitleHasLineSpace(lineSpaceVal: 10,
                                    font: Fonts.get(size: 14, type: .regular),
                                    color: .black, textAlignment: .center)
+        label.textAlignment = .center
         self.subTitleLabel = label
         self.nextTopAnchor = label.bottomAnchor
     }

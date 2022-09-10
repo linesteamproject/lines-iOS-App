@@ -8,6 +8,10 @@
 import UIKit
 
 class MakeCard_NoticeView: UIView {
+    private weak var label: UILabel!
+    internal var noticeStr: String? {
+        didSet { label.setTitle(noticeStr) }
+    }
     var showImgClosure: ((UIImage?) -> Void)?
     init(_ image: UIImage?) {
         super.init(frame: .zero)
@@ -37,7 +41,9 @@ class MakeCard_NoticeView: UIView {
         button.addAction(UIAction { [weak self] _ in
             self?.showImgClosure?(image)
         }, for: .touchUpInside)
-        
+        if image == UIImage(named: "EmptyBookImage") {
+            button.isUserInteractionEnabled = false
+        }
         let label = UILabel()
         self.addSubviews(label)
         NSLayoutConstraint.activate([
@@ -47,9 +53,9 @@ class MakeCard_NoticeView: UIView {
             label.bottomAnchor.constraint(equalTo: imgView.bottomAnchor)
         ])
         label.numberOfLines = 0
-        label.setTitle("인식한 문장을 확인해 주세요.\n줄바꿈, 오타 등을 직접 수정해 주세요.",
-                       font: Fonts.get(size: 16, type: .regular),
+        label.setTitle(font: Fonts.get(size: 16, type: .regular),
                        txtColor: .white)
         label.sizeToFit()
+        self.label = label
     }
 }

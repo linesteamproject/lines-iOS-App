@@ -9,6 +9,7 @@ import RealmSwift
 
 class RealmController {
     static let shared = RealmController()
+    internal var currentCardsCount: Int = 0
     internal let queue = DispatchQueue(label: "RealmQueue")
     private let realm = try! Realm()
     internal func write(_ obj: CardModel_Realm, done: (() -> Void)? = nil) {
@@ -25,6 +26,7 @@ class RealmController {
             let models = Array(self.realm.objects(CardModel_Realm.self).compactMap {
                 return $0.getCardModel()
             })
+            self.currentCardsCount = models.count
             done?(models.reversed())
         }
     }

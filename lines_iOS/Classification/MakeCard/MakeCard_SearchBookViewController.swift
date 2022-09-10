@@ -195,6 +195,10 @@ class MakeCard_SearchBookViewController: ScrollViewController {
 
 extension MakeCard_SearchBookViewController: ButtonDelegate {
     func touched(_ obj: Any?) {
-        ReadTextController.shared.bookInfo = obj as? BookDocu
+        if let obj = obj as? BookDocu {
+            ReadTextController.shared.bookName = obj.bookName
+            ReadTextController.shared.authorName = obj.authorsStr
+        }
+        
     }
 }

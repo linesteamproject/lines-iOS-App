@@ -29,7 +29,6 @@ enum UserAgreementType: Int, CaseIterable {
         switch self {
         case .service, .privacyInfo:
             return "내용보기"
-        default: return nil
         }
     }
     var urlStr: String {
@@ -59,6 +58,8 @@ class UserAgreementViewController: ViewController {
         setTopView()
         setListView()
         setBottomView()
+        
+        self.checkedArr = [true, true]
     }
     
     private func setTopView() {

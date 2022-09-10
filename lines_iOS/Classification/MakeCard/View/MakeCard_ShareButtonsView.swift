@@ -24,17 +24,19 @@ class MakeCard_ShareButtonsView: UIView {
         NSLayoutConstraint.activate([
             back.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             back.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            back.widthAnchor.constraint(greaterThanOrEqualToConstant: 234),
+            back.widthAnchor.constraint(equalToConstant: 239),
             back.heightAnchor.constraint(equalToConstant: 83),
         ])
+        
         var leftAnchor = back.leftAnchor
+        var leftConst: CGFloat = 0
         MakeCard_ShareButtonsType.allCases.forEach {
             let btn = UIButton()
             back.addSubviews(btn)
             
             NSLayoutConstraint.activate([
                 btn.widthAnchor.constraint(equalToConstant: 63),
-                btn.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
+                btn.leftAnchor.constraint(equalTo: leftAnchor, constant: leftConst),
                 btn.topAnchor.constraint(equalTo: self.topAnchor),
                 btn.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             ])
@@ -42,11 +44,13 @@ class MakeCard_ShareButtonsView: UIView {
             switch $0 {
             case .insta:
                 leftAnchor = btn.rightAnchor
+                leftConst = 25
                 btn.addAction(UIAction { [weak self] _ in
                     self?.shareInstaClosure?()
                 }, for: .touchUpInside)
             case .save:
                 leftAnchor = btn.rightAnchor
+                leftConst = 25
                 btn.addAction(UIAction { [weak self] _ in
                     self?.downloadClosure?()
                 }, for: .touchUpInside)

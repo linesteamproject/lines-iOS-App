@@ -60,9 +60,7 @@ class ShareController: NSObject, UIDocumentInteractionControllerDelegate {
             let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
 
             if let lastAsset = fetchResult.firstObject as? PHAsset {
-
                 let url = URL(string: "instagram://library?LocalIdentifier=\(lastAsset.localIdentifier)")!
-
                 if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url)
                 } else {
@@ -70,7 +68,6 @@ class ShareController: NSObject, UIDocumentInteractionControllerDelegate {
 //                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 //                    self.present(alertController, animated: true, completion: nil)
                 }
-
             }
     }
     

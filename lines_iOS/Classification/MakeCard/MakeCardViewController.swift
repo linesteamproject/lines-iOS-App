@@ -8,13 +8,14 @@
 import UIKit
 
 class MakeCardViewController: ScrollViewController {
-    private weak var cardContentView: MakeCard_ContentView!
+    internal weak var cardContentView: MakeCard_ContentView!
+    private weak var bottomView: MarkCard_BottomView!
     override var topViewHeight: CGFloat {
         get { return 56 }
         set { }
     }
-    
-    private weak var nextTopAnchor: NSLayoutYAxisAnchor!
+    internal var noticeStr: String = "인식한 문장을 확인해 주세요.\n줄바꿈, 오타 등을 직접 수정해 주세요."
+    internal weak var nextTopAnchor: NSLayoutYAxisAnchor!
     override func setTopView() {
         let topView = MakeCard_TopView()
         self.view.addSubviews(topView)
@@ -82,10 +83,12 @@ class MakeCardViewController: ScrollViewController {
             ])
             alert.image = ReadTextController.shared.capturedImage
         }
+        
+        noticeView.noticeStr = self.noticeStr
         self.nextTopAnchor = noticeView.bottomAnchor
     }
     
-    private func setContentView() {
+    internal func setContentView() {
         let cardContentView = MakeCard_ContentView(ReadTextController.shared.readText)
         self.contentView.addSubviews(cardContentView)
         NSLayoutConstraint.activate([
@@ -94,6 +97,9 @@ class MakeCardViewController: ScrollViewController {
             cardContentView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             cardContentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 274),
         ])
+        cardContentView.isTxtViewEmptyClosure = { [weak self] isEmptyContent in
+            self?.bottomView.isRightActive = !isEmptyContent
+        }
         self.cardContentView = cardContentView
         self.nextTopAnchor = cardContentView.bottomAnchor
     }
@@ -114,7 +120,7 @@ class MakeCardViewController: ScrollViewController {
         self.nextTopAnchor = contentNoticeView.bottomAnchor
     }
     
-    private func setBottomView() {
+    internal func setBottomView() {
         let bottomView = MarkCard_BottomView()
         self.contentView.addSubviews(bottomView)
         NSLayoutConstraint.activate([
@@ -139,5 +145,13 @@ class MakeCardViewController: ScrollViewController {
             vc.modalPresentationStyle = .fullScreen
             self?.present(vc, animated: false)
         }
+        
+        if let readTxt = ReadTextController.shared.readText,
+           !readTxt.isEmpty {
+            bottomView.isRightActive = true
+        } else {
+            bottomView.isRightActive = false
+        }
+        self.bottomView = bottomView
     }
 }

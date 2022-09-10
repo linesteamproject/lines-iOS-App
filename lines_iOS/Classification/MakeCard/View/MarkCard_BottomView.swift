@@ -10,6 +10,13 @@ import UIKit
 class MarkCard_BottomView: UIView {
     var leftBtnClosure: (() -> Void)?
     var rightBtnClosure: (() -> Void)?
+    private weak var rightButton: OkButton!
+    internal var isRightActive: Bool = true {
+        didSet {
+            rightButton.isEnabled = isRightActive
+            rightButton.backgroundColor = isRightActive ? Colors.beige.value : Colors.beigeInactive.value
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -52,6 +59,7 @@ class MarkCard_BottomView: UIView {
         right.addAction(UIAction { [weak self] _ in
             self?.rightBtnClosure?()
         }, for: .touchUpInside)
+        self.rightButton = right
     }
 }
 
@@ -68,5 +76,6 @@ class OkButton: UIButton {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         self.layer.cornerRadius = 10
+        self.layer.masksToBounds = true
     }
 }

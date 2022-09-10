@@ -25,18 +25,22 @@ struct BookDocu: Codable {
     let translators: [String]?
     let url: String?
     var authorsStr: String {
-        var rtnVal = ""
-        rtnVal += (self.title ?? "제목없음")
-        guard let authors = authors else {
-            rtnVal += ", 작자미상"
+        get {
+            var rtnVal = ""
+            guard let authors = authors else {
+                rtnVal += ", 작자미상"
+                return rtnVal
+            }
+            rtnVal += ", "
+            authors.forEach {
+                rtnVal += $0 + ","
+            }
+            rtnVal.removeLast()
             return rtnVal
         }
-        rtnVal += ", "
-        authors.forEach {
-            rtnVal += $0 + ","
-        }
-        rtnVal.removeLast()
-        return rtnVal
+    }
+    var bookName: String {
+        return self.title ?? "제목없음"
     }
     enum CodingKeys: String, CodingKey {
         case authors, contents, datetime, isbn, price, publisher

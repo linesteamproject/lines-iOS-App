@@ -25,6 +25,10 @@ class FirstLaunchChecker {
             UserDefaults.standard.setValue(val, forKey: "IS_DATA_SAVED")
         }
     }
+    
+    static var isNotLogin: Bool {
+        return (UserData.accessToken.isEmpty && UserData.refreshToken.isEmpty)
+    }
 }
 
 class UserData {

@@ -15,6 +15,7 @@ struct JoinModel {
 }
 
 class LoginViewController: ViewController {
+    internal var isShouldSkipHidden = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +23,7 @@ class LoginViewController: ViewController {
     }
     
     private func setUI() {
-        let loginButtonView = LoginButtonView()
+        let loginButtonView = LoginButtonView(isShouldSkipHidden)
         self.view.addSubviews(loginButtonView)
         NSLayoutConstraint.activate([
             loginButtonView.leftAnchor.constraint(equalTo: self.view.leftAnchor,

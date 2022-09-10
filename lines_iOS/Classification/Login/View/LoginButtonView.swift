@@ -10,14 +10,14 @@ import UIKit
 
 class LoginButtonView: UIView {
     internal var btnClosure: ((LoginType) -> Void)?
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUI()
+    init(_ isShouldSkipHidden: Bool) {
+        super.init(frame: .zero)
+        setUI(isShouldSkipHidden)
     }
     required init?(coder: NSCoder) {
         fatalError()
     }
-    private func setUI() {
+    private func setUI(_ isShouldSkipHidden: Bool) {
         var nxTopAnchhor: NSLayoutYAxisAnchor = self.topAnchor
         var nxTopConstant: CGFloat = 0
         LoginType.allCases.forEach { type in
@@ -38,6 +38,7 @@ class LoginButtonView: UIView {
             guard type != .skip else {
                 loginBtn.bottomAnchor
                         .constraint(equalTo: self.bottomAnchor).isActive = true
+                loginBtn.isHidden = isShouldSkipHidden
                 return
             }
             nxTopAnchhor = loginBtn.bottomAnchor

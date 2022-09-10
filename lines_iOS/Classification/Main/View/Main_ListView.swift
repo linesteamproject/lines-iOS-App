@@ -29,6 +29,7 @@ class Main_ListView: UIView {
             datas?.isEmpty == true ? setEmptyView() : setCards()
         }
     }
+    internal var cardTouchedClosure: ((CardModel) -> Void)?
     init(width: CGFloat) {
         self.cellWidth = (width - 15) / 2
         super.init(frame: .zero)
@@ -86,6 +87,7 @@ class Main_ListView: UIView {
     }
     
     private func setCards() {
+        self.emptyView?.removeFromSuperview()
         datas?.enumerated().forEach { idx, data in
             guard let data = data else { return }
             let cellHeight: CGFloat
@@ -124,6 +126,9 @@ class Main_ListView: UIView {
                 obj.rHeight += cellHeight
             }
         
+            cellView.cardTouchedClosure = { [weak self] cardModel in
+                self?.cardTouchedClosure?(cardModel)
+            }
             guard idx + 1 == datas?.count ?? 0 else { return }
             
             if obj.lHeight > obj.rHeight {

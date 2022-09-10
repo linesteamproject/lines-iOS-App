@@ -9,7 +9,7 @@ import UIKit
 
 class UserAgreement_CellView: UIView {
     private weak var button: UIButton!
-    var isSelected: Bool = false {
+    var isSelected: Bool = true {
         didSet { updateUI() }
     }
     
@@ -26,6 +26,8 @@ class UserAgreement_CellView: UIView {
         if let rightClosure = rightClosure {
             setRightClosure(rightClosure)
         }
+        
+        self.isSelected = true
     }
     required init?(coder: NSCoder) { fatalError() }
     
@@ -39,8 +41,8 @@ class UserAgreement_CellView: UIView {
             button.heightAnchor.constraint(equalToConstant: 24),
             button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -18)
         ])
-        button.setImage(UIImage(named: "Unchecked"), for: .normal)
-        button.isSelected = false
+        button.setImage(UIImage(named: "Checked"), for: .normal)
+        button.isSelected = true
         button.addAction(UIAction { _ in
             self.isSelected = !self.isSelected
             checkClosure?(self.isSelected)

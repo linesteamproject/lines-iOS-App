@@ -9,7 +9,7 @@ import UIKit
 
 class MakeCard_ContentView: UIView, UITextViewDelegate {
     internal weak var txtView: UITextView!
-    
+    internal var isTxtViewEmptyClosure: ((Bool) -> Void)?
     init(_ text: String?) {
         super.init(frame: .zero)
         setUI(text)
@@ -42,14 +42,36 @@ class MakeCard_ContentView: UIView, UITextViewDelegate {
                                            constant: -24)
         ])
         txtView.backgroundColor = .clear
-        txtView.text = text
+        if let text = text {
+            txtView.text = text
+            txtView.textColor = Colors.white.value
+        } else {
+            txtView.text = "텍스트를 입력해 주세요."
+            txtView.textColor = Colors.white.value.withAlphaComponent(0.3)
+        }
         txtView.font = Fonts.get(size: 20,
                                  type: .regular)
-        txtView.textColor = Colors.white.value
+        txtView.delegate = self
         self.txtView = txtView
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.txtView.endEditing(true)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "텍스트를 입력해 주세요." {
+            textView.text = ""
+            textView.textColor = Colors.white.value
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text?.isEmpty == true {
+            textView.text = "텍스트를 입력해 주세요."
+            textView.textColor = Colors.white.value.withAlphaComponent(0.3)
+            isTxtViewEmptyClosure?(true)
+        } else {
+            isTxtViewEmptyClosure?(false)
+        }
     }
 }

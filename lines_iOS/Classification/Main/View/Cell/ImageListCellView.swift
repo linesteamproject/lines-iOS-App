@@ -8,6 +8,7 @@
 import UIKit
 
 class ImageListCellView: UIView {
+    internal var cardTouchedClosure: ((CardModel) -> Void)?
     init(_ data: CardModel) {
         super.init(frame: .zero)
         setUI(data)
@@ -79,5 +80,17 @@ class ImageListCellView: UIView {
         if let imgName = data.backImageName {
             imageView.image = UIImage(named: imgName)
         }
+        
+        var button = UIButton()
+        self.addSubviews(button)
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: imageView.topAnchor),
+            button.leftAnchor.constraint(equalTo: imageView.leftAnchor),
+            button.rightAnchor.constraint(equalTo: imageView.rightAnchor),
+            button.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+        ])
+        button.addAction(UIAction { [weak self] _ in
+            self?.cardTouchedClosure?(data)
+        }, for: .touchUpInside)
     }
 }

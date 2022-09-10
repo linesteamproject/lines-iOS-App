@@ -114,6 +114,15 @@ class MainViewController: ScrollViewController {
             mainListView.heightAnchor
                 .constraint(greaterThanOrEqualToConstant: 10)
         ])
+        mainListView.cardTouchedClosure = { [weak self] cardModel in
+            ReadTextController.shared.cardModel = cardModel
+            let vc = MakeCard_CompleteViewController()
+            vc.modalPresentationStyle = .fullScreen
+            vc.isToSaveStricker = false
+            DispatchQueue.main.async {
+                self?.present(vc, animated: true)
+            }
+        }
         self.mainListView = mainListView
     }
     
@@ -326,9 +335,35 @@ extension MainViewController {
 
 extension MainViewController: ButtonDelegate {
     func touched(_ obj: Any?) {
+        if FirstLaunchChecker.isNotLogin, RealmController.shared.currentCardsCount >= 2 {
+            let tbAlertView = TwoButtonAlertView()
+            self.view.addSubviews(tbAlertView)
+            NSLayoutConstraint.activate([
+                tbAlertView.topAnchor.constraint(equalTo: self.view.topAnchor),
+                tbAlertView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+                tbAlertView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+                tbAlertView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+            tbAlertView.title = "회원가입 해주세요"
+            var subTitle = "비로그인 시 문장은 2개까지만 만들 수 있어요\n"
+            subTitle += "그 이상은 회원가입 및 로그인을 해주세요."
+            tbAlertView.subTitle = subTitle
+            tbAlertView.closure = {
+                let loginVC = LoginViewController()
+                loginVC.modalPresentationStyle = .fullScreen
+                loginVC.isShouldSkipHidden = true
+                DispatchQueue.main.async { [weak self] in
+                    self?.present(loginVC, animated: true)
+                }
+            }
+            
+            return
+        }
+        
         guard let type = obj as? Main_OverlappedButtonsType
         else { return }
         
+        self.hiddenButtonsView()
         switch type {
         case .top:
             let vc = CameraViewController()
@@ -345,7 +380,8 @@ extension MainViewController: ButtonDelegate {
                 self?.present(vc, animated: true)
             }
         case .bottom:
-            let vc = MakeCardViewController()
+            let vc = MakeCardOnlyTextViewController()
+            ReadTextController.shared.capturedImage = UIImage(named: "EmptyBookImage")
             vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async {
                 self.present(vc, animated: false)
