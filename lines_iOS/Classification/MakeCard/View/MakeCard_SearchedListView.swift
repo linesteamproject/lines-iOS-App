@@ -73,7 +73,7 @@ class MakeCard_BasicTableViewCell: UITableViewCell {
             if let urlStr = bookDocu.thumbnail {
                 imgView.load(urlStr: urlStr)
             }
-            label.setTitle(bookDocu.authorsStr)
+            label.setTitle(bookDocu.bookName + bookDocu.authorsStr)
         }
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
