@@ -8,6 +8,12 @@
 import UIKit
 import AuthenticationServices
 
+struct JoinModel {
+    let id: String
+    let oauthId: String
+    let oauthType: LoginType
+}
+
 class LoginViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +48,15 @@ class LoginViewController: ViewController {
                     self?.showOneButtonAlertView(title: "로그인 성공", subTitle: subTitle,
                                                  height: 240,
                                                  btnTitle: "확인", btnColor: .beige, done: {
-                        self?.goToAgreementVC()
+                        self?.goToAgreementVC(JoinModel(id: "",
+                                                        oauthId: kakaoUser.userId,
+                                                        oauthType: LoginType.kakao))
                     })
                 }
             case .naver:
                 NaverLoginController.shared.login()
                 NaverLoginController.shared.naverLoginClosure = { [weak self] res in
-                    guard let res = res else {
+                    guard let res = res, let userIdentifier = res.id else {
                         self?.showOneButtonAlertView(title: "로그인 실패", height: 70, btnTitle: "확인",
                                                      btnColor: .beige)
                         return
@@ -61,7 +69,9 @@ class LoginViewController: ViewController {
                     self?.showOneButtonAlertView(title: "로그인 성공", subTitle: subTitle,
                                                  height: 240,
                                                  btnTitle: "확인", btnColor: .beige, done: {
-                        self?.goToAgreementVC()
+                        self?.goToAgreementVC(JoinModel(id: "",
+                                                        oauthId: userIdentifier,
+                                                        oauthType: LoginType.naver))
                     })
                 }
                 return
@@ -76,17 +86,17 @@ class LoginViewController: ViewController {
                 authorizationController.performRequests()
                 return
             case .skip:
-                self?.goToAgreementVC()
+                self?.goToAgreementVC(nil)
                 return
             }
         }
     }
     
-    private func goToAgreementVC() {
+    private func goToAgreementVC(_ model: JoinModel?) {
         // 로그인
-        
         let vc = UserAgreementViewController()
         vc.modalPresentationStyle = .fullScreen
+        vc.joinModel = model
         DispatchQueue.main.async { [weak self] in
             self?.present(vc, animated: true)
         }
@@ -117,7 +127,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             self.showOneButtonAlertView(title: "로그인 성공", subTitle: userInfoStr,
                                         height: 250, btnTitle: "확인", btnColor: .beige,
                                done: {
-                self.goToAgreementVC()
+                self.goToAgreementVC(JoinModel(id: "",
+                                               oauthId: userIdentifier,
+                                               oauthType: LoginType.apple))
             })
         default:
             break

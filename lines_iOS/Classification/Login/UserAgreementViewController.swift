@@ -43,6 +43,7 @@ enum UserAgreementType: Int, CaseIterable {
 }
 class UserAgreementViewController: ViewController {
     private var cellSubViews = [UserAgreement_CellView]()
+    internal var joinModel: JoinModel!
     private var checkedArr = [false, false] {
         didSet {
             let isEnabled = checkedArr[UserAgreementType.service.rawValue]

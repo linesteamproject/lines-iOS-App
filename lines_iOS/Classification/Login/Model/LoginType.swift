@@ -11,6 +11,18 @@ enum LoginType: CaseIterable {
     case naver
     case apple
     case skip
+    var type: String {
+        switch self {
+        case .kakao:
+            return "KAKAO"
+        case .naver:
+            return "NAVER"
+        case .apple:
+            return "APPLE"
+        case .skip:
+            return ""
+        }
+    }
     var img: UIImage? {
         switch self {
         case .kakao:

@@ -21,12 +21,12 @@ class Main_ListView: UIView {
     private weak var nextTopAnchor: NSLayoutYAxisAnchor!
     private weak var label: UILabel!
     private weak var back: UIView!
-    
+    private weak var emptyView: UIImageView!
     private var obj = MainListViewObj()
     internal var datas: [CardModel?]? {
         didSet {
             label.setTitle(String(format: "기록한 문장 %d개", datas?.count ?? 0))
-            setCards()
+            datas?.isEmpty == true ? setEmptyView() : setCards()
         }
     }
     init(width: CGFloat) {
@@ -70,6 +70,19 @@ class Main_ListView: UIView {
         obj.lTopAnc = back.topAnchor
         obj.rTopAnc = back.topAnchor
         self.back = back
+    }
+    
+    private func setEmptyView() {
+        let imgView = UIImageView(image: UIImage(named: "EmptyCardView"))
+        self.back.addSubviews(imgView)
+        NSLayoutConstraint.activate([
+            imgView.topAnchor.constraint(equalTo: back.topAnchor,
+                                         constant: 80),
+            imgView.centerXAnchor.constraint(equalTo: back.centerXAnchor),
+            imgView.widthAnchor.constraint(equalToConstant: 207),
+            imgView.heightAnchor.constraint(equalToConstant: 145),
+        ])
+        self.emptyView = imgView
     }
     
     private func setCards() {
