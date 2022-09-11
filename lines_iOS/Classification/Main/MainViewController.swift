@@ -31,8 +31,8 @@ class MainViewController: ScrollViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.mainListView.datas?.removeAll()
         
+        setContentView()
         RealmController.shared.queue.async {
             RealmController.shared.getBookCards { cards in
                 DispatchQueue.main.async {
@@ -95,6 +95,7 @@ class MainViewController: ScrollViewController {
     }
 
     private func setContentView() {
+        self.mainListView?.removeFromSuperview()
         scrollView.bounces = false
         
         let viewWidth = UIScreen.main.bounds.width - 40
@@ -116,11 +117,9 @@ class MainViewController: ScrollViewController {
         ])
         mainListView.cardTouchedClosure = { [weak self] cardModel in
             ReadTextController.shared.cardModel = cardModel
-            let vc = MakeCard_CompleteViewController()
-            vc.modalPresentationStyle = .fullScreen
-            vc.isToSaveStricker = false
+            let vc = Main_CardDetailViewController()
             DispatchQueue.main.async {
-                self?.present(vc, animated: true)
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
         }
         self.mainListView = mainListView

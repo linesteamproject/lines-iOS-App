@@ -154,7 +154,8 @@ class UserAgreementViewController: ViewController {
         bottomButton.addAction(UIAction { [weak self] _ in
             let vc = MainViewController()
             vc.modalPresentationStyle = .fullScreen
-            self?.present(vc, animated: true)
+            getAppDelegate()?.setRootViewController(vc)
+//            self?.present(vc, animated: true)
         }, for: .touchUpInside)
         bottomButton.isEnabled = false
         self.bottomButton = bottomButton

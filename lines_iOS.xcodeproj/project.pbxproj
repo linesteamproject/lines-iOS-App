@@ -54,6 +54,8 @@
 		BA6A83FD28BCEFC50040512E /* MakeCard_CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83FC28BCEFC50040512E /* MakeCard_CompleteViewController.swift */; };
 		BA6A83FF28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A83FE28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift */; };
 		BA6A840128BCF06F0040512E /* MakeCard_ShareButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */; };
+		BA8A8EE528CD663F00EA7617 /* Main_CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EE428CD663F00EA7617 /* Main_CardDetailViewController.swift */; };
+		BA8A8EE728CD69B500EA7617 /* Main_CardDetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EE628CD69B500EA7617 /* Main_CardDetailTopView.swift */; };
 		BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */; };
 		BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */; };
 		BA9DA30928C8B733004CBBFB /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30828C8B733004CBBFB /* UserInfo.swift */; };
@@ -149,6 +151,8 @@
 		BA6A83FC28BCEFC50040512E /* MakeCard_CompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCard_CompleteViewController.swift; sourceTree = "<group>"; };
 		BA6A83FE28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCard_GoToHomeButtonView.swift; sourceTree = "<group>"; };
 		BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_ShareButtonsView.swift; sourceTree = "<group>"; };
+		BA8A8EE428CD663F00EA7617 /* Main_CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_CardDetailViewController.swift; sourceTree = "<group>"; };
+		BA8A8EE628CD69B500EA7617 /* Main_CardDetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_CardDetailTopView.swift; sourceTree = "<group>"; };
 		BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginController.swift; sourceTree = "<group>"; };
 		BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
 		BA9DA30828C8B733004CBBFB /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -435,6 +439,7 @@
 				BA6A837D289DECF30040512E /* Controller */,
 				BAA07C172894F4F10078EA83 /* View */,
 				BAA07C0F2894D3430078EA83 /* MainViewController.swift */,
+				BA8A8EE428CD663F00EA7617 /* Main_CardDetailViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 				BA6A83AD28A721530040512E /* Main_MenuButton.swift */,
 				BA6A83AF28A728A80040512E /* Main_ListView.swift */,
 				BA9DA31428CC3682004CBBFB /* Main_MenuView.swift */,
+				BA8A8EE628CD69B500EA7617 /* Main_CardDetailTopView.swift */,
 				BAFF71DD28C0CDB100AA5E78 /* Main_ListViewSubs */,
 				BA6A83BF28A7A9ED0040512E /* Main_OverlappedButtonsView.swift */,
 				BAA07C182894F51C0078EA83 /* StickerTextView.swift */,
@@ -749,6 +755,7 @@
 				BA6A83FD28BCEFC50040512E /* MakeCard_CompleteViewController.swift in Sources */,
 				BAA07C052894C2060078EA83 /* Extensions+Func.swift in Sources */,
 				BA9DA31328CC1AC5004CBBFB /* UserAgreementWebViewController.swift in Sources */,
+				BA8A8EE728CD69B500EA7617 /* Main_CardDetailTopView.swift in Sources */,
 				BA6A83AE28A721530040512E /* Main_MenuButton.swift in Sources */,
 				BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */,
 				BA6A83E528B1D36E0040512E /* MakeCard_StickerView.swift in Sources */,
@@ -796,6 +803,7 @@
 				BAFF71DF28C0CDCE00AA5E78 /* Main_ListSubView.swift in Sources */,
 				BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */,
 				BA6A83DB28A8759C0040512E /* MakeCard_DetailViewController.swift in Sources */,
+				BA8A8EE528CD663F00EA7617 /* Main_CardDetailViewController.swift in Sources */,
 				BAFF71D928C0B84A00AA5E78 /* RealmController.swift in Sources */,
 				BAA07C362895394C0078EA83 /* MakeCard_BarcodeViewController.swift in Sources */,
 				BA6A837F289DED060040512E /* ShareController.swift in Sources */,

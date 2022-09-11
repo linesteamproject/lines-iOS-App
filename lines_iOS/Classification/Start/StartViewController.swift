@@ -43,7 +43,8 @@ class StartViewController: ViewController {
         guard !isLogin else {
             let vc = MainViewController()
             vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            getAppDelegate()?.setRootViewController(vc)
+//            self.present(vc, animated: true)
             return
         }
         
@@ -51,7 +52,8 @@ class StartViewController: ViewController {
         guard !FirstLaunchChecker.isDataSaved else {
             let vc = MainViewController()
             vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            getAppDelegate()?.setRootViewController(vc)
+//            self.present(vc, animated: true)
             return
         }
         

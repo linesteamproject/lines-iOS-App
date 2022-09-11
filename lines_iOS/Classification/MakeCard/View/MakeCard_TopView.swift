@@ -21,7 +21,7 @@ class MakeCard_TopView: TopView {
                        txtColor: .white)
         
         let button = UIButton()
-        super.addSubviews(button)
+        self.addSubviews(button)
         NSLayoutConstraint.activate([
             button.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -25),
             button.centerYAnchor.constraint(equalTo: self.centerYAnchor),

@@ -47,3 +47,7 @@ func dismissViewControllerUntil(vcID: String?) {
         return id?.components(separatedBy: ".").last?.components(separatedBy: ":").first
     }
 }
+
+func getAppDelegate() -> AppDelegate? {
+    return UIApplication.shared.delegate as? AppDelegate
+}
