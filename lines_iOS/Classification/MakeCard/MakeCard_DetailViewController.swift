@@ -84,7 +84,7 @@ class MakeCard_DetailViewController: ScrollViewController {
         ReadTextController.shared.sizeType = type
         
         func setOne2One() {
-            let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.readText)
+            let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.slicedText)
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
@@ -100,7 +100,7 @@ class MakeCard_DetailViewController: ScrollViewController {
         }
         
         func setThree2Four() {
-            let stickerView = MakeCard_StickerThreeToFourView(ReadTextController.shared.readText)
+            let stickerView = MakeCard_StickerThreeToFourView(ReadTextController.shared.slicedText)
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,

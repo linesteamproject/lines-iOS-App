@@ -20,18 +20,15 @@ class ReadTextController: NSObject {
         }
     }
     internal var capturedImage: UIImage?
-    internal var readText: String? {
-        didSet {
-            guard let readText = readText,
-                  readText.count > 110
-            else { return }
-            
-            let startIndex = readText.index(readText.startIndex, offsetBy: 0)// 사용자지정 시작인덱스
-            let endIndex = readText.index(readText.startIndex, offsetBy: 110)// 사용자지정 끝인덱스
-            let sliced_str = readText[startIndex ..< endIndex]
-            print("munyong > \(sliced_str)")
-            self.readText = String(sliced_str)
-        }
+    internal var readText: String?
+    internal var slicedText: String {
+        guard let readText = readText else { return "" }
+        guard readText.count > 110 else { return readText }
+        
+        let startIndex = readText.index(readText.startIndex, offsetBy: 0) // 사용자지정 시작인덱스
+        let endIndex = readText.index(readText.startIndex, offsetBy: 110) // 사용자지정 끝인덱스
+        let slicedStr = readText[startIndex ..< endIndex]
+        return String(slicedStr)
     }
     internal var sizeType: MakeCard_StickerRatioType = .one2one
     internal var colorType: MakeCard_StickerBackColorType = .black
@@ -40,6 +37,7 @@ class ReadTextController: NSObject {
     internal var bookIsbn: String?
     internal var searchedStr: String?
     internal var page: Int = 1
+    internal var isEnded: Bool = false
     internal var bookInfo: String {
         var rtnVal = ""
         if let bookName = bookName {
