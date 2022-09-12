@@ -75,6 +75,7 @@ extension CameraViewController: UIImagePickerControllerDelegate & UINavigationCo
     }
     internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: false, completion: {
+            ReadTextController.shared.initialize()
             dismissViewControllerUntil(vcID: MainViewController.id)
         })
     }
@@ -102,6 +103,7 @@ extension CameraViewController: CropViewControllerDelegate {
         
         DispatchQueue.main.async {
             cropViewController.dismiss(animated: false) {
+                ReadTextController.shared.initialize()
                 dismissViewControllerUntil(vcID: MainViewController.id)
             }
         }

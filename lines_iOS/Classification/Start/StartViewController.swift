@@ -38,13 +38,21 @@ class StartViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 로그인을 했는가?
-        var isLogin = false
-        guard !isLogin else {
-            let vc = MainViewController()
-            vc.modalPresentationStyle = .fullScreen
-            getAppDelegate()?.setRootViewController(vc)
-//            self.present(vc, animated: true)
+        
+        if !FirstLaunchChecker.isNotLogin {
+            //로그인을 했다면? refresh하고 메인 보내기
+            AFHandler.refresh {
+                guard let accessToken = $0?.accessToken,
+                      let refreshToken = $0?.refreshToken
+                else { return }
+                
+                UserData.accessToken = accessToken
+                UserData.refreshToken = refreshToken
+                
+                let vc = MainViewController()
+                vc.modalPresentationStyle = .fullScreen
+                getAppDelegate()?.setRootViewController(vc)
+            }
             return
         }
         
@@ -53,7 +61,6 @@ class StartViewController: ViewController {
             let vc = MainViewController()
             vc.modalPresentationStyle = .fullScreen
             getAppDelegate()?.setRootViewController(vc)
-//            self.present(vc, animated: true)
             return
         }
         

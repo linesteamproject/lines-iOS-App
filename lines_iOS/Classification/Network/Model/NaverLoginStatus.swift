@@ -14,3 +14,4 @@ struct NaverLoginResponse: Codable {
     let age, id, email, nickname: String?
     let name: String?
 }
+

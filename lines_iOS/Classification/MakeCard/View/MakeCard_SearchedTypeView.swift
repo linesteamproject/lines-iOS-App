@@ -10,8 +10,9 @@ import UIKit
 class MakeCard_SearchedTypeView: UIView {
     private weak var textField: UITextField!
     internal var typeClosure: ((MakeCard_SearchButtonType) -> Void)?
-    internal var searchClosure: ((String?) -> Void)?
+    internal var searchClosure: (() -> Void)?
     internal var buttons = [MakeCard_SearchedTypeViewButton]()
+    internal var delegate: UITextFieldDelegate?
     internal var searchedTxt: String? {
         didSet { textField.text = searchedTxt }
     }
@@ -76,6 +77,8 @@ class MakeCard_SearchedTypeView: UIView {
         ])
         textField.font = Fonts.get(size: 18, type: .regular)
         textField.textColor = Colors.white.value
+        textField.returnKeyType = .done
+        textField.delegate = self.delegate
         self.textField = textField
         
         let line = UIView()
@@ -104,7 +107,8 @@ class MakeCard_SearchedTypeView: UIView {
                      txtColor: .black, backColor: .beige)
         btn.layer.cornerRadius = 22
         btn.addAction(UIAction { [weak self] _ in
-            self?.searchClosure?(textField.text)
+            ReadTextController.shared.searchedStr = textField.text
+            self?.searchClosure?()
             self?.endEditing(true)
         }, for: .touchUpInside)
     }

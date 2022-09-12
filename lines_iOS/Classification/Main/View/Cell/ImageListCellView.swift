@@ -63,8 +63,7 @@ class ImageListCellView: UIView {
             bookInfoLabel.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -54),
         ])
         contentsLabel.setTitle(data.lineValue,
-                               font: Fonts.get(size: 7.4,
-                                               type: .regular),
+                               font: Fonts.getNanum(size: 7.4),
                                txtColor: .black)
         contentsLabel.numberOfLines = 0
         
@@ -72,16 +71,16 @@ class ImageListCellView: UIView {
         bookInfo += ","
         bookInfo += data.authorName ?? ""
         bookInfoLabel.setTitle(bookInfo,
-                               font: Fonts.get(size: 5.18,
-                                               type: .regular),
+                               font: Fonts.getNanum(size: 5.18),
                                txtColor: .gray777777)
         bookInfoLabel.textAlignment = .center
         bookInfoLabel.numberOfLines = 0 
-        if let imgName = data.backImageName {
-            imageView.image = UIImage(named: imgName)
+        if let ratio = data.ratioType?.imgName,
+            let color = data.colorImageName {
+            imageView.image = UIImage(named: ratio + color)
         }
         
-        var button = UIButton()
+        let button = UIButton()
         self.addSubviews(button)
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: imageView.topAnchor),

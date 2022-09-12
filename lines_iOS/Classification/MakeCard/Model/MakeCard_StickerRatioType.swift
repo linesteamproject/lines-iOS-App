@@ -5,7 +5,7 @@
 //  Created by mun on 2022/08/28.
 //
 
-enum MakeCard_StickerRatioType: Int {
+enum MakeCard_StickerRatioType: Int, CaseIterable {
     case one2one = 0
     case three2Four = 1
     var title: String {
@@ -22,6 +22,14 @@ enum MakeCard_StickerRatioType: Int {
             return "One2One"
         case .three2Four:
             return "Three2Four"
+        }
+    }
+    var typeStr: String {
+        switch self {
+        case .one2one:
+            return "ONE_BY_ONE"
+        case .three2Four:
+            return "THREE_BY_FOUR"
         }
     }
 }

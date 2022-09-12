@@ -51,8 +51,10 @@ class MakeCard_StickerView: UIView {
             bookInfo.heightAnchor.constraint(greaterThanOrEqualToConstant: 13),
             bookInfo.bottomAnchor.constraint(equalTo: back.bottomAnchor, constant: -54.31),
         ])
-        bookInfo.setTitle(font: Fonts.get(size: 11, type: .light),
+        bookInfo.setTitle(font: Fonts.getNanum(size: 11),
                           txtColor: .gray222222)
+        bookInfo.numberOfLines = 0
+        bookInfo.textAlignment = .center
         self.bookInfoLabel = bookInfo
     }
     
@@ -60,11 +62,10 @@ class MakeCard_StickerView: UIView {
         let label = UILabel()
         backImageView.addSubviews(label)
         label.numberOfLines = 0
-        label.setTitle(text,
-                       font: Fonts.get(size: 16,
-                                       type: .regular),
-                       txtColor: .black)
         label.textAlignment = .center
+        label.setTitle(text,
+                       font: Fonts.getNanum(size: 16),
+                       txtColor: .black)
         
         label.adjustsFontForContentSizeCategory = true
         self.contentsLabel = label

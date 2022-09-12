@@ -14,7 +14,7 @@ class ReadTextController: NSObject {
         didSet {
             self.readText = cardModel?.lineValue
             self.sizeType = cardModel?.ratioType ?? .one2one
-            self.colorType = MakeCard_StickerBackColorType.allCases.first(where: {  cardModel?.backImageName?.contains($0.name) ?? false }) ?? .black
+            self.colorType = MakeCard_StickerBackColorType.allCases.first(where: {  cardModel?.colorImageName?.contains($0.name) ?? false }) ?? .black
             self.bookName = cardModel?.bookName
             self.authorName = cardModel?.authorName
         }
@@ -25,6 +25,9 @@ class ReadTextController: NSObject {
     internal var colorType: MakeCard_StickerBackColorType = .black
     internal var bookName: String?
     internal var authorName: String?
+    internal var bookIsbn: String?
+    internal var searchedStr: String?
+    internal var page: Int = 1
     internal var bookInfo: String {
         var rtnVal = ""
         if let bookName = bookName {
@@ -35,18 +38,33 @@ class ReadTextController: NSObject {
         }
         return rtnVal
     }
+    
     internal var sticker: UIImage? {
         didSet { RealmController.shared.write(self.getRealmModel()) }
     }
+    
+    internal var param: [String: String?] {
+        return [
+            "content": self.readText,
+            "isbn": self.bookIsbn,
+            "ratio": self.sizeType.typeStr,
+            "background": self.colorType.name
+        ]
+    }
+    
     func initialize() {
         capturedImage = nil
         readText = nil
+        bookName = nil
+        authorName = nil
+        bookIsbn = nil
     }
     func getRealmModel() -> CardModel_Realm {
         return CardModel_Realm(bookName: self.bookName,
                                authorName: self.authorName,
+                               bookIsbn: self.bookIsbn,
                                lineValue: self.readText,
-                               backImageName: sizeType.imgName + colorType.name,
+                               color: colorType.name,
                                ratioTypeRawValue: self.sizeType.rawValue)
     }
 }

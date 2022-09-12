@@ -66,7 +66,7 @@ class MakeCard_DetailViewController: ScrollViewController {
             back.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             back.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
             back.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
-            back.heightAnchor.constraint(equalToConstant: 384)
+            back.heightAnchor.constraint(equalToConstant: 375)
         ])
         back.backgroundColor = Colors.gray222222.value
         self.stickerBackView = back
@@ -95,7 +95,7 @@ class MakeCard_DetailViewController: ScrollViewController {
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
-            stickerView.color = .black
+            stickerView.color = ReadTextController.shared.colorType
             self.stickerView = stickerView
         }
         
@@ -111,7 +111,7 @@ class MakeCard_DetailViewController: ScrollViewController {
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
-            stickerView.color = .black
+            stickerView.color = ReadTextController.shared.colorType
             self.stickerView = stickerView
         }
     }

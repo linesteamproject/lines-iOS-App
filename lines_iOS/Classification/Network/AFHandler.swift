@@ -17,13 +17,16 @@ class AFHandler {
 #endif
     }
     static let session = defaultSession
-    class func searchBook(by: [String: String], done: ((SearchBookStatus?) -> Void)?) {
+    class func searchBook(by: [String: Any], done: ((SearchBookStatus?) -> Void)?) {
         let url = "https://dapi.kakao.com/v3/search/book"
         guard let key = Bundle.main.infoDictionary?["KAKAO_APP_RESTFUL_KEY"] as? String
         else { done?(nil); return }
         
-        let headers: HTTPHeaders = [ "Authorization": "KakaoAK " + key]
-        session.request(url, method: .get, parameters: by, encoding: URLEncoding.default, headers: headers)
+        let headers: HTTPHeaders = ["Authorization": "KakaoAK " + key]
+        session.request(url, method: .get,
+                        parameters: by,
+                        encoding: URLEncoding.default,
+                        headers: headers)
             .responseDecodable(of: SearchBookStatus.self) {
                 print($0.debugDescription)
                 done?($0.value)
@@ -42,6 +45,70 @@ class AFHandler {
                         headers: ["Authorization": authorization])
         .responseDecodable(of: NaverLoginStatus.self) {
             done?($0.value)
+        }
+    }
+    
+    class func login(_ model: JoinModel, done: ((LoginStatus?) -> Void)?) {
+        let urlStr = "http://118.67.132.142:8080/v1/member/login"
+        session.request(urlStr, method: .post,
+                        parameters: model.param,
+                        encoding: JSONEncoding.default)
+        .responseDecodable(of: LoginStatus.self) {
+            let value = $0.value
+            done?(value)
+        }
+    }
+    
+    class func refresh(done: ((LoginStatus?) -> Void)?) {
+        let urlStr = "http://118.67.132.142:8080/v1/member/login/actions/refresh"
+        let headers = HTTPHeaders(["Authorization": "beaerer " + UserData.accessToken,
+            "X-AUTH-REFRESH-TOKEN": UserData.refreshToken])
+        session.request(urlStr, method: .post,
+                        encoding: URLEncoding.default,
+                        headers: headers)
+        .responseDecodable(of: LoginStatus.self) {
+            let value = $0.value
+            done?(value)
+        }
+    }
+    
+    class func getCardDatas(done: ((CardInfoList?) -> Void)?) {
+        let urlStr = "http://118.67.132.142:8080/v1/lines"
+        let headers = HTTPHeaders(["Authorization": "beaerer " + UserData.accessToken])
+        session.request(urlStr, method: .get,
+                        encoding: JSONEncoding.default,
+                        headers: headers)
+        .responseDecodable(of: CardInfoList.self) {
+            let value = $0.value
+            done?(value)
+        }
+    }
+    
+    class func saveCardData(done: ((SaveCardResponse?) -> Void)?) {
+        let urlStr = "http://118.67.132.142:8080/v1/lines"
+        let headers = HTTPHeaders(["Authorization": "beaerer " + UserData.accessToken])
+        let param = ReadTextController.shared.param
+        session.request(urlStr, method: .post,
+                        parameters: param,
+                        encoding: JSONEncoding.default,
+                        headers: headers)
+        .responseDecodable(of: SaveCardResponse.self) {
+            let value = $0.value
+            done?(value)
+        }
+    }
+    
+    class func saveRealmCardData(_ cardModel: CardModel, done: ((SaveCardResponse?) -> Void)?) {
+        let urlStr = "http://118.67.132.142:8080/v1/lines"
+        let headers = HTTPHeaders(["Authorization": "beaerer " + UserData.accessToken])
+        let param = cardModel.param
+        session.request(urlStr, method: .post,
+                        parameters: param,
+                        encoding: JSONEncoding.default,
+                        headers: headers)
+        .responseDecodable(of: SaveCardResponse.self) {
+            let value = $0.value
+            done?(value)
         }
     }
 }

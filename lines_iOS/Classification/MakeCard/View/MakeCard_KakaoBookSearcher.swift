@@ -9,16 +9,19 @@ import Foundation
 
 class MakeCard_KakaoBookSearcher {
     static var type: MakeCard_SearchButtonType = .bookName
-    class func byName(_ bookName: String) -> [String: String] {
+    class func byName(_ bookName: String) -> [String: Any] {
         return ["query":bookName,
-                "target":"title"]
+                "target":"title",
+                "page": ReadTextController.shared.page]
     }
-    class func byISBN(_ isbn: String) -> [String: String] {
+    class func byISBN(_ isbn: String) -> [String: Any] {
         return ["query":isbn,
-                "target":isbn]
+                "target":isbn,
+                "page": ReadTextController.shared.page]
     }
-    class func byAuthor(_ person: String) -> [String: String] {
+    class func byAuthor(_ person: String) -> [String: Any] {
         return ["query":person,
-                "target":person]
+                "target":person,
+                "page": ReadTextController.shared.page]
     }
 }

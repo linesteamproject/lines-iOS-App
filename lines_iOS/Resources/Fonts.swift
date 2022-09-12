@@ -26,4 +26,7 @@ class Fonts {
             return UIFont(name: "AppleSDGothicNeoB00", size: size)!
         }
     }
+    class func getNanum(size: CGFloat) -> UIFont {
+        return UIFont(name: "NanumMyeongjo-YetHangul", size: size)!
+    }
 }

@@ -56,6 +56,8 @@
 		BA6A840128BCF06F0040512E /* MakeCard_ShareButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */; };
 		BA8A8EE528CD663F00EA7617 /* Main_CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EE428CD663F00EA7617 /* Main_CardDetailViewController.swift */; };
 		BA8A8EE728CD69B500EA7617 /* Main_CardDetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EE628CD69B500EA7617 /* Main_CardDetailTopView.swift */; };
+		BA8A8EE928CD7EAE00EA7617 /* ResponsableStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EE828CD7EAE00EA7617 /* ResponsableStatus.swift */; };
+		BA8A8EEB28CDD8ED00EA7617 /* NanumMyeongjo-YetHangul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA8A8EEA28CDD8EA00EA7617 /* NanumMyeongjo-YetHangul.ttf */; };
 		BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */; };
 		BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */; };
 		BA9DA30928C8B733004CBBFB /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30828C8B733004CBBFB /* UserInfo.swift */; };
@@ -153,6 +155,8 @@
 		BA6A840028BCF06F0040512E /* MakeCard_ShareButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_ShareButtonsView.swift; sourceTree = "<group>"; };
 		BA8A8EE428CD663F00EA7617 /* Main_CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_CardDetailViewController.swift; sourceTree = "<group>"; };
 		BA8A8EE628CD69B500EA7617 /* Main_CardDetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_CardDetailTopView.swift; sourceTree = "<group>"; };
+		BA8A8EE828CD7EAE00EA7617 /* ResponsableStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsableStatus.swift; sourceTree = "<group>"; };
+		BA8A8EEA28CDD8EA00EA7617 /* NanumMyeongjo-YetHangul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-YetHangul.ttf"; sourceTree = "<group>"; };
 		BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginController.swift; sourceTree = "<group>"; };
 		BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
 		BA9DA30828C8B733004CBBFB /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -294,6 +298,7 @@
 				BA6A83B328A72AE80040512E /* AppleSDGothicNeoH.ttf */,
 				BA6A83B428A72AE80040512E /* AppleSDGothicNeoL.ttf */,
 				BA6A83B628A72AE80040512E /* AppleSDGothicNeoM.ttf */,
+				BA8A8EEA28CDD8EA00EA7617 /* NanumMyeongjo-YetHangul.ttf */,
 			);
 			path = FontResource;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				BAA07C2628950EC00078EA83 /* SearchBookStatus.swift */,
 				BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */,
 				BAA07C28289512DC0078EA83 /* RequestInterceptor.swift */,
+				BA8A8EE828CD7EAE00EA7617 /* ResponsableStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -661,6 +667,7 @@
 				BA6A83BC28A744420040512E /* AppleSDGothicNeoL.ttf in Resources */,
 				BAE5C9C22894B08C00659F74 /* Assets.xcassets in Resources */,
 				BA6A83BB28A744420040512E /* AppleSDGothicNeoH.ttf in Resources */,
+				BA8A8EEB28CDD8ED00EA7617 /* NanumMyeongjo-YetHangul.ttf in Resources */,
 				BA6A83BA28A744420040512E /* AppleSDGothicNeoB.ttf in Resources */,
 				BA6A83BD28A744420040512E /* AppleSDGothicNeoM.ttf in Resources */,
 				BA6A83BE28A744420040512E /* AppleSDGothicNeoEB.ttf in Resources */,
@@ -745,6 +752,7 @@
 				BAA07C29289512DC0078EA83 /* RequestInterceptor.swift in Sources */,
 				BAEDCE9528C2B58D00102C47 /* PopUpAlertView.swift in Sources */,
 				BAA07C192894F51C0078EA83 /* StickerTextView.swift in Sources */,
+				BA8A8EE928CD7EAE00EA7617 /* ResponsableStatus.swift in Sources */,
 				BA6A83AA28A71DC90040512E /* TopView.swift in Sources */,
 				BA6A83D728A7E56B0040512E /* ImageAlertView.swift in Sources */,
 				BA6A83E328B1D3440040512E /* MakeCard_StickerThreeToFourView.swift in Sources */,
@@ -956,7 +964,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;
@@ -989,7 +997,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;

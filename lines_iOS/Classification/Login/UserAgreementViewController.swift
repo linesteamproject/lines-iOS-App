@@ -43,6 +43,7 @@ enum UserAgreementType: Int, CaseIterable {
 class UserAgreementViewController: ViewController {
     private var cellSubViews = [UserAgreement_CellView]()
     internal var joinModel: JoinModel!
+    internal var isShouldSkipHidden: Bool = false
     private var checkedArr = [false, false] {
         didSet {
             let isEnabled = checkedArr[UserAgreementType.service.rawValue]
@@ -51,6 +52,7 @@ class UserAgreementViewController: ViewController {
             bottomButton.backgroundColor = isEnabled ? Colors.beige.value : Colors.beigeInactive.value
         }
     }
+    
     private weak var bottomButton: OkButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,10 +154,33 @@ class UserAgreementViewController: ViewController {
                               txtColor: .black,
                               backColor: .beigeInactive)
         bottomButton.addAction(UIAction { [weak self] _ in
-            let vc = MainViewController()
-            vc.modalPresentationStyle = .fullScreen
-            getAppDelegate()?.setRootViewController(vc)
-//            self?.present(vc, animated: true)
+            guard let model = self?.joinModel else {
+                goToMain()
+                return
+            }
+            DispatchQueue.global().async {
+                AFHandler.login(model) { value in
+                    //TODO: Error가 났을 경우?
+                    guard let accessToken = value?.accessToken,
+                          let refreshToken = value?.refreshToken
+                    else { return }
+                    
+                    UserData.accessToken = accessToken
+                    UserData.refreshToken = refreshToken
+                    DispatchQueue.main.async {
+                        goToMain()
+                    }
+                }
+            }
+            
+            func goToMain() {
+                let vc = MainViewController()
+                vc.modalPresentationStyle = .fullScreen
+                if self?.isShouldSkipHidden == true {
+                    vc.justNowLogin = true
+                }
+                getAppDelegate()?.setRootViewController(vc)
+            }
         }, for: .touchUpInside)
         bottomButton.isEnabled = false
         self.bottomButton = bottomButton

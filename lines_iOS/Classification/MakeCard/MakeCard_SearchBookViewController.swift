@@ -16,6 +16,11 @@ class MakeCard_SearchBookViewController: ScrollViewController {
     private weak var searchedTypeView: MakeCard_SearchedTypeView!
     private weak var searchedListView: MakeCard_SearchedListView!
     private weak var topNextAnchor: NSLayoutYAxisAnchor!
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchedTypeView.endEditing(true)
+    }
+    
     override func setTopView() {
         let topView = MakeCard_TopView()
         self.view.addSubviews(topView)
@@ -30,7 +35,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
             topView.heightAnchor
                     .constraint(equalToConstant: topViewHeight)
         ])
-        topView.closeClosure = { [weak self] in
+        topView.closeClosure = {
             setTwoButtonAlertView()
         }
         self.topView = topView
@@ -113,22 +118,26 @@ class MakeCard_SearchBookViewController: ScrollViewController {
              self?.present(vc, animated: false)
         }, for: .touchUpInside)
         btn.isHidden = true
-        searchedTypeView.typeClosure = { type in
+        searchedTypeView.typeClosure = { [weak self] type in
             MakeCard_KakaoBookSearcher.type = type
             btn.isHidden = !(type == .barcode)
+            ReadTextController.shared.page = 1
+            self?.searchedListView.list.removeAll()
         }
         
-        searchedTypeView.searchClosure = { [weak self] str in
-            guard let str = str else { return }
-            
+        searchedTypeView.searchClosure = { [weak self] in
+            guard let str = ReadTextController.shared.searchedStr else { return }
+            ReadTextController.shared.page = 1
+            self?.searchedListView.list.removeAll()
             self?.getBookInfo(str)
         }
+        searchedTypeView.delegate = self
         self.searchedTypeView = searchedTypeView
         self.topNextAnchor = searchedTypeView.bottomAnchor
     }
     
     internal func getBookInfo(_ str: String) {
-        let dic: [String: String]
+        let dic: [String: Any]
         switch MakeCard_KakaoBookSearcher.type {
         case .bookName:
             dic = MakeCard_KakaoBookSearcher.byName(str)
@@ -158,6 +167,12 @@ class MakeCard_SearchBookViewController: ScrollViewController {
                                                     constant: -34 + -34 + -90)
         ])
         searchedListView.delegate = self
+        searchedListView.pageClosure = { [weak self] in
+            ReadTextController.shared.page += 1
+            
+            guard let str = ReadTextController.shared.searchedStr else { return }
+            self?.getBookInfo(str)
+        }
         self.searchedListView = searchedListView
         topNextAnchor = searchedListView.bottomAnchor
     }
@@ -182,7 +197,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         }
         
         bottomView.rightBtnClosure = { [weak self] in
-            guard ReadTextController.shared.bookInfo != nil else { return }
+            guard !ReadTextController.shared.bookInfo.isEmpty else { return }
             
             let vc = MakeCard_CompleteViewController()
             vc.modalPresentationStyle = .fullScreen
@@ -198,7 +213,13 @@ extension MakeCard_SearchBookViewController: ButtonDelegate {
         if let obj = obj as? BookDocu {
             ReadTextController.shared.bookName = obj.bookName
             ReadTextController.shared.authorName = obj.authorsStr
+            ReadTextController.shared.bookIsbn = obj.isbn
         }
-        
+    }
+}
+
+extension MakeCard_SearchBookViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
     }
 }

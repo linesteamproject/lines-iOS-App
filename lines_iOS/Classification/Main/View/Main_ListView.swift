@@ -57,6 +57,7 @@ class Main_ListView: UIView {
         self.label = label
         self.nextTopAnchor = label.bottomAnchor
     }
+    
     private func setListView() {
         let back = UIView()
         self.addSubviews(back)
@@ -97,7 +98,6 @@ class Main_ListView: UIView {
                 cellHeight = self.cellWidth / 3 * 4
             }
             
-            print("munyong > \(cellWidth), \(cellHeight)")
             let cellView = ImageListCellView(data)
             back.addSubviews(cellView)
             if idx % 2 == 0 { //왼쪽

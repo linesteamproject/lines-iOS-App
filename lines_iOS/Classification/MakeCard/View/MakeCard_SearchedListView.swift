@@ -11,6 +11,7 @@ import UIKit
 class MakeCard_SearchedListView: UIView {
     private weak var tableView: UITableView!
     internal weak var delegate: ButtonDelegate?
+    internal var pageClosure: (() -> Void)?
     internal var list: [BookDocu] = [] {
         didSet { tableView.reloadData() }
     }
@@ -58,6 +59,16 @@ extension MakeCard_SearchedListView: UITableViewDelegate,
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.touched(list[indexPath.item])
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard self.tableView.contentOffset.y > tableView.contentSize.height-tableView.bounds.size.height
+        else { return }
+        
+        self.pageClosure?()
+//            thisUrl = baseUrl + String(page)
+//            loading(url: thisUrl)
+//            tableView.reloadData()
     }
 }
 

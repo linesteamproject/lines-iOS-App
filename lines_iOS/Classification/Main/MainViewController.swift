@@ -17,6 +17,7 @@ class MainViewController: ScrollViewController {
     private weak var floatingButton: UIButton!
     private weak var mainListView: Main_ListView!
     
+    internal var justNowLogin = false
     override var topViewHeight: CGFloat {
         get { return 56 }
         set { }
@@ -27,17 +28,64 @@ class MainViewController: ScrollViewController {
         setContentView()
         setOverlappedButtonsView()
         setMenuView()
+        
+        guard justNowLogin else { return }
+        
+        RealmController.shared.queue.async {
+            RealmController.shared.getBookCards { cards in
+                cards.forEach { card in
+                    DispatchQueue.global().async { [weak self] in
+                        guard let card = card else { return }
+                        AFHandler.saveRealmCardData(card) {
+                            //TODO: ERROR
+                            guard let value = $0 else { return }
+                            self?.getCardsFromServer {
+                                self?.justNowLogin = false
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setContentView()
-        RealmController.shared.queue.async {
-            RealmController.shared.getBookCards { cards in
+        
+        if FirstLaunchChecker.isNotLogin {
+            RealmController.shared.queue.async {
+                RealmController.shared.getBookCards { cards in
+                    DispatchQueue.main.async {
+                        self.mainListView?.datas = cards
+                        FirstLaunchChecker.isDataSaved = cards.count > 0
+                    }
+                }
+            }
+        } else if !justNowLogin {
+            getCardsFromServer()
+        }
+    }
+    
+    private func getCardsFromServer(_ done: (() -> Void)? = nil) {
+        DispatchQueue.global().async {
+            AFHandler.getCardDatas {
+                guard let value = $0 else { done?(); return }
+                var cards = [CardModel]()
+                value.content.forEach { content in
+                    let ratio = MakeCard_StickerRatioType.allCases.first(where: { $0.typeStr == content.ratio }) ?? .one2one
+                    cards.append(CardModel(bookName: content.bookResponse?.name,
+                                           authorName: content.bookResponse?.title,
+                                           bookIsbn: content.bookResponse?.isbn,
+                                           lineValue: content.content,
+                                           colorImageName: content.background,
+                                           ratioType: ratio))
+                }
+                
+                done?()
                 DispatchQueue.main.async {
-                    self.mainListView?.datas = cards
-                    FirstLaunchChecker.isDataSaved = cards.count > 0 
+                    self.mainListView?.datas = cards.reversed()
                 }
             }
         }
@@ -363,6 +411,8 @@ extension MainViewController: ButtonDelegate {
         else { return }
         
         self.hiddenButtonsView()
+        ReadTextController.shared.initialize()
+        
         switch type {
         case .top:
             let vc = CameraViewController()
