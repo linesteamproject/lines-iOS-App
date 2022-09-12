@@ -16,12 +16,12 @@ class MakeCard_KakaoBookSearcher {
     }
     class func byISBN(_ isbn: String) -> [String: Any] {
         return ["query":isbn,
-                "target":isbn,
+                "target":"isbn",
                 "page": ReadTextController.shared.page]
     }
     class func byAuthor(_ person: String) -> [String: Any] {
         return ["query":person,
-                "target":person,
+                "target":"person",
                 "page": ReadTextController.shared.page]
     }
 }

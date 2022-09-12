@@ -122,7 +122,9 @@ class MakeCard_SearchBookViewController: ScrollViewController {
             MakeCard_KakaoBookSearcher.type = type
             btn.isHidden = !(type == .barcode)
             ReadTextController.shared.page = 1
+            self?.searchedListView.isLoading = true
             self?.searchedListView.list.removeAll()
+            self?.searchedListView.isLoading = false
         }
         
         searchedTypeView.searchClosure = { [weak self] in
@@ -148,9 +150,12 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         }
         guard !dic.isEmpty else { return }
         
-        AFHandler.searchBook(by: dic) {
-            guard let documents = $0?.documents else { return }
-            self.searchedListView.list = documents
+        DispatchQueue.global().async { [weak self] in
+            AFHandler.searchBook(by: dic) {
+                guard let documents = $0?.documents, !documents.isEmpty else { return }
+                self?.searchedListView.list.append(contentsOf: documents)
+                self?.searchedListView.isLoading = false
+            }
         }
     }
     

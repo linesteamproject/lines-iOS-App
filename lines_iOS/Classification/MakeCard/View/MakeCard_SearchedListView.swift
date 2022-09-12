@@ -11,6 +11,7 @@ import UIKit
 class MakeCard_SearchedListView: UIView {
     private weak var tableView: UITableView!
     internal weak var delegate: ButtonDelegate?
+    internal var isLoading: Bool = false
     internal var pageClosure: (() -> Void)?
     internal var list: [BookDocu] = [] {
         didSet { tableView.reloadData() }
@@ -65,10 +66,9 @@ extension MakeCard_SearchedListView: UITableViewDelegate,
         guard self.tableView.contentOffset.y > tableView.contentSize.height-tableView.bounds.size.height
         else { return }
         
+        guard !isLoading else { return }
         self.pageClosure?()
-//            thisUrl = baseUrl + String(page)
-//            loading(url: thisUrl)
-//            tableView.reloadData()
+        isLoading = true
     }
 }
 

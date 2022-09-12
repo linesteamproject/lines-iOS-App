@@ -20,7 +20,19 @@ class ReadTextController: NSObject {
         }
     }
     internal var capturedImage: UIImage?
-    internal var readText: String?
+    internal var readText: String? {
+        didSet {
+            guard let readText = readText,
+                  readText.count > 110
+            else { return }
+            
+            let startIndex = readText.index(readText.startIndex, offsetBy: 0)// 사용자지정 시작인덱스
+            let endIndex = readText.index(readText.startIndex, offsetBy: 110)// 사용자지정 끝인덱스
+            let sliced_str = readText[startIndex ..< endIndex]
+            print("munyong > \(sliced_str)")
+            self.readText = String(sliced_str)
+        }
+    }
     internal var sizeType: MakeCard_StickerRatioType = .one2one
     internal var colorType: MakeCard_StickerBackColorType = .black
     internal var bookName: String?
