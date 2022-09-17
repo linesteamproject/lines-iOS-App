@@ -48,67 +48,67 @@ class AFHandler {
         }
     }
     
-    class func login(_ model: JoinModel, done: ((LoginStatus?) -> Void)?) {
+    class func login(_ model: JoinModel, done: ((LoginResponse?) -> Void)?) {
         let urlStr = "http://118.67.132.142:8080/v1/member/login"
         session.request(urlStr, method: .post,
                         parameters: model.param,
                         encoding: JSONEncoding.default)
-        .responseDecodable(of: LoginStatus.self) {
+        .responseDecodable(of: ResponseResult<LoginResponse>.self) {
             let value = $0.value
-            done?(value)
+            done?(value?.responseData)
         }
     }
     
-    class func refresh(done: ((LoginStatus?) -> Void)?) {
+    class func refresh(done: ((LoginResponse?) -> Void)?) {
         let urlStr = "http://118.67.132.142:8080/v1/member/login/actions/refresh"
-        let headers = HTTPHeaders(["Authorization": "beaerer " + UserData.accessToken,
+        let headers = HTTPHeaders(["Authorization": "bearer " + UserData.accessToken,
             "X-AUTH-REFRESH-TOKEN": UserData.refreshToken])
         session.request(urlStr, method: .post,
                         encoding: URLEncoding.default,
                         headers: headers)
-        .responseDecodable(of: LoginStatus.self) {
+        .responseDecodable(of: ResponseResult<LoginResponse>.self) {
             let value = $0.value
-            done?(value)
+            done?(value?.responseData)
         }
     }
     
     class func getCardDatas(done: ((CardInfoList?) -> Void)?) {
         let urlStr = "http://118.67.132.142:8080/v1/lines"
-        let headers = HTTPHeaders(["Authorization": "beaerer " + UserData.accessToken])
+        let headers = HTTPHeaders(["Authorization": "bearer " + UserData.accessToken])
         session.request(urlStr, method: .get,
                         encoding: JSONEncoding.default,
                         headers: headers)
-        .responseDecodable(of: CardInfoList.self) {
+        .responseDecodable(of: ResponseResult<CardInfoList>.self) {
             let value = $0.value
-            done?(value)
+            done?(value?.responseData)
         }
     }
     
     class func saveCardData(done: ((SaveCardResponse?) -> Void)?) {
         let urlStr = "http://118.67.132.142:8080/v1/lines"
-        let headers = HTTPHeaders(["Authorization": "beaerer " + UserData.accessToken])
+        let headers = HTTPHeaders(["Authorization": "bearer " + UserData.accessToken])
         let param = ReadTextController.shared.param
         session.request(urlStr, method: .post,
                         parameters: param,
                         encoding: JSONEncoding.default,
                         headers: headers)
-        .responseDecodable(of: SaveCardResponse.self) {
+        .responseDecodable(of: ResponseResult<SaveCardResponse>.self) {
             let value = $0.value
-            done?(value)
+            done?(value?.responseData)
         }
     }
     
     class func saveRealmCardData(_ cardModel: CardModel, done: ((SaveCardResponse?) -> Void)?) {
         let urlStr = "http://118.67.132.142:8080/v1/lines"
-        let headers = HTTPHeaders(["Authorization": "beaerer " + UserData.accessToken])
+        let headers = HTTPHeaders(["Authorization": "bearer " + UserData.accessToken])
         let param = cardModel.param
         session.request(urlStr, method: .post,
                         parameters: param,
                         encoding: JSONEncoding.default,
                         headers: headers)
-        .responseDecodable(of: SaveCardResponse.self) {
+        .responseDecodable(of: ResponseResult<SaveCardResponse>.self) {
             let value = $0.value
-            done?(value)
+            done?(value?.responseData)
         }
     }
 }

@@ -76,7 +76,6 @@
 		BAA07C102894D3430078EA83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C0F2894D3430078EA83 /* MainViewController.swift */; };
 		BAA07C142894E3780078EA83 /* ReadTextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C132894E3780078EA83 /* ReadTextController.swift */; };
 		BAA07C162894EC9C0078EA83 /* TextRecognizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C152894EC9C0078EA83 /* TextRecognizeController.swift */; };
-		BAA07C192894F51C0078EA83 /* StickerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C182894F51C0078EA83 /* StickerTextView.swift */; };
 		BAA07C1B2894F79F0078EA83 /* Extensions+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C1A2894F79F0078EA83 /* Extensions+Value.swift */; };
 		BAA07C1E289509940078EA83 /* NWMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C1D289509940078EA83 /* NWMonitor.swift */; };
 		BAA07C20289509AF0078EA83 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA07C1F289509AF0078EA83 /* EventMonitor.swift */; };
@@ -97,7 +96,6 @@
 		BAEDCE9528C2B58D00102C47 /* PopUpAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEDCE9428C2B58D00102C47 /* PopUpAlertView.swift */; };
 		BAFF71D928C0B84A00AA5E78 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71D828C0B84A00AA5E78 /* RealmController.swift */; };
 		BAFF71DC28C0B88600AA5E78 /* CardModel_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71DB28C0B88600AA5E78 /* CardModel_Realm.swift */; };
-		BAFF71DF28C0CDCE00AA5E78 /* Main_ListSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71DE28C0CDCE00AA5E78 /* Main_ListSubView.swift */; };
 		BAFF71E228C0F27000AA5E78 /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71E128C0F27000AA5E78 /* LoginButtonView.swift */; };
 		BAFF71E528C0F3AA00AA5E78 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71E428C0F3AA00AA5E78 /* LoginType.swift */; };
 		BAFF71E728C0F3BE00AA5E78 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFF71E628C0F3BE00AA5E78 /* LoginButton.swift */; };
@@ -175,7 +173,6 @@
 		BAA07C0F2894D3430078EA83 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BAA07C132894E3780078EA83 /* ReadTextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTextController.swift; sourceTree = "<group>"; };
 		BAA07C152894EC9C0078EA83 /* TextRecognizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizeController.swift; sourceTree = "<group>"; };
-		BAA07C182894F51C0078EA83 /* StickerTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerTextView.swift; sourceTree = "<group>"; };
 		BAA07C1A2894F79F0078EA83 /* Extensions+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Value.swift"; sourceTree = "<group>"; };
 		BAA07C1D289509940078EA83 /* NWMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWMonitor.swift; sourceTree = "<group>"; };
 		BAA07C1F289509AF0078EA83 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
@@ -199,7 +196,6 @@
 		BAEDCE9428C2B58D00102C47 /* PopUpAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpAlertView.swift; sourceTree = "<group>"; };
 		BAFF71D828C0B84A00AA5E78 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		BAFF71DB28C0B88600AA5E78 /* CardModel_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel_Realm.swift; sourceTree = "<group>"; };
-		BAFF71DE28C0CDCE00AA5E78 /* Main_ListSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_ListSubView.swift; sourceTree = "<group>"; };
 		BAFF71E128C0F27000AA5E78 /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		BAFF71E428C0F3AA00AA5E78 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
 		BAFF71E628C0F3BE00AA5E78 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
@@ -473,9 +469,7 @@
 				BA6A83AF28A728A80040512E /* Main_ListView.swift */,
 				BA9DA31428CC3682004CBBFB /* Main_MenuView.swift */,
 				BA8A8EE628CD69B500EA7617 /* Main_CardDetailTopView.swift */,
-				BAFF71DD28C0CDB100AA5E78 /* Main_ListViewSubs */,
 				BA6A83BF28A7A9ED0040512E /* Main_OverlappedButtonsView.swift */,
-				BAA07C182894F51C0078EA83 /* StickerTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -556,14 +550,6 @@
 				BAFF71DB28C0B88600AA5E78 /* CardModel_Realm.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		BAFF71DD28C0CDB100AA5E78 /* Main_ListViewSubs */ = {
-			isa = PBXGroup;
-			children = (
-				BAFF71DE28C0CDCE00AA5E78 /* Main_ListSubView.swift */,
-			);
-			path = Main_ListViewSubs;
 			sourceTree = "<group>";
 		};
 		BAFF71E028C0F26600AA5E78 /* View */ = {
@@ -751,7 +737,6 @@
 				BA6A83E728B2039C0040512E /* MakeCard_SelectProportionButtonView.swift in Sources */,
 				BAA07C29289512DC0078EA83 /* RequestInterceptor.swift in Sources */,
 				BAEDCE9528C2B58D00102C47 /* PopUpAlertView.swift in Sources */,
-				BAA07C192894F51C0078EA83 /* StickerTextView.swift in Sources */,
 				BA8A8EE928CD7EAE00EA7617 /* ResponsableStatus.swift in Sources */,
 				BA6A83AA28A71DC90040512E /* TopView.swift in Sources */,
 				BA6A83D728A7E56B0040512E /* ImageAlertView.swift in Sources */,
@@ -808,7 +793,6 @@
 				BA6A83C428A7C2120040512E /* ExternUIImagePickerController.swift in Sources */,
 				BAA07C20289509AF0078EA83 /* EventMonitor.swift in Sources */,
 				BA6A8378289CEEAD0040512E /* StartViewController.swift in Sources */,
-				BAFF71DF28C0CDCE00AA5E78 /* Main_ListSubView.swift in Sources */,
 				BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */,
 				BA6A83DB28A8759C0040512E /* MakeCard_DetailViewController.swift in Sources */,
 				BA8A8EE528CD663F00EA7617 /* Main_CardDetailViewController.swift in Sources */,
@@ -964,7 +948,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;
@@ -997,7 +981,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;

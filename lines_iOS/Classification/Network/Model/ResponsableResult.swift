@@ -8,18 +8,12 @@
 import Foundation
 
 struct ResponseResult<T: Codable>: Codable {
-    let statusCode: Int?
-    let message: String?
-    let data: T?
+    let httpStatus: Int?
+    let success: Bool
+    let error: String?
+    let responseData: T?
     
     enum CodingKeys: CodingKey {
-        case statusCode, message, data
-    }
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        statusCode = (try? values.decode(Int.self, forKey: .statusCode)) ?? nil
-        message = (try? values.decode(String.self, forKey: .message)) ?? nil
-        data = (try? values.decode(T.self, forKey: .data)) ?? nil
+        case httpStatus, success, error, responseData
     }
 }

@@ -65,6 +65,7 @@ class ImageListCellView: UIView {
         contentsLabel.setTitle(data.lineValue,
                                font: Fonts.getNanum(size: 7.4),
                                txtColor: .black)
+        contentsLabel.textAlignment = .center
         contentsLabel.numberOfLines = 0
         
         var bookInfo = data.bookName ?? ""

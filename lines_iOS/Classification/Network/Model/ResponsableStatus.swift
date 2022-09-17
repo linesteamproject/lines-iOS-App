@@ -5,9 +5,9 @@
 //  Created by mun on 2022/09/11.
 //
 
-struct LoginStatus: Codable {
-    let accessToken: String
-    let refreshToken: String
+struct LoginResponse: Codable {
+    let accessToken: String?
+    let refreshToken: String?
 }
 
 struct CardInfoList: Codable {

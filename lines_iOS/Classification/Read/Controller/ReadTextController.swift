@@ -53,12 +53,17 @@ class ReadTextController: NSObject {
         didSet { RealmController.shared.write(self.getRealmModel()) }
     }
     
-    internal var param: [String: String?] {
+    internal var param: [String: Any?] {
         return [
-            "content": self.readText,
+            "content": self.slicedText,
             "isbn": self.bookIsbn,
             "ratio": self.sizeType.typeStr,
-            "background": self.colorType.name
+            "background": self.colorType.name,
+            "book": [
+                "title": self.bookName,
+                "name": self.authorName,
+                "isbn": self.bookIsbn
+            ]
         ]
     }
     

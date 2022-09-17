@@ -44,7 +44,15 @@ class StartViewController: ViewController {
             AFHandler.refresh {
                 guard let accessToken = $0?.accessToken,
                       let refreshToken = $0?.refreshToken
-                else { return }
+                else {
+                    let vc = LoginViewController()
+                    vc.modalPresentationStyle = .fullScreen
+                    DispatchQueue.main.async {
+                        self.present(vc, animated: true)
+                    }
+                    
+                    return
+                }
                 
                 UserData.accessToken = accessToken
                 UserData.refreshToken = refreshToken

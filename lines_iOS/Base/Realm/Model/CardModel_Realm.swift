@@ -14,12 +14,17 @@ struct CardModel {
     let colorImageName: String?
     let ratioType: MakeCard_StickerRatioType?
     
-    var param: [String: String?] {
+    var param: [String: Any?] {
         return [
             "content": self.lineValue,
             "isbn": self.bookIsbn,
             "ratio": self.ratioType?.typeStr,
-            "background": self.colorImageName
+            "background": self.colorImageName,
+            "book": [
+                "title": self.bookName,
+                "name": self.authorName,
+                "isbn": self.bookIsbn
+            ]
         ]
     }
 }
