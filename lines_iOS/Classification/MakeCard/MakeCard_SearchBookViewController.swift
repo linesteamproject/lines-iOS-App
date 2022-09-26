@@ -51,9 +51,9 @@ class MakeCard_SearchBookViewController: ScrollViewController {
             ])
             tbAlertView.title = "문장 기록 나가기"
             tbAlertView.subTitle = "문장 기록 페이지에서 나가시겠습니까?\n진행중이던 내용이 모두 버려집니다."
-            tbAlertView.closure = {
+            tbAlertView.closure = { [weak self] in
                 ReadTextController.shared.initialize()
-                dismissViewControllerUntil(vcID: MainViewController.id)
+                self?.navigationController?.popToRootViewController(animated: true)
             }
         }
     }
@@ -115,7 +115,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         btn.addAction(UIAction { [weak self] _ in
             let vc = MakeCard_BarcodeViewController()
              vc.modalPresentationStyle = .overFullScreen
-             self?.present(vc, animated: false)
+             self?.present(vc, animated: true)
         }, for: .touchUpInside)
         btn.isHidden = true
         searchedTypeView.typeClosure = { [weak self] type in
@@ -192,7 +192,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
     }
 
     private func setBottomView() {
-        let bottomView = MarkCard_BottomView()
+        let bottomView = MarkCard_BottomView(leftButtonTitle: "이전 단계")
         self.view.addSubviews(bottomView)
         NSLayoutConstraint.activate([
             bottomView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -34 + -34),
@@ -201,13 +201,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
             bottomView.heightAnchor.constraint(equalToConstant: 90)
         ])
         bottomView.leftBtnClosure = { [weak self] in
-            ReadTextController.shared.initialize()
-            let vc = CameraViewController()
-            vc.type = .camera
-            vc.modalPresentationStyle = .fullScreen
-            DispatchQueue.main.async {
-                self?.present(vc, animated: true)
-            }
+            self?.navigationController?.popViewController(animated: true)
         }
         
         bottomView.rightBtnClosure = { [weak self] in
@@ -216,7 +210,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
             let vc = MakeCard_CompleteViewController()
             vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async {
-                self?.present(vc, animated: true)
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }

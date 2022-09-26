@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+enum ReadTextStep {
+    case start
+    case capture
+    case crop
+}
+
 class ReadTextController: NSObject {
     static let shared = ReadTextController()
     internal var cardModel: CardModel? {
@@ -19,6 +25,7 @@ class ReadTextController: NSObject {
             self.authorName = cardModel?.authorName
         }
     }
+    internal var readTextStep = ReadTextStep.start
     internal var capturedImage: UIImage?
     internal var readText: String?
     internal var slicedText: String {
@@ -30,6 +37,7 @@ class ReadTextController: NSObject {
         let slicedStr = readText[startIndex ..< endIndex]
         return String(slicedStr)
     }
+    
     internal var sizeType: MakeCard_StickerRatioType = .one2one
     internal var colorType: MakeCard_StickerBackColorType = .black
     internal var bookName: String?
@@ -68,6 +76,7 @@ class ReadTextController: NSObject {
     }
     
     func initialize() {
+        readTextStep = ReadTextStep.start
         capturedImage = nil
         readText = nil
         bookName = nil

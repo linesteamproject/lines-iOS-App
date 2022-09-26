@@ -119,7 +119,12 @@ class Main_CardDetailViewController: ViewController {
         }
         shareBtnsView.downloadClosure = { [weak self] in
             ShareController.shared.downloadImage(self?.stickerView) {
-                guard !$0 else { return }
+                guard !$0 else {
+                    DispatchQueue.main.async {
+                        Toast.shared.message("이미지 저장이 완료되었습니다.")
+                    }
+                    return
+                }
                 DispatchQueue.main.async {
                     setTwoButtonAlertView()
                 }

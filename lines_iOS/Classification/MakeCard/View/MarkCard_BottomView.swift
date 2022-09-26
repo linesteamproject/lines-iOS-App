@@ -17,14 +17,14 @@ class MarkCard_BottomView: UIView {
             rightButton.backgroundColor = isRightActive ? Colors.beige.value : Colors.beigeInactive.value
         }
     }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUI()
-    }
     required init?(coder: NSCoder) {
         fatalError()
     }
-    private func setUI() {
+    init(leftButtonTitle: String) {
+        super.init(frame: .zero)
+        setUI(leftButtonTitle)
+    }
+    private func setUI(_ leftButtonTitle: String) {
         let left = CancelButton()
         let right = OkButton()
         self.addSubviews(left, right)
@@ -45,7 +45,7 @@ class MarkCard_BottomView: UIView {
             right.bottomAnchor.constraint(equalTo: self.bottomAnchor,
                                           constant: -20),
         ])
-        left.setTitle("사진 다시 찍기",
+        left.setTitle(leftButtonTitle,
                       font: Fonts.get(size: 18, type: .bold),
                       txtColor: Colors.beige)
         right.setTitle("다음 단계",

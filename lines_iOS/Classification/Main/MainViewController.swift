@@ -419,21 +419,21 @@ extension MainViewController: ButtonDelegate {
             vc.type = .camera
             vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async { [weak self] in
-                self?.present(vc, animated: true)
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
         case .mid:
             let vc = CameraViewController()
             vc.type = .photoLibrary
             vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async { [weak self] in
-                self?.present(vc, animated: true)
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
         case .bottom:
             let vc = MakeCardOnlyTextViewController()
             ReadTextController.shared.capturedImage = UIImage(named: "EmptyBookImage")
             vc.modalPresentationStyle = .fullScreen
-            DispatchQueue.main.async {
-                self.present(vc, animated: false)
+            DispatchQueue.main.async { [weak self] in
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
             break
         }

@@ -44,6 +44,7 @@ class ScrollViewController: ViewController {
         ])
         scrollView.backgroundColor = .clear
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.bounces = false
         
         let scrollContentView = UIView()
         scrollView.addSubviews(scrollContentView)

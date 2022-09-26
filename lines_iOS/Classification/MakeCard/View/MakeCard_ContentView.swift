@@ -42,6 +42,14 @@ class MakeCard_ContentView: UIView, UITextViewDelegate {
                                            constant: -24)
         ])
         txtView.backgroundColor = .clear
+        
+        let toolBarKeyboard = UIToolbar()
+        toolBarKeyboard.sizeToFit()
+        let btnDoneBar = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneBtnClicked))
+        toolBarKeyboard.items = [.flexibleSpace(), btnDoneBar]
+        toolBarKeyboard.tintColor = Colors.beige.value
+        txtView.inputAccessoryView = toolBarKeyboard
+        
         if let text = text {
             txtView.text = text
             txtView.textColor = Colors.white.value
@@ -52,6 +60,7 @@ class MakeCard_ContentView: UIView, UITextViewDelegate {
         txtView.font = Fonts.get(size: 20,
                                  type: .regular)
         txtView.delegate = self
+        txtView.returnKeyType = .done
         self.txtView = txtView
     }
 
@@ -73,5 +82,10 @@ class MakeCard_ContentView: UIView, UITextViewDelegate {
         } else {
             isTxtViewEmptyClosure?(false)
         }
+        self.txtView.endEditing(true)
+    }
+    @objc
+    private func doneBtnClicked() {
+        self.txtView.endEditing(true)
     }
 }

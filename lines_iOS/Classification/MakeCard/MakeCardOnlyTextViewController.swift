@@ -54,7 +54,7 @@ class MakeCardOnlyTextViewController: MakeCardViewController {
             ReadTextController.shared.readText = self?.cardContentView.txtView.text ?? ""
             let vc = MakeCard_DetailViewController()
             vc.modalPresentationStyle = .fullScreen
-            self?.present(vc, animated: false)
+            self?.navigationController?.pushViewController(vc, animated: false)
         }, for: .touchUpInside)
         okButton.isEnabled = false
         okButton.layer.cornerRadius = 10

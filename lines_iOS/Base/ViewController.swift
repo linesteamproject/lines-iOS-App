@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         self.view.backgroundColor = Colors.black.value
         
         setLoadingView()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func setLoadingView() {

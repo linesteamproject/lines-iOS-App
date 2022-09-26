@@ -16,6 +16,17 @@ class MakeCardViewController: ScrollViewController {
     }
     internal var noticeStr: String = "인식한 문장을 확인해 주세요.\n줄바꿈, 오타 등을 직접 수정해 주세요."
     internal weak var nextTopAnchor: NSLayoutYAxisAnchor!
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        cardContentView.endEditing(true)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        guard self.navigationController?.topViewController is MakeCard_DetailViewController else {
+            ReadTextController.shared.initialize()
+            return
+        }
+    }
     override func setTopView() {
         let topView = MakeCard_TopView()
         self.view.addSubviews(topView)
@@ -49,7 +60,7 @@ class MakeCardViewController: ScrollViewController {
         tbAlertView.subTitle = "문장 기록 페이지에서 나가시겠습니까?\n진행중이던 내용이 모두 버려집니다."
         tbAlertView.closure = {
             ReadTextController.shared.initialize()
-            dismissViewControllerUntil(vcID: MainViewController.id)
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     
@@ -95,7 +106,7 @@ class MakeCardViewController: ScrollViewController {
             cardContentView.topAnchor.constraint(equalTo: nextTopAnchor),
             cardContentView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             cardContentView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            cardContentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 274),
+            cardContentView.heightAnchor.constraint(equalToConstant: 274),
         ])
         cardContentView.isTxtViewEmptyClosure = { [weak self] isEmptyContent in
             self?.bottomView.isRightActive = !isEmptyContent
@@ -121,8 +132,8 @@ class MakeCardViewController: ScrollViewController {
     }
     
     internal func setBottomView() {
-        let bottomView = MarkCard_BottomView()
-        self.contentView.addSubviews(bottomView)
+        let bottomView = MarkCard_BottomView(leftButtonTitle: "사진 다시 찍기")
+        self.view.addSubviews(bottomView)
         NSLayoutConstraint.activate([
             bottomView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -34),
             bottomView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
@@ -130,20 +141,13 @@ class MakeCardViewController: ScrollViewController {
             bottomView.heightAnchor.constraint(equalToConstant: 90)
         ])
         bottomView.leftBtnClosure = { [weak self] in
-            ReadTextController.shared.initialize()
-            let vc = CameraViewController()
-            vc.type = .camera
-            vc.modalPresentationStyle = .fullScreen
-            ReadTextController.shared.capturedImage = nil
-            DispatchQueue.main.async {
-                self?.present(vc, animated: true)
-            }
+            self?.navigationController?.popViewController(animated: true)
         }
         bottomView.rightBtnClosure = { [weak self] in
             ReadTextController.shared.readText = self?.cardContentView.txtView.text ?? ""
             let vc = MakeCard_DetailViewController()
             vc.modalPresentationStyle = .fullScreen
-            self?.present(vc, animated: false)
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
         
         if let readTxt = ReadTextController.shared.readText,

@@ -12,14 +12,24 @@ import AVFoundation
 
 class CameraViewController: ViewController {
     internal var type: UIImagePickerController.SourceType!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
-            self.showImagePickerController()
-        })
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("munyong > ReadTextController.shared.readTextStep: \(ReadTextController.shared.readTextStep)")
+        switch ReadTextController.shared.readTextStep {
+        case .start:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                self.showImagePickerController()
+            })
+        case .capture:
+            self.showCroppedController()
+        case .crop:
+            self.recognizeTextOnImage()
+        }
     }
     
-    private func showImagePickerController() {
+    internal func showImagePickerController() {
         let pVC: UIImagePickerController
         if type == .camera {
             pVC = ExternUIImagePickerController()
@@ -33,7 +43,7 @@ class CameraViewController: ViewController {
         }
         pVC.delegate = self
         
-        self.present(pVC, animated: false, completion: nil)
+        self.present(pVC, animated: false)
     }
     
     private func showCroppedController() {
@@ -57,7 +67,7 @@ class CameraViewController: ViewController {
             let vc = MakeCardViewController()
             vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async {
-                self.present(vc, animated: false)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         })
     }
@@ -68,15 +78,17 @@ extension CameraViewController: UIImagePickerControllerDelegate & UINavigationCo
         print(info)
         guard let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage
         else { fatalError() }
+        ReadTextController.shared.readTextStep = .capture
         ReadTextController.shared.capturedImage = image
         picker.dismiss(animated: false) {
-            self.showCroppedController()
+            self.viewWillAppear(true)
         }
     }
+    
     internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: false, completion: {
+        picker.dismiss(animated: false, completion: { [weak self] in
             ReadTextController.shared.initialize()
-            dismissViewControllerUntil(vcID: MainViewController.id)
+            self?.navigationController?.popViewController(animated: true)
         })
     }
 }
@@ -87,10 +99,9 @@ extension CameraViewController: CropViewControllerDelegate {
                                    transformation: Transformation,
                                    cropInfo: CropInfo) {
         ReadTextController.shared.capturedImage = cropped
+        ReadTextController.shared.readTextStep = .crop
         DispatchQueue.main.async {
-            cropViewController.dismiss(animated: false) {
-                self.recognizeTextOnImage()
-            }
+            cropViewController.dismiss(animated: false)
         }
     }
     
@@ -99,13 +110,9 @@ extension CameraViewController: CropViewControllerDelegate {
     
     func cropViewControllerDidCancel(_ cropViewController: CropViewController,
                                      original: UIImage) {
-        ReadTextController.shared.capturedImage = nil
-        
+        ReadTextController.shared.initialize()
         DispatchQueue.main.async {
-            cropViewController.dismiss(animated: false) {
-                ReadTextController.shared.initialize()
-                dismissViewControllerUntil(vcID: MainViewController.id)
-            }
+            cropViewController.dismiss(animated: false)
         }
     }
     

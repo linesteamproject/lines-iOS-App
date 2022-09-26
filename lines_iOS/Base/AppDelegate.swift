@@ -25,18 +25,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: StartViewController())
+        window?.rootViewController = UINavigationController(rootViewController: SplashViewController())
         
         KakaoSDK.initSDK(appKey: "794c3c6e502b330cf0a9303a414d0da9")
         activeNaverLogin()
         
         let _ = RealmController.shared
         
-        for fontFamily in UIFont.familyNames {
-            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
-                print(fontName)
-            }
-        }
+//        for fontFamily in UIFont.familyNames {
+//            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
+//                print(fontName)
+//            }
+//        }
         return true
 
     }
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("munyong > url: \(url.absoluteString)")
+//        print("munyong > url: \(url.absoluteString)")
         guard url.absoluteString.contains("kakao") else {
             NaverThirdPartyLoginConnection
                     .getSharedInstance()?

@@ -58,6 +58,8 @@
 		BA8A8EE728CD69B500EA7617 /* Main_CardDetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EE628CD69B500EA7617 /* Main_CardDetailTopView.swift */; };
 		BA8A8EE928CD7EAE00EA7617 /* ResponsableStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EE828CD7EAE00EA7617 /* ResponsableStatus.swift */; };
 		BA8A8EEB28CDD8ED00EA7617 /* NanumMyeongjo-YetHangul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA8A8EEA28CDD8EA00EA7617 /* NanumMyeongjo-YetHangul.ttf */; };
+		BA8A8EED28E1C23600EA7617 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EEC28E1C23600EA7617 /* SplashViewController.swift */; };
+		BA8A8EEF28E1C3A400EA7617 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EEE28E1C3A400EA7617 /* Toast.swift */; };
 		BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */; };
 		BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */; };
 		BA9DA30928C8B733004CBBFB /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30828C8B733004CBBFB /* UserInfo.swift */; };
@@ -155,6 +157,8 @@
 		BA8A8EE628CD69B500EA7617 /* Main_CardDetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_CardDetailTopView.swift; sourceTree = "<group>"; };
 		BA8A8EE828CD7EAE00EA7617 /* ResponsableStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsableStatus.swift; sourceTree = "<group>"; };
 		BA8A8EEA28CDD8EA00EA7617 /* NanumMyeongjo-YetHangul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-YetHangul.ttf"; sourceTree = "<group>"; };
+		BA8A8EEC28E1C23600EA7617 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		BA8A8EEE28E1C3A400EA7617 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginController.swift; sourceTree = "<group>"; };
 		BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
 		BA9DA30828C8B733004CBBFB /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 		BA6A8376289CEEA10040512E /* Start */ = {
 			isa = PBXGroup;
 			children = (
+				BA8A8EEC28E1C23600EA7617 /* SplashViewController.swift */,
 				BA6A8377289CEEAD0040512E /* StartViewController.swift */,
 			);
 			path = Start;
@@ -282,6 +287,7 @@
 				BAEDCE9228C2B30F00102C47 /* OneButtonAlertView.swift */,
 				BA6A83DC28B1C78B0040512E /* TwoButtonAlertView.swift */,
 				BAEDCE9428C2B58D00102C47 /* PopUpAlertView.swift */,
+				BA8A8EEE28E1C3A400EA7617 /* Toast.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -728,6 +734,7 @@
 			files = (
 				BA9DA31528CC3682004CBBFB /* Main_MenuView.swift in Sources */,
 				BA9DA31128CAFCB3004CBBFB /* UserAgreement_CellView.swift in Sources */,
+				BA8A8EEF28E1C3A400EA7617 /* Toast.swift in Sources */,
 				BA6A83B928A730670040512E /* ImageListCellView.swift in Sources */,
 				BAA07C002894C1E00078EA83 /* Fonts.swift in Sources */,
 				BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */,
@@ -801,6 +808,7 @@
 				BA6A837F289DED060040512E /* ShareController.swift in Sources */,
 				BA6A83DD28B1C78B0040512E /* TwoButtonAlertView.swift in Sources */,
 				BA6A83CD28A7C5FA0040512E /* MakeCard_TopView.swift in Sources */,
+				BA8A8EED28E1C23600EA7617 /* SplashViewController.swift in Sources */,
 				BAA07C102894D3430078EA83 /* MainViewController.swift in Sources */,
 				BA9DA30F28CAF88A004CBBFB /* UserAgreement_TopView.swift in Sources */,
 				BAFF71E728C0F3BE00AA5E78 /* LoginButton.swift in Sources */,
