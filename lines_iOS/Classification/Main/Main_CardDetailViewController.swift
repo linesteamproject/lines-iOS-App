@@ -110,8 +110,7 @@ class Main_CardDetailViewController: ViewController {
             shareBtnsView.centerXAnchor
                         .constraint(equalTo: self.view.centerXAnchor),
             shareBtnsView.widthAnchor.constraint(equalToConstant: 234),
-            shareBtnsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 83),
-            shareBtnsView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -141)
+            shareBtnsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 83)
         ])
         shareBtnsView.shareInstaClosure = {
 //            ShareController.shared.shareOnInstagram(self.stickerView)

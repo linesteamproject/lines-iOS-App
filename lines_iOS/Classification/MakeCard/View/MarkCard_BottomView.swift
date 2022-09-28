@@ -11,7 +11,7 @@ class MarkCard_BottomView: UIView {
     var leftBtnClosure: (() -> Void)?
     var rightBtnClosure: (() -> Void)?
     private weak var rightButton: OkButton!
-    internal var isRightActive: Bool = true {
+    internal var isRightActive: Bool = false {
         didSet {
             rightButton.isEnabled = isRightActive
             rightButton.backgroundColor = isRightActive ? Colors.beige.value : Colors.beigeInactive.value
@@ -25,6 +25,8 @@ class MarkCard_BottomView: UIView {
         setUI(leftButtonTitle)
     }
     private func setUI(_ leftButtonTitle: String) {
+        self.backgroundColor = Colors.black.value
+        
         let left = CancelButton()
         let right = OkButton()
         self.addSubviews(left, right)

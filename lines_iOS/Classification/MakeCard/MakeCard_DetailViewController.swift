@@ -124,7 +124,8 @@ class MakeCard_DetailViewController: ScrollViewController {
             stickerSetView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             stickerSetView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             stickerSetView.heightAnchor.constraint(greaterThanOrEqualToConstant: 160),
-            stickerSetView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            stickerSetView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
+                                                   constant: -139)
         ])
         
         stickerSetView.leftBtnClosure = { [weak self] in

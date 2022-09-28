@@ -11,6 +11,7 @@ import UIKit
 enum Colors {
     case white
     case black
+    case blackGradient
     case gold
     case beige
     case beigeInactive
@@ -29,6 +30,8 @@ enum Colors {
             return UIColor(rgb: 0xFFFFFF)
         case .black:
             return UIColor(rgb: 0x000000)
+        case .blackGradient:
+            return UIColor(rgb: 0x485368)
         case .gold:
             return UIColor(rgb: 0xDABA8A)
         case .beige:

@@ -11,10 +11,11 @@ class MakeCard_StickerBackColorButton: UIButton {
     override var isSelected: Bool {
         didSet {
             if self.isSelected {
-                self.layer.borderColor = Colors.white.value.cgColor
                 self.layer.borderWidth = 2
+                self.layer.borderColor = Colors.white.value.cgColor
             } else {
-                self.layer.borderWidth = 0
+                self.layer.borderWidth = 1
+                self.layer.borderColor = Colors.white.value.withAlphaComponent(0.3).cgColor
             }
         }
     }

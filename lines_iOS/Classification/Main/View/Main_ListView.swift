@@ -38,6 +38,7 @@ class Main_ListView: UIView {
         setListView()
     }
     required init?(coder: NSCoder) { fatalError() }
+    
     private func setTitle() {
         let label = UILabel()
         self.addSubviews(label)

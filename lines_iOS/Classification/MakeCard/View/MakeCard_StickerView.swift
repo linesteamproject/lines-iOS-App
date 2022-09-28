@@ -63,9 +63,11 @@ class MakeCard_StickerView: UIView {
         backImageView.addSubviews(label)
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.setTitle(text,
-                       font: Fonts.getNanum(size: 16),
-                       txtColor: .black)
+        label.setTitleHasLineSpace(text,
+                                   lineSpaceVal: 3,
+                                   font: Fonts.getNanum(size: 16),
+                                   color: .black,
+                                   textAlignment: .center)
         
         label.adjustsFontForContentSizeCategory = true
         self.contentsLabel = label

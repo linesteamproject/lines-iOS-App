@@ -28,10 +28,9 @@ struct BookDocu: Codable {
         get {
             var rtnVal = ""
             guard let authors = authors else {
-                rtnVal += ", 작자미상"
+                rtnVal += "작자미상"
                 return rtnVal
             }
-            rtnVal += ", "
             authors.forEach {
                 rtnVal += $0 + ","
             }

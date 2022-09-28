@@ -15,6 +15,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
     }
     private weak var searchedTypeView: MakeCard_SearchedTypeView!
     private weak var searchedListView: MakeCard_SearchedListView!
+    private weak var bottomView: MarkCard_BottomView!
     private weak var topNextAnchor: NSLayoutYAxisAnchor!
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -213,6 +214,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        self.bottomView = bottomView
     }
 }
 
@@ -222,6 +224,7 @@ extension MakeCard_SearchBookViewController: ButtonDelegate {
             ReadTextController.shared.bookName = obj.bookName
             ReadTextController.shared.authorName = obj.authorsStr
             ReadTextController.shared.bookIsbn = obj.isbn
+            bottomView.isRightActive = true
         }
     }
 }

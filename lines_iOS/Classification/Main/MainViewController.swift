@@ -66,6 +66,20 @@ class MainViewController: ScrollViewController {
         } else if !justNowLogin {
             getCardsFromServer()
         }
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [Colors.black.value.withAlphaComponent(0.7516).cgColor,
+                           Colors.blackGradient.value.cgColor]
+        
+        // gradient를 layer 전체에 적용해주기 위해 범위를 0.0 ~ 1.0으로 설정
+        gradient.locations = [0.0, 1.0]
+        
+        // gradient 방향을 x축과는 상관없이 y축의 변화만 줌
+        gradient.startPoint = CGPoint(x: 0, y: 0.7)
+        gradient.endPoint = CGPoint(x: 0, y: 1.0)
+        
+        gradient.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradient, at: 0)
     }
     
     private func getCardsFromServer(_ done: (() -> Void)? = nil) {
