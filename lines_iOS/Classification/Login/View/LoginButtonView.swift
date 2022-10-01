@@ -42,7 +42,7 @@ class LoginButtonView: UIView {
                 return
             }
             nxTopAnchhor = loginBtn.bottomAnchor
-            nxTopConstant = 20
+            nxTopConstant = 12
         }
     }
 }

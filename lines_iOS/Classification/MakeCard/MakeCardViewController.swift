@@ -32,8 +32,7 @@ class MakeCardViewController: ScrollViewController {
         self.view.addSubviews(topView)
         NSLayoutConstraint.activate([
             topView.topAnchor
-                    .constraint(equalTo: self.view.topAnchor,
-                                constant: 35),
+                    .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             topView.leftAnchor
                     .constraint(equalTo: self.view.leftAnchor),
             topView.rightAnchor

@@ -30,7 +30,33 @@ class LoginViewController: ViewController {
         setUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [Colors.black.value.withAlphaComponent(0.7516).cgColor,
+                           Colors.blackGradient.value.cgColor]
+        
+        // gradient를 layer 전체에 적용해주기 위해 범위를 0.0 ~ 1.0으로 설정
+        gradient.locations = [0.0, 1.0]
+        
+        // gradient 방향을 x축과는 상관없이 y축의 변화만 줌
+        gradient.startPoint = CGPoint(x: 0, y: 0.7)
+        gradient.endPoint = CGPoint(x: 0, y: 1.0)
+        
+        gradient.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradient, at: 0)
+    }
+    
     private func setUI() {
+        let imgView = UIImageView(image: UIImage(named: "LoginLogo"))
+        self.view.addSubviews(imgView)
+        NSLayoutConstraint.activate([
+            imgView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,
+                                        constant: 138),
+            imgView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            imgView.heightAnchor.constraint(equalToConstant: 36),
+        ])
         let loginButtonView = LoginButtonView(isShouldSkipHidden)
         self.view.addSubviews(loginButtonView)
         NSLayoutConstraint.activate([
@@ -38,7 +64,8 @@ class LoginViewController: ViewController {
                                                   constant: 20),
             loginButtonView.rightAnchor.constraint(equalTo: self.view.rightAnchor,
                                                    constant: -20),
-            loginButtonView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            loginButtonView.topAnchor.constraint(equalTo: imgView.bottomAnchor,
+                                                constant: 63),
             loginButtonView.heightAnchor.constraint(equalToConstant: 260)
         ])
         loginButtonView.btnClosure = { [weak self] type in
@@ -54,12 +81,8 @@ class LoginViewController: ViewController {
                     let subTitle = "user identifier: " + (kakaoUser.userId) + "\n"
                     + "email: " + (kakaoUser.email) + "\n"
                     + "nickName: " + (kakaoUser.nick) + "\n"
-                    self?.showOneButtonAlertView(title: "로그인 성공", subTitle: subTitle,
-                                                 height: 240,
-                                                 btnTitle: "확인", btnColor: .beige, done: {
-                        self?.goToAgreementVC(JoinModel(oauthId: kakaoUser.userId,
-                                                        oauthType: LoginType.kakao))
-                    })
+                    self?.goToAgreementVC(JoinModel(oauthId: kakaoUser.userId,
+                                                    oauthType: LoginType.kakao))
                 }
             case .naver:
                 NaverLoginController.shared.login()
@@ -74,12 +97,8 @@ class LoginViewController: ViewController {
                     + "email: " + (res.email ?? "") + "\n"
                     + "nickName: " + (res.nickname ?? "") + "\n"
                     + "name: " + (res.name ?? "") + "\n"
-                    self?.showOneButtonAlertView(title: "로그인 성공", subTitle: subTitle,
-                                                 height: 240,
-                                                 btnTitle: "확인", btnColor: .beige, done: {
-                        self?.goToAgreementVC(JoinModel(oauthId: userIdentifier,
-                                                        oauthType: LoginType.naver))
-                    })
+                    self?.goToAgreementVC(JoinModel(oauthId: userIdentifier,
+                                                    oauthType: LoginType.naver))
                 }
                 return
             case .apple:
@@ -142,12 +161,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             + "FamilyName: " + familyName + "\n"
             + "GivenName: " + givenName + "\n"
             + "Email: " + email
-            self.showOneButtonAlertView(title: "로그인 성공", subTitle: userInfoStr,
-                                        height: 250, btnTitle: "확인", btnColor: .beige,
-                               done: {
-                self.goToAgreementVC(JoinModel(oauthId: userIdentifier,
-                                               oauthType: LoginType.apple))
-            })
+            self.goToAgreementVC(JoinModel(oauthId: userIdentifier,
+                                           oauthType: LoginType.apple))
         default:
             break
         }

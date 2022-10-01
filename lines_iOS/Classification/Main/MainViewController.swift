@@ -110,8 +110,7 @@ class MainViewController: ScrollViewController {
         self.view.addSubviews(topView)
         NSLayoutConstraint.activate([
             topView.topAnchor
-                    .constraint(equalTo: self.view.topAnchor,
-                                constant: 35),
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             topView.leftAnchor
                     .constraint(equalTo: self.view.leftAnchor),
             topView.rightAnchor
@@ -158,7 +157,8 @@ class MainViewController: ScrollViewController {
 
     private func setContentView() {
         self.mainListView?.removeFromSuperview()
-        scrollView.bounces = false
+        self.mainListView?.backgroundColor = .clear
+        scrollView.bounces = true
         
         let viewWidth = UIScreen.main.bounds.width - 40
         let mainListView = Main_ListView(width: viewWidth)
@@ -228,10 +228,18 @@ class MainViewController: ScrollViewController {
                 DispatchQueue.main.async {
                     self?.present(webVc, animated: true)
                 }
+            case .privacyWay:
+                let webVc = UserAgreementWebViewController()
+                webVc.urlStr = UserAgreementType.privacyInfo.urlStr
+                DispatchQueue.main.async {
+                    self?.present(webVc, animated: true)
+                }
             case .feedback:
                 self?.sendEmail()
                 break
             case .logout:
+                break
+            case .readyToBe:
                 break
             }
         }
@@ -297,12 +305,12 @@ class MainViewController: ScrollViewController {
     }
     
     private func hiddenMenuView() {
-        self.menuView.backgroundColor = .clear
         UIView.animate(withDuration: 0.3,
                        delay: 0.2,
                        options: .curveEaseInOut,
                        animations: {
             self.menuView.transform = CGAffineTransform.identity
+            self.menuView.backgroundColor = .clear
         }, completion: { _ in
             self.view.layoutIfNeeded()
         })
@@ -376,10 +384,16 @@ extension MainViewController {
         overlappedButtonsViewHeightConstraint = overlappedButtonsView.heightAnchor.constraint(equalToConstant: 221)
         overlappedButtonsViewHeightConstraint.isActive = true
         
+        UIView.animate(withDuration: 0.3, delay: 0.0) {
+            self.floatingButton.transform = CGAffineTransform(rotationAngle: .pi / 4)
+        }
         self.view.layoutIfNeeded()
     }
     @objc
     private func hiddenButtonsView() {
+        UIView.animate(withDuration: 0.3, delay: 0.0) {
+            self.floatingButton.transform = .identity
+        }
         overlappedButtonsView.updateUI(isHidden: true) { [weak self] in
             self?.overlappedButtonsViewHeightConstraint.isActive = false
             self?.overlappedButtonsViewHeightConstraint = self?.overlappedButtonsView.heightAnchor.constraint(equalToConstant: 0)

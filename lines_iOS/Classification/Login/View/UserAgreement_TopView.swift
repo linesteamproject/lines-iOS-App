@@ -18,7 +18,8 @@ class UserAgreement_TopView: TopView {
             titleLabel.heightAnchor.constraint(equalToConstant: 26)
         ])
         titleLabel.setTitle("약관 동의",
-                            font: Fonts.get(size: 22, type: .regular))
+                            font: Fonts.get(size: 22, type: .regular),
+                            txtColor: .white)
      
         let rightButton = UIButton()
         self.addSubviews(rightButton)

@@ -9,12 +9,18 @@ import UIKit
 
 enum Main_MenuType: CaseIterable {
     case userAgreement
+    case privacyWay
+    case readyToBe
     case feedback
     case logout
     var title: String {
         switch self {
         case .userAgreement:
             return "이용약관"
+        case .privacyWay:
+            return "개인정보처리방침"
+        case .readyToBe:
+            return "준비중인 기능"
         case .feedback:
             return "의견 및 피드백"
         case .logout:

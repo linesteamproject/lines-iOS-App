@@ -50,7 +50,7 @@ class Main_OverlappedButtonsView: UIView {
         topBtnBottomAnchor.isActive = true
         
         
-        UIView.animate(withDuration: 0.8, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             self.layoutIfNeeded()
         }, completion: { _ in updateDone?() })
     }

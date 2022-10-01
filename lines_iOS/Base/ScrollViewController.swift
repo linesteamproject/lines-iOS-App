@@ -55,7 +55,6 @@ class ScrollViewController: ViewController {
             scrollContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
 
-        scrollContentView.backgroundColor = Colors.black.value
         scrollView.delegate = self
         self.scrollView = scrollView
         self.contentView = scrollContentView
