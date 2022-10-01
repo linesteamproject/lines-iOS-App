@@ -72,6 +72,18 @@ class AFHandler {
         }
     }
     
+    class func resign(done: ((Bool) -> Void)?) {
+        let urlStr = "http://118.67.132.142:8080/v1/member"
+        let headers = HTTPHeaders(["Authorization": "bearer " + UserData.accessToken])
+        session.request(urlStr, method: .delete,
+                        encoding: URLEncoding.default,
+                        headers: headers)
+        .responseDecodable(of: ResponseResult<LogoutResponse>.self) {
+            let value = $0.value
+            done?(value?.httpStatus == 200 && value?.success == true)
+        }
+    }
+    
     class func refresh(done: ((LoginResponse?) -> Void)?) {
         let urlStr = "http://118.67.132.142:8080/v1/member/login/actions/refresh"
         let headers = HTTPHeaders(["Authorization": "bearer " + UserData.accessToken,

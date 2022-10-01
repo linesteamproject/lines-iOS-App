@@ -33,6 +33,10 @@ class Main_MenuView: UIView {
     private weak var versionLabel: UILabel!
     internal var cellBtnClosure: ((Main_MenuType) -> Void)?
     internal var closeClosure: (() -> Void)?
+    internal var resignClosure: (() ->  Void)?
+    internal var version: String? {
+        didSet { versionLabel.setTitle(version) }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -92,16 +96,40 @@ class Main_MenuView: UIView {
             self?.closeClosure?()
         }, for: .touchUpInside)
         
-        let label = UILabel()
-        listView.addSubviews(label)
+        let versionLabel = UILabel()
+        listView.addSubviews(versionLabel)
         NSLayoutConstraint.activate([
-            label.bottomAnchor.constraint(equalTo: listView.bottomAnchor,
+            versionLabel.bottomAnchor.constraint(equalTo: listView.bottomAnchor,
                                           constant: -40),
-            label.centerXAnchor.constraint(equalTo: listView.centerXAnchor),
+            versionLabel.centerXAnchor.constraint(equalTo: listView.centerXAnchor),
         ])
-        label.setTitle(font: Fonts.get(size: 12, type: .regular),
+        
+        versionLabel.setTitle(font: Fonts.get(size: 12, type: .regular),
                        txtColor: .gray777777)
-        self.versionLabel = label
+        self.versionLabel = versionLabel
+        
+        let resignLabel = UILabel()
+        listView.addSubviews(resignLabel)
+        NSLayoutConstraint.activate([
+            resignLabel.bottomAnchor.constraint(equalTo: versionLabel.topAnchor,
+                                          constant: -20),
+            resignLabel.centerXAnchor.constraint(equalTo: listView.centerXAnchor),
+        ])
+        resignLabel.setTitle(font: Fonts.get(size: 14, type: .regular),
+                             txtColor: .gray777777)
+        resignLabel.setUnderline("회원탈퇴")
+        
+        let resignBtn = UIButton()
+        listView.addSubviews(resignBtn)
+        NSLayoutConstraint.activate([
+            resignBtn.topAnchor.constraint(equalTo: resignLabel.topAnchor),
+            resignBtn.leftAnchor.constraint(equalTo: resignLabel.leftAnchor),
+            resignBtn.rightAnchor.constraint(equalTo: resignLabel.rightAnchor),
+            resignBtn.bottomAnchor.constraint(equalTo: resignLabel.bottomAnchor),
+        ])
+        resignBtn.addAction(UIAction { [weak self] _ in
+            self?.resignClosure?()
+        }, for: .touchUpInside)
     }
     
     @objc

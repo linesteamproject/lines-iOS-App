@@ -256,6 +256,28 @@ class MainViewController: ScrollViewController {
         menuView.closeClosure = { [weak self] in
             self?.hiddenMenuView()
         }
+        menuView.resignClosure = { [weak self] in
+            AFHandler.resign {
+                guard $0 else { return }
+                
+                UserData.accessToken = ""
+                UserData.refreshToken = ""
+                FirstLaunchChecker.isDataSaved = false
+                FirstLaunchChecker.isOnBoardingShown = false
+                
+                let vc = SplashViewController()
+                vc.modalPresentationStyle = .fullScreen
+                DispatchQueue.main.async {
+                    getAppDelegate()?.setRootViewController(vc)
+                }
+            }
+        }
+        
+        if let info: [String: Any] = Bundle.main.infoDictionary,
+           let currentVersion: String
+            = info["CFBundleShortVersionString"] as? String {
+            menuView.version = "버전 " + currentVersion
+        }
         self.view.bringSubviewToFront(menuView)
         self.menuView = menuView
     }
