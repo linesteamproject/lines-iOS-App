@@ -238,6 +238,16 @@ class MainViewController: ScrollViewController {
                 self?.sendEmail()
                 break
             case .logout:
+                AFHandler.logout {
+                    guard $0 else { return }
+                    
+                    UserData.accessToken = ""
+                    UserData.refreshToken = ""
+                    
+                    let vc = LoginViewController()
+                    vc.modalPresentationStyle = .fullScreen
+                    getAppDelegate()?.setRootViewController(vc)
+                }
                 break
             case .readyToBe:
                 break

@@ -33,6 +33,8 @@
 	<string>a173c52af842104cd1b4f230570bcd9b</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>naversearchthirdlogin</string>
+		<string>naversearchapp</string>
 		<string>instagram-stories</string>
 		<string>instagram</string>
 		<string>kakaokompassauth</string>

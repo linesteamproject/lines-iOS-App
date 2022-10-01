@@ -10,6 +10,9 @@ struct LoginResponse: Codable {
     let refreshToken: String?
 }
 
+struct LogoutResponse: Codable {
+    
+}
 struct CardInfoList: Codable {
     let number: Int
     let content: [CardInfoContent]
