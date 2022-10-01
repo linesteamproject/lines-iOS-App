@@ -33,5 +33,15 @@ class MakeCard_TopView: TopView {
         button.addAction(UIAction { [weak self] _ in
             self?.closeClosure?()
         }, for: .touchUpInside)
+        
+        let line = UIView()
+        self.addSubviews(line)
+        NSLayoutConstraint.activate([
+            line.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            line.leftAnchor.constraint(equalTo: self.leftAnchor),
+            line.rightAnchor.constraint(equalTo: self.rightAnchor),
+            line.heightAnchor.constraint(equalToConstant: 1)
+        ])
+        line.backgroundColor = Colors.white.value.withAlphaComponent(0.2)
     }
 }

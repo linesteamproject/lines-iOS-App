@@ -23,7 +23,7 @@ class ImageAlertView: AlertView {
         NSLayoutConstraint.activate([
             title.centerXAnchor.constraint(equalTo: contentsView.centerXAnchor),
             title.topAnchor.constraint(equalTo: contentsView.topAnchor, constant: 15),
-            title.heightAnchor.constraint(equalToConstant: 56)
+            title.heightAnchor.constraint(equalToConstant: 26)
         ])
         title.setTitle("사진 보기", font: Fonts.get(size: 22, type: .regular),
                        txtColor: .black)
@@ -55,7 +55,7 @@ class ImageAlertView: AlertView {
             imageView.topAnchor.constraint(equalTo: nextTopAnchor, constant: 15),
             imageView.leftAnchor.constraint(equalTo: contentsView.leftAnchor),
             imageView.rightAnchor.constraint(equalTo: contentsView.rightAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentsView.bottomAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentsView.bottomAnchor, constant: -15),
         ])
         imageView.layer.cornerRadius = 10
         imageView.contentMode = .scaleAspectFit

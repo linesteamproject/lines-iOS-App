@@ -14,7 +14,7 @@ class MakeCardViewController: ScrollViewController {
         get { return 56 }
         set { }
     }
-    internal var noticeStr: String = "인식한 문장을 확인해 주세요.\n줄바꿈, 오타 등을 직접 수정해 주세요."
+    internal var noticeStr: String = "촬영한 문장을 인식했어요.\n줄바꿈, 오타 등을 직접 수정해 주세요."
     internal weak var nextTopAnchor: NSLayoutYAxisAnchor!
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         cardContentView.endEditing(true)
@@ -78,7 +78,7 @@ class MakeCardViewController: ScrollViewController {
             noticeView.topAnchor.constraint(equalTo: contentView.topAnchor),
             noticeView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             noticeView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            noticeView.heightAnchor.constraint(equalToConstant: 117)
+            noticeView.heightAnchor.constraint(greaterThanOrEqualToConstant: 117)
         ])
         noticeView.showImgClosure = { [weak self] image in
             guard let view = self?.view else { return }

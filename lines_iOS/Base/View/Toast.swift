@@ -19,23 +19,23 @@ class Toast {
         top.view.addSubviews(label)
         label.setTitle(str,
                        font: Fonts.get(size: 12, type: .bold),
-                       txtColor: Colors.white)
-        label.backgroundColor = Colors.white.value.withAlphaComponent(0.6)
+                       txtColor: Colors.white,
+                       backColor: Colors.gray1E1E1E)
         label.textAlignment = .center
         label.alpha = 1.0
-        label.layer.cornerRadius = 23;
+        label.layer.cornerRadius = 14;
         label.clipsToBounds = true
         
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: top.view.safeAreaLayoutGuide.centerXAnchor),
-            label.bottomAnchor.constraint(equalTo: top.view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            label.topAnchor.constraint(equalTo: top.view.centerYAnchor, constant: -23),
             label.widthAnchor.constraint(equalToConstant: label.intrinsicContentSize.width + 40),
             label.heightAnchor.constraint(equalToConstant: 46)
         ])
         
         
         UIView.animate(withDuration: duration, delay: duration, options: .curveEaseOut, animations: {
-            label.transform = CGAffineTransform(translationX: 0, y: 160 + label.frame.height)
+            label.transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height + 46)
             label.alpha = 0.1
         }, completion: {(isCompleted) in
             label.removeFromSuperview()

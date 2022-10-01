@@ -72,19 +72,21 @@ class MakeCard_SearchBookViewController: ScrollViewController {
             back.topAnchor.constraint(equalTo: contentView.topAnchor),
             back.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             back.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            back.heightAnchor.constraint(equalToConstant: 87)
+            back.heightAnchor.constraint(equalToConstant: 55)
         ])
-        self.topNextAnchor = back.bottomAnchor
+        back.backgroundColor = Colors.gray222222.value
         
-        let imageView = UIImageView(image: UIImage(named: "WhereDidYouFind"))
-        back.addSubviews(imageView)
+        let label = UILabel()
+        back.addSubviews(label)
         NSLayoutConstraint.activate([
-            imageView.centerYAnchor.constraint(equalTo: back.centerYAnchor),
-            imageView.leftAnchor.constraint(equalTo: back.leftAnchor,
-                                            constant: 20),
-            imageView.heightAnchor.constraint(equalToConstant: 27)
+            label.bottomAnchor.constraint(equalTo: back.bottomAnchor, constant: -6.5),
+            label.centerXAnchor.constraint(equalTo: back.centerXAnchor)
         ])
-        imageView.contentMode = .scaleAspectFit
+        label.textAlignment = .center
+        label.setTitle("📖 어떤 책에서 발견한 문장인가요?",
+                       font: Fonts.get(size: 16, type: .regular),
+                       txtColor: .beige)
+        topNextAnchor = back.bottomAnchor
     }
     
     private func setSearchedTypeView() {

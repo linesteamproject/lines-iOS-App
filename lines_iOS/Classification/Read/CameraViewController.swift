@@ -89,7 +89,7 @@ class CameraViewController: ViewController {
         cropViewController.delegate = self
         cropViewController.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async {
-            self.present(cropViewController, animated: false) 
+            self.present(cropViewController, animated: false)
         }
     }
     

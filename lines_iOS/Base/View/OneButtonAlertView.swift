@@ -32,7 +32,7 @@ class OneButtonAlertView: AlertView {
         NSLayoutConstraint.activate([
             title.centerXAnchor.constraint(equalTo: contentsView.centerXAnchor),
             title.topAnchor.constraint(equalTo: contentsView.topAnchor, constant: 15),
-            title.heightAnchor.constraint(greaterThanOrEqualToConstant: 56)
+            title.heightAnchor.constraint(greaterThanOrEqualToConstant: 26)
         ])
         title.numberOfLines = 0
         title.setTitle(font: Fonts.get(size: 22, type: .regular),

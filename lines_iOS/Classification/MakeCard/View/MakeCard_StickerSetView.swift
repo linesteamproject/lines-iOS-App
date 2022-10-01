@@ -76,7 +76,7 @@ class MakeCard_StickerSetView: UIView {
             subLabel.leftAnchor.constraint(equalTo: leftBtn.leftAnchor),
             subLabel.heightAnchor.constraint(equalToConstant: 21)
         ])
-        subLabel.setTitle("*SNS 게시글, 인스타그램 스토리 업로드 등",
+        subLabel.setTitle("*SNS 게시글 업로드 등",
                           font: Fonts.get(size: 12, type: .bold),
                           txtColor: .gray)
         

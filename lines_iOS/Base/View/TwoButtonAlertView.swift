@@ -32,7 +32,7 @@ class TwoButtonAlertView: AlertView {
         NSLayoutConstraint.activate([
             title.centerXAnchor.constraint(equalTo: contentsView.centerXAnchor),
             title.topAnchor.constraint(equalTo: contentsView.topAnchor, constant: 15),
-            title.heightAnchor.constraint(equalToConstant: 56)
+            title.heightAnchor.constraint(equalToConstant: 26)
         ])
         title.setTitle(font: Fonts.get(size: 22, type: .regular),
                        txtColor: .black)
@@ -61,7 +61,7 @@ class TwoButtonAlertView: AlertView {
         let line = UIView()
         self.addSubviews(line)
         NSLayoutConstraint.activate([
-            line.topAnchor.constraint(equalTo: nextTopAnchor),
+            line.topAnchor.constraint(equalTo: nextTopAnchor, constant: 15),
             line.leftAnchor.constraint(equalTo: contentsView.leftAnchor),
             line.rightAnchor.constraint(equalTo: contentsView.rightAnchor),
             line.heightAnchor.constraint(equalToConstant: 1)
@@ -75,6 +75,7 @@ class TwoButtonAlertView: AlertView {
             label.leftAnchor.constraint(equalTo: contentsView.leftAnchor, constant: 20),
             label.rightAnchor.constraint(equalTo: contentsView.rightAnchor, constant: -20),
             label.heightAnchor.constraint(greaterThanOrEqualToConstant: 42),
+            label.bottomAnchor.constraint(equalTo: contentsView.bottomAnchor, constant: -68)
         ])
         label.numberOfLines = 0
         label.setTitleHasLineSpace(lineSpaceVal: 10,

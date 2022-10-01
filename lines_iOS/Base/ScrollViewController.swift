@@ -25,7 +25,7 @@ class ScrollViewController: ViewController {
         let topView = TopView()
         self.view.addSubviews(topView)
         NSLayoutConstraint.activate([
-            topView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 35),
+            topView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             topView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             topView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             topView.heightAnchor.constraint(equalToConstant: topViewHeight)

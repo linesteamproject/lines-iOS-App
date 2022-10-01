@@ -15,6 +15,7 @@ enum Colors {
     case gold
     case beige
     case beigeInactive
+    case gray1E1E1E
     case gray222222
     case gray777777
     case gray
@@ -40,6 +41,8 @@ enum Colors {
             return UIColor(rgb: 0x7E7050)
         case .gray:
             return UIColor(rgb: 0x808080)
+        case .gray1E1E1E:
+            return UIColor(rgb: 0x1E1E1E)
         case .gray222222:
             return UIColor(rgb: 0x222222)
         case.gray777777:

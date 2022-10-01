@@ -120,7 +120,7 @@ class Main_CardDetailViewController: ViewController {
             ShareController.shared.downloadImage(self?.stickerView) {
                 guard !$0 else {
                     DispatchQueue.main.async {
-                        Toast.shared.message("이미지 저장이 완료되었습니다.")
+                        Toast.shared.message("이미지 저장 완료!")
                     }
                     return
                 }
