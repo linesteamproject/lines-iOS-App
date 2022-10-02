@@ -15,6 +15,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
     }
     private weak var searchedTypeView: MakeCard_SearchedTypeView!
     private weak var searchedListView: MakeCard_SearchedListView!
+    private weak var emptyLabel: UILabel!
     private weak var bottomView: MarkCard_BottomView!
     private weak var topNextAnchor: NSLayoutYAxisAnchor!
 
@@ -160,8 +161,12 @@ class MakeCard_SearchBookViewController: ScrollViewController {
                       let isEnded = status.meta?.isEnd,
                       let documents = status.documents,
                         !documents.isEmpty
-                else { return }
-                
+                else {
+                    self?.emptyLabel.isHidden = false
+                    return
+                    
+                }
+                self?.emptyLabel.isHidden = true
                 ReadTextController.shared.isEnded = isEnded
                 self?.searchedListView.list.append(contentsOf: documents)
                 self?.searchedListView.isLoading = false
@@ -171,7 +176,8 @@ class MakeCard_SearchBookViewController: ScrollViewController {
     
     private func setSearchedListView() {
         let searchedListView = MakeCard_SearchedListView()
-        self.contentView.addSubviews(searchedListView)
+        let label = UILabel()
+        self.contentView.addSubviews(searchedListView, label)
         NSLayoutConstraint.activate([
             searchedListView.topAnchor.constraint(equalTo: topNextAnchor),
             searchedListView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
@@ -179,8 +185,16 @@ class MakeCard_SearchBookViewController: ScrollViewController {
             searchedListView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             searchedListView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             searchedListView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
-                                                    constant: -34 + -34 + -90)
+                                                    constant: -34 + -34 + -90),
+            
+            label.centerXAnchor.constraint(equalTo: searchedListView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: searchedListView.centerYAnchor)
         ])
+        label.setTitle("검색결과가 없습니다",
+                       font: Fonts.get(size: 14, type: .regular),
+                       txtColor: .gray777777)
+        label.isHidden = true
+        self.emptyLabel = label
         searchedListView.delegate = self
         searchedListView.pageClosure = { [weak self] in
             guard !ReadTextController.shared.isEnded else { return }

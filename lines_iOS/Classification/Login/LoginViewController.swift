@@ -66,7 +66,7 @@ class LoginViewController: ViewController {
                                                    constant: -20),
             loginButtonView.topAnchor.constraint(equalTo: imgView.bottomAnchor,
                                                 constant: 63),
-            loginButtonView.heightAnchor.constraint(equalToConstant: 260)
+            loginButtonView.heightAnchor.constraint(lessThanOrEqualToConstant: 251)
         ])
         loginButtonView.btnClosure = { [weak self] type in
             switch type {

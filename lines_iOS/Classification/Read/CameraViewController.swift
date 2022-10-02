@@ -98,7 +98,19 @@ class CameraViewController: ViewController {
         else { fatalError() }
         TextRecognizeController.doStartToOCR(image,
                                              ocrDone: {
-            ReadTextController.shared.readText = $0
+            if let readText = $0 {
+                if readText.count > 110 {
+                    var str = ""
+                    for (idx, c) in readText.enumerated() {
+                        guard idx < 110 else { break }
+                        str += String(c)
+                    }
+                    ReadTextController.shared.readText = str
+                }
+            } else {
+                ReadTextController.shared.readText = $0
+            }
+            
             let vc = MakeCardViewController()
             vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async {

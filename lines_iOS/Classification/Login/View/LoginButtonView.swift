@@ -28,8 +28,12 @@ class LoginButtonView: UIView {
                                               constant: nxTopConstant),
                 loginBtn.leftAnchor.constraint(equalTo: self.leftAnchor),
                 loginBtn.rightAnchor.constraint(equalTo: self.rightAnchor),
-                loginBtn.heightAnchor.constraint(equalToConstant: 50),
             ])
+            if type == .skip {
+                loginBtn.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            } else {
+                loginBtn.heightAnchor.constraint(equalToConstant: 45).isActive = true
+            }
             loginBtn.type = type
             loginBtn.addAction(UIAction { [weak self] _ in
                 self?.btnClosure?(type)

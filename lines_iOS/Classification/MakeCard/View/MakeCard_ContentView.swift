@@ -8,6 +8,7 @@
 import UIKit
 
 class MakeCard_ContentView: UIView, UITextViewDelegate {
+    private weak var textCountLabel: UILabel!
     internal weak var txtView: UITextView!
     internal var isTxtViewEmptyClosure: ((Bool) -> Void)?
     init(_ text: String?) {
@@ -62,6 +63,19 @@ class MakeCard_ContentView: UIView, UITextViewDelegate {
         txtView.delegate = self
         txtView.returnKeyType = .done
         self.txtView = txtView
+        
+        let label = UILabel()
+        back.addSubviews(label)
+        NSLayoutConstraint.activate([
+            label.bottomAnchor.constraint(equalTo: txtView.bottomAnchor,
+                                         constant: -24),
+            label.rightAnchor.constraint(equalTo: txtView.rightAnchor,
+                                        constant: -24)
+        ])
+        let str = String(format: "%d/%d", text?.count ?? 0, 110)
+        label.setTitle(str, font: Fonts.get(size: 16, type: .regular),
+                       txtColor: .gray777777)
+        self.textCountLabel = label
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -74,6 +88,21 @@ class MakeCard_ContentView: UIView, UITextViewDelegate {
             textView.textColor = Colors.white.value
         }
     }
+    
+    func textView(_ textView: UITextView,
+                  shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let strRange = Range(range, in: currentText)
+        else { return false }
+        let changed = currentText.replacingCharacters(in: strRange, with: text)
+        
+        guard changed.count < 110 else { return false }
+        let str = String(format: "%d/%d", changed.count , 110)
+        self.textCountLabel.setTitle(str)
+        return true
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text?.isEmpty == true {
             textView.text = "텍스트를 입력해 주세요."
