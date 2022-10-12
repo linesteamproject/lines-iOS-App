@@ -53,7 +53,7 @@ class MakeCard_StickerView: UIView {
         ])
         bookInfo.setTitle(font: Fonts.getNanum(size: 11),
                           txtColor: .gray222222)
-        bookInfo.numberOfLines = 0
+        bookInfo.numberOfLines = 2
         bookInfo.textAlignment = .center
         self.bookInfoLabel = bookInfo
     }

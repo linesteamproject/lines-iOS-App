@@ -24,6 +24,9 @@ enum Main_MenuType: CaseIterable {
         case .feedback:
             return "의견 및 피드백"
         case .logout:
+            if FirstLaunchChecker.isNotLogin {
+                return "로그인"
+            }
             return "로그아웃"
         }
     }
@@ -130,6 +133,11 @@ class Main_MenuView: UIView {
         resignBtn.addAction(UIAction { [weak self] _ in
             self?.resignClosure?()
         }, for: .touchUpInside)
+        
+        if FirstLaunchChecker.isNotLogin {
+            resignLabel.isHidden = true
+            resignBtn.isHidden = true
+        }
     }
     
     @objc

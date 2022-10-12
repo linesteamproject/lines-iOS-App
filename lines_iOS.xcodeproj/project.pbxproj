@@ -60,6 +60,7 @@
 		BA8A8EEB28CDD8ED00EA7617 /* NanumMyeongjo-YetHangul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA8A8EEA28CDD8EA00EA7617 /* NanumMyeongjo-YetHangul.ttf */; };
 		BA8A8EED28E1C23600EA7617 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EEC28E1C23600EA7617 /* SplashViewController.swift */; };
 		BA8A8EEF28E1C3A400EA7617 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EEE28E1C3A400EA7617 /* Toast.swift */; };
+		BA8A8EF228F6F72D00EA7617 /* Main_Lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = BA8A8EF128F6F72D00EA7617 /* Main_Lottie.json */; };
 		BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */; };
 		BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */; };
 		BA9DA30928C8B733004CBBFB /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30828C8B733004CBBFB /* UserInfo.swift */; };
@@ -159,6 +160,7 @@
 		BA8A8EEA28CDD8EA00EA7617 /* NanumMyeongjo-YetHangul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjo-YetHangul.ttf"; sourceTree = "<group>"; };
 		BA8A8EEC28E1C23600EA7617 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		BA8A8EEE28E1C3A400EA7617 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		BA8A8EF128F6F72D00EA7617 /* Main_Lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Main_Lottie.json; sourceTree = "<group>"; };
 		BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginController.swift; sourceTree = "<group>"; };
 		BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
 		BA9DA30828C8B733004CBBFB /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				BAA07BFD2894C1DA0078EA83 /* Colors.swift */,
 				BAA07BFF2894C1E00078EA83 /* Fonts.swift */,
 				BA6A83C128A7B0A40040512E /* TestData.swift */,
+				BA8A8EF128F6F72D00EA7617 /* Main_Lottie.json */,
 				BA6A83B128A72AD90040512E /* FontResource */,
 			);
 			path = Resources;
@@ -655,6 +658,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA8A8EF228F6F72D00EA7617 /* Main_Lottie.json in Resources */,
 				BAE5C9C52894B08C00659F74 /* LaunchScreen.storyboard in Resources */,
 				BA6A83BC28A744420040512E /* AppleSDGothicNeoL.ttf in Resources */,
 				BAE5C9C22894B08C00659F74 /* Assets.xcassets in Resources */,
@@ -956,7 +960,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;
@@ -989,7 +993,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;

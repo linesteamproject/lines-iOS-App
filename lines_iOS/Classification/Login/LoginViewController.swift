@@ -134,9 +134,7 @@ class LoginViewController: ViewController {
     private func goToMainVC() {
         let vc = MainViewController()
         vc.modalPresentationStyle = .fullScreen
-        DispatchQueue.main.async { [weak self] in
-            self?.present(vc, animated: true)
-        }
+        getAppDelegate()?.setRootViewController(vc)
     }
 }
 

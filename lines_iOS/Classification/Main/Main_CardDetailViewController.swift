@@ -113,8 +113,11 @@ class Main_CardDetailViewController: ViewController {
             shareBtnsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 83)
         ])
         shareBtnsView.shareInstaClosure = {
+            self.showLoadingView()
 //            ShareController.shared.shareOnInstagram(self.stickerView)
-            ShareController.shared.postImageToInstagram(self.stickerView)
+            ShareController.shared.postImageToInstagram(self.stickerView) {
+                self.hiddenLoadingView()
+            }
         }
         shareBtnsView.downloadClosure = { [weak self] in
             ShareController.shared.downloadImage(self?.stickerView) {

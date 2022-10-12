@@ -35,8 +35,7 @@ class Toast {
         
         
         UIView.animate(withDuration: duration, delay: duration, options: .curveEaseOut, animations: {
-            label.transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height + 46)
-            label.alpha = 0.1
+            label.alpha = 0
         }, completion: {(isCompleted) in
             label.removeFromSuperview()
         })

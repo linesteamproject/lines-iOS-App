@@ -44,9 +44,10 @@ class ShareController: NSObject, UIDocumentInteractionControllerDelegate {
     
     var documentController: UIDocumentInteractionController!
     
-    func postImageToInstagram(_ stickerView: MakeCard_StickerView) {
-        guard let image = self.makeImage(stickerView) else { return }
+    func postImageToInstagram(_ stickerView: MakeCard_StickerView, done: (() -> Void)?) {
+        guard let image = self.makeImage(stickerView) else { done?(); return }
         
+        done?()
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {

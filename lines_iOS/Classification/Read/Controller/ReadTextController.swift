@@ -52,9 +52,6 @@ class ReadTextController: NSObject {
             rtnVal += bookName + ","
         }
         if let authorName = authorName {
-            if rtnVal.last == "," {
-                rtnVal.removeLast()
-            }
             rtnVal += authorName
         }
         return rtnVal

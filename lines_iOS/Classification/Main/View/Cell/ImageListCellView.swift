@@ -77,7 +77,7 @@ class ImageListCellView: UIView {
                                font: Fonts.getNanum(size: 5.18),
                                txtColor: .gray777777)
         bookInfoLabel.textAlignment = .center
-        bookInfoLabel.numberOfLines = 0 
+        bookInfoLabel.numberOfLines = 2
         if let ratio = data.ratioType?.imgName,
             let color = data.colorImageName {
             imageView.image = UIImage(named: ratio + color)

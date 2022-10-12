@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MessageUI
+
 class MainViewController: ScrollViewController {
     private weak var headerView: Main_HeaderView!
     private weak var menuView: Main_MenuView!
@@ -70,11 +71,7 @@ class MainViewController: ScrollViewController {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.colors = [Colors.black.value.withAlphaComponent(0.7516).cgColor,
                            Colors.blackGradient.value.cgColor]
-        
-        // gradient를 layer 전체에 적용해주기 위해 범위를 0.0 ~ 1.0으로 설정
         gradient.locations = [0.0, 1.0]
-        
-        // gradient 방향을 x축과는 상관없이 y축의 변화만 줌
         gradient.startPoint = CGPoint(x: 0, y: 0.7)
         gradient.endPoint = CGPoint(x: 0, y: 1.0)
         
@@ -146,12 +143,13 @@ class MainViewController: ScrollViewController {
             headerView.topAnchor
                 .constraint(equalTo: contentView.topAnchor),
             headerView.leftAnchor
-                .constraint(equalTo: contentView.leftAnchor),
+                .constraint(equalTo: contentView.leftAnchor, constant: 38),
             headerView.rightAnchor
-                .constraint(equalTo: contentView.rightAnchor),
+                .constraint(equalTo: contentView.rightAnchor, constant: -38),
             headerView.heightAnchor
-                .constraint(equalToConstant: 166)
+                .constraint(greaterThanOrEqualToConstant: 140)
         ])
+        headerView.animationPlay()
         self.headerView = headerView
     }
 
@@ -238,24 +236,41 @@ class MainViewController: ScrollViewController {
                 self?.sendEmail()
                 break
             case .logout:
-                AFHandler.logout {
-                    guard $0 else { return }
-                    
-                    UserData.accessToken = ""
-                    UserData.refreshToken = ""
-                    
-                    let vc = LoginViewController()
-                    vc.modalPresentationStyle = .fullScreen
-                    getAppDelegate()?.setRootViewController(vc)
+                guard FirstLaunchChecker.isNotLogin else {
+                    AFHandler.logout {
+                        guard $0 else { return }
+                        
+                        UserData.accessToken = ""
+                        UserData.refreshToken = ""
+                        
+                        let vc = LoginViewController()
+                        vc.modalPresentationStyle = .fullScreen
+                        getAppDelegate()?.setRootViewController(vc)
+                    }
+                    return
+                }
+                
+                let loginVC = LoginViewController()
+                loginVC.modalPresentationStyle = .fullScreen
+                loginVC.isShouldSkipHidden = true
+                DispatchQueue.main.async { [weak self] in
+                    self?.present(loginVC, animated: true)
                 }
                 break
             case .readyToBe:
+                let webVc = UserAgreementWebViewController()
+                webVc.urlStr = "https://fuzzy-moat-e98.notion.site/6bde97207a66495583edb318d689ea62"
+                DispatchQueue.main.async {
+                    self?.present(webVc, animated: true)
+                }
+            
                 break
             }
         }
         menuView.closeClosure = { [weak self] in
             self?.hiddenMenuView()
         }
+        
         menuView.resignClosure = { [weak self] in
             AFHandler.resign {
                 guard $0 else { return }
