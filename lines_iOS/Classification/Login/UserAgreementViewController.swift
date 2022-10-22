@@ -158,21 +158,7 @@ class UserAgreementViewController: ViewController {
                 goToMain()
                 return
             }
-            DispatchQueue.global().async {
-                AFHandler.login(model) { value in
-                    //TODO: Error가 났을 경우?
-                    guard let accessToken = value?.accessToken,
-                          let refreshToken = value?.refreshToken
-                    else { return }
-                    
-                    UserData.accessToken = accessToken
-                    UserData.refreshToken = refreshToken
-                    DispatchQueue.main.async {
-                        goToMain()
-                    }
-                }
-            }
-            
+            goToMain()
             func goToMain() {
                 let vc = MainViewController()
                 vc.modalPresentationStyle = .fullScreen

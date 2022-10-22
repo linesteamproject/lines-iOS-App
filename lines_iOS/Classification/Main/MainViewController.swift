@@ -154,8 +154,10 @@ class MainViewController: ScrollViewController {
     }
 
     private func setContentView() {
+        self.mainListView?.subviews.forEach {
+            $0.removeFromSuperview()
+        }
         self.mainListView?.removeFromSuperview()
-        self.mainListView?.backgroundColor = .clear
         scrollView.bounces = true
         
         let viewWidth = UIScreen.main.bounds.width - 40
@@ -182,6 +184,7 @@ class MainViewController: ScrollViewController {
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        mainListView.backgroundColor = .clear
         self.mainListView = mainListView
     }
     

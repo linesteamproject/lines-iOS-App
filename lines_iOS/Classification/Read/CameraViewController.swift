@@ -48,7 +48,7 @@ import AVFoundation
 
 class CameraViewController: ViewController {
     internal var type: UIImagePickerController.SourceType!
-    
+    private weak var loadingView: UIView?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -60,7 +60,12 @@ class CameraViewController: ViewController {
         case .capture:
             self.showCroppedController()
         case .crop:
-            self.recognizeTextOnImage()
+            let vc = MakeCardViewController()
+            vc.modalPresentationStyle = .fullScreen
+            DispatchQueue.main.async {
+                self.loadingView?.removeFromSuperview()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     
@@ -93,9 +98,24 @@ class CameraViewController: ViewController {
         }
     }
     
-    private func recognizeTextOnImage() {
+    private func setLoadingView(_ cropViewController: CropViewController) {
+        let imgView = UIImageView(image: UIImage(named: "텍스트읽기"))
+        cropViewController.view.addSubviews(imgView)
+        NSLayoutConstraint.activate([
+            imgView.centerXAnchor.constraint(equalTo: cropViewController.view.centerXAnchor),
+            imgView.centerYAnchor.constraint(equalTo: cropViewController.view.centerYAnchor),
+            imgView.widthAnchor.constraint(equalToConstant: 120),
+            imgView.heightAnchor.constraint(equalToConstant: 120)
+        ])
+        self.loadingView = imgView
+    }
+    
+    private func recognizeTextOnImage(_ cropViewController: CropViewController,
+                                      done: (() -> Void)?) {
         guard let image = ReadTextController.shared.capturedImage
         else { fatalError() }
+        
+        setLoadingView(cropViewController)
         TextRecognizeController.doStartToOCR(image,
                                              ocrDone: {
             if let readText = $0 {
@@ -110,12 +130,7 @@ class CameraViewController: ViewController {
             } else {
                 ReadTextController.shared.readText = $0
             }
-            
-            let vc = MakeCardViewController()
-            vc.modalPresentationStyle = .fullScreen
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+            done?()
         })
     }
 }
@@ -147,8 +162,11 @@ extension CameraViewController: CropViewControllerDelegate {
                                    cropInfo: CropInfo) {
         ReadTextController.shared.capturedImage = cropped
         ReadTextController.shared.readTextStep = .crop
-        DispatchQueue.main.async {
-            cropViewController.dismiss(animated: false)
+        
+        recognizeTextOnImage(cropViewController) {
+            DispatchQueue.main.async {
+                cropViewController.dismiss(animated: false)
+            }
         }
     }
     

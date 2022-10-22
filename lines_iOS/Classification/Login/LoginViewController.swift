@@ -119,15 +119,32 @@ class LoginViewController: ViewController {
     }
     
     private func goToAgreementVC(_ model: JoinModel?) {
-        // 로그인
-        let vc = UserAgreementViewController()
-        if isShouldSkipHidden {
-            vc.isShouldSkipHidden = isShouldSkipHidden
-        }
-        vc.modalPresentationStyle = .fullScreen
-        vc.joinModel = model
-        DispatchQueue.main.async { [weak self] in
-            self?.present(vc, animated: true)
+        guard let model = model else { return }
+        DispatchQueue.global().async { [weak self] in
+            AFHandler.login(model) { value in
+                //TODO: Error가 났을 경우?
+                guard let accessToken = value?.accessToken,
+                      let refreshToken = value?.refreshToken,
+                      let isCreadted = value?.isCreated
+                else { return }
+                
+                UserData.accessToken = accessToken
+                UserData.refreshToken = refreshToken
+                
+                if isCreadted {
+                    let vc = UserAgreementViewController()
+                    if self?.isShouldSkipHidden == true {
+                        vc.isShouldSkipHidden = self?.isShouldSkipHidden ?? false
+                    }
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.joinModel = model
+                    DispatchQueue.main.async { [weak self] in
+                        self?.present(vc, animated: true)
+                    }
+                } else {
+                    self?.goToMainVC()
+                }
+            }
         }
     }
     
