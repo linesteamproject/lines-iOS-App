@@ -34,7 +34,10 @@ struct BookDocu: Codable {
             authors.forEach {
                 rtnVal += $0 + ","
             }
-            rtnVal.removeLast()
+            if !rtnVal.isEmpty, let rtnValLast = rtnVal.last, rtnValLast == "," {
+                rtnVal.removeLast()
+            }
+            
             return rtnVal
         }
     }

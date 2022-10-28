@@ -27,15 +27,11 @@ class SplashViewController: ViewController {
         let imgName = String(format: "Splash%d", randomVal)
         imgView.image = UIImage(named: imgName)
         
-        UIView.animate(withDuration: 0.7, delay: 0.3, options: .curveEaseInOut, animations: {
-            imgView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        }, completion: { _ in
-            let startVc = StartViewController()
-            startVc.modalPresentationStyle = .fullScreen
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75,
-                                          execute: { [weak self] in
-                self?.present(startVc, animated: false)
-            })
+        let startVc = StartViewController()
+        startVc.modalPresentationStyle = .fullScreen
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75,
+                                      execute: { [weak self] in
+            self?.present(startVc, animated: false)
         })
     }
 }

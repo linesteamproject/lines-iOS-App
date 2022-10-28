@@ -355,12 +355,13 @@ class MainViewController: ScrollViewController {
     }
     
     private func hiddenMenuView() {
+        self.menuView.backgroundColor = .clear
         UIView.animate(withDuration: 0.3,
                        delay: 0.2,
                        options: .curveEaseInOut,
                        animations: {
             self.menuView.transform = CGAffineTransform.identity
-            self.menuView.backgroundColor = .clear
+            
         }, completion: { _ in
             self.view.layoutIfNeeded()
         })

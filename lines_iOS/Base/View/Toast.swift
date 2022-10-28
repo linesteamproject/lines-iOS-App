@@ -40,5 +40,36 @@ class Toast {
             label.removeFromSuperview()
         })
     }
+    
+    func messageOnCropVC(_ str: String, duration: Double = 5.0) {
+        guard let top = topViewController() else { return }
+        
+        let label = UILabel()
+        top.view.addSubviews(label)
+        label.numberOfLines = 0
+        label.setTitle(str,
+                       font: Fonts.get(size: 12, type: .bold),
+                       txtColor: Colors.white,
+                       backColor: Colors.gray1E1E1E)
+        label.textAlignment = .center
+        label.alpha = 1.0
+        label.layer.cornerRadius = 14;
+        label.clipsToBounds = true
+        
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: top.view.centerXAnchor),
+            label.topAnchor.constraint(equalTo: top.view.safeAreaLayoutGuide.topAnchor,
+                                       constant: 56),
+            label.widthAnchor.constraint(equalToConstant: label.intrinsicContentSize.width + 40),
+            label.heightAnchor.constraint(greaterThanOrEqualToConstant: label.intrinsicContentSize.height + 40)
+        ])
+        
+        
+        UIView.animate(withDuration: duration, delay: duration, options: .curveEaseOut, animations: {
+            label.alpha = 0
+        }, completion: {(isCompleted) in
+            label.removeFromSuperview()
+        })
+    }
 }
 
