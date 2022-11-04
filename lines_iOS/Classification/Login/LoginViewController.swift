@@ -185,7 +185,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         
     // Apple ID 연동 실패 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        self.showOneButtonAlertView(title: "로그인 에러", subTitle: error.localizedDescription,
-                                    height: 250, btnTitle: "확인", btnColor: .beige)
+//        self.showOneButtonAlertView(title: "로그인 에러",
+//                                    height: 250, btnTitle: "확인", btnColor: .beige)
     }
 }
