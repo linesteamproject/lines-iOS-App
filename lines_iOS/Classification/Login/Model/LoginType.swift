@@ -67,7 +67,7 @@ enum LoginType: CaseIterable {
         case .naver:
             return "네이버로 시작하기"
         case .apple:
-            return "애플 계정으로 시작하기"
+            return "Apple 계정으로 시작하기"
         case .skip:
             return "건너뛰기"
         }
