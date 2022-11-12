@@ -14,15 +14,13 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>kakao794c3c6e502b330cf0a9303a414d0da9</string>
-				<string>naversearchapp</string>
-				<string>naversearchthirdlogin</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>naverlogin</string>
+			<string>naverloginonlines</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>naverloginonlines</string>

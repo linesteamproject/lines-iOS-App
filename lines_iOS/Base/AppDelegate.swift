@@ -44,18 +44,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//        print("munyong > url: \(url.absoluteString)")
-        guard url.absoluteString.contains("kakao") else {
-            NaverThirdPartyLoginConnection
-                    .getSharedInstance()?
-                    .receiveAccessToken(url)
-            return false
-        }
-        
-        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+        print("munyong > \(url.scheme)")
+        if url.absoluteString.contains("kakao"), (AuthApi.isKakaoTalkLoginUrl(url)) {
             return AuthController.handleOpenUrl(url: url)
         }
         
+        if url.scheme?.contains("naver") == true {
+//            NaverThirdPartyLoginConnection
+//                    .getSharedInstance()?
+//                    .receiveAccessToken(url)
+
+            NaverThirdPartyLoginConnection.getSharedInstance()?.application(app, open: url, options: options)
+            return true
+        }
         
         return false
     }
@@ -69,11 +70,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         instance?.isInAppOauthEnable = true
         // 인증 화면을 아이폰의 세로모드에서만 적용
         instance?.isOnlyPortraitSupportedInIphone()
-        
+        instance?.appName = (Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String) ?? ""
+            // 콜백을 받을 URL Scheme
         instance?.serviceUrlScheme = "naverloginonlines" // 앱을 등록할 때 입력한 URL Scheme
-        instance?.consumerKey = "31Z8n157vSc5G7GMvGU0" // 상수 - client id
-        instance?.consumerSecret = "0dxTUpz13L" // pw
-        instance?.appName = "lines" // app name
+        instance?.consumerKey = kConsumerKey // 상수 - client id
+        instance?.consumerSecret = kConsumerSecret // pw
+        instance?.appName = kServiceAppName // app name
+        print("munyong > kServiceAppUrlScheme: \(kServiceAppUrlScheme)")
+        print("munyong > kConsumerKey: \(kConsumerKey)")
+        print("munyong > kConsumerSecret: \(kConsumerSecret)")
+        print("munyong > kServiceAppName: \(kServiceAppName)")
     }
 }
 
