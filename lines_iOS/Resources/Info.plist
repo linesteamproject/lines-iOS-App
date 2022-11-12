@@ -24,6 +24,8 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>naverloginonlines</string>
+				<string>naversearchthirdlogin</string>
+				<string>naversearchapp</string>
 			</array>
 		</dict>
 	</array>

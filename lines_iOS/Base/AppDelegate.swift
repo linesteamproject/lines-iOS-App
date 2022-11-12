@@ -44,15 +44,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("munyong > \(url.scheme)")
         if url.absoluteString.contains("kakao"), (AuthApi.isKakaoTalkLoginUrl(url)) {
             return AuthController.handleOpenUrl(url: url)
         }
         
         if url.scheme?.contains("naver") == true {
-//            NaverThirdPartyLoginConnection
+//            let receive = NaverThirdPartyLoginConnection
 //                    .getSharedInstance()?
 //                    .receiveAccessToken(url)
+//            return 0 == receive?.rawValue
 
             NaverThirdPartyLoginConnection.getSharedInstance()?.application(app, open: url, options: options)
             return true
@@ -76,10 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         instance?.consumerKey = kConsumerKey // 상수 - client id
         instance?.consumerSecret = kConsumerSecret // pw
         instance?.appName = kServiceAppName // app name
-        print("munyong > kServiceAppUrlScheme: \(kServiceAppUrlScheme)")
-        print("munyong > kConsumerKey: \(kConsumerKey)")
-        print("munyong > kConsumerSecret: \(kConsumerSecret)")
-        print("munyong > kServiceAppName: \(kServiceAppName)")
     }
 }
 
