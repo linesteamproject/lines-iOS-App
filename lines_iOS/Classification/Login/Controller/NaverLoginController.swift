@@ -14,7 +14,12 @@ class NaverLoginController: NSObject, NaverThirdPartyLoginConnectionDelegate {
     var naverLoginClosure: ((NaverLoginResponse?) -> Void)?
     internal func login() {
         instance?.delegate = self
-        instance?.requestThirdPartyLogin()
+        guard let isValid = instance?.isValidAccessTokenExpireTimeNow(),
+              isValid else {
+            instance?.requestThirdPartyLogin()
+            return
+        }
+        instance?.requestAccessTokenWithRefreshToken()
     }
     internal func logout() {
         instance?.requestDeleteToken()
@@ -27,7 +32,7 @@ class NaverLoginController: NSObject, NaverThirdPartyLoginConnectionDelegate {
     
     // referesh token
     func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
-        instance?.accessToken
+        getInfo()
     }
     
     // 로그아웃
