@@ -172,9 +172,23 @@ class Main_CardDetailViewController: ScrollViewController {
             bottomView.heightAnchor.constraint(equalToConstant: 90),
             bottomView.topAnchor.constraint(equalTo: nextTopAnchor, constant: 71)
         ])
-        bottomView.leftBtnClosure = { [weak self] in
-            // 삭제하기
+        bottomView.leftBtnClosure = {
+            let tbAlertView = TwoButtonAlertView()
+            self.view.addSubviews(tbAlertView)
+            NSLayoutConstraint.activate([
+                tbAlertView.topAnchor.constraint(equalTo: self.view.topAnchor),
+                tbAlertView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+                tbAlertView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+                tbAlertView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+            tbAlertView.title = "문장 기록 삭제하기"
+            tbAlertView.subTitle = "기록한 문장을 정말 삭제하시겠어요? :("
+            tbAlertView.closure = {
+                // 삭제하기
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         }
+        
         bottomView.rightBtnClosure = { [weak self] in
             // 수정하기
             let pVC = Main_PopUpAlertViewController()

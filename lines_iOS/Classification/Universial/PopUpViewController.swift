@@ -37,7 +37,6 @@ class PopUpViewController: ViewController {
     @objc
     private func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         closeClosure?()
-        self.dismiss(animated: false)
     }
     internal func setAdditionalUI() { }
 }
