@@ -24,7 +24,14 @@ class MarkCard_BottomView: UIView {
         super.init(frame: .zero)
         setUI(leftButtonTitle)
     }
-    private func setUI(_ leftButtonTitle: String) {
+    init(leftButtonTitle: String,
+         rightButtonTitle: String) {
+        super.init(frame: .zero)
+        setUI(leftButtonTitle, rightButtonTitle)
+    }
+    
+    private func setUI(_ leftButtonTitle: String,
+                       _ rightButtonTitle: String = "다음 단계") {
         self.backgroundColor = Colors.black.value
         
         let left = CancelButton()
@@ -50,7 +57,7 @@ class MarkCard_BottomView: UIView {
         left.setTitle(leftButtonTitle,
                       font: Fonts.get(size: 18, type: .bold),
                       txtColor: Colors.beige)
-        right.setTitle("다음 단계",
+        right.setTitle(rightButtonTitle,
                        font: Fonts.get(size: 18, type: .bold),
                        txtColor: .black,
                        backColor: Colors.beige)

@@ -1,28 +1,23 @@
 //
-//  Main_CardDetailViewController.swift
+//  MakeCard_CompleteViewController.swift
 //  lines_iOS
 //
-//  Created by mun on 2022/09/11.
+//  Created by MunYong HEO on 2022/08/29.
 //
 
 import UIKit
 
-class Main_CardDetailViewController: ScrollViewController {
-    private weak var nextTopAnchor: NSLayoutYAxisAnchor!
+class MakeCard_CompleteViewController: ScrollViewController {
+    override var topViewHeight: CGFloat {
+        get { return 56 }
+        set { }
+    }
     private weak var stickerBackView: UIView!
     private weak var stickerView: MakeCard_StickerView!
-    override func setAdditionalUI() {
-        self.navigationController?.isNavigationBarHidden = true
-        nextTopAnchor = contentView.topAnchor
-        
-        setStickerBackView()
-        setStickerView(ReadTextController.shared.sizeType)
-        setShareButtons()
-        setBottomView()
-    }
+    private weak var nextTopAnchor: NSLayoutYAxisAnchor!
     
     override func setTopView() {
-        let topView = Main_CardDetailTopView()
+        let topView = MakeCard_TopView()
         self.view.addSubviews(topView)
         NSLayoutConstraint.activate([
             topView.topAnchor
@@ -32,12 +27,42 @@ class Main_CardDetailViewController: ScrollViewController {
             topView.rightAnchor
                     .constraint(equalTo: self.view.rightAnchor),
             topView.heightAnchor
-                    .constraint(greaterThanOrEqualToConstant: 56)
+                    .constraint(equalToConstant: topViewHeight)
         ])
         topView.closeClosure = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+            ReadTextController.shared.initialize()
+            DispatchQueue.main.async {
+                self?.navigationController?.popToRootViewController(animated: true)
+            }
         }
         self.topView = topView
+    }
+    
+    override func setAdditionalUI() {
+        setTitleView()
+        setStickerBackView()
+        setStickerView(ReadTextController.shared.sizeType)
+        setShareButtons()
+        setBottomView()
+    }
+    
+    private func setTitleView() {
+        let titleLabel = UILabel()
+        let subTitleLabel = UILabel()
+        self.contentView.addSubviews(titleLabel, subTitleLabel)
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 42),
+            titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+            subTitleLabel.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor)
+        ])
+        titleLabel.setTitle("문장을 기록했어요!",
+                            font: Fonts.get(size: 22, type: .bold),
+                            txtColor: .white)
+        subTitleLabel.setTitle("소중한 사람들과 함께 영감을 공유해보세요.",
+                               font: Fonts.get(size: 14, type: .regular),
+                               txtColor: .white)
+        self.nextTopAnchor = subTitleLabel.bottomAnchor
     }
     
     private func setStickerBackView() {
@@ -45,8 +70,8 @@ class Main_CardDetailViewController: ScrollViewController {
         self.contentView.addSubviews(back)
         NSLayoutConstraint.activate([
             back.topAnchor.constraint(equalTo: nextTopAnchor, constant: 30),
-            back.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            back.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            back.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
+            back.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
             back.heightAnchor.constraint(equalToConstant: 375)
         ])
         back.backgroundColor = Colors.black.value
@@ -67,7 +92,7 @@ class Main_CardDetailViewController: ScrollViewController {
         self.stickerView.color = ReadTextController.shared.colorType
         
         func setOne2One() {
-            let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.readText)
+            let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.slicedText)
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
@@ -79,11 +104,20 @@ class Main_CardDetailViewController: ScrollViewController {
                                                    constant: -15)
             ])
             stickerView.bookInfoStr = ReadTextController.shared.bookInfo
+            if FirstLaunchChecker.isNotLogin {
+                ReadTextController.shared.sticker = ShareController.shared.makeImage(stickerView)
+            } else {
+                DispatchQueue.global().async {
+                    AFHandler.saveCardData(done: {
+                        print($0)
+                    })
+                }
+            }
             self.stickerView = stickerView
         }
         
         func setThree2Four() {
-            let stickerView = MakeCard_StickerThreeToFourView(ReadTextController.shared.readText)
+            let stickerView = MakeCard_StickerThreeToFourView(ReadTextController.shared.slicedText)
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
@@ -95,6 +129,15 @@ class Main_CardDetailViewController: ScrollViewController {
                                                    constant: -15)
             ])
             stickerView.bookInfoStr = ReadTextController.shared.bookInfo
+            if FirstLaunchChecker.isNotLogin {
+                ReadTextController.shared.sticker = ShareController.shared.makeImage(stickerView)
+            } else {
+                DispatchQueue.global().async {
+                    AFHandler.saveCardData(done: {
+                        print($0)
+                    })
+                }
+            }
             self.stickerView = stickerView
         }
     }
@@ -107,9 +150,10 @@ class Main_CardDetailViewController: ScrollViewController {
                         .constraint(equalTo: nextTopAnchor,
                                     constant: 45),
             shareBtnsView.centerXAnchor
-                        .constraint(equalTo: self.view.centerXAnchor),
+                        .constraint(equalTo: self.contentView.centerXAnchor),
             shareBtnsView.widthAnchor.constraint(equalToConstant: 234),
-            shareBtnsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 83)
+            shareBtnsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 83),
+            shareBtnsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -141)
         ])
         shareBtnsView.shareInstaClosure = {
             self.showLoadingView()
@@ -145,6 +189,7 @@ class Main_CardDetailViewController: ScrollViewController {
                 self?.present(alert, animated: true)
             }
         }
+        
         shareBtnsView.shareAnotherClosure = { [weak self] in
             guard let selfView = self?.view,
                   let shareImg = ShareController.shared.makeImage(self?.stickerView)
@@ -162,24 +207,23 @@ class Main_CardDetailViewController: ScrollViewController {
     }
     
     private func setBottomView() {
-        let bottomView = MarkCard_BottomView(leftButtonTitle: "삭제하기",
-                                             rightButtonTitle: "수정하기")
-        self.contentView.addSubviews(bottomView)
+        let bottomBtnView = MakeCard_GoToHomeButtonView()
+        self.view.addSubviews(bottomBtnView)
         NSLayoutConstraint.activate([
-            bottomView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -34),
-            bottomView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            bottomView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            bottomView.heightAnchor.constraint(equalToConstant: 90),
-            bottomView.topAnchor.constraint(equalTo: nextTopAnchor, constant: 71)
+            bottomBtnView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -34 + -31),
+            bottomBtnView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            bottomBtnView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            bottomBtnView.heightAnchor.constraint(equalToConstant: 90)
         ])
-        bottomView.leftBtnClosure = { [weak self] in
-            // 삭제하기
-        }
-        bottomView.rightBtnClosure = { [weak self] in
-            // 수정하기
-            let pVC = Main_PopUpAlertViewController()
-            pVC.modalPresentationStyle = .overFullScreen
-            self?.present(pVC, animated: false)
+        bottomBtnView.goToHomeClosure = { [weak self] in
+            ReadTextController.shared.initialize()
+            DispatchQueue.main.async {
+                self?.navigationController?.popToRootViewController(animated: true)
+            }
+//            let vc = MainViewController()
+//            vc.modalPresentationStyle = .fullScreen
+//            self.present(vc, animated: true)
         }
     }
 }
+
