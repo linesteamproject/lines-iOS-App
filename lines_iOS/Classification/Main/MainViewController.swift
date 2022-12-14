@@ -86,7 +86,8 @@ class MainViewController: ScrollViewController {
                 var cards = [CardModel]()
                 value.content.forEach { content in
                     let ratio = MakeCard_StickerRatioType.allCases.first(where: { $0.typeStr == content.ratio }) ?? .one2one
-                    cards.append(CardModel(bookName: content.bookResponse?.name,
+                    cards.append(CardModel(id: String(content.id),
+                                           bookName: content.bookResponse?.name,
                                            authorName: content.bookResponse?.title,
                                            bookIsbn: content.bookResponse?.isbn,
                                            lineValue: content.content,
@@ -178,8 +179,8 @@ class MainViewController: ScrollViewController {
                 .constraint(greaterThanOrEqualToConstant: 10)
         ])
         mainListView.cardTouchedClosure = { [weak self] cardModel in
-            ReadTextController.shared.cardModel = cardModel
             let vc = Main_CardDetailViewController()
+            vc.cardModel = cardModel
             DispatchQueue.main.async {
                 self?.navigationController?.pushViewController(vc, animated: true)
             }

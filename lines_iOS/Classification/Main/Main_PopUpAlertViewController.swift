@@ -36,6 +36,10 @@ class Main_PopUpAlertViewController: PopUpViewController {
             alertView.heightAnchor.constraint(equalToConstant: 231)
         ])
         alertView.backgroundColor = Colors.white.value
+        alertView.layer.cornerRadius = 10
+        alertView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner,
+                                                     .layerMaxXMinYCorner)
+
         self.alertView = alertView
     }
     
@@ -77,6 +81,9 @@ class Main_PopUpAlertViewController: PopUpViewController {
                             txtColor: .black)
         rightButton.setImage(UIImage(named: "IconX")?.withTintColor(Colors.black.value),
                              for: .normal)
+        rightButton.addAction(UIAction { [weak self] _ in
+            self?.closeClosure?()
+        }, for: .touchUpInside)
         textFixButton.setTitle("문장 텍스트 수정하기",
                                font: Fonts.get(size: 18, type: .bold),
                                txtColor: .black)

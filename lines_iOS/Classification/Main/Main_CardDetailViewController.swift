@@ -11,12 +11,15 @@ class Main_CardDetailViewController: ScrollViewController {
     private weak var nextTopAnchor: NSLayoutYAxisAnchor!
     private weak var stickerBackView: UIView!
     private weak var stickerView: MakeCard_StickerView!
+    internal var cardModel: CardModel?
     override func setAdditionalUI() {
+        guard let cardModel = cardModel else { return }
+        
         self.navigationController?.isNavigationBarHidden = true
         nextTopAnchor = contentView.topAnchor
         
         setStickerBackView()
-        setStickerView(ReadTextController.shared.sizeType)
+        setStickerView(cardModel.ratioType ?? .one2one)
         setShareButtons()
         setBottomView()
     }
@@ -64,10 +67,12 @@ class Main_CardDetailViewController: ScrollViewController {
             setThree2Four()
         }
         
-        self.stickerView.color = ReadTextController.shared.colorType
+        self.stickerView.color = MakeCard_StickerBackColorType.allCases.first(where: {
+            $0.name == cardModel?.colorImageName
+        }) ?? .black
         
         func setOne2One() {
-            let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.readText)
+            let stickerView = MakeCard_StickerOneToOneView(cardModel?.lineValue ?? "")
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
@@ -78,12 +83,12 @@ class Main_CardDetailViewController: ScrollViewController {
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
-            stickerView.bookInfoStr = ReadTextController.shared.bookInfo
+            stickerView.bookInfoStr = cardModel?.bookInfo
             self.stickerView = stickerView
         }
         
         func setThree2Four() {
-            let stickerView = MakeCard_StickerThreeToFourView(ReadTextController.shared.readText)
+            let stickerView = MakeCard_StickerThreeToFourView(cardModel?.lineValue ?? "")
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
@@ -94,7 +99,7 @@ class Main_CardDetailViewController: ScrollViewController {
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
-            stickerView.bookInfoStr = ReadTextController.shared.bookInfo
+            stickerView.bookInfoStr = cardModel?.bookInfo
             self.stickerView = stickerView
         }
     }
@@ -193,6 +198,12 @@ class Main_CardDetailViewController: ScrollViewController {
             // 수정하기
             let pVC = Main_PopUpAlertViewController()
             pVC.modalPresentationStyle = .overFullScreen
+            pVC.textFixClosure = { [weak self] in
+                // 문장 수정
+            }
+            pVC.templeteFixClosure = { [weak self] in
+                // 템플릿 수정
+            }
             self?.present(pVC, animated: false)
         }
     }

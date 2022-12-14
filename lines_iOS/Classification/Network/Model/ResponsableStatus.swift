@@ -51,3 +51,10 @@ struct SaveCardResponse: Codable {
     let ratio, background, content: String
     let bookResponse: BookInfo
 }
+
+struct ShareCardResponse: Codable {
+    let httpStatus: Int
+    let success: Bool
+    let error: String?
+    let responseData: String?
+}

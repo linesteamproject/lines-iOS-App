@@ -136,4 +136,16 @@ class AFHandler {
             done?(value?.responseData)
         }
     }
+    
+    class func shareCardLog(id: String, done: ((ShareCardResponse?) -> Void)?) {
+        let urlStr = "http://15.165.161.188:8080/v1/lines/" + id + "/share-log"
+        let headers = HTTPHeaders(["Authorization": "bearer " + UserData.accessToken])
+        session.request(urlStr, method: .post,
+                        encoding: JSONEncoding.default,
+                        headers: headers)
+        .responseDecodable(of: ResponseResult<ShareCardResponse>.self) {
+            let value = $0.value
+            done?(value?.responseData)
+        }
+    }
 }

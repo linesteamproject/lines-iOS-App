@@ -7,12 +7,24 @@
 
 import RealmSwift
 struct CardModel {
+    let id: String?
     let bookName: String?
     let authorName: String?
     let bookIsbn: String?
     let lineValue: String?
     let colorImageName: String?
     let ratioType: MakeCard_StickerRatioType?
+    
+    var bookInfo: String {
+        var rtnVal = ""
+        if let bookName = bookName {
+            rtnVal += bookName + ","
+        }
+        if let authorName = authorName {
+            rtnVal += authorName
+        }
+        return rtnVal
+    }
     
     var param: [String: Any?] {
         return [
@@ -53,11 +65,13 @@ class CardModel_Realm: Object {
     }
     
     func getCardModel() -> CardModel {
-        return CardModel(bookName: self.bookName,
+        return CardModel(id: "",
+                            bookName: self.bookName,
                          authorName: self.authorName,
                          bookIsbn: self.bookIsbn,
                          lineValue: self.lineValue,
                          colorImageName: color,
-                         ratioType: MakeCard_StickerRatioType(rawValue: self.ratioTypeRawValue ?? 0))
+                         ratioType: MakeCard_StickerRatioType(rawValue:
+                                                                self.ratioTypeRawValue ?? 0))
     }
 }
