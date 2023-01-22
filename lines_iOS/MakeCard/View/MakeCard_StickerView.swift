@@ -16,17 +16,26 @@ class MakeCard_StickerView: UIView {
     internal var bookInfoStr: String? {
         didSet { bookInfoLabel.setTitle(bookInfoStr) }
     }
+    internal var font = 폰트.나눔명조 {
+        didSet { contentsLabel.setTitleHasLineSpace(self.crntText,
+                                                    lineSpaceVal: 3,
+                                                    font: font.val,
+                                                    color: .black,
+                                                    textAlignment: .center) }
+    }
     internal var color: MakeCard_StickerBackColorType! {
         didSet {
             backImageView.image = UIImage(named: imgBackName)
             self.backgroundColor = color.color
         }
     }
+    private var crntText: String?
     init(_ text: String?) {
         super.init(frame: .zero)
         
+        self.crntText = text
         setStickerFrame()
-        setText(text)
+        setText()
         setConstraints()
     }
     
@@ -58,12 +67,12 @@ class MakeCard_StickerView: UIView {
         self.bookInfoLabel = bookInfo
     }
     
-    private func setText(_ text: String?) {
+    private func setText() {
         let label = UILabel()
         backImageView.addSubviews(label)
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.setTitleHasLineSpace(text,
+        label.setTitleHasLineSpace(self.crntText,
                                    lineSpaceVal: 3,
                                    font: Fonts.getNanum(size: 16),
                                    color: .black,

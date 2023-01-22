@@ -9,18 +9,41 @@ import UIKit
 
 class MakeCard_StickerSetView: UIView {
     private weak var nextTopAnchor: NSLayoutYAxisAnchor!
+    internal var fontBtnClosure: ((폰트) -> Void)?
     internal var colorBtnClosure: ((MakeCard_StickerBackColorType?) -> Void)?
     internal var leftBtnClosure: (() -> Void)?
     internal var rightBtnClosure: (() -> Void)?
     
     private var proportionBtns = [MakeCard_SelectProportionButtonView]()
     deinit { proportionBtns.removeAll() }
+    
+    private weak var leftRatioBtn: MakeCard_SelectProportionButtonView!
+    private weak var rightRatioBtn: MakeCard_SelectProportionButtonView!
+    internal var selectedRatio: MakeCard_StickerRatioType! {
+        didSet {
+            leftRatioBtn.isSelected = selectedRatio == .one2one
+            rightRatioBtn.isSelected = selectedRatio == .three2Four
+        }
+    }
+    
+    private weak var fontSetView: MakeCard_StickerContentFontSetView!
+    internal var selectedFont: 폰트! {
+        didSet { fontSetView.selectedFont = selectedFont }
+    }
+    
+    private weak var colorSetView: MakeCard_StickerBackColorSetView!
+    internal var selectedColor: MakeCard_StickerBackColorType! {
+        didSet { colorSetView.selectedColor = selectedColor }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.isUserInteractionEnabled = true
         setButtons()
-        setLine()
+        setLine(topConst: 12)
+        setFontsButton()
+        setLine(topConst: 18)
         setColorsButton()
     }
     required init?(coder: NSCoder) {
@@ -68,6 +91,9 @@ class MakeCard_StickerSetView: UIView {
             leftBtn.isSelected = false
             self?.rightBtnClosure?()
         }, for: .touchUpInside)
+        self.leftRatioBtn = leftBtn
+        self.rightRatioBtn = rightBtn
+        
         
         let subLabel = UILabel()
         self.addSubviews(subLabel)
@@ -83,17 +109,36 @@ class MakeCard_StickerSetView: UIView {
         self.nextTopAnchor = subLabel.bottomAnchor
     }
     
-    private func setLine() {
+    private func setLine(topConst: CGFloat) {
         let line = UIView()
         self.addSubviews(line)
         NSLayoutConstraint.activate([
-            line.topAnchor.constraint(equalTo: nextTopAnchor, constant: 12),
+            line.topAnchor.constraint(equalTo: nextTopAnchor, constant: topConst),
             line.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             line.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
             line.heightAnchor.constraint(equalToConstant: 1)
         ])
         line.backgroundColor = Colors.gray.value
         self.nextTopAnchor = line.bottomAnchor
+    }
+    
+    private func setFontsButton() {
+        let fontSetView = MakeCard_StickerContentFontSetView()
+        self.addSubviews(fontSetView)
+        NSLayoutConstraint.activate([
+            fontSetView.topAnchor.constraint(equalTo: nextTopAnchor,
+                                              constant: 18),
+            fontSetView.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                              constant: 20),
+            fontSetView.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                               constant: -20),
+            fontSetView.heightAnchor.constraint(equalToConstant: 75),
+        ])
+        fontSetView.fontBtnClosure = { [weak self] type in
+            self?.fontBtnClosure?(type)
+        }
+        self.fontSetView = fontSetView
+        self.nextTopAnchor = fontSetView.bottomAnchor
     }
     
     private func setColorsButton() {
@@ -107,10 +152,13 @@ class MakeCard_StickerSetView: UIView {
             colorSetView.rightAnchor.constraint(equalTo: self.rightAnchor,
                                                constant: -20),
             colorSetView.heightAnchor.constraint(equalToConstant: 39),
+            colorSetView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
+                                                constant: -18)
         ])
         colorSetView.colorBtnClosure = { [weak self] type in
             self?.colorBtnClosure?(type)
         }
+        self.colorSetView = colorSetView
         self.nextTopAnchor = colorSetView.bottomAnchor
     }
 }

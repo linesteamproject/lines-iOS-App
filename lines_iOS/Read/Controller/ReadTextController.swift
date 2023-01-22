@@ -32,12 +32,37 @@ class ReadTextController: NSObject {
                                                textAlignment: 텍스트정렬(rawValue: txtAlign) ?? .왼쪽)
         }
     }
+    
+    internal func getCardModel(id: String?) -> CardModel? {
+        return CardModel(id: id,
+                         bookName: self.bookCardModel.book?.title,
+                         authorName: self.bookCardModel.book?.name,
+                         bookIsbn: self.bookCardModel.book?.isbn,
+                         lineValue: self.bookCardModel.content,
+                         colorImageName: self.bookCardModel.colorType.name,
+                         ratioType: self.bookCardModel.sizeType,
+                         font: self.bookCardModel.font.rawValue,
+                         textAlignment: self.bookCardModel.textAlignment.rawValue)
+    }
     internal var bookCardModel = BookCardModel(content: nil,
                                                book: BookModel(),
                                                sizeType: .one2one,
                                                colorType: .black,
                                                font: .나눔명조,
                                                textAlignment: .왼쪽)
+    internal func setBookCardModel(_ cardModel: CardModel) {
+        let colorType = MakeCard_StickerBackColorType.allCases.first(where: { $0.name == cardModel.colorImageName}) ?? .black
+        let fontType = 폰트.allCases.first(where: { $0.rawValue == cardModel.font }) ?? .나눔명조
+        let textAlignType = 텍스트정렬.allCases.first(where: { $0.rawValue == cardModel.textAlignment }) ?? .왼쪽
+        self.bookCardModel = BookCardModel(content: cardModel.lineValue,
+                                           book: BookModel(title: cardModel.bookName,
+                                                           name: cardModel.authorName,
+                                                           isbn: cardModel.bookIsbn),
+                                           sizeType: cardModel.ratioType ?? MakeCard_StickerRatioType.one2one,
+                                           colorType: colorType,
+                                           font: fontType,
+                                           textAlignment: textAlignType)
+    }
     internal var searchModel = BookSearchModel(page: 1,
                                                searchStr: nil)
     internal var readTextStep = ReadTextStep.start
@@ -49,6 +74,9 @@ class ReadTextController: NSObject {
     
     internal var param: [String: Any?] {
         return bookCardModel.getParam()
+    }
+    internal func getPutParam(id: String) -> [String: Any?] {
+        return bookCardModel.getPutParam(id: id)
     }
     
     func initialize() {
@@ -88,11 +116,19 @@ struct BookCardModel {
           "ratio": sizeType.typeStr,
           "background": colorType.name,
           "font": font.rawValue,
-          "textAlignment": textAlignment.rawValue,
-          "memberId": 0
+          "textAlignment": textAlignment.rawValue
         ]
     }
-    
+    internal func getPutParam(id: String) -> [String: Any?] {
+        return [
+            "id": Int(id),
+            "background": colorType.name,
+            "font": font.rawValue,
+            "textAlignment": textAlignment.rawValue,
+            "content": content,
+            "ratio": sizeType.typeStr
+        ]
+    }
     mutating func updateContent(_ str: String?) {
         guard let str = str else {
             self.content = str
@@ -113,6 +149,9 @@ struct BookCardModel {
     }
     mutating func updateColorType(_ type: MakeCard_StickerBackColorType) {
         self.colorType = type
+    }
+    mutating func updateFontType(_ font: 폰트) {
+        self.font = font
     }
 }
 
@@ -156,15 +195,30 @@ struct BookModel {
     }
 }
 
-enum 폰트: String {
+enum 폰트: String, CaseIterable {
     case 나눔명조 = "NanumMyeongjo"
     case 본고딕 = "NotoSansKR"
     case 나눔스퀘어 = "NanumSquareNeo"
     case 고운돋움 = "GowunDodum"
     case 나눔손글씨 = "NanumURiDdarSonGeurSsi"
+    
+    var val: UIFont {
+        switch self {
+        case .나눔명조:
+            return UIFont(name: "NanumMyeongjo-YetHangul", size: 16)!
+        case .본고딕:
+            return UIFont(name: "NotoSansNKo-Regular", size: 16)!
+        case .나눔스퀘어:
+            return UIFont(name: "NanumSquareNeoTTF-bRg", size: 16)!
+        case .고운돋움:
+            return UIFont(name: "GowunDodum-Regular", size: 16)!
+        case .나눔손글씨:
+            return UIFont(name: "NanumURiDdarSonGeurSsi", size: 16)!
+        }
+    }
 }
 
-enum 텍스트정렬: String {
+enum 텍스트정렬: String, CaseIterable {
     case 왼쪽 = "TextAlignmentLeft"
     case 중앙 = "TextAlignmentCenter"
     case 오른쪽 = "TextAlignmentRight"

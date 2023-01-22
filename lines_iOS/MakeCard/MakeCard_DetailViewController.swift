@@ -95,6 +95,7 @@ class MakeCard_DetailViewController: ScrollViewController {
                                                    constant: -15)
             ])
             stickerView.color = ReadTextController.shared.bookCardModel.colorType
+            stickerView.font = ReadTextController.shared.bookCardModel.font
             self.stickerView = stickerView
         }
         
@@ -111,6 +112,7 @@ class MakeCard_DetailViewController: ScrollViewController {
                                                    constant: -15)
             ])
             stickerView.color = ReadTextController.shared.bookCardModel.colorType
+            stickerView.font = ReadTextController.shared.bookCardModel.font
             self.stickerView = stickerView
         }
     }
@@ -132,6 +134,10 @@ class MakeCard_DetailViewController: ScrollViewController {
         }
         stickerSetView.rightBtnClosure = { [weak self] in
             self?.setStickerView(.three2Four)
+        }
+        stickerSetView.fontBtnClosure = { [weak self] font in
+            self?.stickerView.font = font
+            ReadTextController.shared.bookCardModel.updateFontType(font)
         }
         stickerSetView.colorBtnClosure = { [weak self] type in
             guard let type = type else { return }

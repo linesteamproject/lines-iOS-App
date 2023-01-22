@@ -84,6 +84,7 @@ class Main_CardDetailViewController: ScrollViewController {
                                                    constant: -15)
             ])
             stickerView.bookInfoStr = cardModel?.bookInfo
+            stickerView.font = 폰트(rawValue: cardModel?.font ?? 폰트.나눔명조.rawValue) ?? .나눔명조
             self.stickerView = stickerView
         }
         
@@ -92,14 +93,15 @@ class Main_CardDetailViewController: ScrollViewController {
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
-                                                constant: 15),
+                                                 constant: 15),
                 stickerView.centerXAnchor.constraint(equalTo: stickerBackView.centerXAnchor),
                 stickerView.widthAnchor.constraint(equalToConstant: 345 / 4 * 3),
                 stickerView.heightAnchor.constraint(equalToConstant: 345),
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
-                                                   constant: -15)
+                                                    constant: -15)
             ])
             stickerView.bookInfoStr = cardModel?.bookInfo
+            stickerView.font = 폰트(rawValue: cardModel?.font ?? 폰트.나눔명조.rawValue) ?? .나눔명조
             self.stickerView = stickerView
         }
     }
@@ -109,16 +111,16 @@ class Main_CardDetailViewController: ScrollViewController {
         self.contentView.addSubviews(shareBtnsView)
         NSLayoutConstraint.activate([
             shareBtnsView.topAnchor
-                        .constraint(equalTo: nextTopAnchor,
-                                    constant: 45),
+                .constraint(equalTo: nextTopAnchor,
+                            constant: 45),
             shareBtnsView.centerXAnchor
-                        .constraint(equalTo: self.view.centerXAnchor),
+                .constraint(equalTo: self.view.centerXAnchor),
             shareBtnsView.widthAnchor.constraint(equalToConstant: 234),
             shareBtnsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 83)
         ])
         shareBtnsView.shareInstaClosure = {
             self.showLoadingView()
-//            ShareController.shared.shareOnInstagram(self.stickerView)
+            //            ShareController.shared.shareOnInstagram(self.stickerView)
             ShareController.shared.postImageToInstagram(self.stickerView) {
                 self.hiddenLoadingView()
             }
@@ -188,9 +190,17 @@ class Main_CardDetailViewController: ScrollViewController {
             ])
             tbAlertView.title = "문장 기록 삭제하기"
             tbAlertView.subTitle = "기록한 문장을 정말 삭제하시겠어요? :("
-            tbAlertView.closure = {
-                // 삭제하기
-                self.navigationController?.popToRootViewController(animated: true)
+            tbAlertView.closure = { [weak self] in
+                guard let id = self?.cardModel?.id
+                else { return }
+                AFHandler.deleteCardData(id: id, done: {
+                    guard $0 == true else { return }
+                    
+                    Toast.shared.message("삭제되었습니다.")
+                    DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: {
+                        self?.navigationController?.popToRootViewController(animated: true)
+                    })
+                })
             }
         }
         
@@ -199,10 +209,36 @@ class Main_CardDetailViewController: ScrollViewController {
             let pVC = Main_PopUpAlertViewController()
             pVC.modalPresentationStyle = .overFullScreen
             pVC.textFixClosure = { [weak self] in
-                // 문장 수정
+                pVC.dismiss(animated: true) {
+                    guard let cardModel = self?.cardModel else {
+                        return
+                    }
+
+                    let vc = FixCardViewController()
+                    ReadTextController.shared.setBookCardModel(cardModel)
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.cardId = self?.cardModel?.id
+                    DispatchQueue.main.async {
+                        self?.navigationController?.pushViewController(vc,
+                                                                       animated: true)
+                    }
+                }
             }
             pVC.templeteFixClosure = { [weak self] in
-                // 템플릿 수정
+                pVC.dismiss(animated: true) {
+                    guard let cardModel = self?.cardModel else {
+                        return
+                    }
+
+                    let vc = FixCard_DetailViewController()
+                    ReadTextController.shared.setBookCardModel(cardModel)
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.cardId = self?.cardModel?.id
+                    DispatchQueue.main.async {
+                        self?.navigationController?.pushViewController(vc,
+                                                                       animated: true)
+                    }
+                }
             }
             self?.present(pVC, animated: false)
         }

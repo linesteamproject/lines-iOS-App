@@ -148,4 +148,33 @@ class AFHandler {
             done?(value?.responseData)
         }
     }
+    
+    class func deleteCardData(id: String?,
+                              done: ((Bool?) -> Void)?) {
+        guard let id = id, !id.isEmpty else { done?(nil); return }
+        
+        let urlStr = "http://15.165.161.188:8080/v1/lines"+"/"+id
+        let headers = HTTPHeaders(["Authorization": "bearer " + UserData.accessToken])
+        session.request(urlStr, method: .delete,
+                        encoding: URLEncoding.default,
+                        headers: headers)
+        .responseDecodable(of: ResponseResult<JsonNull>.self) {
+            let value = $0.value
+            done?(value?.success)
+        }
+    }
+    
+    class func putCardData(id: String, done: ((SaveCardResponse?) -> Void)?) {
+        let urlStr = "http://15.165.161.188:8080/v1/lines"+"/"+id
+        let headers = HTTPHeaders(["Authorization": "bearer " + UserData.accessToken])
+        let param = ReadTextController.shared.getPutParam(id: id)
+        session.request(urlStr, method: .put,
+                        parameters: param,
+                        encoding: JSONEncoding.default,
+                        headers: headers)
+        .responseDecodable(of: ResponseResult<SaveCardResponse>.self) {
+            let value = $0.value
+            done?(value?.responseData)
+        }
+    }
 }

@@ -8,6 +8,11 @@
 import UIKit
 
 class MakeCard_StickerBackColorSetView: UIView {
+    internal var selectedColor: MakeCard_StickerBackColorType! {
+        didSet {
+            self.btns.forEach { $0.isSelected = $0.type == selectedColor }
+        }
+    }
     internal var colorBtnClosure: ((MakeCard_StickerBackColorType?) -> Void)?
     private var btns = [MakeCard_StickerBackColorButton]()
     deinit { btns.removeAll() }

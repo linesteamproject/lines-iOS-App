@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		40F5BA46BDC623769AD32EC9 /* Pods_lines_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1553B13AD637E8346E0EA5 /* Pods_lines_iOS.framework */; };
+		BA2C732F297CF70900AD48B1 /* NanumSquareNeo-bRg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA2C732B297CF70900AD48B1 /* NanumSquareNeo-bRg.ttf */; };
+		BA2C7330297CF70900AD48B1 /* NanumURiDdarSonGeurSsi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA2C732C297CF70900AD48B1 /* NanumURiDdarSonGeurSsi.ttf */; };
+		BA2C7331297CF70900AD48B1 /* GowunDodum-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA2C732D297CF70900AD48B1 /* GowunDodum-Regular.ttf */; };
+		BA2C7332297CF70900AD48B1 /* NotoSansNKo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA2C732E297CF70900AD48B1 /* NotoSansNKo-Regular.ttf */; };
+		BA2C7334297CF7D700AD48B1 /* MakeCard_StickerContentFontSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C7333297CF7D700AD48B1 /* MakeCard_StickerContentFontSetView.swift */; };
 		BA44ECA528BCF65A0040C26C /* MakeCard_ShareButtonsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA44ECA428BCF65A0040C26C /* MakeCard_ShareButtonsType.swift */; };
 		BA6A8372289CEDB50040512E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A8371289CEDB50040512E /* LoginViewController.swift */; };
 		BA6A8375289CEDEA0040512E /* KakaoLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A8374289CEDEA0040512E /* KakaoLoginController.swift */; };
@@ -63,6 +68,11 @@
 		BA8A8EED28E1C23600EA7617 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EEC28E1C23600EA7617 /* SplashViewController.swift */; };
 		BA8A8EEF28E1C3A400EA7617 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A8EEE28E1C3A400EA7617 /* Toast.swift */; };
 		BA8A8EF228F6F72D00EA7617 /* Main_Lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = BA8A8EF128F6F72D00EA7617 /* Main_Lottie.json */; };
+		BA8F816B297D01BB007A48A0 /* MakeCard_StickerContentFontButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F816A297D01BB007A48A0 /* MakeCard_StickerContentFontButton.swift */; };
+		BA8F816D297D349A007A48A0 /* FixCard_DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F816C297D349A007A48A0 /* FixCard_DetailViewController.swift */; };
+		BA8F816F297D34F2007A48A0 /* FixCard_SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F816E297D34F2007A48A0 /* FixCard_SaveButtonView.swift */; };
+		BA8F8171297D3FFC007A48A0 /* FixCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F8170297D3FFC007A48A0 /* FixCardViewController.swift */; };
+		BA8F8176297D4125007A48A0 /* FixCard_CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F8175297D4125007A48A0 /* FixCard_CompleteViewController.swift */; };
 		BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */; };
 		BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */; };
 		BA9DA30928C8B733004CBBFB /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30828C8B733004CBBFB /* UserInfo.swift */; };
@@ -110,6 +120,11 @@
 		6C1553B13AD637E8346E0EA5 /* Pods_lines_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lines_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EBF471927421B13CAF5923 /* Pods-lines_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lines_iOS.debug.xcconfig"; path = "Target Support Files/Pods-lines_iOS/Pods-lines_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		95F41FDAA66CDF70A7DB6CE3 /* Pods-lines_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lines_iOS.release.xcconfig"; path = "Target Support Files/Pods-lines_iOS/Pods-lines_iOS.release.xcconfig"; sourceTree = "<group>"; };
+		BA2C732B297CF70900AD48B1 /* NanumSquareNeo-bRg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeo-bRg.ttf"; sourceTree = "<group>"; };
+		BA2C732C297CF70900AD48B1 /* NanumURiDdarSonGeurSsi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumURiDdarSonGeurSsi.ttf; sourceTree = "<group>"; };
+		BA2C732D297CF70900AD48B1 /* GowunDodum-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunDodum-Regular.ttf"; sourceTree = "<group>"; };
+		BA2C732E297CF70900AD48B1 /* NotoSansNKo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansNKo-Regular.ttf"; sourceTree = "<group>"; };
+		BA2C7333297CF7D700AD48B1 /* MakeCard_StickerContentFontSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerContentFontSetView.swift; sourceTree = "<group>"; };
 		BA44ECA428BCF65A0040C26C /* MakeCard_ShareButtonsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_ShareButtonsType.swift; sourceTree = "<group>"; };
 		BA6A8371289CEDB50040512E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BA6A8374289CEDEA0040512E /* KakaoLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginController.swift; sourceTree = "<group>"; };
@@ -165,6 +180,11 @@
 		BA8A8EEC28E1C23600EA7617 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		BA8A8EEE28E1C3A400EA7617 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		BA8A8EF128F6F72D00EA7617 /* Main_Lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Main_Lottie.json; sourceTree = "<group>"; };
+		BA8F816A297D01BB007A48A0 /* MakeCard_StickerContentFontButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerContentFontButton.swift; sourceTree = "<group>"; };
+		BA8F816C297D349A007A48A0 /* FixCard_DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCard_DetailViewController.swift; sourceTree = "<group>"; };
+		BA8F816E297D34F2007A48A0 /* FixCard_SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCard_SaveButtonView.swift; sourceTree = "<group>"; };
+		BA8F8170297D3FFC007A48A0 /* FixCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCardViewController.swift; sourceTree = "<group>"; };
+		BA8F8175297D4125007A48A0 /* FixCard_CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCard_CompleteViewController.swift; sourceTree = "<group>"; };
 		BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginController.swift; sourceTree = "<group>"; };
 		BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
 		BA9DA30828C8B733004CBBFB /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -295,6 +315,10 @@
 		BA6A83B128A72AD90040512E /* FontResource */ = {
 			isa = PBXGroup;
 			children = (
+				BA2C732D297CF70900AD48B1 /* GowunDodum-Regular.ttf */,
+				BA2C732B297CF70900AD48B1 /* NanumSquareNeo-bRg.ttf */,
+				BA2C732C297CF70900AD48B1 /* NanumURiDdarSonGeurSsi.ttf */,
+				BA2C732E297CF70900AD48B1 /* NotoSansNKo-Regular.ttf */,
 				BA6A83B228A72AE80040512E /* AppleSDGothicNeoB.ttf */,
 				BA6A83B528A72AE80040512E /* AppleSDGothicNeoEB.ttf */,
 				BA6A83B328A72AE80040512E /* AppleSDGothicNeoH.ttf */,
@@ -359,6 +383,8 @@
 				BA6A83E428B1D36E0040512E /* MakeCard_StickerView.swift */,
 				BA6A83E028B1D3330040512E /* MakeCard_StickerOneToOneView.swift */,
 				BA6A83E228B1D3440040512E /* MakeCard_StickerThreeToFourView.swift */,
+				BA8F816A297D01BB007A48A0 /* MakeCard_StickerContentFontButton.swift */,
+				BA2C7333297CF7D700AD48B1 /* MakeCard_StickerContentFontSetView.swift */,
 				BA6A83DE28B1D3000040512E /* MakeCard_StickerSetView.swift */,
 				BA6A83ED28B50F300040512E /* MakeCard_StickerBackColorSetView.swift */,
 				BA6A83EB28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift */,
@@ -382,6 +408,33 @@
 				BA6A83F428BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift */,
 				BA6A83F628BADA880040512E /* MakeCard_SearchButtonType.swift */,
 				BA44ECA428BCF65A0040C26C /* MakeCard_ShareButtonsType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BA8F8172297D40EC007A48A0 /* FixCard */ = {
+			isa = PBXGroup;
+			children = (
+				BA8F8170297D3FFC007A48A0 /* FixCardViewController.swift */,
+				BA8F816C297D349A007A48A0 /* FixCard_DetailViewController.swift */,
+				BA8F8175297D4125007A48A0 /* FixCard_CompleteViewController.swift */,
+				BA8F8174297D4106007A48A0 /* Model */,
+				BA8F8173297D4100007A48A0 /* View */,
+			);
+			path = FixCard;
+			sourceTree = "<group>";
+		};
+		BA8F8173297D4100007A48A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BA8F816E297D34F2007A48A0 /* FixCard_SaveButtonView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BA8F8174297D4106007A48A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -511,6 +564,7 @@
 				BAA07C072894C21C0078EA83 /* Main */,
 				BA6A83C528A7C23C0040512E /* Read */,
 				BA6A83C828A7C2BD0040512E /* MakeCard */,
+				BA8F8172297D40EC007A48A0 /* FixCard */,
 				BAA07C0E2894CF0D0078EA83 /* Base */,
 				BAA07BFC2894BFC90078EA83 /* Resources */,
 				BAA07C012894C1EC0078EA83 /* Extensions */,
@@ -632,14 +686,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA2C7332297CF70900AD48B1 /* NotoSansNKo-Regular.ttf in Resources */,
 				BA8A8EF228F6F72D00EA7617 /* Main_Lottie.json in Resources */,
 				BAE5C9C52894B08C00659F74 /* LaunchScreen.storyboard in Resources */,
+				BA2C7331297CF70900AD48B1 /* GowunDodum-Regular.ttf in Resources */,
+				BA2C7330297CF70900AD48B1 /* NanumURiDdarSonGeurSsi.ttf in Resources */,
 				BA6A83BC28A744420040512E /* AppleSDGothicNeoL.ttf in Resources */,
 				BAE5C9C22894B08C00659F74 /* Assets.xcassets in Resources */,
 				BA6A83BB28A744420040512E /* AppleSDGothicNeoH.ttf in Resources */,
 				BA8A8EEB28CDD8ED00EA7617 /* NanumMyeongjo-YetHangul.ttf in Resources */,
 				BA6A83BA28A744420040512E /* AppleSDGothicNeoB.ttf in Resources */,
 				BA6A83BD28A744420040512E /* AppleSDGothicNeoM.ttf in Resources */,
+				BA2C732F297CF70900AD48B1 /* NanumSquareNeo-bRg.ttf in Resources */,
 				BA6A83BE28A744420040512E /* AppleSDGothicNeoEB.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -731,15 +789,18 @@
 				BA6A83CF28A7D32A0040512E /* MakeCard_NoticeView.swift in Sources */,
 				BA6A83F928BAEF1A0040512E /* MakeCard_BarcodeReaderView.swift in Sources */,
 				BA6A83FD28BCEFC50040512E /* MakeCard_CompleteViewController.swift in Sources */,
+				BA8F8176297D4125007A48A0 /* FixCard_CompleteViewController.swift in Sources */,
 				BAA07C052894C2060078EA83 /* Extensions+Func.swift in Sources */,
 				BA9DA31328CC1AC5004CBBFB /* UserAgreementWebViewController.swift in Sources */,
 				BA8510D22946CE7400123305 /* PopUpViewController.swift in Sources */,
 				BA8A8EE728CD69B500EA7617 /* Main_CardDetailTopView.swift in Sources */,
 				BA6A83AE28A721530040512E /* Main_MenuButton.swift in Sources */,
 				BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */,
+				BA8F816D297D349A007A48A0 /* FixCard_DetailViewController.swift in Sources */,
 				BA6A83E528B1D36E0040512E /* MakeCard_StickerView.swift in Sources */,
 				BAA07C32289528A10078EA83 /* MakeCard_SearchedListView.swift in Sources */,
 				BA9DA30B28C8BC7C004CBBFB /* UserData.swift in Sources */,
+				BA8F816F297D34F2007A48A0 /* FixCard_SaveButtonView.swift in Sources */,
 				BA6A83B028A728A80040512E /* Main_ListView.swift in Sources */,
 				BA6A8385289F7D3B0040512E /* ScrollViewController.swift in Sources */,
 				BA44ECA528BCF65A0040C26C /* MakeCard_ShareButtonsType.swift in Sources */,
@@ -766,6 +827,7 @@
 				BA6A83DF28B1D3000040512E /* MakeCard_StickerSetView.swift in Sources */,
 				BAA07C1E289509940078EA83 /* NWMonitor.swift in Sources */,
 				BA9DA30D28CAF7EE004CBBFB /* UserAgreementViewController.swift in Sources */,
+				BA2C7334297CF7D700AD48B1 /* MakeCard_StickerContentFontSetView.swift in Sources */,
 				BAA07C0B2894CED80078EA83 /* CameraViewController.swift in Sources */,
 				BA6A83EE28B50F300040512E /* MakeCard_StickerBackColorSetView.swift in Sources */,
 				BA6A83D928A863AE0040512E /* MainCard_ContentNoticeView.swift in Sources */,
@@ -775,6 +837,7 @@
 				BA6A840128BCF06F0040512E /* MakeCard_ShareButtonsView.swift in Sources */,
 				BA6A8381289F6E0D0040512E /* Main_HeaderView.swift in Sources */,
 				BA6A83FF28BCF02C0040512E /* MakeCard_GoToHomeButtonView.swift in Sources */,
+				BA8F816B297D01BB007A48A0 /* MakeCard_StickerContentFontButton.swift in Sources */,
 				BA6A83E128B1D3330040512E /* MakeCard_StickerOneToOneView.swift in Sources */,
 				BA6A83C228A7B0A40040512E /* TestData.swift in Sources */,
 				BA6A83C428A7C2120040512E /* ExternUIImagePickerController.swift in Sources */,
@@ -796,6 +859,7 @@
 				BA6A83F728BADA880040512E /* MakeCard_SearchButtonType.swift in Sources */,
 				BAEDCE9328C2B30F00102C47 /* OneButtonAlertView.swift in Sources */,
 				BA6A83F528BAD9EC0040512E /* MakeCard_SearchedTypeViewButton.swift in Sources */,
+				BA8F8171297D3FFC007A48A0 /* FixCardViewController.swift in Sources */,
 				BA6A83AC28A71E2A0040512E /* Main_TopView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

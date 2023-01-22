@@ -47,6 +47,10 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>GowunDodum-Regular.ttf</string>
+		<string>NanumSquareNeo-bRg.ttf</string>
+		<string>NanumURiDdarSonGeurSsi.ttf</string>
+		<string>NotoSansNKo-Regular.ttf</string>
 		<string>AppleSDGothicNeoB.ttf</string>
 		<string>AppleSDGothicNeoEB.ttf</string>
 		<string>AppleSDGothicNeoH.ttf</string>

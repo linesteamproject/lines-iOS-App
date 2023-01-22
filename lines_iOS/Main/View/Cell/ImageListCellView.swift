@@ -62,9 +62,10 @@ class ImageListCellView: UIView {
             bookInfoLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 54),
             bookInfoLabel.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -54),
         ])
+        let font = 폰트(rawValue: data.font ?? 폰트.나눔명조.rawValue) ?? .나눔명조
         contentsLabel.setTitleHasLineSpace(data.lineValue,
                                            lineSpaceVal: 3,
-                                           font: Fonts.getNanum(size: 7.4),
+                                           font: Fonts.get(size: 7.4, font: font),
                                            color: .black,
                                            textAlignment: .center)
         contentsLabel.textAlignment = .center

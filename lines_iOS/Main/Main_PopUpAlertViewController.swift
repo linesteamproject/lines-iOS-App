@@ -109,4 +109,8 @@ class Main_PopUpAlertViewController: PopUpViewController {
                                                     y: -231)
         }
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.back.backgroundColor = .clear
+    }
 }
