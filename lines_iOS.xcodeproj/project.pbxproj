@@ -434,20 +434,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		BAA07C062894C2120078EA83 /* Classification */ = {
-			isa = PBXGroup;
-			children = (
-				BA6A8379289DE0B00040512E /* Universial */,
-				BAA07C1C289509790078EA83 /* Network */,
-				BA6A8376289CEEA10040512E /* Start */,
-				BA6A8370289CEDA60040512E /* Login */,
-				BAA07C072894C21C0078EA83 /* Main */,
-				BA6A83C528A7C23C0040512E /* Read */,
-				BA6A83C828A7C2BD0040512E /* MakeCard */,
-			);
-			path = Classification;
-			sourceTree = "<group>";
-		};
 		BAA07C072894C21C0078EA83 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,10 +528,16 @@
 			isa = PBXGroup;
 			children = (
 				BAEDCE9128C2B26900102C47 /* lines_iOS.entitlements */,
+				BA6A8379289DE0B00040512E /* Universial */,
+				BAA07C1C289509790078EA83 /* Network */,
+				BA6A8376289CEEA10040512E /* Start */,
+				BA6A8370289CEDA60040512E /* Login */,
+				BAA07C072894C21C0078EA83 /* Main */,
+				BA6A83C528A7C23C0040512E /* Read */,
+				BA6A83C828A7C2BD0040512E /* MakeCard */,
 				BAA07C0E2894CF0D0078EA83 /* Base */,
 				BAA07BFC2894BFC90078EA83 /* Resources */,
 				BAA07C012894C1EC0078EA83 /* Extensions */,
-				BAA07C062894C2120078EA83 /* Classification */,
 			);
 			path = lines_iOS;
 			sourceTree = "<group>";
