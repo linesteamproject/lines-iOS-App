@@ -11,6 +11,7 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import KakaoSDKCommon
 import NaverThirdPartyLogin
+import RealmSwift
 
 let log = SwiftyBeaver.self
 @main
@@ -30,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KakaoSDK.initSDK(appKey: "794c3c6e502b330cf0a9303a414d0da9")
         activeNaverLogin()
         
+        migrationRealm()
         let _ = RealmController.shared
         
 //        for fontFamily in UIFont.familyNames {
@@ -37,8 +39,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                print(fontName)
 //            }
 //        }
+        
         return true
 
+    }
+    
+    private func migrationRealm() {
+        // 1. config 설정(이전 버전에서 다음 버전으로 마이그레이션될때 어떻게 변경될것인지)
+        let config = Realm.Configuration(
+            schemaVersion: 2, // 새로운 스키마 버전 설정
+            migrationBlock: { migration, oldSchemaVersion in
+                if oldSchemaVersion < 2 {
+                    // 1-1. 마이그레이션 수행(버전 2보다 작은 경우 버전 2에 맞게 데이터베이스 수정)
+                    migration.enumerateObjects(ofType: CardModel_Realm.className()) { oldObject, newObject in
+                        newObject!["font"] = 폰트.나눔명조.rawValue
+                        newObject!["textAlignment"] = 텍스트정렬.왼쪽.rawValue
+                    }
+                }
+            }
+        )
+        
+        // 2. Realm이 새로운 Object를 쓸 수 있도록 설정
+        Realm.Configuration.defaultConfiguration = config
     }
     
     func application(_ app: UIApplication,

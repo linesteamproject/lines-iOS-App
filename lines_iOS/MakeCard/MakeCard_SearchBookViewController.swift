@@ -124,7 +124,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         searchedTypeView.typeClosure = { [weak self] type in
             MakeCard_KakaoBookSearcher.type = type
             btn.isHidden = !(type == .barcode)
-            ReadTextController.shared.page = 1
+            ReadTextController.shared.searchModel.page = 1
             ReadTextController.shared.isEnded = false
             self?.searchedListView.isLoading = true
             self?.searchedListView.list.removeAll()
@@ -132,8 +132,10 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         }
         
         searchedTypeView.searchClosure = { [weak self] in
-            guard let str = ReadTextController.shared.searchedStr else { return }
-            ReadTextController.shared.page = 1
+            guard let str = ReadTextController.shared.searchModel.searchStr
+            else { return }
+            
+            ReadTextController.shared.searchModel.page = 1
             ReadTextController.shared.isEnded = false
             self?.searchedListView.list.removeAll()
             self?.getBookInfo(str)
@@ -198,9 +200,11 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         searchedListView.delegate = self
         searchedListView.pageClosure = { [weak self] in
             guard !ReadTextController.shared.isEnded else { return }
-            ReadTextController.shared.page += 1
+            ReadTextController.shared.searchModel.page += 1
             
-            guard let str = ReadTextController.shared.searchedStr else { return }
+            guard let str = ReadTextController.shared.searchModel.searchStr
+            else { return }
+            
             self?.getBookInfo(str)
         }
         self.searchedListView = searchedListView
@@ -221,7 +225,8 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         }
         
         bottomView.rightBtnClosure = { [weak self] in
-            guard !ReadTextController.shared.bookInfo.isEmpty else { return }
+            guard ReadTextController.shared.bookCardModel.book?.info.isEmpty == false
+            else { return }
             
             let vc = MakeCard_CompleteViewController()
             vc.modalPresentationStyle = .fullScreen
@@ -237,9 +242,10 @@ class MakeCard_SearchBookViewController: ScrollViewController {
 extension MakeCard_SearchBookViewController: ButtonDelegate {
     func touched(_ obj: Any?) {
         if let obj = obj as? BookDocu {
-            ReadTextController.shared.bookName = obj.bookName
-            ReadTextController.shared.authorName = obj.authorsStr
-            ReadTextController.shared.bookIsbn = obj.isbn
+            ReadTextController.shared.bookCardModel.book?.setTitle(obj.bookName)
+            ReadTextController.shared.bookCardModel.book?.setName(obj.authorsStr)
+            ReadTextController.shared.bookCardModel.book?.setIsbn(obj.isbn)
+
             bottomView.isRightActive = true
         }
     }

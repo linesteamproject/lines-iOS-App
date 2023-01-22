@@ -107,7 +107,7 @@ class MakeCard_SearchedTypeView: UIView {
                      txtColor: .black, backColor: .beige)
         btn.layer.cornerRadius = 22
         btn.addAction(UIAction { [weak self] _ in
-            ReadTextController.shared.searchedStr = textField.text
+            ReadTextController.shared.searchModel.updateStr(textField.text)
             self?.searchClosure?()
             self?.endEditing(true)
         }, for: .touchUpInside)

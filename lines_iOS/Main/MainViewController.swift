@@ -92,7 +92,9 @@ class MainViewController: ScrollViewController {
                                            bookIsbn: content.bookResponse?.isbn,
                                            lineValue: content.content,
                                            colorImageName: content.background,
-                                           ratioType: ratio))
+                                           ratioType: ratio,
+                                           font: content.font,
+                                           textAlignment: content.textAlignment))
                 }
                 
                 done?()

@@ -30,6 +30,8 @@ struct CardInfoContent: Codable {
     let content: String
     let bookResponse: BookInfo?
     let ratio, background: String
+    let font: String?
+    let textAlignment: String?
 }
 
 struct BookInfo: Codable {

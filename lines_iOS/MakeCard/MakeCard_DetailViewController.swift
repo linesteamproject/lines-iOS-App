@@ -80,10 +80,10 @@ class MakeCard_DetailViewController: ScrollViewController {
         case .three2Four:
             setThree2Four()
         }
-        ReadTextController.shared.sizeType = type
+        ReadTextController.shared.bookCardModel.updateSizeType(type)
         
         func setOne2One() {
-            let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.slicedText)
+            let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.bookCardModel.content)
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
@@ -94,12 +94,12 @@ class MakeCard_DetailViewController: ScrollViewController {
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
-            stickerView.color = ReadTextController.shared.colorType
+            stickerView.color = ReadTextController.shared.bookCardModel.colorType
             self.stickerView = stickerView
         }
         
         func setThree2Four() {
-            let stickerView = MakeCard_StickerThreeToFourView(ReadTextController.shared.slicedText)
+            let stickerView = MakeCard_StickerThreeToFourView(ReadTextController.shared.bookCardModel.content)
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
@@ -110,7 +110,7 @@ class MakeCard_DetailViewController: ScrollViewController {
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
-            stickerView.color = ReadTextController.shared.colorType
+            stickerView.color = ReadTextController.shared.bookCardModel.colorType
             self.stickerView = stickerView
         }
     }
@@ -136,7 +136,7 @@ class MakeCard_DetailViewController: ScrollViewController {
         stickerSetView.colorBtnClosure = { [weak self] type in
             guard let type = type else { return }
             self?.stickerView.color = type
-            ReadTextController.shared.colorType = type
+            ReadTextController.shared.bookCardModel.updateColorType(type)
         }
     }
     

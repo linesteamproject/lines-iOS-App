@@ -42,7 +42,7 @@ class MakeCard_CompleteViewController: ScrollViewController {
     override func setAdditionalUI() {
         setTitleView()
         setStickerBackView()
-        setStickerView(ReadTextController.shared.sizeType)
+        setStickerView(ReadTextController.shared.bookCardModel.sizeType)
         setShareButtons()
         setBottomView()
     }
@@ -90,10 +90,10 @@ class MakeCard_CompleteViewController: ScrollViewController {
             setThree2Four()
         }
         
-        self.stickerView.color = ReadTextController.shared.colorType
+        self.stickerView.color = ReadTextController.shared.bookCardModel.colorType
         
         func setOne2One() {
-            let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.slicedText)
+            let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.bookCardModel.content)
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
@@ -104,7 +104,7 @@ class MakeCard_CompleteViewController: ScrollViewController {
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
-            stickerView.bookInfoStr = ReadTextController.shared.bookInfo
+            stickerView.bookInfoStr = ReadTextController.shared.bookCardModel.book?.info
             if FirstLaunchChecker.isNotLogin {
                 ReadTextController.shared.sticker = ShareController.shared.makeImage(stickerView)
             } else {
@@ -119,7 +119,7 @@ class MakeCard_CompleteViewController: ScrollViewController {
         }
         
         func setThree2Four() {
-            let stickerView = MakeCard_StickerThreeToFourView(ReadTextController.shared.slicedText)
+            let stickerView = MakeCard_StickerThreeToFourView(ReadTextController.shared.bookCardModel.content)
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
@@ -130,7 +130,7 @@ class MakeCard_CompleteViewController: ScrollViewController {
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
-            stickerView.bookInfoStr = ReadTextController.shared.bookInfo
+            stickerView.bookInfoStr = ReadTextController.shared.bookCardModel.book?.info
             if FirstLaunchChecker.isNotLogin {
                 ReadTextController.shared.sticker = ShareController.shared.makeImage(stickerView)
             } else {

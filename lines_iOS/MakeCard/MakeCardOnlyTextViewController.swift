@@ -15,7 +15,7 @@ class MakeCardOnlyTextViewController: MakeCardViewController {
     }
     
     override func setContentView() {
-        let cardContentView = MakeCard_ContentView(ReadTextController.shared.readText)
+        let cardContentView = MakeCard_ContentView(ReadTextController.shared.bookCardModel.content)
         self.contentView.addSubviews(cardContentView)
         NSLayoutConstraint.activate([
             cardContentView.topAnchor.constraint(equalTo: nextTopAnchor),
@@ -51,7 +51,7 @@ class MakeCardOnlyTextViewController: MakeCardViewController {
                           txtColor: .black,
                           backColor: .beigeInactive)
         okButton.addAction(UIAction { [weak self] _ in
-            ReadTextController.shared.readText = self?.cardContentView.txtView.text ?? ""
+            ReadTextController.shared.bookCardModel.updateContent(self?.cardContentView.txtView.text)
             let vc = MakeCard_DetailViewController()
             vc.modalPresentationStyle = .fullScreen
             self?.navigationController?.pushViewController(vc, animated: false)

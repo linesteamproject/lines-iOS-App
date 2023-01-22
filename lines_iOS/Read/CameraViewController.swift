@@ -135,10 +135,10 @@ class CameraViewController: ViewController {
                         guard idx < 110 else { break }
                         str += String(c)
                     }
-                    ReadTextController.shared.readText = str
+                    ReadTextController.shared.bookCardModel.updateContent(str)
                 }
             } else {
-                ReadTextController.shared.readText = $0
+                ReadTextController.shared.bookCardModel.updateContent($0)
             }
             done?()
         })

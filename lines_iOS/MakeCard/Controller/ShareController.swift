@@ -27,7 +27,7 @@ class ShareController: NSObject, UIDocumentInteractionControllerDelegate {
         guard let imageData = renderImage.pngData()
         else { return }
         
-        let backHexStr = ReadTextController.shared.colorType.color.getHexStr()
+        let backHexStr = ReadTextController.shared.bookCardModel.colorType.color.getHexStr()
         let pasteboardItems : [String:Any] = [
            "com.instagram.sharedSticker.stickerImage": imageData,
            "com.instagram.sharedSticker.backgroundTopColor" : backHexStr,

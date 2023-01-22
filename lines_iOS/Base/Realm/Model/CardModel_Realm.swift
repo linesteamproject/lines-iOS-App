@@ -14,7 +14,8 @@ struct CardModel {
     let lineValue: String?
     let colorImageName: String?
     let ratioType: MakeCard_StickerRatioType?
-    
+    let font: String?
+    let textAlignment: String?
     var bookInfo: String {
         var rtnVal = ""
         if let bookName = bookName {
@@ -36,7 +37,9 @@ struct CardModel {
                 "title": self.bookName,
                 "name": self.authorName,
                 "isbn": self.bookIsbn
-            ]
+            ],
+            "font": "string",
+            "textAlignment": "string"
         ]
     }
 }
@@ -48,13 +51,16 @@ class CardModel_Realm: Object {
     @Persisted var lineValue: String?
     @Persisted var color: String?
     @Persisted var ratioTypeRawValue: Int?
-    
+    @Persisted var font: String?
+    @Persisted var textAlignment: String?
     convenience init(bookName: String?,
                      authorName: String?,
                      bookIsbn: String?,
                      lineValue: String?,
                      color: String?,
-                     ratioTypeRawValue: Int?) {
+                     ratioTypeRawValue: Int?,
+                     font: String?,
+                     textAlignment: String?) {
         self.init()
         self.bookName = bookName
         self.authorName = authorName
@@ -62,16 +68,20 @@ class CardModel_Realm: Object {
         self.lineValue = lineValue
         self.color = color
         self.ratioTypeRawValue = ratioTypeRawValue
+        self.font = font
+        self.textAlignment = textAlignment
     }
     
     func getCardModel() -> CardModel {
         return CardModel(id: "",
-                            bookName: self.bookName,
+                         bookName: self.bookName,
                          authorName: self.authorName,
                          bookIsbn: self.bookIsbn,
                          lineValue: self.lineValue,
                          colorImageName: color,
                          ratioType: MakeCard_StickerRatioType(rawValue:
-                                                                self.ratioTypeRawValue ?? 0))
+                                                                self.ratioTypeRawValue ?? 0),
+                         font: self.font,
+                         textAlignment: self.textAlignment)
     }
 }

@@ -99,7 +99,7 @@ class MakeCardViewController: ScrollViewController {
     }
     
     internal func setContentView() {
-        let cardContentView = MakeCard_ContentView(ReadTextController.shared.readText)
+        let cardContentView = MakeCard_ContentView(ReadTextController.shared.bookCardModel.content)
         self.contentView.addSubviews(cardContentView)
         NSLayoutConstraint.activate([
             cardContentView.topAnchor.constraint(equalTo: nextTopAnchor),
@@ -143,13 +143,13 @@ class MakeCardViewController: ScrollViewController {
             self?.navigationController?.popViewController(animated: true)
         }
         bottomView.rightBtnClosure = { [weak self] in
-            ReadTextController.shared.readText = self?.cardContentView.txtView.text ?? ""
+            ReadTextController.shared.bookCardModel.updateContent(self?.cardContentView.txtView.text ?? "")
             let vc = MakeCard_DetailViewController()
             vc.modalPresentationStyle = .fullScreen
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         
-        if let readTxt = ReadTextController.shared.readText,
+        if let readTxt = ReadTextController.shared.bookCardModel.content,
            !readTxt.isEmpty {
             bottomView.isRightActive = true
         } else {
