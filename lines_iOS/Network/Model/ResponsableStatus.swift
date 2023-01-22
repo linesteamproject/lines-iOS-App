@@ -56,5 +56,9 @@ struct ShareCardResponse: Codable {
     let httpStatus: Int
     let success: Bool
     let error: String?
-    let responseData: String?
+    let responseData: JsonNull?
+}
+
+struct JsonNull: Codable {
+    
 }

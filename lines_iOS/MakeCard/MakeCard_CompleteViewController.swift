@@ -16,6 +16,7 @@ class MakeCard_CompleteViewController: ScrollViewController {
     private weak var stickerView: MakeCard_StickerView!
     private weak var nextTopAnchor: NSLayoutYAxisAnchor!
     
+    private var cardId: Int?
     override func setTopView() {
         let topView = MakeCard_TopView()
         self.view.addSubviews(topView)
@@ -107,9 +108,10 @@ class MakeCard_CompleteViewController: ScrollViewController {
             if FirstLaunchChecker.isNotLogin {
                 ReadTextController.shared.sticker = ShareController.shared.makeImage(stickerView)
             } else {
-                DispatchQueue.global().async {
+                DispatchQueue.global().async { [weak self] in
                     AFHandler.saveCardData(done: {
-                        print($0)
+                        guard let cardResponse = $0 else { return }
+                        self?.cardId = cardResponse.id
                     })
                 }
             }
@@ -132,9 +134,10 @@ class MakeCard_CompleteViewController: ScrollViewController {
             if FirstLaunchChecker.isNotLogin {
                 ReadTextController.shared.sticker = ShareController.shared.makeImage(stickerView)
             } else {
-                DispatchQueue.global().async {
+                DispatchQueue.global().async { [weak self] in
                     AFHandler.saveCardData(done: {
-                        print($0)
+                        guard let cardResponse = $0 else { return }
+                        self?.cardId = cardResponse.id
                     })
                 }
             }
@@ -158,6 +161,13 @@ class MakeCard_CompleteViewController: ScrollViewController {
         shareBtnsView.shareInstaClosure = {
             self.showLoadingView()
 //            ShareController.shared.shareOnInstagram(self.stickerView)
+            
+            DispatchQueue.global().async { [weak self] in
+                let cardId = String(self?.cardId ?? 0)
+                AFHandler.shareCardLog(id: cardId) {
+                    print($0)
+                }
+            }
             ShareController.shared.postImageToInstagram(self.stickerView) {
                 self.hiddenLoadingView()
             }
@@ -191,6 +201,13 @@ class MakeCard_CompleteViewController: ScrollViewController {
         }
         
         shareBtnsView.shareAnotherClosure = { [weak self] in
+            DispatchQueue.global().async { [weak self] in
+                let cardId = String(self?.cardId ?? 0)
+                AFHandler.shareCardLog(id: cardId) {
+                    print($0)
+                }
+            }
+            
             guard let selfView = self?.view,
                   let shareImg = ShareController.shared.makeImage(self?.stickerView)
             else { return }
@@ -220,9 +237,6 @@ class MakeCard_CompleteViewController: ScrollViewController {
             DispatchQueue.main.async {
                 self?.navigationController?.popToRootViewController(animated: true)
             }
-//            let vc = MainViewController()
-//            vc.modalPresentationStyle = .fullScreen
-//            self.present(vc, animated: true)
         }
     }
 }
