@@ -278,13 +278,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		BA6A837D289DECF30040512E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		BA6A83A828A71DBF0040512E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,19 +316,11 @@
 		BA6A83C528A7C23C0040512E /* Read */ = {
 			isa = PBXGroup;
 			children = (
-				BA6A83C628A7C2510040512E /* View */,
 				BA6A83C728A7C25A0040512E /* Controller */,
 				BAA07C0A2894CED80078EA83 /* CameraViewController.swift */,
 				BA6A83C328A7C2120040512E /* ExternUIImagePickerController.swift */,
 			);
 			path = Read;
-			sourceTree = "<group>";
-		};
-		BA6A83C628A7C2510040512E /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		BA6A83C728A7C25A0040512E /* Controller */ = {
@@ -437,7 +422,6 @@
 		BAA07C072894C21C0078EA83 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BA6A837D289DECF30040512E /* Controller */,
 				BAA07C172894F4F10078EA83 /* View */,
 				BAA07C0F2894D3430078EA83 /* MainViewController.swift */,
 				BA8A8EE428CD663F00EA7617 /* Main_CardDetailViewController.swift */,
@@ -479,7 +463,6 @@
 			isa = PBXGroup;
 			children = (
 				BAA07C2328950B870078EA83 /* Model */,
-				BAA07C2A289517E40078EA83 /* Controller */,
 				BAA07C1D289509940078EA83 /* NWMonitor.swift */,
 				BAA07C1F289509AF0078EA83 /* EventMonitor.swift */,
 				BAA07C21289509EC0078EA83 /* AFHandler.swift */,
@@ -497,13 +480,6 @@
 				BA8A8EE828CD7EAE00EA7617 /* ResponsableStatus.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		BAA07C2A289517E40078EA83 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		BAE5C9AC2894B08A00659F74 = {
