@@ -16,6 +16,8 @@ class MakeCardViewController: ScrollViewController {
     }
     internal var noticeStr: String = "촬영한 문장을 인식했어요.\n줄바꿈, 오타 등을 직접 수정해 주세요."
     internal weak var nextTopAnchor: NSLayoutYAxisAnchor!
+    
+    internal var recentRegisterBookListViewModel: RecentRegisterBookListViewModel?
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         cardContentView.endEditing(true)
     }
@@ -145,6 +147,7 @@ class MakeCardViewController: ScrollViewController {
         bottomView.rightBtnClosure = { [weak self] in
             ReadTextController.shared.bookCardModel.updateContent(self?.cardContentView.txtView.text ?? "")
             let vc = MakeCard_DetailViewController()
+            vc.recentRegisterBookListViewModel = self?.recentRegisterBookListViewModel
             vc.modalPresentationStyle = .fullScreen
             self?.navigationController?.pushViewController(vc, animated: true)
         }

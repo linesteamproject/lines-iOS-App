@@ -53,6 +53,7 @@ class MakeCardOnlyTextViewController: MakeCardViewController {
         okButton.addAction(UIAction { [weak self] _ in
             ReadTextController.shared.bookCardModel.updateContent(self?.cardContentView.txtView.text)
             let vc = MakeCard_DetailViewController()
+            vc.recentRegisterBookListViewModel = self?.recentRegisterBookListViewModel
             vc.modalPresentationStyle = .fullScreen
             self?.navigationController?.pushViewController(vc, animated: false)
         }, for: .touchUpInside)

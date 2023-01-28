@@ -18,6 +18,7 @@ class MainViewController: ScrollViewController {
     private weak var floatingButton: UIButton!
     private weak var mainListView: Main_ListView!
     
+    private var recentRegisterBookListViewModel: RecentRegisterBookListViewModel?
     internal var justNowLogin = false
     override var topViewHeight: CGFloat {
         get { return 56 }
@@ -80,11 +81,12 @@ class MainViewController: ScrollViewController {
     }
     
     private func getCardsFromServer(_ done: (() -> Void)? = nil) {
-        DispatchQueue.global().async {
+        DispatchQueue.global().async { [weak self] in
             AFHandler.getCardDatas {
                 guard let value = $0 else { done?(); return }
                 var cards = [CardModel]()
-                value.content.forEach { content in
+                var bookInfoList = [BookInfo]()
+                value.content.reversed().forEach { content in
                     let ratio = MakeCard_StickerRatioType.allCases.first(where: { $0.typeStr == content.ratio }) ?? .one2one
                     cards.append(CardModel(id: String(content.id),
                                            bookName: content.bookResponse?.name,
@@ -95,11 +97,22 @@ class MainViewController: ScrollViewController {
                                            ratioType: ratio,
                                            font: content.font,
                                            textAlignment: content.textAlignment))
+                    guard let bookInfo = content.bookResponse,
+                          !bookInfoList.contains(where: { $0.isbn == content.bookResponse?.isbn }),
+                          bookInfoList.count < 5
+                    else { return }
+                    
+                    bookInfoList.append(bookInfo)
                 }
                 
-                done?()
+                let bookListModel = RecentRegisterBookListModel(bookInfoList: bookInfoList)
+                self?.recentRegisterBookListViewModel = RecentRegisterBookListViewModel(bookListModel)
+                self?.recentRegisterBookListViewModel?.loadBookData {
+                    done?()
+                }
+                
                 DispatchQueue.main.async {
-                    self.mainListView?.datas = cards.reversed()
+                    self?.mainListView?.datas = cards
                 }
             }
         }
@@ -496,23 +509,26 @@ extension MainViewController: ButtonDelegate {
         ReadTextController.shared.initialize()
         
         switch type {
-        case .top:
+        case .top: // 사진 찍어 등록
             let vc = CameraViewController()
+            vc.recentRegisterBookListViewModel = self.recentRegisterBookListViewModel
             vc.type = .camera
             vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async { [weak self] in
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
-        case .mid:
+        case .mid: // 사진 불러와서 등록
             let vc = CameraViewController()
+            vc.recentRegisterBookListViewModel = self.recentRegisterBookListViewModel
             vc.type = .photoLibrary
             vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async { [weak self] in
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
-        case .bottom:
+        case .bottom: // 텍스트로만 등록
             let vc = MakeCardOnlyTextViewController()
             ReadTextController.shared.capturedImage = UIImage(named: "EmptyBookImage")
+            vc.recentRegisterBookListViewModel = self.recentRegisterBookListViewModel
             vc.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async { [weak self] in
                 self?.navigationController?.pushViewController(vc, animated: true)

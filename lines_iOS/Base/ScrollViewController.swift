@@ -19,6 +19,7 @@ class ScrollViewController: ViewController {
         setTopView()
         setScrollView()
         setAdditionalUI()
+        setLoadData()
     }
     
     internal func setTopView() {
@@ -61,6 +62,7 @@ class ScrollViewController: ViewController {
     }
     
     internal func setAdditionalUI() { }
+    internal func setLoadData() { }
 }
 
 extension ScrollViewController: UIScrollViewDelegate { }

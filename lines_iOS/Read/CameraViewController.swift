@@ -49,22 +49,24 @@ import AVFoundation
 class CameraViewController: ViewController {
     internal var type: UIImagePickerController.SourceType!
     private weak var loadingView: UIView?
+    internal var recentRegisterBookListViewModel: RecentRegisterBookListViewModel?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         switch ReadTextController.shared.readTextStep {
         case .start:
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                self.showImagePickerController()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
+                self?.showImagePickerController()
             })
         case .capture:
             self.showCroppedController()
         case .crop:
             let vc = MakeCardViewController()
             vc.modalPresentationStyle = .fullScreen
-            DispatchQueue.main.async {
-                self.loadingView?.removeFromSuperview()
-                self.navigationController?.pushViewController(vc, animated: true)
+            vc.recentRegisterBookListViewModel = self.recentRegisterBookListViewModel
+            DispatchQueue.main.async { [weak self] in
+                self?.loadingView?.removeFromSuperview()
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }

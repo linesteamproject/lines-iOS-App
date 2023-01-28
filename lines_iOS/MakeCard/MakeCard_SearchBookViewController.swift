@@ -23,6 +23,8 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         searchedTypeView.endEditing(true)
     }
     
+    internal var recentRegisterBookListViewModel: RecentRegisterBookListViewModel?
+    private var isFirstLoad: Bool = true
     override func setTopView() {
         let topView = MakeCard_TopView()
         self.view.addSubviews(topView)
@@ -64,6 +66,14 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         setSearchedTypeView()
         setSearchedListView()
         setBottomView()
+    }
+    
+    override func setLoadData() {
+        //TODO: 이전에 등록했던 책이 있으면 리스트 만들기
+        guard let recentRegisterBookListViewModel = recentRegisterBookListViewModel
+        else { return }
+        
+        self.searchedListView.list.append(contentsOf: recentRegisterBookListViewModel.getBookInfoDatas())
     }
     
     private func setAskView() {
@@ -170,7 +180,22 @@ class MakeCard_SearchBookViewController: ScrollViewController {
                 }
                 self?.emptyLabel.isHidden = true
                 ReadTextController.shared.isEnded = isEnded
-                self?.searchedListView.list.append(contentsOf: documents)
+                
+                let newList: [BookInfo] = documents.compactMap {
+                    guard let isbn = $0.isbn else { return nil }
+                    
+                    return BookInfo(title: $0.bookName,
+                                    name: $0.authorsStr,
+                                    isbn: isbn,
+                                    bookImgUrlStr: $0.thumbnail)
+                }
+                if self?.isFirstLoad == true {
+                    self?.searchedListView.list = newList
+                    self?.isFirstLoad = false
+                } else {
+                    self?.searchedListView.list.append(contentsOf: newList)
+                }
+                
                 self?.searchedListView.isLoading = false
             }
         }

@@ -36,6 +36,7 @@ struct CardInfoContent: Codable {
 
 struct BookInfo: Codable {
     let title, name, isbn: String
+    var bookImgUrlStr: String?
 }
 
 struct Pageable: Codable {

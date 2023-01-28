@@ -13,7 +13,7 @@ class MakeCard_SearchedListView: UIView {
     internal weak var delegate: ButtonDelegate?
     internal var isLoading: Bool = false
     internal var pageClosure: (() -> Void)?
-    internal var list: [BookDocu] = [] {
+    internal var list: [BookInfo] = [] {
         didSet { tableView.reloadData() }
     }
     override init(frame: CGRect) {
@@ -55,7 +55,7 @@ extension MakeCard_SearchedListView: UITableViewDelegate,
                                                        for: indexPath) as? MakeCard_BasicTableViewCell
         else { return UITableViewCell() }
         
-        cell.bookDocu = list[indexPath.item]
+        cell.bookInfo = list[indexPath.item]
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -75,16 +75,16 @@ extension MakeCard_SearchedListView: UITableViewDelegate,
 class MakeCard_BasicTableViewCell: UITableViewCell {
     private weak var imgView: UIImageView!
     private weak var label: UILabel!
-    internal var bookDocu: BookDocu? {
+    internal var bookInfo: BookInfo? {
         didSet {
-            guard let bookDocu = bookDocu else {
+            guard let bookInfo = bookInfo else {
                 return
             }
 
-            if let urlStr = bookDocu.thumbnail {
+            if let urlStr = bookInfo.bookImgUrlStr {
                 imgView.load(urlStr: urlStr)
             }
-            label.setTitle(bookDocu.bookName + ", " + bookDocu.authorsStr)
+            label.setTitle(bookInfo.title + ", " + bookInfo.name)
         }
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

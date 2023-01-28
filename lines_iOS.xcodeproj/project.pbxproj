@@ -73,6 +73,8 @@
 		BA8F816F297D34F2007A48A0 /* FixCard_SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F816E297D34F2007A48A0 /* FixCard_SaveButtonView.swift */; };
 		BA8F8171297D3FFC007A48A0 /* FixCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F8170297D3FFC007A48A0 /* FixCardViewController.swift */; };
 		BA8F8176297D4125007A48A0 /* FixCard_CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F8175297D4125007A48A0 /* FixCard_CompleteViewController.swift */; };
+		BA8F81792984E48B007A48A0 /* RecentRegisterBookListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F81782984E48B007A48A0 /* RecentRegisterBookListModel.swift */; };
+		BA8F817B2984E4B9007A48A0 /* RecentRegisterBookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F817A2984E4B9007A48A0 /* RecentRegisterBookListViewModel.swift */; };
 		BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */; };
 		BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */; };
 		BA9DA30928C8B733004CBBFB /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30828C8B733004CBBFB /* UserInfo.swift */; };
@@ -185,6 +187,8 @@
 		BA8F816E297D34F2007A48A0 /* FixCard_SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCard_SaveButtonView.swift; sourceTree = "<group>"; };
 		BA8F8170297D3FFC007A48A0 /* FixCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCardViewController.swift; sourceTree = "<group>"; };
 		BA8F8175297D4125007A48A0 /* FixCard_CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCard_CompleteViewController.swift; sourceTree = "<group>"; };
+		BA8F81782984E48B007A48A0 /* RecentRegisterBookListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRegisterBookListModel.swift; sourceTree = "<group>"; };
+		BA8F817A2984E4B9007A48A0 /* RecentRegisterBookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRegisterBookListViewModel.swift; sourceTree = "<group>"; };
 		BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginController.swift; sourceTree = "<group>"; };
 		BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
 		BA9DA30828C8B733004CBBFB /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -285,17 +289,10 @@
 		BA6A8379289DE0B00040512E /* Universial */ = {
 			isa = PBXGroup;
 			children = (
-				BA6A837A289DE0BB0040512E /* Controller */,
+				BA8F81772984E3F2007A48A0 /* Controller */,
 				BA8510D12946CE7400123305 /* PopUpViewController.swift */,
 			);
 			path = Universial;
-			sourceTree = "<group>";
-		};
-		BA6A837A289DE0BB0040512E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		BA6A83A828A71DBF0040512E /* View */ = {
@@ -439,6 +436,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BA8F81772984E3F2007A48A0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BA8F817C2984E4C6007A48A0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BA8F817A2984E4B9007A48A0 /* RecentRegisterBookListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BA8F817D2984E4D1007A48A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BA8F81782984E48B007A48A0 /* RecentRegisterBookListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BA9DA30728C8B728004CBBFB /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +495,8 @@
 		BAA07C072894C21C0078EA83 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BA8F817D2984E4D1007A48A0 /* Model */,
+				BA8F817C2984E4C6007A48A0 /* ViewModel */,
 				BAA07C172894F4F10078EA83 /* View */,
 				BAA07C0F2894D3430078EA83 /* MainViewController.swift */,
 				BA8A8EE428CD663F00EA7617 /* Main_CardDetailViewController.swift */,
@@ -798,6 +820,7 @@
 				BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */,
 				BA8F816D297D349A007A48A0 /* FixCard_DetailViewController.swift in Sources */,
 				BA6A83E528B1D36E0040512E /* MakeCard_StickerView.swift in Sources */,
+				BA8F817B2984E4B9007A48A0 /* RecentRegisterBookListViewModel.swift in Sources */,
 				BAA07C32289528A10078EA83 /* MakeCard_SearchedListView.swift in Sources */,
 				BA9DA30B28C8BC7C004CBBFB /* UserData.swift in Sources */,
 				BA8F816F297D34F2007A48A0 /* FixCard_SaveButtonView.swift in Sources */,
@@ -842,6 +865,7 @@
 				BA6A83C228A7B0A40040512E /* TestData.swift in Sources */,
 				BA6A83C428A7C2120040512E /* ExternUIImagePickerController.swift in Sources */,
 				BAA07C20289509AF0078EA83 /* EventMonitor.swift in Sources */,
+				BA8F81792984E48B007A48A0 /* RecentRegisterBookListModel.swift in Sources */,
 				BA6A8378289CEEAD0040512E /* StartViewController.swift in Sources */,
 				BAA07C032894C1FA0078EA83 /* Extensions+UI.swift in Sources */,
 				BA6A83DB28A8759C0040512E /* MakeCard_DetailViewController.swift in Sources */,
@@ -1000,7 +1024,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;
@@ -1016,7 +1040,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lines.lines-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1033,7 +1057,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lines_iOS/lines_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lines_iOS/Resources/Info.plist;
@@ -1049,7 +1073,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lines.lines-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

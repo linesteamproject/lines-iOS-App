@@ -169,6 +169,10 @@ class Main_CardDetailViewController: ScrollViewController {
     }
     
     private func setBottomView() {
+        guard !FirstLaunchChecker.isNotLogin else {
+            return
+        }
+        
         let bottomView = MarkCard_BottomView(leftButtonTitle: "삭제하기",
                                              rightButtonTitle: "수정하기")
         self.contentView.addSubviews(bottomView)

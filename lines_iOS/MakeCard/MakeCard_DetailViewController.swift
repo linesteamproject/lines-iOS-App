@@ -15,6 +15,7 @@ class MakeCard_DetailViewController: ScrollViewController {
     private weak var stickerBackView: UIView!
     private weak var stickerView: MakeCard_StickerView!
     
+    internal var recentRegisterBookListViewModel: RecentRegisterBookListViewModel?
     override func setTopView() {
         let topView = MakeCard_TopView()
         self.view.addSubviews(topView)
@@ -161,6 +162,7 @@ class MakeCard_DetailViewController: ScrollViewController {
         
         bottomView.rightBtnClosure = { [weak self] in
             let vc = MakeCard_SearchBookViewController()
+            vc.recentRegisterBookListViewModel = self?.recentRegisterBookListViewModel
             vc.modalPresentationStyle = .fullScreen
             self?.navigationController?.pushViewController(vc, animated: true)
         }
