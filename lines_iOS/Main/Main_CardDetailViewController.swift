@@ -85,6 +85,7 @@ class Main_CardDetailViewController: ScrollViewController {
             ])
             stickerView.bookInfoStr = cardModel?.bookInfo
             stickerView.font = 폰트(rawValue: cardModel?.font ?? 폰트.나눔명조.rawValue) ?? .나눔명조
+            stickerView.textAlignment = 텍스트정렬(rawValue: cardModel?.textAlignment ?? 텍스트정렬.중앙.rawValue) ?? .왼쪽
             self.stickerView = stickerView
         }
         
@@ -102,6 +103,7 @@ class Main_CardDetailViewController: ScrollViewController {
             ])
             stickerView.bookInfoStr = cardModel?.bookInfo
             stickerView.font = 폰트(rawValue: cardModel?.font ?? 폰트.나눔명조.rawValue) ?? .나눔명조
+            stickerView.textAlignment = 텍스트정렬(rawValue: cardModel?.textAlignment ?? 텍스트정렬.중앙.rawValue) ?? .왼쪽
             self.stickerView = stickerView
         }
     }

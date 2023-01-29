@@ -97,6 +97,7 @@ class FixCard_DetailViewController: ScrollViewController {
             ])
             stickerView.color = ReadTextController.shared.bookCardModel.colorType
             stickerView.font = ReadTextController.shared.bookCardModel.font
+            stickerView.textAlignment = ReadTextController.shared.bookCardModel.textAlignment
             stickerView.bookInfoStr = ReadTextController.shared.bookCardModel.book?.info
             self.stickerView = stickerView
         }
@@ -115,6 +116,7 @@ class FixCard_DetailViewController: ScrollViewController {
             ])
             stickerView.color = ReadTextController.shared.bookCardModel.colorType
             stickerView.font = ReadTextController.shared.bookCardModel.font
+            stickerView.textAlignment = ReadTextController.shared.bookCardModel.textAlignment
             stickerView.bookInfoStr = ReadTextController.shared.bookCardModel.book?.info
             self.stickerView = stickerView
         }
@@ -142,7 +144,7 @@ class FixCard_DetailViewController: ScrollViewController {
             self?.stickerView.font = font
             ReadTextController.shared.bookCardModel.updateFontType(font)
         }
-        stickerSetView.textAlignmentClosure = { [weak self] type in
+        stickerSetView.textAlignmentClosure = { [weak self] type in 
             self?.stickerView.textAlignment = type
             ReadTextController.shared.bookCardModel.updateTextAlignmentType(type)
         }
@@ -154,6 +156,7 @@ class FixCard_DetailViewController: ScrollViewController {
         
         stickerSetView.selectedRatio = ReadTextController.shared.bookCardModel.sizeType
         stickerSetView.selectedFont = ReadTextController.shared.bookCardModel.font
+        stickerSetView.selectedTextAlginment = ReadTextController.shared.bookCardModel.textAlignment
         stickerSetView.selectedColor = ReadTextController.shared.bookCardModel.colorType
     }
     
