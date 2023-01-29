@@ -23,6 +23,21 @@ class MakeCard_StickerView: UIView {
                                                     color: .black,
                                                     textAlignment: .center) }
     }
+    internal var textAlignment: 텍스트정렬 = .중앙 {
+        didSet {
+            let txtAlign: NSTextAlignment
+            switch textAlignment {
+            case .왼쪽: txtAlign = .left
+            case .중앙: txtAlign = .center
+            case .오른쪽: txtAlign = .right
+            }
+            contentsLabel.setTitleHasLineSpace(self.crntText,
+                                               lineSpaceVal: 3,
+                                               font: font.val,
+                                               color: .black,
+                                               textAlignment: txtAlign)
+        }
+    }
     internal var color: MakeCard_StickerBackColorType! {
         didSet {
             backImageView.image = UIImage(named: imgBackName)

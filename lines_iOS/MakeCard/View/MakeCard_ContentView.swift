@@ -72,7 +72,7 @@ class MakeCard_ContentView: UIView, UITextViewDelegate {
             label.rightAnchor.constraint(equalTo: txtView.rightAnchor,
                                         constant: -24)
         ])
-        let str = String(format: "%d/%d", text?.count ?? 0, 110)
+        let str = String(format: "%d/%d", text?.count ?? 0, 130)
         label.setTitle(str, font: Fonts.get(size: 16, type: .regular),
                        txtColor: .gray777777)
         self.textCountLabel = label
@@ -97,8 +97,8 @@ class MakeCard_ContentView: UIView, UITextViewDelegate {
         else { return false }
         let changed = currentText.replacingCharacters(in: strRange, with: text)
         
-        guard changed.count < 110 else { return false }
-        let str = String(format: "%d/%d", changed.count , 110)
+        guard changed.count < 130 else { return false }
+        let str = String(format: "%d/%d", changed.count , 130)
         self.textCountLabel.setTitle(str)
         return true
     }

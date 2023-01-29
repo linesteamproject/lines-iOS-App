@@ -142,6 +142,10 @@ class FixCard_DetailViewController: ScrollViewController {
             self?.stickerView.font = font
             ReadTextController.shared.bookCardModel.updateFontType(font)
         }
+        stickerSetView.textAlignmentClosure = { [weak self] type in
+            self?.stickerView.textAlignment = type
+            ReadTextController.shared.bookCardModel.updateTextAlignmentType(type)
+        }
         stickerSetView.colorBtnClosure = { [weak self] type in
             guard let type = type else { return }
             self?.stickerView.color = type

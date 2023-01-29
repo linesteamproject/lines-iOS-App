@@ -18,13 +18,13 @@ class MakeCard_StickerThreeToFourView: MakeCard_StickerView {
         NSLayoutConstraint.activate([
             backImageView.widthAnchor.constraint(equalToConstant: 345 / 4 * 3),
             contentsLabel.topAnchor.constraint(equalTo: backImageView.topAnchor,
-                                       constant: 51),
+                                       constant: 83),
             contentsLabel.leftAnchor.constraint(equalTo: backImageView.leftAnchor,
-                                        constant: 45),
+                                        constant: 60),
             contentsLabel.rightAnchor.constraint(equalTo: backImageView.rightAnchor,
-                                         constant: -45),
+                                         constant: -60),
             contentsLabel.bottomAnchor.constraint(equalTo: backImageView.bottomAnchor,
-                                          constant: -51),
+                                          constant: -94),
         ])
     }
 }

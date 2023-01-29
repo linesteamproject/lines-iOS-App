@@ -17,13 +17,13 @@ class MakeCard_StickerOneToOneView: MakeCard_StickerView {
         NSLayoutConstraint.activate([
             backImageView.widthAnchor.constraint(equalToConstant: 345),
             contentsLabel.topAnchor.constraint(equalTo: backImageView.topAnchor,
-                                       constant: 51),
+                                       constant: 77),
             contentsLabel.leftAnchor.constraint(equalTo: backImageView.leftAnchor,
-                                        constant: 41),
+                                        constant: 70),
             contentsLabel.rightAnchor.constraint(equalTo: backImageView.rightAnchor,
-                                         constant: -41),
+                                         constant: -70),
             contentsLabel.bottomAnchor.constraint(equalTo: backImageView.bottomAnchor,
-                                          constant: -81),
+                                          constant: -88),
         ])
     }
 }

@@ -106,6 +106,7 @@ class MakeCard_CompleteViewController: ScrollViewController {
             ])
             stickerView.bookInfoStr = ReadTextController.shared.bookCardModel.book?.info
             stickerView.font = ReadTextController.shared.bookCardModel.font
+            stickerView.textAlignment = ReadTextController.shared.bookCardModel.textAlignment
             if FirstLaunchChecker.isNotLogin {
                 ReadTextController.shared.sticker = ShareController.shared.makeImage(stickerView)
             } else {
@@ -133,6 +134,7 @@ class MakeCard_CompleteViewController: ScrollViewController {
             ])
             stickerView.bookInfoStr = ReadTextController.shared.bookCardModel.book?.info
             stickerView.font = ReadTextController.shared.bookCardModel.font
+            stickerView.textAlignment = ReadTextController.shared.bookCardModel.textAlignment
             if FirstLaunchChecker.isNotLogin {
                 ReadTextController.shared.sticker = ShareController.shared.makeImage(stickerView)
             } else {

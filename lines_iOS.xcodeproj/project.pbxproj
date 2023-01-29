@@ -75,6 +75,8 @@
 		BA8F8176297D4125007A48A0 /* FixCard_CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F8175297D4125007A48A0 /* FixCard_CompleteViewController.swift */; };
 		BA8F81792984E48B007A48A0 /* RecentRegisterBookListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F81782984E48B007A48A0 /* RecentRegisterBookListModel.swift */; };
 		BA8F817B2984E4B9007A48A0 /* RecentRegisterBookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F817A2984E4B9007A48A0 /* RecentRegisterBookListViewModel.swift */; };
+		BA8F817F298537DE007A48A0 /* MakeCard_StickerContentTextAlignmentSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F817E298537DE007A48A0 /* MakeCard_StickerContentTextAlignmentSetView.swift */; };
+		BA8F818129860A96007A48A0 /* MakeCard_StickerContentTextAlignmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F818029860A96007A48A0 /* MakeCard_StickerContentTextAlignmentButton.swift */; };
 		BA9DA30428C2BE33004CBBFB /* NaverLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */; };
 		BA9DA30628C2C3A6004CBBFB /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */; };
 		BA9DA30928C8B733004CBBFB /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9DA30828C8B733004CBBFB /* UserInfo.swift */; };
@@ -189,6 +191,8 @@
 		BA8F8175297D4125007A48A0 /* FixCard_CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCard_CompleteViewController.swift; sourceTree = "<group>"; };
 		BA8F81782984E48B007A48A0 /* RecentRegisterBookListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRegisterBookListModel.swift; sourceTree = "<group>"; };
 		BA8F817A2984E4B9007A48A0 /* RecentRegisterBookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRegisterBookListViewModel.swift; sourceTree = "<group>"; };
+		BA8F817E298537DE007A48A0 /* MakeCard_StickerContentTextAlignmentSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerContentTextAlignmentSetView.swift; sourceTree = "<group>"; };
+		BA8F818029860A96007A48A0 /* MakeCard_StickerContentTextAlignmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCard_StickerContentTextAlignmentButton.swift; sourceTree = "<group>"; };
 		BA9DA30328C2BE33004CBBFB /* NaverLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginController.swift; sourceTree = "<group>"; };
 		BA9DA30528C2C3A6004CBBFB /* NaverLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
 		BA9DA30828C8B733004CBBFB /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -382,6 +386,8 @@
 				BA6A83E228B1D3440040512E /* MakeCard_StickerThreeToFourView.swift */,
 				BA8F816A297D01BB007A48A0 /* MakeCard_StickerContentFontButton.swift */,
 				BA2C7333297CF7D700AD48B1 /* MakeCard_StickerContentFontSetView.swift */,
+				BA8F818029860A96007A48A0 /* MakeCard_StickerContentTextAlignmentButton.swift */,
+				BA8F817E298537DE007A48A0 /* MakeCard_StickerContentTextAlignmentSetView.swift */,
 				BA6A83DE28B1D3000040512E /* MakeCard_StickerSetView.swift */,
 				BA6A83ED28B50F300040512E /* MakeCard_StickerBackColorSetView.swift */,
 				BA6A83EB28B50F0F0040512E /* MakeCard_StickerBackColorButton.swift */,
@@ -799,6 +805,7 @@
 				BA6A83FB28BB0A410040512E /* MakeCard_BarcodeSearchButton.swift in Sources */,
 				BA6A83F328BAD9B40040512E /* MakeCard_StickerRatioType.swift in Sources */,
 				BA9DA31928CC679D004CBBFB /* MakeCardOnlyTextViewController.swift in Sources */,
+				BA8F818129860A96007A48A0 /* MakeCard_StickerContentTextAlignmentButton.swift in Sources */,
 				BA6A83E728B2039C0040512E /* MakeCard_SelectProportionButtonView.swift in Sources */,
 				BAA07C29289512DC0078EA83 /* RequestInterceptor.swift in Sources */,
 				BAEDCE9528C2B58D00102C47 /* PopUpAlertView.swift in Sources */,
@@ -820,6 +827,7 @@
 				BAE5C9BD2894B08A00659F74 /* ViewController.swift in Sources */,
 				BA8F816D297D349A007A48A0 /* FixCard_DetailViewController.swift in Sources */,
 				BA6A83E528B1D36E0040512E /* MakeCard_StickerView.swift in Sources */,
+				BA8F817F298537DE007A48A0 /* MakeCard_StickerContentTextAlignmentSetView.swift in Sources */,
 				BA8F817B2984E4B9007A48A0 /* RecentRegisterBookListViewModel.swift in Sources */,
 				BAA07C32289528A10078EA83 /* MakeCard_SearchedListView.swift in Sources */,
 				BA9DA30B28C8BC7C004CBBFB /* UserData.swift in Sources */,

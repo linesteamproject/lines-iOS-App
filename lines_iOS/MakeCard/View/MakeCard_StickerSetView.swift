@@ -10,6 +10,7 @@ import UIKit
 class MakeCard_StickerSetView: UIView {
     private weak var nextTopAnchor: NSLayoutYAxisAnchor!
     internal var fontBtnClosure: ((폰트) -> Void)?
+    internal var textAlignmentClosure: ((텍스트정렬) -> Void)?
     internal var colorBtnClosure: ((MakeCard_StickerBackColorType?) -> Void)?
     internal var leftBtnClosure: (() -> Void)?
     internal var rightBtnClosure: (() -> Void)?
@@ -30,7 +31,10 @@ class MakeCard_StickerSetView: UIView {
     internal var selectedFont: 폰트! {
         didSet { fontSetView.selectedFont = selectedFont }
     }
-    
+    private weak var textAlignmentView: MakeCard_StickerContentTextAlignmentSetView!
+    internal var selectedTextAlginment: 텍스트정렬 = .중앙 {
+        didSet { textAlignmentView.selectedTextAlginment = selectedTextAlginment}
+    }
     private weak var colorSetView: MakeCard_StickerBackColorSetView!
     internal var selectedColor: MakeCard_StickerBackColorType! {
         didSet { colorSetView.selectedColor = selectedColor }
@@ -43,6 +47,8 @@ class MakeCard_StickerSetView: UIView {
         setButtons()
         setLine(topConst: 12)
         setFontsButton()
+        setLine(topConst: 18)
+        setTextAlignmentView()
         setLine(topConst: 18)
         setColorsButton()
     }
@@ -141,6 +147,25 @@ class MakeCard_StickerSetView: UIView {
         self.nextTopAnchor = fontSetView.bottomAnchor
     }
     
+    private func setTextAlignmentView() {
+        let taView = MakeCard_StickerContentTextAlignmentSetView()
+        self.addSubviews(taView)
+        NSLayoutConstraint.activate([
+            taView.topAnchor.constraint(equalTo: nextTopAnchor,
+                                              constant: 18),
+            taView.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                              constant: 20),
+            taView.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                               constant: -20),
+            taView.heightAnchor.constraint(equalToConstant: 75),
+        ])
+        taView.textAlignmentClosure = { [weak self] type in
+            self?.textAlignmentClosure?(type)
+        }
+        self.textAlignmentView = taView
+        self.nextTopAnchor = textAlignmentView.bottomAnchor
+        
+    }
     private func setColorsButton() {
         let colorSetView = MakeCard_StickerBackColorSetView()
         self.addSubviews(colorSetView)

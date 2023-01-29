@@ -73,6 +73,7 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         guard let recentRegisterBookListViewModel = recentRegisterBookListViewModel
         else { return }
         
+        isFirstLoad = true
         self.searchedListView.list.append(contentsOf: recentRegisterBookListViewModel.getBookInfoDatas())
     }
     
@@ -142,8 +143,9 @@ class MakeCard_SearchBookViewController: ScrollViewController {
         }
         
         searchedTypeView.searchClosure = { [weak self] in
-            guard let str = ReadTextController.shared.searchModel.searchStr
-            else { return }
+            guard let str = ReadTextController.shared.searchModel.searchStr,
+                  !str.isEmpty
+            else { self?.setLoadData(); return }
             
             ReadTextController.shared.searchModel.page = 1
             ReadTextController.shared.isEnded = false

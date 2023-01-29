@@ -134,13 +134,13 @@ struct BookCardModel {
             self.content = str
             return
         }
-        guard str.count > 110 else {
+        guard str.count > 130 else {
             self.content = str
             return
         }
         
         let startIndex = str.index(str.startIndex, offsetBy: 0) // 사용자지정 시작인덱스
-        let endIndex = str.index(str.startIndex, offsetBy: 110) // 사용자지정 끝인덱스
+        let endIndex = str.index(str.startIndex, offsetBy: 130) // 사용자지정 끝인덱스
         let slicedStr = str[startIndex ..< endIndex]
         self.content = String(slicedStr)
     }
@@ -152,6 +152,9 @@ struct BookCardModel {
     }
     mutating func updateFontType(_ font: 폰트) {
         self.font = font
+    }
+    mutating func updateTextAlignmentType(_ txtAlign: 텍스트정렬) {
+        self.textAlignment = txtAlign
     }
 }
 
@@ -222,4 +225,34 @@ enum 텍스트정렬: String, CaseIterable {
     case 왼쪽 = "TextAlignmentLeft"
     case 중앙 = "TextAlignmentCenter"
     case 오른쪽 = "TextAlignmentRight"
+    var inactiveImgName: String {
+        switch self {
+        case .왼쪽:
+            return "카드_텍스트정렬_왼쪽_비활성화"
+        case .중앙:
+            return "카드_텍스트정렬_중앙_비활성화"
+        case .오른쪽:
+            return "카드_텍스트정렬_오른쪽_비활성화"
+        }
+    }
+    var activeImgName: String {
+        switch self {
+        case .왼쪽:
+            return "카드_텍스트정렬_왼쪽_활성화"
+        case .중앙:
+            return "카드_텍스트정렬_중앙_활성화"
+        case .오른쪽:
+            return "카드_텍스트정렬_오른쪽_활성화"
+        }
+    }
+    var textAlign: NSTextAlignment {
+        switch self {
+        case .왼쪽:
+            return .left
+        case .중앙:
+            return .center
+        case .오른쪽:
+            return .right
+        }
+    }
 }

@@ -34,7 +34,7 @@ class MainCard_ContentNoticeView: UIView {
             label.heightAnchor.constraint(lessThanOrEqualToConstant: 42),
         ])
         label.numberOfLines = 0
-        let str = "문장 최대 110자까지 인식 및 저장이 가능(그 이상 넘어가는 문장은 자동 제거)"
+        let str = "문장 최대 130자까지 인식 및 저장이 가능(그 이상 넘어가는 문장은 자동 제거)"
         label.setTitle(str,
                        font: Fonts.get(size: 12, type: .bold),
                        txtColor: .white)
