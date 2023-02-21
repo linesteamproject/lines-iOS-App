@@ -14,10 +14,10 @@ class MakeCard_StickerContentTextAlignmentButton: UIButton {
     }
     private func updateUI() {
         if isSelected {
-            self.setBackgroundImage(UIImage(named: type.inactiveImgName),
+            self.setBackgroundImage(UIImage(named: type.activeImgName),
                                     for: .normal)
         } else {
-            self.setBackgroundImage(UIImage(named: type.activeImgName),
+            self.setBackgroundImage(UIImage(named: type.inactiveImgName),
                                     for: .normal)
         }
     }

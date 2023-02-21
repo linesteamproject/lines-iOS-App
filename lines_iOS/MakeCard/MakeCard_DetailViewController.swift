@@ -91,7 +91,7 @@ class MakeCard_DetailViewController: ScrollViewController {
                                                 constant: 15),
                 stickerView.centerXAnchor.constraint(equalTo: stickerBackView.centerXAnchor),
                 stickerView.widthAnchor.constraint(equalToConstant: 345),
-                stickerView.heightAnchor.constraint(equalToConstant: 345),
+                stickerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 345),
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
@@ -107,8 +107,8 @@ class MakeCard_DetailViewController: ScrollViewController {
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
                                                 constant: 15),
                 stickerView.centerXAnchor.constraint(equalTo: stickerBackView.centerXAnchor),
-                stickerView.widthAnchor.constraint(equalToConstant: 345 / 4 * 3),
-                stickerView.heightAnchor.constraint(equalToConstant: 345),
+                stickerView.widthAnchor.constraint(equalToConstant: 345),
+                stickerView.heightAnchor.constraint(equalToConstant: 345*4/3),
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])

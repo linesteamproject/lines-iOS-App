@@ -11,7 +11,7 @@ class MakeCard_StickerView: UIView {
     internal weak var backImageView: UIImageView!
     internal weak var contentsLabel: UILabel!
     internal weak var bookInfoLabel: UILabel!
-    
+    internal var bookInfoBottomConstant: CGFloat = 0
     internal var imgBackName: String = ""
     internal var bookInfoStr: String? {
         didSet { bookInfoLabel.setTitle(bookInfoStr) }
@@ -21,7 +21,7 @@ class MakeCard_StickerView: UIView {
                                                     lineSpaceVal: 3,
                                                     font: font.val,
                                                     color: .black,
-                                                    textAlignment: .center) }
+                                                    textAlignment: textAlignment.textAlign) }
     }
     internal var textAlignment: 텍스트정렬 = .중앙 {
         didSet {
@@ -71,9 +71,10 @@ class MakeCard_StickerView: UIView {
         back.addSubviews(bookInfo)
         NSLayoutConstraint.activate([
             bookInfo.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            bookInfo.widthAnchor.constraint(equalToConstant: 110),
+            bookInfo.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/375*110),
             bookInfo.heightAnchor.constraint(greaterThanOrEqualToConstant: 13),
-            bookInfo.bottomAnchor.constraint(equalTo: back.bottomAnchor, constant: -54.31),
+            bookInfo.bottomAnchor.constraint(equalTo: back.bottomAnchor,
+                                             constant: bookInfoBottomConstant),
         ])
         bookInfo.setTitle(font: Fonts.getNanum(size: 11),
                           txtColor: .gray222222)

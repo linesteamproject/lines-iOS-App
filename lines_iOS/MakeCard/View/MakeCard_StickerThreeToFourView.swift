@@ -13,10 +13,13 @@ class MakeCard_StickerThreeToFourView: MakeCard_StickerView {
         get { return "Three2Four" + self.color.name }
         set { }
     }
-    
+    override var bookInfoBottomConstant: CGFloat {
+        get { return -66.06 }
+        set { }
+    }
     override func setConstraints() {
         NSLayoutConstraint.activate([
-            backImageView.widthAnchor.constraint(equalToConstant: 345 / 4 * 3),
+            backImageView.widthAnchor.constraint(equalToConstant: 345),
             contentsLabel.topAnchor.constraint(equalTo: backImageView.topAnchor,
                                        constant: 83),
             contentsLabel.leftAnchor.constraint(equalTo: backImageView.leftAnchor,

@@ -268,9 +268,9 @@ class MakeCard_SearchBookViewController: ScrollViewController {
 
 extension MakeCard_SearchBookViewController: ButtonDelegate {
     func touched(_ obj: Any?) {
-        if let obj = obj as? BookDocu {
-            ReadTextController.shared.bookCardModel.book?.setTitle(obj.bookName)
-            ReadTextController.shared.bookCardModel.book?.setName(obj.authorsStr)
+        if let obj = obj as? BookInfo {
+            ReadTextController.shared.bookCardModel.book?.setTitle(obj.title)
+            ReadTextController.shared.bookCardModel.book?.setName(obj.name)
             ReadTextController.shared.bookCardModel.book?.setIsbn(obj.isbn)
 
             bottomView.isRightActive = true

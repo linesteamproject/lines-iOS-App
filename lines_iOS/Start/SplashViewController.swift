@@ -14,6 +14,17 @@ class SplashViewController: ViewController {
         setUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let startVc = StartViewController()
+        startVc.modalPresentationStyle = .fullScreen
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75,
+                                      execute: { [weak self] in
+            self?.present(startVc, animated: false)
+        })
+    }
+    
     private func setUI() {
         let imgView = UIImageView()
         self.view.addSubviews(imgView)
@@ -26,12 +37,5 @@ class SplashViewController: ViewController {
         let randomVal = Int(Date().timeIntervalSince1970) % 4 + 1
         let imgName = String(format: "Splash%d", randomVal)
         imgView.image = UIImage(named: imgName)
-        
-        let startVc = StartViewController()
-        startVc.modalPresentationStyle = .fullScreen
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75,
-                                      execute: { [weak self] in
-            self?.present(startVc, animated: false)
-        })
     }
 }

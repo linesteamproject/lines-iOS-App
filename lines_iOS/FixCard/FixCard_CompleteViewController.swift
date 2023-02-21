@@ -50,7 +50,7 @@ class FixCard_CompleteViewController: ScrollViewController {
             back.topAnchor.constraint(equalTo: nextTopAnchor, constant: 30),
             back.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             back.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            back.heightAnchor.constraint(equalToConstant: 375)
+            back.heightAnchor.constraint(greaterThanOrEqualToConstant: 375)
         ])
         back.backgroundColor = Colors.black.value
         self.stickerBackView = back
@@ -96,8 +96,8 @@ class FixCard_CompleteViewController: ScrollViewController {
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
                                                  constant: 15),
                 stickerView.centerXAnchor.constraint(equalTo: stickerBackView.centerXAnchor),
-                stickerView.widthAnchor.constraint(equalToConstant: 345 / 4 * 3),
-                stickerView.heightAnchor.constraint(equalToConstant: 345),
+                stickerView.widthAnchor.constraint(equalToConstant: 345),
+                stickerView.heightAnchor.constraint(equalToConstant: 345*4/3),
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                     constant: -15)
             ])

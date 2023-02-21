@@ -12,7 +12,10 @@ class MakeCard_StickerOneToOneView: MakeCard_StickerView {
         get { return "One2One" + self.color.name }
         set { }
     }
-    
+    override var bookInfoBottomConstant: CGFloat {
+        get { return -54.31 }
+        set { }
+    }
     override func setConstraints() {
         NSLayoutConstraint.activate([
             backImageView.widthAnchor.constraint(equalToConstant: 345),
