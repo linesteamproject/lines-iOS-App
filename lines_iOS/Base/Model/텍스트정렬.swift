@@ -5,7 +5,7 @@
 //  Created by mun on 2023/02/21.
 //
 
-import Foundation
+import UIKit
 
 enum 텍스트정렬: String, CaseIterable {
     case 왼쪽 = "TextAlignmentLeft"

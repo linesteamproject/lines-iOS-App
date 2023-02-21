@@ -18,7 +18,8 @@ class MakeCard_StickerOneToOneView: MakeCard_StickerView {
     }
     override func setConstraints() {
         NSLayoutConstraint.activate([
-            backImageView.widthAnchor.constraint(equalToConstant: 345),
+            backImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-30),
+            backImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-30),
             contentsLabel.topAnchor.constraint(equalTo: backImageView.topAnchor,
                                        constant: 77),
             contentsLabel.leftAnchor.constraint(equalTo: backImageView.leftAnchor,

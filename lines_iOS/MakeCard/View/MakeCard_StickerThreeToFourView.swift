@@ -19,7 +19,8 @@ class MakeCard_StickerThreeToFourView: MakeCard_StickerView {
     }
     override func setConstraints() {
         NSLayoutConstraint.activate([
-            backImageView.widthAnchor.constraint(equalToConstant: 345),
+            backImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-30),
+            backImageView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width-30)*4/3),
             contentsLabel.topAnchor.constraint(equalTo: backImageView.topAnchor,
                                        constant: 83),
             contentsLabel.leftAnchor.constraint(equalTo: backImageView.leftAnchor,

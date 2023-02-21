@@ -98,7 +98,7 @@ class CameraViewController: ViewController {
         
         var text = "기록할 문장만 오려주세요 ✂️\n\n"
         text += "기록할 문장만 남도록 사진 외곽을 드래그해 편집해주세요.\n"
-        text += "한번에 평균 1~4줄(최대 110자)의 문장을 기록할 수 있으며,\n"
+        text += "한번에 평균 1~4줄(최대 130자)의 문장을 기록할 수 있으며,\n"
         text += "그 이상 넘어가는 글자는 잘리게 됩니다."
         
         DispatchQueue.main.async {
@@ -131,10 +131,10 @@ class CameraViewController: ViewController {
         TextRecognizeController.doStartToOCR(image,
                                              ocrDone: {
             if let readText = $0 {
-                if readText.count > 110 {
+                if readText.count > 130 {
                     var str = ""
                     for (idx, c) in readText.enumerated() {
-                        guard idx < 110 else { break }
+                        guard idx < 130 else { break }
                         str += String(c)
                     }
                     ReadTextController.shared.bookCardModel.updateContent(str)

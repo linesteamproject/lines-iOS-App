@@ -5,7 +5,7 @@
 //  Created by mun on 2023/02/21.
 //
 
-import Foundation
+import UIKit
 
 enum 폰트: String, CaseIterable {
     case 나눔명조 = "NanumMyeongjo"

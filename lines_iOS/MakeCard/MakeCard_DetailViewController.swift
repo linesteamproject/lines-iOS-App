@@ -60,14 +60,16 @@ class MakeCard_DetailViewController: ScrollViewController {
     }
     
     private func setStickerBackView() {
+        //MARK: Back. height가 계속 바뀔 것.
         let back = UIView()
         self.contentView.addSubviews(back)
         NSLayoutConstraint.activate([
             back.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             back.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
             back.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
-            back.heightAnchor.constraint(equalToConstant: 375)
+            back.heightAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width*4/3)
         ])
+        
         back.backgroundColor = Colors.gray222222.value
         self.stickerBackView = back
     }
@@ -75,6 +77,7 @@ class MakeCard_DetailViewController: ScrollViewController {
     private func setStickerView(_ type: MakeCard_StickerRatioType) {
         self.stickerView?.removeFromSuperview()
         
+        let widthConstant = UIScreen.main.bounds.width-30
         switch type {
         case .one2one:
             setOne2One()
@@ -82,16 +85,18 @@ class MakeCard_DetailViewController: ScrollViewController {
             setThree2Four()
         }
         ReadTextController.shared.bookCardModel.updateSizeType(type)
-        
+
         func setOne2One() {
             let stickerView = MakeCard_StickerOneToOneView(ReadTextController.shared.bookCardModel.content)
             self.stickerBackView.addSubviews(stickerView)
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
                                                 constant: 15),
-                stickerView.centerXAnchor.constraint(equalTo: stickerBackView.centerXAnchor),
-                stickerView.widthAnchor.constraint(equalToConstant: 345),
-                stickerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 345),
+                stickerView.leftAnchor.constraint(equalTo: stickerBackView.leftAnchor,
+                                                 constant: 15),
+                stickerView.rightAnchor.constraint(equalTo: stickerBackView.rightAnchor,
+                                                   constant: -15),
+                stickerView.heightAnchor.constraint(equalToConstant: widthConstant),
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])
@@ -106,9 +111,11 @@ class MakeCard_DetailViewController: ScrollViewController {
             NSLayoutConstraint.activate([
                 stickerView.topAnchor.constraint(equalTo: stickerBackView.topAnchor,
                                                 constant: 15),
-                stickerView.centerXAnchor.constraint(equalTo: stickerBackView.centerXAnchor),
-                stickerView.widthAnchor.constraint(equalToConstant: 345),
-                stickerView.heightAnchor.constraint(equalToConstant: 345*4/3),
+                stickerView.leftAnchor.constraint(equalTo: stickerBackView.leftAnchor,
+                                                 constant: 15),
+                stickerView.rightAnchor.constraint(equalTo: stickerBackView.rightAnchor,
+                                                   constant: -15),
+                stickerView.heightAnchor.constraint(equalToConstant: widthConstant*4/3),
                 stickerView.bottomAnchor.constraint(equalTo: stickerBackView.bottomAnchor,
                                                    constant: -15)
             ])

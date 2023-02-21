@@ -28,10 +28,16 @@ class MakeCard_StickerContentFontButton: UIButton {
         if isSelected {
             self.layer.borderWidth = 2
             self.layer.borderColor = Colors.white.value.cgColor
+            self.setTitle("글",
+                          font: self.font.val,
+                          txtColor: .white)
             self.titleLabel?.textColor = Colors.white.value.withAlphaComponent(1.0)
         } else {
             self.layer.borderWidth = 1
             self.layer.borderColor = Colors.white.value.withAlphaComponent(0.5).cgColor
+            self.setTitle("글",
+                          font: self.font.val,
+                          txtColor: .white)
             self.titleLabel?.textColor = Colors.white.value.withAlphaComponent(0.5)
         }
     }

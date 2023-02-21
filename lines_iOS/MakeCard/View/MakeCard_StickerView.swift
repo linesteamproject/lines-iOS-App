@@ -60,7 +60,6 @@ class MakeCard_StickerView: UIView {
         self.addSubviews(back)
         NSLayoutConstraint.activate([
             back.topAnchor.constraint(equalTo: self.topAnchor),
-            back.heightAnchor.constraint(equalToConstant: 345),
             back.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             back.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
