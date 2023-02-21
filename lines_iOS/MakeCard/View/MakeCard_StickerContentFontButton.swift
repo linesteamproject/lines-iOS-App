@@ -14,10 +14,6 @@ class MakeCard_StickerContentFontButton: UIButton {
     private func setUI() {
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = true
-        self.setTitle("글",
-                      font: self.font.val,
-                      txtColor: .white,
-                      backColor: .clear)
     }
     
     override var isSelected: Bool {
@@ -28,17 +24,16 @@ class MakeCard_StickerContentFontButton: UIButton {
         if isSelected {
             self.layer.borderWidth = 2
             self.layer.borderColor = Colors.white.value.cgColor
-            self.setTitle("글",
-                          font: self.font.val,
-                          txtColor: .white)
-            self.titleLabel?.textColor = Colors.white.value.withAlphaComponent(1.0)
+            self.setTitleColor(Colors.white.value.withAlphaComponent(1.0),
+                               for: .normal)
         } else {
             self.layer.borderWidth = 1
             self.layer.borderColor = Colors.white.value.withAlphaComponent(0.5).cgColor
             self.setTitle("글",
                           font: self.font.val,
                           txtColor: .white)
-            self.titleLabel?.textColor = Colors.white.value.withAlphaComponent(0.5)
+            self.setTitleColor(Colors.white.value.withAlphaComponent(0.5),
+                               for: .normal)
         }
     }
 }
