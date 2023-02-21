@@ -118,6 +118,12 @@
 		BA8F829129A48AE3007A48A0 /* ResponsableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F822229A48AE3007A48A0 /* ResponsableResult.swift */; };
 		BA8F829229A48AE3007A48A0 /* NaverLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F822329A48AE3007A48A0 /* NaverLoginStatus.swift */; };
 		BA8F829329A48AE3007A48A0 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F822429A48AE3007A48A0 /* EventMonitor.swift */; };
+		BA8F829529A48D4D007A48A0 /* ReadTextStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F829429A48D4D007A48A0 /* ReadTextStep.swift */; };
+		BA8F829729A48D5D007A48A0 /* BookCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F829629A48D5D007A48A0 /* BookCardModel.swift */; };
+		BA8F829929A48D6D007A48A0 /* BookSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F829829A48D6D007A48A0 /* BookSearchModel.swift */; };
+		BA8F829B29A48D7B007A48A0 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F829A29A48D7B007A48A0 /* BookModel.swift */; };
+		BA8F829D29A48D8C007A48A0 /* 폰트.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F829C29A48D8C007A48A0 /* 폰트.swift */; };
+		BA8F829F29A48D9B007A48A0 /* 텍스트정렬.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F829E29A48D9B007A48A0 /* 텍스트정렬.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -235,6 +241,12 @@
 		BA8F822229A48AE3007A48A0 /* ResponsableResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponsableResult.swift; sourceTree = "<group>"; };
 		BA8F822329A48AE3007A48A0 /* NaverLoginStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaverLoginStatus.swift; sourceTree = "<group>"; };
 		BA8F822429A48AE3007A48A0 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		BA8F829429A48D4D007A48A0 /* ReadTextStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTextStep.swift; sourceTree = "<group>"; };
+		BA8F829629A48D5D007A48A0 /* BookCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCardModel.swift; sourceTree = "<group>"; };
+		BA8F829829A48D6D007A48A0 /* BookSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchModel.swift; sourceTree = "<group>"; };
+		BA8F829A29A48D7B007A48A0 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		BA8F829C29A48D8C007A48A0 /* 폰트.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "폰트.swift"; sourceTree = "<group>"; };
+		BA8F829E29A48D9B007A48A0 /* 텍스트정렬.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "텍스트정렬.swift"; sourceTree = "<group>"; };
 		BAE5C9B52894B08A00659F74 /* lines_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lines_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEDCE9128C2B26900102C47 /* lines_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lines_iOS.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -283,12 +295,12 @@
 		BA8F81A229A48AE3007A48A0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BA8F81A829A48AE3007A48A0 /* Model */,
+				BA8F81AA29A48AE3007A48A0 /* View */,
 				BA8F81A329A48AE3007A48A0 /* ViewModel */,
 				BA8F81A529A48AE3007A48A0 /* MainViewController.swift */,
 				BA8F81A629A48AE3007A48A0 /* Main_CardDetailViewController.swift */,
 				BA8F81A729A48AE3007A48A0 /* Main_PopUpAlertViewController.swift */,
-				BA8F81A829A48AE3007A48A0 /* Model */,
-				BA8F81AA29A48AE3007A48A0 /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -401,8 +413,9 @@
 		BA8F81DB29A48AE3007A48A0 /* Read */ = {
 			isa = PBXGroup;
 			children = (
-				BA8F81DC29A48AE3007A48A0 /* CameraViewController.swift */,
+				BA8F82A029A48ED5007A48A0 /* Model */,
 				BA8F81DD29A48AE3007A48A0 /* Controller */,
+				BA8F81DC29A48AE3007A48A0 /* CameraViewController.swift */,
 				BA8F81E029A48AE3007A48A0 /* ExternUIImagePickerController.swift */,
 			);
 			path = Read;
@@ -459,11 +472,11 @@
 		BA8F81F529A48AE3007A48A0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				BA8F81FA29A48AE3007A48A0 /* Model */,
+				BA8F81FD29A48AE3007A48A0 /* View */,
 				BA8F81F629A48AE3007A48A0 /* ViewController.swift */,
 				BA8F81F729A48AE3007A48A0 /* ScrollViewController.swift */,
 				BA8F81F829A48AE3007A48A0 /* LaunchScreen.storyboard */,
-				BA8F81FA29A48AE3007A48A0 /* Model */,
-				BA8F81FD29A48AE3007A48A0 /* View */,
 				BA8F820529A48AE3007A48A0 /* AppDelegate.swift */,
 				BA8F820629A48AE3007A48A0 /* Realm */,
 			);
@@ -473,6 +486,11 @@
 		BA8F81FA29A48AE3007A48A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BA8F829629A48D5D007A48A0 /* BookCardModel.swift */,
+				BA8F829829A48D6D007A48A0 /* BookSearchModel.swift */,
+				BA8F829A29A48D7B007A48A0 /* BookModel.swift */,
+				BA8F829C29A48D8C007A48A0 /* 폰트.swift */,
+				BA8F829E29A48D9B007A48A0 /* 텍스트정렬.swift */,
 				BA8F81FB29A48AE3007A48A0 /* UserInfo.swift */,
 				BA8F81FC29A48AE3007A48A0 /* UserData.swift */,
 			);
@@ -522,10 +540,10 @@
 		BA8F820D29A48AE3007A48A0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				BA8F820E29A48AE3007A48A0 /* UserAgreementWebViewController.swift */,
-				BA8F820F29A48AE3007A48A0 /* Controller */,
 				BA8F821229A48AE3007A48A0 /* Model */,
 				BA8F821429A48AE3007A48A0 /* View */,
+				BA8F820F29A48AE3007A48A0 /* Controller */,
+				BA8F820E29A48AE3007A48A0 /* UserAgreementWebViewController.swift */,
 				BA8F821929A48AE3007A48A0 /* LoginViewController.swift */,
 				BA8F821A29A48AE3007A48A0 /* UserAgreementViewController.swift */,
 			);
@@ -579,6 +597,14 @@
 				BA8F822129A48AE3007A48A0 /* SearchBookStatus.swift */,
 				BA8F822229A48AE3007A48A0 /* ResponsableResult.swift */,
 				BA8F822329A48AE3007A48A0 /* NaverLoginStatus.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BA8F82A029A48ED5007A48A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BA8F829429A48D4D007A48A0 /* ReadTextStep.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -788,6 +814,7 @@
 				BA8F829129A48AE3007A48A0 /* ResponsableResult.swift in Sources */,
 				BA8F822529A48AE3007A48A0 /* Extensions+Func.swift in Sources */,
 				BA8F826D29A48AE3007A48A0 /* Colors.swift in Sources */,
+				BA8F829D29A48D8C007A48A0 /* 폰트.swift in Sources */,
 				BA8F824629A48AE3007A48A0 /* MakeCard_SearchedTypeView.swift in Sources */,
 				BA8F827229A48AE3007A48A0 /* ScrollViewController.swift in Sources */,
 				BA8F828F29A48AE3007A48A0 /* ResponsableStatus.swift in Sources */,
@@ -801,6 +828,8 @@
 				BA8F828729A48AE3007A48A0 /* LoginButton.swift in Sources */,
 				BA8F824029A48AE3007A48A0 /* MakeCard_StickerRatioType.swift in Sources */,
 				BA8F824129A48AE3007A48A0 /* MakeCard_ShareButtonsType.swift in Sources */,
+				BA8F829729A48D5D007A48A0 /* BookCardModel.swift in Sources */,
+				BA8F829929A48D6D007A48A0 /* BookSearchModel.swift in Sources */,
 				BA8F824829A48AE3007A48A0 /* MarkCard_BottomView.swift in Sources */,
 				BA8F827529A48AE3007A48A0 /* UserData.swift in Sources */,
 				BA8F827029A48AE3007A48A0 /* PopUpViewController.swift in Sources */,
@@ -818,6 +847,7 @@
 				BA8F827929A48AE3007A48A0 /* PopUpAlertView.swift in Sources */,
 				BA8F825529A48AE3007A48A0 /* MakeCard_StickerThreeToFourView.swift in Sources */,
 				BA8F823029A48AE3007A48A0 /* RecentRegisterBookListModel.swift in Sources */,
+				BA8F829F29A48D9B007A48A0 /* 텍스트정렬.swift in Sources */,
 				BA8F825E29A48AE3007A48A0 /* ReadTextController.swift in Sources */,
 				BA8F822E29A48AE3007A48A0 /* Main_CardDetailViewController.swift in Sources */,
 				BA8F823D29A48AE3007A48A0 /* ShareController.swift in Sources */,
@@ -830,6 +860,7 @@
 				BA8F828429A48AE3007A48A0 /* NaverLoginController.swift in Sources */,
 				BA8F827C29A48AE3007A48A0 /* Toast.swift in Sources */,
 				BA8F828D29A48AE3007A48A0 /* AFHandler.swift in Sources */,
+				BA8F829529A48D4D007A48A0 /* ReadTextStep.swift in Sources */,
 				BA8F829329A48AE3007A48A0 /* EventMonitor.swift in Sources */,
 				BA8F825A29A48AE3007A48A0 /* MakeCard_DetailViewController.swift in Sources */,
 				BA8F823129A48AE3007A48A0 /* Main_HeaderView.swift in Sources */,
@@ -855,6 +886,7 @@
 				BA8F823229A48AE3007A48A0 /* Main_MenuView.swift in Sources */,
 				BA8F825129A48AE3007A48A0 /* MakeCard_ShareButtonsView.swift in Sources */,
 				BA8F825429A48AE3007A48A0 /* MakeCard_TopView.swift in Sources */,
+				BA8F829B29A48D7B007A48A0 /* BookModel.swift in Sources */,
 				BA8F829229A48AE3007A48A0 /* NaverLoginStatus.swift in Sources */,
 				BA8F825829A48AE3007A48A0 /* MainCard_ContentNoticeView.swift in Sources */,
 				BA8F824A29A48AE3007A48A0 /* MakeCard_KakaoBookSearcher.swift in Sources */,

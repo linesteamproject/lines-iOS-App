@@ -6,6 +6,7 @@
 //
 
 import RealmSwift
+
 struct CardModel {
     let id: String?
     let bookName: String?
@@ -38,8 +39,8 @@ struct CardModel {
                 "name": self.authorName,
                 "isbn": self.bookIsbn
             ],
-            "font": "string",
-            "textAlignment": "string"
+            "font": self.font,
+            "textAlignment": self.textAlignment
         ]
     }
 }
