@@ -51,7 +51,6 @@ class ViewController: UIViewController {
         self.indicator.stopAnimating()
     }
     
-    
     internal func showOneButtonAlertView(title: String,
                                 subTitle: String = "",
                                 height: CGFloat,
@@ -94,3 +93,15 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController {
+    internal func goToVC(vc: UIViewController) {
+        vc.modalPresentationStyle = .fullScreen
+        if Thread.isMainThread {
+            self.present(vc, animated: true)
+        } else {
+            DispatchQueue.main.async {
+                self.present(vc, animated: true)
+            }
+        }
+    }
+}

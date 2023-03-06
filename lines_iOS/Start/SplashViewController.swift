@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SplashViewController: ViewController {
     override func viewDidLoad() {
@@ -27,13 +28,11 @@ class SplashViewController: ViewController {
     
     private func setUI() {
         let imgView = UIImageView()
-        self.view.addSubviews(imgView)
-        NSLayoutConstraint.activate([
-            imgView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            imgView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            imgView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            imgView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-        ])
+        self.view.addSubview(imgView)
+        imgView.snp.makeConstraints({ make in
+            make.edges.equalToSuperview()
+        })
+        
         let randomVal = Int(Date().timeIntervalSince1970) % 4 + 1
         let imgName = String(format: "Splash%d", randomVal)
         imgView.image = UIImage(named: imgName)

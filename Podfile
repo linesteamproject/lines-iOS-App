@@ -6,8 +6,9 @@ target 'lines_iOS' do
   use_frameworks!
 
   # Pods for lines_iOS
-	pod 'GoogleMLKit/TextRecognitionKorean'
-	pod 'Alamofire', '~> 5.1'
+  pod 'SnapKit'
+  pod 'GoogleMLKit/TextRecognitionKorean'
+  pod 'Alamofire'
 	pod 'Mantis'
 	pod 'SwiftyBeaver'
 	pod 'RealmSwift'
@@ -16,4 +17,6 @@ target 'lines_iOS' do
 	pod 'KakaoSDKUser'
 	pod 'naveridlogin-sdk-ios'
 	pod 'lottie-ios', '~> 3.4.3'
+  pod 'RxSwift', '~> 4.0'
+  pod 'RxCocoa', '~> 4.0'
 end

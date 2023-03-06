@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+
 class AFHandler {
     static var defaultSession: Session {
         let interceptor = RequestInterceptor()

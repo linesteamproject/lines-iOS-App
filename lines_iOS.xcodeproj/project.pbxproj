@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		40F5BA46BDC623769AD32EC9 /* Pods_lines_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1553B13AD637E8346E0EA5 /* Pods_lines_iOS.framework */; };
+		BA1EE1B929B5B85800895037 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1EE1B829B5B85800895037 /* NetworkService.swift */; };
+		BA7AF72129B5DA2D006A817B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7AF72029B5DA2D006A817B /* LoginModel.swift */; };
+		BA7AF72329B5DBB6006A817B /* OnBoardingImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7AF72229B5DBB6006A817B /* OnBoardingImageType.swift */; };
 		BA8F822529A48AE3007A48A0 /* Extensions+Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F819929A48AE2007A48A0 /* Extensions+Func.swift */; };
 		BA8F822629A48AE3007A48A0 /* Extensions+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F819A29A48AE2007A48A0 /* Extensions+Value.swift */; };
 		BA8F822729A48AE3007A48A0 /* Extensions+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F819B29A48AE2007A48A0 /* Extensions+UI.swift */; };
@@ -130,6 +133,9 @@
 		6C1553B13AD637E8346E0EA5 /* Pods_lines_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lines_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EBF471927421B13CAF5923 /* Pods-lines_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lines_iOS.debug.xcconfig"; path = "Target Support Files/Pods-lines_iOS/Pods-lines_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		95F41FDAA66CDF70A7DB6CE3 /* Pods-lines_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lines_iOS.release.xcconfig"; path = "Target Support Files/Pods-lines_iOS/Pods-lines_iOS.release.xcconfig"; sourceTree = "<group>"; };
+		BA1EE1B829B5B85800895037 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		BA7AF72029B5DA2D006A817B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		BA7AF72229B5DBB6006A817B /* OnBoardingImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingImageType.swift; sourceTree = "<group>"; };
 		BA8F819929A48AE2007A48A0 /* Extensions+Func.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Func.swift"; sourceTree = "<group>"; };
 		BA8F819A29A48AE2007A48A0 /* Extensions+Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Value.swift"; sourceTree = "<group>"; };
 		BA8F819B29A48AE2007A48A0 /* Extensions+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UI.swift"; sourceTree = "<group>"; };
@@ -263,6 +269,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA7AF71B29B5D9C3006A817B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA7AF72029B5DA2D006A817B /* LoginModel.swift */,
+				BA7AF72229B5DBB6006A817B /* OnBoardingImageType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		BA8F819829A48AE2007A48A0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +598,7 @@
 			children = (
 				BA8F821C29A48AE3007A48A0 /* NWMonitor.swift */,
 				BA8F821D29A48AE3007A48A0 /* AFHandler.swift */,
+				BA1EE1B829B5B85800895037 /* NetworkService.swift */,
 				BA8F821E29A48AE3007A48A0 /* Model */,
 				BA8F822429A48AE3007A48A0 /* EventMonitor.swift */,
 			);
@@ -631,6 +647,8 @@
 			isa = PBXGroup;
 			children = (
 				BAEDCE9128C2B26900102C47 /* lines_iOS.entitlements */,
+				BA7AF71B29B5D9C3006A817B /* Models */,
+				BA8F820A29A48AE3007A48A0 /* Start */,
 				BA8F81F329A48AE3007A48A0 /* Universial */,
 				BA8F81F529A48AE3007A48A0 /* Base */,
 				BA8F820D29A48AE3007A48A0 /* Login */,
@@ -641,7 +659,6 @@
 				BA8F819C29A48AE3007A48A0 /* FixCard */,
 				BA8F821B29A48AE3007A48A0 /* Network */,
 				BA8F81E129A48AE3007A48A0 /* Resources */,
-				BA8F820A29A48AE3007A48A0 /* Start */,
 			);
 			path = lines_iOS;
 			sourceTree = "<group>";
@@ -851,11 +868,13 @@
 				BA8F825E29A48AE3007A48A0 /* ReadTextController.swift in Sources */,
 				BA8F822E29A48AE3007A48A0 /* Main_CardDetailViewController.swift in Sources */,
 				BA8F823D29A48AE3007A48A0 /* ShareController.swift in Sources */,
+				BA7AF72329B5DBB6006A817B /* OnBoardingImageType.swift in Sources */,
 				BA8F823A29A48AE3007A48A0 /* MakeCard_CompleteViewController.swift in Sources */,
 				BA8F823529A48AE3007A48A0 /* Main_CardDetailTopView.swift in Sources */,
 				BA8F822F29A48AE3007A48A0 /* Main_PopUpAlertViewController.swift in Sources */,
 				BA8F827A29A48AE3007A48A0 /* TwoButtonAlertView.swift in Sources */,
 				BA8F828529A48AE3007A48A0 /* LoginType.swift in Sources */,
+				BA1EE1B929B5B85800895037 /* NetworkService.swift in Sources */,
 				BA8F828C29A48AE3007A48A0 /* NWMonitor.swift in Sources */,
 				BA8F828429A48AE3007A48A0 /* NaverLoginController.swift in Sources */,
 				BA8F827C29A48AE3007A48A0 /* Toast.swift in Sources */,
@@ -885,6 +904,7 @@
 				BA8F825929A48AE3007A48A0 /* MakeCard_SelectProportionButtonView.swift in Sources */,
 				BA8F823229A48AE3007A48A0 /* Main_MenuView.swift in Sources */,
 				BA8F825129A48AE3007A48A0 /* MakeCard_ShareButtonsView.swift in Sources */,
+				BA7AF72129B5DA2D006A817B /* LoginModel.swift in Sources */,
 				BA8F825429A48AE3007A48A0 /* MakeCard_TopView.swift in Sources */,
 				BA8F829B29A48D7B007A48A0 /* BookModel.swift in Sources */,
 				BA8F829229A48AE3007A48A0 /* NaverLoginStatus.swift in Sources */,
@@ -1061,6 +1081,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1096,11 +1117,13 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lines.lines-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

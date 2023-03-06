@@ -80,10 +80,14 @@ PODS:
   - Realm/Headers (10.28.6)
   - RealmSwift (10.28.6):
     - Realm (= 10.28.6)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+  - SnapKit (5.6.0)
   - SwiftyBeaver (1.9.6)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.1)
+  - Alamofire
   - GoogleMLKit/TextRecognitionKorean
   - KakaoSDKAuth
   - KakaoSDKCommon
@@ -92,6 +96,9 @@ DEPENDENCIES:
   - Mantis
   - naveridlogin-sdk-ios
   - RealmSwift
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
+  - SnapKit
   - SwiftyBeaver
 
 SPEC REPOS:
@@ -119,6 +126,9 @@ SPEC REPOS:
     - Protobuf
     - Realm
     - RealmSwift
+    - RxCocoa
+    - RxSwift
+    - SnapKit
     - SwiftyBeaver
 
 SPEC CHECKSUMS:
@@ -145,8 +155,11 @@ SPEC CHECKSUMS:
   Protobuf: 85a48c73d708782e2869564c0438e211aae98e7a
   Realm: 9b12f16a14446d7d46a9e36225d0a0332a6ec739
   RealmSwift: 5927726fce21005f43b1fb57c832297a22031bfc
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: be17a8ab70e7f7dcec31c37be4deb56526ee7ffc
+PODFILE CHECKSUM: 1166b37f3fd027e13edb12946ac6ee243c87d8c7
 
 COCOAPODS: 1.11.2
