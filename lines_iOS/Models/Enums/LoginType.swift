@@ -6,35 +6,21 @@
 //
 import UIKit
 
-enum LoginType: CaseIterable {
+enum LoginType: String, CaseIterable {
     case kakao
     case naver
     case apple
     case skip
     var type: String {
-        switch self {
-        case .kakao:
-            return "KAKAO"
-        case .naver:
-            return "NAVER"
-        case .apple:
-            return "APPLE"
-        case .skip:
-            return ""
-        }
+        return self.rawValue.uppercased()
     }
+    
     var img: UIImage? {
-        switch self {
-        case .kakao:
-            return UIImage(named: "KakaoLoginButton")
-        case .naver:
-            return UIImage(named: "NaverLoginButton")
-        case .apple:
-            return UIImage(named: "AppleLoginButton")
-        case .skip:
-            return UIImage(named: "SkipLoginButton")
-        }
+        var tmpRawValue = self.rawValue
+        let firstVal = tmpRawValue.removeFirst().uppercased()
+        return UIImage(named: firstVal + tmpRawValue + "LoginButton")
     }
+    
     var txtColor: UIColor {
         switch self {
         case .kakao:

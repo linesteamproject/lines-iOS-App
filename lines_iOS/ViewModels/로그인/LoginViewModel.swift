@@ -1,11 +1,12 @@
 //
-//  LoginModel.swift
+//  LoginViewModel.swift
 //  lines_iOS
 //
 //  Created by mun on 2023/03/06.
 //
 
 import Foundation
+import RxSwift
 
 struct LoginViewModel {
     let model: LoginModel
@@ -15,10 +16,7 @@ struct LoginViewModel {
         UserData.accessToken = model.accessToken ?? ""
         UserData.refreshToken = model.refreshToken ?? ""
     }
-}
-
-struct LoginModel: Codable {
-    let accessToken: String?
-    let refreshToken: String?
-    let isCreated: Bool?
+    internal func isCreated() -> Bool {
+        return self.model.isCreated ?? false
+    }
 }

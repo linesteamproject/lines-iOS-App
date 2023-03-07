@@ -8,6 +8,7 @@
 import UIKit
 import SwiftyBeaver
 import KakaoSDKAuth
+import RxKakaoSDKAuth
 import KakaoSDKUser
 import KakaoSDKCommon
 import NaverThirdPartyLogin
@@ -60,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.absoluteString.contains("kakao"), (AuthApi.isKakaoTalkLoginUrl(url)) {
-            return AuthController.handleOpenUrl(url: url)
+            return AuthController.rx.handleOpenUrl(url: url)
         }
         
         if url.scheme?.contains("naver") == true {

@@ -29,6 +29,7 @@ class UserAgreement_CellView: UIView {
         
         self.isSelected = true
     }
+    
     required init?(coder: NSCoder) { fatalError() }
     
     private func setCheckClosure(_ checkClosure: ((Bool) -> Void)?) {

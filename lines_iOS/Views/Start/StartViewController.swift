@@ -95,6 +95,7 @@ class StartViewController: ViewController {
         scrollContentsView.snp.makeConstraints({ make in
             make.edges.equalTo(scrollView.contentLayoutGuide)
             make.width.equalTo(viewWidth * 4)
+            make.height.equalTo(self.view.snp.height)
         })
         scrollContentsView.backgroundColor = .clear
         OnBardingImageType.allCases.enumerated().forEach { idx, type in

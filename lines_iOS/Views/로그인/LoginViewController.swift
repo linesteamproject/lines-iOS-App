@@ -6,24 +6,14 @@
 //
 
 import UIKit
+import SnapKit
+import RxSwift
 import AuthenticationServices
-
-struct JoinModel {
-    let id: String = ""
-    let oauthId: String
-    let oauthType: LoginType
-    
-    var param: [String: String] {
-        return [
-            "id": id,
-            "oauthId": oauthId,
-            "oauthType": oauthType.type
-        ]
-    }
-}
 
 class LoginViewController: ViewController {
     internal var isShouldSkipHidden = false
+    
+    private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,58 +22,38 @@ class LoginViewController: ViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.colors = [Colors.black.value.withAlphaComponent(0.7516).cgColor,
-                           Colors.blackGradient.value.cgColor]
-        
-        // gradient를 layer 전체에 적용해주기 위해 범위를 0.0 ~ 1.0으로 설정
-        gradient.locations = [0.0, 1.0]
-        
-        // gradient 방향을 x축과는 상관없이 y축의 변화만 줌
-        gradient.startPoint = CGPoint(x: 0, y: 0.7)
-        gradient.endPoint = CGPoint(x: 0, y: 1.0)
-        
-        gradient.frame = self.view.bounds
-        self.view.layer.insertSublayer(gradient, at: 0)
+        setGradient()
     }
     
     private func setUI() {
         let imgView = UIImageView(image: UIImage(named: "LoginLogo"))
-        self.view.addSubviews(imgView)
-        NSLayoutConstraint.activate([
-            imgView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,
-                                        constant: 138),
-            imgView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            imgView.heightAnchor.constraint(equalToConstant: 36),
-        ])
+        self.view.addSubview(imgView)
+        imgView.snp.makeConstraints({ make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(138)
+            make.centerX.equalTo(self.view)
+            make.height.equalTo(36)
+        })
+        
         let loginButtonView = LoginButtonView(isShouldSkipHidden)
-        self.view.addSubviews(loginButtonView)
-        NSLayoutConstraint.activate([
-            loginButtonView.leftAnchor.constraint(equalTo: self.view.leftAnchor,
-                                                  constant: 20),
-            loginButtonView.rightAnchor.constraint(equalTo: self.view.rightAnchor,
-                                                   constant: -20),
-            loginButtonView.topAnchor.constraint(equalTo: imgView.bottomAnchor,
-                                                constant: 63),
-            loginButtonView.heightAnchor.constraint(lessThanOrEqualToConstant: 251)
-        ])
-        loginButtonView.btnClosure = { [weak self] type in
+        self.view.addSubview(loginButtonView)
+        loginButtonView.snp.makeConstraints({ make in
+            make.left.right.equalTo(self.view).inset(20)
+            make.top.equalTo(imgView.snp.bottom).offset(63)
+            make.height.lessThanOrEqualTo(251)
+        })
+        
+        loginButtonView.btnClosure = { [unowned self] type in
             switch type {
             case .kakao:
-                KakaoLoginController.shared.login { [weak self] in
-                    guard let kakaoUser = $0 else {
-                        self?.showOneButtonAlertView(title: "로그인 실패", height: 70, btnTitle: "확인",
-                                                     btnColor: .beige)
-                        return
-                    }
-                    
-                    let subTitle = "user identifier: " + (kakaoUser.userId) + "\n"
-                    + "email: " + (kakaoUser.email) + "\n"
-                    + "nickName: " + (kakaoUser.nick) + "\n"
-                    self?.goToAgreementVC(JoinModel(oauthId: kakaoUser.userId,
-                                                    oauthType: LoginType.kakao))
-                }
+                //TODO: 수정
+//                KakaoLoginService().login()
+//                    .subscribe(onNext: { [weak self] in
+//                        guard let vm = $0?.getJoinViewModel()
+//                        else { return }
+//
+//                        self?.goToAgreementVC(vm)
+//                    }).disposed(by: self.disposeBag)
+                break
             case .naver:
                 NaverLoginController.shared.login()
                 NaverLoginController.shared.naverLoginClosure = { [weak self] res in
@@ -97,55 +67,50 @@ class LoginViewController: ViewController {
                     + "email: " + (res.email ?? "") + "\n"
                     + "nickName: " + (res.nickname ?? "") + "\n"
                     + "name: " + (res.name ?? "") + "\n"
-                    self?.goToAgreementVC(JoinModel(oauthId: userIdentifier,
-                                                    oauthType: LoginType.naver))
+                    self?.goToAgreementVC(JoinViewModel(
+                        id: "",
+                        oauthId: userIdentifier,
+                        oauthType: LoginType.naver))
                 }
                 return
             case .apple:
                 let appleIDProvider = ASAuthorizationAppleIDProvider()
                 let request = appleIDProvider.createRequest()
                 request.requestedScopes = [.fullName, .email]
-                        
+                
                 let authorizationController = ASAuthorizationController(authorizationRequests: [request])
                 authorizationController.delegate = self
                 authorizationController.presentationContextProvider = self
                 authorizationController.performRequests()
                 return
             case .skip:
-                self?.goToMainVC()
+                self.goToMainVC()
                 return
             }
         }
     }
     
-    private func goToAgreementVC(_ model: JoinModel?) {
-        guard let model = model else { return }
-        DispatchQueue.global().async { [weak self] in
-            AFHandler.login(model) { value in
-                //TODO: Error가 났을 경우?
-                guard let accessToken = value?.accessToken,
-                      let refreshToken = value?.refreshToken,
-                      let isCreadted = value?.isCreated
-                else { return }
-                
-                UserData.accessToken = accessToken
-                UserData.refreshToken = refreshToken
-                
-                if isCreadted {
+    private func goToAgreementVC(_ viewModel: JoinViewModel?) {
+        guard let viewModel = viewModel else { return }
+        
+        NetworkService().login(viewModel)
+            .subscribe(onNext: { [weak self] vm in
+                if vm.isCreated() {
                     let vc = UserAgreementViewController()
                     if self?.isShouldSkipHidden == true {
                         vc.isShouldSkipHidden = self?.isShouldSkipHidden ?? false
                     }
                     vc.modalPresentationStyle = .fullScreen
-                    vc.joinModel = model
+                    vc.joinViewModel = viewModel
                     DispatchQueue.main.async { [weak self] in
                         self?.present(vc, animated: true)
                     }
                 } else {
                     self?.goToMainVC()
                 }
-            }
-        }
+            }, onError: { _ in
+                
+            }).disposed(by: disposeBag)
     }
     
     private func goToMainVC() {
@@ -158,6 +123,20 @@ class LoginViewController: ViewController {
 extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
+    }
+}
+
+extension LoginViewController {
+    private func setGradient() {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [Colors.black.value.withAlphaComponent(0.7516).cgColor,
+                           Colors.blackGradient.value.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0.7)
+        gradient.endPoint = CGPoint(x: 0, y: 1.0)
+        
+        gradient.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradient, at: 0)
     }
 }
 
@@ -176,16 +155,18 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             + "FamilyName: " + familyName + "\n"
             + "GivenName: " + givenName + "\n"
             + "Email: " + email
-            self.goToAgreementVC(JoinModel(oauthId: userIdentifier,
-                                           oauthType: LoginType.apple))
+            self.goToAgreementVC(JoinViewModel(
+                id: "",
+                oauthId: userIdentifier,
+                oauthType: LoginType.apple))
         default:
             break
         }
     }
-        
+    
     // Apple ID 연동 실패 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-//        self.showOneButtonAlertView(title: "로그인 에러",
-//                                    height: 250, btnTitle: "확인", btnColor: .beige)
+        //        self.showOneButtonAlertView(title: "로그인 에러",
+        //                                    height: 250, btnTitle: "확인", btnColor: .beige)
     }
 }
