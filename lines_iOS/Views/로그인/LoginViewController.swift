@@ -45,15 +45,19 @@ class LoginViewController: ViewController {
         loginButtonView.btnClosure = { [unowned self] type in
             switch type {
             case .kakao:
-                //TODO: 수정
-//                KakaoLoginService().login()
-//                    .subscribe(onNext: { [weak self] in
-//                        guard let vm = $0?.getJoinViewModel()
-//                        else { return }
-//
-//                        self?.goToAgreementVC(vm)
-//                    }).disposed(by: self.disposeBag)
-                break
+                KakaoLoginService().login()
+                    .subscribe(onNext:{ (oauthToken) in
+                        //do something
+                        _ = oauthToken
+                        
+                        KakaoLoginService().getUserInfo()
+                            .observe(on: MainScheduler.instance)
+                            .subscribe(onNext: { vm in
+                                self.goToAgreementVC(vm.getJoinViewModel())
+                            }).disposed(by: self.disposeBag)
+                    }, onError: {error in
+                        print(error)
+                    }).disposed(by: disposeBag)
             case .naver:
                 NaverLoginController.shared.login()
                 NaverLoginController.shared.naverLoginClosure = { [weak self] res in
@@ -93,7 +97,9 @@ class LoginViewController: ViewController {
     private func goToAgreementVC(_ viewModel: JoinViewModel?) {
         guard let viewModel = viewModel else { return }
         
-        NetworkService().login(viewModel)
+        NetworkService()
+            .login(viewModel)
+            .take(1)
             .subscribe(onNext: { [weak self] vm in
                 if vm.isCreated() {
                     let vc = UserAgreementViewController()
