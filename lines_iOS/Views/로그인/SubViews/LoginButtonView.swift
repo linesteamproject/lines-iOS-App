@@ -7,9 +7,12 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class LoginButtonView: UIView {
     internal var btnClosure: ((LoginType) -> Void)?
+    
+    private let disposeBag = DisposeBag()
     init(_ isShouldSkipHidden: Bool) {
         super.init(frame: .zero)
         setUI(isShouldSkipHidden)
@@ -17,6 +20,7 @@ class LoginButtonView: UIView {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
     private func setUI(_ isShouldSkipHidden: Bool) {
         var nxTopAnchhor: NSLayoutYAxisAnchor = self.topAnchor
         var nxTopConstant: CGFloat = 0
@@ -35,9 +39,12 @@ class LoginButtonView: UIView {
                 loginBtn.heightAnchor.constraint(equalToConstant: 45).isActive = true
             }
             loginBtn.type = type
-            loginBtn.addAction(UIAction { [weak self] _ in
+            loginBtn.rx.tap.bind { [weak self] in
                 self?.btnClosure?(type)
-            }, for: .touchUpInside)
+            }.disposed(by: disposeBag)
+//                .addAction(UIAction { [weak self] _ in
+//                self?.btnClosure?(type)
+//            }, for: .touchUpInside)
             
             guard type != .skip else {
                 loginBtn.bottomAnchor

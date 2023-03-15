@@ -59,13 +59,11 @@ class LoginViewController: ViewController {
                         print(error)
                     }).disposed(by: disposeBag)
             case .naver:
-                NaverLoginController.shared.login()
-                NaverLoginController.shared.naverLoginClosure = { [weak self] res in
-                    guard let res = res, let userIdentifier = res.id else {
-                        self?.showOneButtonAlertView(title: "로그인 실패", height: 70, btnTitle: "확인",
-                                                     btnColor: .beige)
-                        return
-                    }
+                let service = NaverLoginService()
+                service.login()
+                service.naverLoginClosure = { [weak self] res in
+                    guard let res = res, let userIdentifier = res.id
+                    else { return }
                     
                     let subTitle = "user identifier: " + (res.id ?? "") + "\n"
                     + "email: " + (res.email ?? "") + "\n"

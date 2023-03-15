@@ -31,7 +31,7 @@ class NetworkService {
             }
             
             return Disposables.create()
-        }).subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+        }).subscribe(on: ConcurrentDispatchQueueScheduler(qos: .default))
     }
     
     internal func login(_ model: JoinViewModel) -> Observable<LoginViewModel> {
@@ -51,6 +51,6 @@ class NetworkService {
             }
             
             return Disposables.create()
-        }).subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+        }).subscribe(on: ConcurrentDispatchQueueScheduler(qos: .default))
     }
 }

@@ -1,16 +1,15 @@
 //
-//  NaverLoginController.swift
+//  NaverLoginService.swift
 //  lines_iOS
 //
-//  Created by mun on 2022/09/03.
+//  Created by mun on 2023/03/08.
 //
 
 import Foundation
 import NaverThirdPartyLogin
 
-class NaverLoginController: NSObject, NaverThirdPartyLoginConnectionDelegate {
+class NaverLoginService: NSObject, NaverThirdPartyLoginConnectionDelegate {
     private let instance = NaverThirdPartyLoginConnection.getSharedInstance()
-    static let shared = NaverLoginController()
     var naverLoginClosure: ((NaverLoginResponse?) -> Void)?
     internal func login() {
         instance?.delegate = self
@@ -69,3 +68,4 @@ class NaverLoginController: NSObject, NaverThirdPartyLoginConnectionDelegate {
         }
     }
 }
+

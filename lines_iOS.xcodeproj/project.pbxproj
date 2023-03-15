@@ -18,6 +18,7 @@
 		BA7AF72329B5DBB6006A817B /* OnBoardingImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7AF72229B5DBB6006A817B /* OnBoardingImageType.swift */; };
 		BA7AF72929B5E115006A817B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7AF72829B5E115006A817B /* LoginViewModel.swift */; };
 		BA7AF73129B5E332006A817B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7AF73029B5E332006A817B /* CustomView.swift */; };
+		BA8F2DEF29B880CA0027028A /* NaverLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F2DEE29B880CA0027028A /* NaverLoginService.swift */; };
 		BA8F822529A48AE3007A48A0 /* Extensions+Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F819929A48AE2007A48A0 /* Extensions+Func.swift */; };
 		BA8F822629A48AE3007A48A0 /* Extensions+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F819A29A48AE2007A48A0 /* Extensions+Value.swift */; };
 		BA8F822729A48AE3007A48A0 /* Extensions+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F819B29A48AE2007A48A0 /* Extensions+UI.swift */; };
@@ -111,8 +112,6 @@
 		BA8F828029A48AE3007A48A0 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F820B29A48AE3007A48A0 /* SplashViewController.swift */; };
 		BA8F828129A48AE3007A48A0 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F820C29A48AE3007A48A0 /* StartViewController.swift */; };
 		BA8F828229A48AE3007A48A0 /* UserAgreementWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F820E29A48AE3007A48A0 /* UserAgreementWebViewController.swift */; };
-		BA8F828329A48AE3007A48A0 /* KakaoLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F821029A48AE3007A48A0 /* KakaoLoginController.swift */; };
-		BA8F828429A48AE3007A48A0 /* NaverLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F821129A48AE3007A48A0 /* NaverLoginController.swift */; };
 		BA8F828529A48AE3007A48A0 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F821329A48AE3007A48A0 /* LoginType.swift */; };
 		BA8F828629A48AE3007A48A0 /* UserAgreement_CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F821529A48AE3007A48A0 /* UserAgreement_CellView.swift */; };
 		BA8F828729A48AE3007A48A0 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F821629A48AE3007A48A0 /* LoginButton.swift */; };
@@ -150,6 +149,7 @@
 		BA7AF72229B5DBB6006A817B /* OnBoardingImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingImageType.swift; sourceTree = "<group>"; };
 		BA7AF72829B5E115006A817B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		BA7AF73029B5E332006A817B /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		BA8F2DEE29B880CA0027028A /* NaverLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginService.swift; sourceTree = "<group>"; };
 		BA8F819929A48AE2007A48A0 /* Extensions+Func.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Func.swift"; sourceTree = "<group>"; };
 		BA8F819A29A48AE2007A48A0 /* Extensions+Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Value.swift"; sourceTree = "<group>"; };
 		BA8F819B29A48AE2007A48A0 /* Extensions+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UI.swift"; sourceTree = "<group>"; };
@@ -244,8 +244,6 @@
 		BA8F820B29A48AE3007A48A0 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		BA8F820C29A48AE3007A48A0 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		BA8F820E29A48AE3007A48A0 /* UserAgreementWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAgreementWebViewController.swift; sourceTree = "<group>"; };
-		BA8F821029A48AE3007A48A0 /* KakaoLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KakaoLoginController.swift; sourceTree = "<group>"; };
-		BA8F821129A48AE3007A48A0 /* NaverLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaverLoginController.swift; sourceTree = "<group>"; };
 		BA8F821329A48AE3007A48A0 /* LoginType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
 		BA8F821529A48AE3007A48A0 /* UserAgreement_CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAgreement_CellView.swift; sourceTree = "<group>"; };
 		BA8F821629A48AE3007A48A0 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
@@ -306,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				BA14F4E629B5FAA400629529 /* KakaoLoginService.swift */,
+				BA8F2DEE29B880CA0027028A /* NaverLoginService.swift */,
 			);
 			path = LoginServices;
 			sourceTree = "<group>";
@@ -332,12 +331,12 @@
 			isa = PBXGroup;
 			children = (
 				BA14F4DC29B5EC3C00629529 /* Enums */,
-				BA7AF72429B5E0CB006A817B /* 로그인 */,
+				BA7AF72429B5E0CB006A817B /* 로그인 */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		BA7AF72429B5E0CB006A817B /* 로그인 */ = {
+		BA7AF72429B5E0CB006A817B /* 로그인 */ = {
 			isa = PBXGroup;
 			children = (
 				BA7AF72029B5DA2D006A817B /* LoginModel.swift */,
@@ -350,12 +349,12 @@
 		BA7AF72629B5E0FA006A817B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				BA7AF72729B5E109006A817B /* 로그인 */,
+				BA7AF72729B5E109006A817B /* 로그인 */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		BA7AF72729B5E109006A817B /* 로그인 */ = {
+		BA7AF72729B5E109006A817B /* 로그인 */ = {
 			isa = PBXGroup;
 			children = (
 				BA7AF72829B5E115006A817B /* LoginViewModel.swift */,
@@ -369,16 +368,15 @@
 			isa = PBXGroup;
 			children = (
 				BA14F4DD29B5ECA300629529 /* Start */,
-				BA7AF72D29B5E1BF006A817B /* 로그인 */,
+				BA7AF72D29B5E1BF006A817B /* 로그인 */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BA7AF72D29B5E1BF006A817B /* 로그인 */ = {
+		BA7AF72D29B5E1BF006A817B /* 로그인 */ = {
 			isa = PBXGroup;
 			children = (
 				BA7AF72E29B5E2D0006A817B /* SubViews */,
-				BA8F820F29A48AE3007A48A0 /* Controller */,
 				BA8F821929A48AE3007A48A0 /* LoginViewController.swift */,
 				BA8F820E29A48AE3007A48A0 /* UserAgreementWebViewController.swift */,
 				BA8F821A29A48AE3007A48A0 /* UserAgreementViewController.swift */,
@@ -672,15 +670,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		BA8F820F29A48AE3007A48A0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				BA8F821029A48AE3007A48A0 /* KakaoLoginController.swift */,
-				BA8F821129A48AE3007A48A0 /* NaverLoginController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		BA8F821B29A48AE3007A48A0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,7 +958,6 @@
 				BA8F828529A48AE3007A48A0 /* LoginType.swift in Sources */,
 				BA1EE1B929B5B85800895037 /* NetworkService.swift in Sources */,
 				BA8F828C29A48AE3007A48A0 /* NWMonitor.swift in Sources */,
-				BA8F828429A48AE3007A48A0 /* NaverLoginController.swift in Sources */,
 				BA8F827C29A48AE3007A48A0 /* Toast.swift in Sources */,
 				BA8F828D29A48AE3007A48A0 /* AFHandler.swift in Sources */,
 				BA8F829529A48D4D007A48A0 /* ReadTextStep.swift in Sources */,
@@ -978,7 +966,6 @@
 				BA8F823129A48AE3007A48A0 /* Main_HeaderView.swift in Sources */,
 				BA8F823629A48AE3007A48A0 /* Main_ListView.swift in Sources */,
 				BA8F824329A48AE3007A48A0 /* MakeCard_StickerContentFontButton.swift in Sources */,
-				BA8F828329A48AE3007A48A0 /* KakaoLoginController.swift in Sources */,
 				BA8F825029A48AE3007A48A0 /* MakeCard_StickerBackColorSetView.swift in Sources */,
 				BA8F824C29A48AE3007A48A0 /* MakeCard_StickerOneToOneView.swift in Sources */,
 				BA8F827729A48AE3007A48A0 /* ImageAlertView.swift in Sources */,
@@ -995,6 +982,7 @@
 				BA8F827B29A48AE3007A48A0 /* TopView.swift in Sources */,
 				BA8F827129A48AE3007A48A0 /* ViewController.swift in Sources */,
 				BA8F824D29A48AE3007A48A0 /* MakeCard_StickerBackColorButton.swift in Sources */,
+				BA8F2DEF29B880CA0027028A /* NaverLoginService.swift in Sources */,
 				BA8F825929A48AE3007A48A0 /* MakeCard_SelectProportionButtonView.swift in Sources */,
 				BA8F823229A48AE3007A48A0 /* Main_MenuView.swift in Sources */,
 				BA8F825129A48AE3007A48A0 /* MakeCard_ShareButtonsView.swift in Sources */,
